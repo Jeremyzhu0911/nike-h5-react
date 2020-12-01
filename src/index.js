@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 import {HashRouter} from "react-router-dom";
+import 'lib-flexible';
 import configureStore from "./store/configureStore";
 
 //解决移动端300毫秒延迟
@@ -23,3 +24,4 @@ render(
     </Provider>,
     document.getElementById('root')
 );
+
