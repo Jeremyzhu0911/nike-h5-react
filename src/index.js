@@ -1,27 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {Provider} from 'react-redux';
-import {HashRouter} from "react-router-dom";
 import 'lib-flexible';
-import configureStore from "./store/configureStore";
-
-//解决移动端300毫秒延迟
-const FastClick = require('fastclick');
-FastClick.attach(document.body);
-
-const store = configureStore();
-
-import AppContainer from './appContainer'
-
-import './static/css/common.less'
-import './static/css/font.less'
+import './index.css';
+import App from './App';
 
 render(
-    <Provider store={store}>
-        <HashRouter basename="/">
-            <AppContainer />
-        </HashRouter>
-    </Provider>,
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
     document.getElementById('root')
 );
-
