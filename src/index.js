@@ -1,12 +1,15 @@
 import React from 'react';
-import {render} from 'react-dom';
-import 'lib-flexible';
-import './index.css';
+import ReactDOM from 'react-dom';
 import App from './App';
+import 'lib-flexible';
+import "@/assets/css/reset.css";
 
-render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
-    document.getElementById('root')
+//解决移动端300毫秒延迟
+let FastClick = require('fastclick')
+FastClick.attach(document.body)
+
+ReactDOM.render(
+    <App />,
+  document.getElementById('root')
 );
+
