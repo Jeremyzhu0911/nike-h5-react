@@ -2,6 +2,9 @@ import exclusiveConsultant from "@/pages/exclusiveConsultant"
 import fashionableProducts from "@/pages/fashionableProducts"
 import latestLaunch from "@/pages/latestLaunch"
 import limitedSales from "@/pages/limitedSales"
+import limitedSalesDetails from "@/pages/limitedSalesDetails"
+import limitedSalesInformation from "@/pages/limitedSalesInformation"
+import limitedSalesSuccess from "@/pages/limitedSalesSuccess"
 import myActivities from "@/pages/myActivities"
 import myAppointment from "@/pages/myAppointment"
 import storeActivities from "@/pages/storeActivities"
@@ -25,7 +28,23 @@ const routes = [
   {
     // 限量发售
     path:"/commodity/limitList",
-    component:limitedSales
+    component:limitedSales,
+    exact:true
+  },
+  {
+    // 限量发售详情
+    path:"/commodity/limitList/details",
+    component:limitedSalesDetails
+  },
+  {
+    // 限量发售输入信息
+    path:"/commodity/limitList/info",
+    component:limitedSalesInformation
+  },
+  {
+    // 限量发售成功
+    path:"/commodity/limitList/success",
+    component:limitedSalesSuccess
   },
   {
     // 我的活动

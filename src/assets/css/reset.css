@@ -40,3 +40,7 @@ body,textarea,select,input,button{
   text-overflow:ellipsis;
   overflow: hidden;
 }
+
+input::-webkit-input-placeholder{
+  color:rgba(106,106,106,.63);
+}

@@ -1,0 +1,25 @@
+.limitedSalesSuccessWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.limitedSalesSuccessWrap .topArea {
+  padding-top: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.limitedSalesSuccessWrap .topArea i {
+  font-size: 104px;
+  margin-bottom: 40px;
+}
+.limitedSalesSuccessWrap .topArea h2 {
+  font-size: 40px;
+}
+.limitedSalesSuccessWrap .notice {
+  width: 600px;
+  height: 275px;
+  margin: 75px auto 50px auto;
+  background: #ecf0f1;
+  border-radius: 10px;
+}

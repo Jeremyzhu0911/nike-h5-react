@@ -6,10 +6,7 @@ module.exports = override(
         libraryDirectory: 'es',
         style: 'css',
     }),
-    addLessLoader({
-        javascriptEnabled: true,
-        modifyVars: { '@primary-color': '#1DA57A' },
-    }),
+    addLessLoader(),
     addWebpackAlias({      
       "@": path.resolve(__dirname, "src"),        
       "components": path.resolve(__dirname, "src/components")   
@@ -19,3 +16,4 @@ module.exports = override(
       exclude:/node_modules/i
   }),])
 )
+
