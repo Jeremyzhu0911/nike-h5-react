@@ -23,3 +23,33 @@
   background: #ecf0f1;
   border-radius: 10px;
 }
+.limitedSalesSuccessWrap .notice .noticeTitle {
+  margin-top: 90px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 30px;
+  margin-bottom: 35px;
+}
+.limitedSalesSuccessWrap .notice .noticeTime {
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+.limitedSalesSuccessWrap .scanWrap .scanWrapTop {
+  text-align: center;
+  line-height: 40px;
+  font-size: 28px;
+  margin-bottom: 50px;
+}
+.limitedSalesSuccessWrap .scanWrap .scanWrapMiddle {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.limitedSalesSuccessWrap .scanWrap .scanWrapMiddle img {
+  width: 210px;
+}
+.limitedSalesSuccessWrap .scanWrap .scanWrapBottom {
+  text-align: center;
+  line-height: 32px;
+  font-size: 24px;
+}
