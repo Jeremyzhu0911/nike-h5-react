@@ -1,0 +1,11 @@
+@charset 'utf-8';
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 1080px;
+$Response:true;
+$styleColor: #da363c;
+
+@import "compass/reset","compass/layout","mobile-mixin";
+
+.CommodityIndex{
+	
+}

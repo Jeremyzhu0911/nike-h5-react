@@ -1,0 +1,17 @@
+body{
+	max-width: 750px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	font: 12px/1.5 "Microsoft Yahei",arial,tahoma,"Hiragino Sans GB",\5b8b\4f53;
+	color: #323232;
+	background: #F5FAFF;
+}
+#root{
+	font-size: rem-calc(40);
+}
+.aaa{
+	position: fixed;
+	height: rem-calc(150);
+	bottom: rem-calc(0);
+}

@@ -1,0 +1,57 @@
+@charset 'utf-8';
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 1080px;
+$Response:true;
+$styleColor: #da363c;
+
+@import "compass/reset","compass/layout","mobile-mixin";
+
+body{
+	max-width: 750px;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	font: 12px/1.5 "Microsoft Yahei",arial,tahoma,"Hiragino Sans GB",\5b8b\4f53;
+	color: #323232;
+	background: #F5FAFF;
+}
+#root{
+	font-size: rem-calc(40);
+}
+.aaa{
+	position: fixed;
+	height: rem-calc(150);
+	bottom: rem-calc(0);
+}
+// .wrapper{
+// 	position: relative;
+// 	min-height: 100vh;
+// 	z-index: 10;
+//     .page{
+// 		position: relative;
+// 		width: rem-calc(750);
+// 		min-height: 100vh;
+// 		overflow-x: hidden;
+// 		&.page1{
+// 			z-index: 99;
+// 		}
+// 	}
+// }
+// .sign_box_top{
+// 	background: #fff;
+// 	border-top: 0px solid #d2d2d2;
+// 	position: fixed;
+// 	width: 100%;
+// 	top: 0;
+// 	max-width: 750px;
+// 	@include clearfix;
+// }
+// .music{
+// 	position: absolute;
+// 	z-index: -9999;
+// 	opacity: 0;
+// }
+//@import "common";
+//@import "animate";
+//@import "loading";
+//@import "home";
