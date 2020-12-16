@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import routes from '../router/config';
+import "../assets/css/style.css";
 
 export default function RouteConfigExample() {
     return (

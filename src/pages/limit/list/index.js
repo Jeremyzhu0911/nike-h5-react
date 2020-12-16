@@ -1,55 +1,37 @@
-import React from "react";
-import "./style.less"
+import React, {Component} from "react";
+import ListBigImgBox from "../../../components/ListBigImgBox";
+import "../../../assets/css/Limitlist.css";
 
-function Limitlist() {
-    return (
-        <div className="limitedSalesWrap">
-            <div className="shopName">上海长宁来福士NIKE体验店</div>
-            <div className="commodityList">
-                <div className="commodityName">
-                    Air Jordan VI Retro<br/>
-                    Tech Chrome
-                </div>
-                <div className="commodityTime">
-                    10/21 上午10:00
-                </div>
-                <div className="commodityImg">
-                    <img alt={''} src={'../../assets/images/sp.jpg'}/>
-                </div>
-                <div className="btn">
-                    报名未开始
-                </div>
-                <div className="down-arrow">
-                    <i className="iconfont icon-xiangxia"/>
-                </div>
-                <div className="underLine">
+class Limitlist extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data:[
+                {
+                    title:"Air Jordan VI Retro Tech Chrome",
+                    time:"10/21 上午10:00",
+                    type: 0
+                }
+            ],
+            data2:[
+                {
+                    title:"Air Zoom Tempo NEXT%",
+                    time:"10/21 上午10:00",
+                    type: 1
+                }
+            ]
+        };
+    }
 
-                </div>
+    render (){
+        return (
+            <div className="Limitlist">
+                <h2>上海长宁来福士NIKE体验店</h2>
+                <ListBigImgBox datas={this.state.data}/>
+                <ListBigImgBox datas={this.state.data2}/>
             </div>
-
-            <div className="commodityList over">
-                <div className="commodityName">
-                    Air Jordan VI Retro<br/>
-                    Tech Chrome
-                </div>
-                <div className="commodityTime">
-                    10/21 上午10:00
-                </div>
-                <div className="commodityImg">
-                    <img alt={''} src={'../../assets/images/sp.jpg'}/>
-                </div>
-                <div className="btn">
-                    报名未开始
-                </div>
-                <div className="down-arrow">
-                    <i className="iconfont icon-xiangxia"/>
-                </div>
-                <div className="underLine">
-
-                </div>
-            </div>
-        </div>
-    );
+        )
+    }
 }
 
 export default Limitlist;

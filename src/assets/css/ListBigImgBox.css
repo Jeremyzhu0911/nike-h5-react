@@ -1,59 +1,3 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
-}
-
-html {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-q, blockquote {
-  quotes: none;
-}
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-a img {
-  border: none;
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
-  display: block;
-}
-
 html {
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
@@ -177,24 +121,56 @@ a {
     font-size: 27px;
   }
 }
-body {
-  max-width: 750px;
+#ListBigImgBox {
+  position: relative;
+  padding: 2.64107rem 1.13778rem;
+  box-shadow: 0 0.28444rem 1.42222rem #9e9e9e;
+  margin-bottom: 0.77298rem;
+}
+#ListBigImgBox .title {
+  font-size: 1.28853rem;
+  letter-spacing: 0.04836rem;
+  color: #6A6A6A;
+  padding-right: 10.30827rem;
+  padding-bottom: 0.55324rem;
+}
+#ListBigImgBox .time {
+  letter-spacing: 0.05547rem;
+  font-size: 1.48124rem;
+  font-weight: bold;
+}
+#ListBigImgBox .images {
+  margin: 1.1584rem 0;
+  width: 24.39111rem;
+  border-radius: 1.06667rem;
+  overflow: hidden;
+  font-size: 0;
+}
+#ListBigImgBox .images img {
+  width: 24.39111rem;
+}
+#ListBigImgBox .s_btn {
+  width: 24.39111rem;
+  height: 4.33778rem;
+  line-height: 4.33778rem;
+  border-radius: 4.33778rem;
+  text-align: center;
+  color: #fff;
+}
+#ListBigImgBox .s_btn.s_btn1 {
+  background: #000;
+}
+#ListBigImgBox .s_btn.s_btn2 {
+  background: #3E3D3D;
+}
+#ListBigImgBox .mask {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  margin: 0 auto;
-  font: 12px/1.5 "Microsoft Yahei",arial,tahoma,"Hiragino Sans GB",\5b8b\4f53;
-  color: #323232;
-  background: #F5FAFF;
+  background: rgba(255, 255, 255, 0.4);
 }
 
-#root {
-  font-size: 1.42222rem;
-}
-
-.aaa {
-  position: fixed;
-  height: 5.33333rem;
-  bottom: 0;
-}
-
-/*# sourceMappingURL=style.css.map */
+/*# sourceMappingURL=ListBigImgBox.css.map */

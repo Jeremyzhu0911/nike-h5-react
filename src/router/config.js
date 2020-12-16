@@ -127,9 +127,7 @@ const routes = [
     {
         path: '/commodity/index',
         component: CommodityIndex,
-        meta: {
-            title: '最新上市'
-        }
+        title: '最新上市'  //首页
     },
     {
         path: '/commodity/list',
@@ -149,7 +147,7 @@ const routes = [
         path: '/commodity/appointment',
         component: CommodityAppointment,
         meta: {
-            title: '最新上市 - 商品预约'
+            title: '最新上市' //商品预约
         }
     },
     {
@@ -162,9 +160,7 @@ const routes = [
     {
         path: '/commodity/limitlist',
         component: Limitlist,
-        meta: {
-            title: '限量发售'
-        }
+        title: '限量发售' // 列表
     },
     {
         path: '/commodity/limitdetails',
@@ -204,9 +200,7 @@ const routes = [
     {
         path: '/commodity/fashion',
         component: Fashion,
-        meta: {
-            title: '潮流新品'
-        }
+        title: '潮流新品'
     },
     {
         path: '/adviser',
@@ -218,7 +212,7 @@ const routes = [
     {
         path: '/historical-record',
         component: HistoricalRecord,
-        title: '删除记录'
+        title: '删除记录'  //多功能页面
     }
 ];
 
