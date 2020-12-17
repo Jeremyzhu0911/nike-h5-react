@@ -1,5 +1,4 @@
 import React from "react";
-import '../details/listappointment.less'
 
 function Limitappointment() {
     return (

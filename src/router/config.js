@@ -21,14 +21,13 @@ import CommodityIndex from "../pages/commodity";
 import CommodityList from "../pages/commodity/list";
 import CommodityDetails from "../pages/commodity/details";
 import CommodityAppointment from "../pages/commodity/appointment";
-import Fashion from "../pages/commodity/fashion";
+import Fashion from "../pages/commodity/fashion/fashion";
 
 import Limit from "../pages/limit";
-import Limitdetails from "../pages/limit/details";
+import Limit_details from "../pages/limit/details";
 import Limitappointment from "../pages/limit/appointment";
 import Limitsuccess from "../pages/limit/success";
 import Limitlist from "../pages/limit/list";
-import limitdetailspreview from "../pages/limit/detailspreview";
 
 import HistoricalRecord from  '../pages/historical';
 
@@ -164,10 +163,13 @@ const routes = [
     },
     {
         path: '/commodity/limitdetails',
-        component: Limitdetails,
-        meta: {
-            title: '限量发售'
-        }
+        component: Limit_details,
+        title: '限量发售' // 详情
+    },
+    {
+        path: '/commodity/limitdetailspreview',
+        component: Limit_details,
+        title: '限量发售(预览)'
     },
     {
         path: '/commodity/limitappointment',
@@ -181,13 +183,6 @@ const routes = [
         component: Limitsuccess,
         meta: {
             title: '报名成功'
-        }
-    },
-    {
-        path: '/commodity/limitdetailspreview',
-        component: limitdetailspreview,
-        meta: {
-            title: '限量发售(预览)'
         }
     },
     {

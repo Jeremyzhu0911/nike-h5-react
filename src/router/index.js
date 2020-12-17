@@ -1,21 +1,22 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routes from '../router/config';
-import "../assets/css/style.css";
+import "../assets/css/router/style.css";
+import "../assets/fonts/iconfont.css";
 
 export default function RouteConfigExample() {
     return (
         <Router>
-            <div className={"aaa"}>
-                <ul>
-                    <li>
-                        <Link to="/historical-record">historical-record</Link>
-                    </li>
-                    <li>
-                        <Link to="/commodity/limitlist">限量发售列表</Link>
-                    </li>
-                </ul>
-            </div>
+            {/*<div className={"aaa"}>*/}
+            {/*    <ul>*/}
+            {/*        <li>*/}
+            {/*            <Link to="/historical-record">historical-record</Link>*/}
+            {/*        </li>*/}
+            {/*        <li>*/}
+            {/*            <Link to="/commodity/limitlist">限量发售列表</Link>*/}
+            {/*        </li>*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
             <Switch>
                 {routes.map((route, i) => (
                     <RouteWithSubRoutes key={i} {...route} />

@@ -1,0 +1,94 @@
+@charset 'utf-8';
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 750px;
+$Response:true;
+$styleColor: #da363c;
+
+@import "mobile-mixin";
+
+.Limit_details {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+  h2 {
+    text-align: center;
+    height: rem-calc(102.8);
+    line-height: rem-calc(102.8);
+    font-size: rem-calc(28.98);
+    color: #6A6A6A;
+    letter-spacing: rem-calc(1.08);
+  }
+  .CommodityDetails {
+    width: rem-calc(686);
+    margin: 0 auto;
+    padding: rem-calc(42) 0;
+    .commodityTitle{
+      font-size: rem-calc(48.92);
+      font-weight: bold;
+      letter-spacing: rem-calc(1.84);
+      height: rem-calc(68);
+      line-height: rem-calc(68);
+      margin-bottom: rem-calc(13.4);
+    }
+    .commodityName{
+      font-size: rem-calc(38.04);
+      letter-spacing: rem-calc(1.42);
+      color: #6A6A6A;
+      height: rem-calc(54);
+      line-height: rem-calc(54);
+    }
+    .commodityImg{
+      margin: rem-calc(65.56) 0;
+      width: rem-calc(686);
+      border-radius: rem-calc(30);
+      overflow: hidden;
+      font-size: 0;
+      img{
+        width: rem-calc(686);
+      }
+    }
+    .commodityText{
+      font-size: rem-calc(27.18);
+      letter-spacing: rem-calc(1.02);
+      line-height: rem-calc(50.72);
+    }
+    .Img100{
+      padding: rem-calc(27.18) 0;
+      width: rem-calc(686);
+      img{
+        width: rem-calc(686);
+      }
+    }
+    .commodityTimes{
+      padding-bottom: rem-calc(74.28);
+      .title{
+        font-size: rem-calc(41.66);
+        letter-spacing: rem-calc(1.56);
+        font-weight: bold;
+        padding-bottom: rem-calc(27.18);
+      }
+      .timeArea{
+        border-bottom: rem-calc(1) solid #979797;
+        padding: rem-calc(8.2) 0;
+        p{
+          font-size: rem-calc(21.74);
+          letter-spacing: rem-calc(0.82);
+          color: rgba(97,97,97,0.51);
+        }
+        .time{
+          font-size: rem-calc(27.18);
+          letter-spacing: rem-calc(1.02);
+        }
+      }
+    }
+    .btn{
+      width: rem-calc(686);
+      height: rem-calc(122);
+      line-height: rem-calc(122);
+      border-radius: rem-calc(122);
+      text-align: center;
+      color: #fff;
+      background: #000;
+    }
+  }
+}

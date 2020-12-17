@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import "../../assets/css/HistoricalRecord.css";
+import "../../assets/css/pages/historical/style.css";
 import l from "../../assets/images/record/l.png";
 import l1 from "../../assets/images/record/l (1).png";
 import gou from "../../assets/images/record/gou.png";

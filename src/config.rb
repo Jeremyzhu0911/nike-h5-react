@@ -6,10 +6,10 @@ require 'compass/import-once/activate'
 # Set this to the root of your project when deployed:
 
 http_path = "/"
-additional_import_paths = ["_source/_function"]
-sass_dir = "_source/sass"
-css_dir = "assets/css"
-images_dir = "assets/images"
+additional_import_paths = ["src/_source/_function"]
+sass_dir = "src"
+css_dir = "src/assets/css"
+images_dir = "src/assets/images"
 
 # 压缩文件路径
 cssDirCache="#{css_dir}/min/"
