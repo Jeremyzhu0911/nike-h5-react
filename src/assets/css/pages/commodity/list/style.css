@@ -1,0 +1,241 @@
+html {
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+}
+html * {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  font-family: sans-serif;
+}
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th {
+  text-align: left;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+em, i, strong {
+  font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+input, button, textarea, select {
+  font-size: 100%;
+  border: none;
+  background: none;
+}
+
+a, button, input, select, textarea, a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 0 none;
+}
+
+a {
+  text-decoration: none;
+  color: #666;
+}
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+::-webkit-input-placeholder {
+  color: #999;
+}
+
+::-moz-placeholder {
+  color: #999;
+}
+
+:-moz-placeholder {
+  color: #999;
+}
+
+@media only screen and (max-width: 359px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media only screen and (min-width: 360px) and (max-width: 374px) {
+  html {
+    font-size: 13.5px;
+  }
+}
+@media only screen and (min-width: 375px) and (max-width: 399px) {
+  html {
+    font-size: 14.0625px;
+  }
+}
+@media only screen and (min-width: 400px) and (max-width: 479px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media only screen and (min-width: 480px) and (max-width: 539px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media only screen and (min-width: 540px) and (max-width: 639px) {
+  html {
+    font-size: 20.25px;
+  }
+}
+@media only screen and (min-width: 640px) and (max-width: 719px) {
+  html {
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 720px) {
+  html {
+    font-size: 27px;
+  }
+}
+.CommodityList {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: 3.55556rem;
+}
+.CommodityList header {
+  padding: 0.71111rem 0.35556rem;
+  font-size: 0.85333rem;
+}
+.CommodityList header i {
+  float: right;
+  margin: 0 1.06667rem;
+}
+.CommodityList .resultHeader {
+  padding: 1.42222rem 1.13778rem;
+}
+.CommodityList .resultHeader h2 {
+  display: inline-table;
+  font-size: 1.06667rem;
+  font-weight: bold;
+}
+.CommodityList .resultHeader h2 span {
+  font-size: 0.71111rem;
+  font-weight: normal;
+  color: #a9a9a9;
+}
+.CommodityList .resultHeader .btn_search {
+  float: right;
+  font-size: 0.88889rem;
+  border: 1px solid #313131;
+  color: #313131;
+  padding: 0.21333rem 0.53333rem;
+  border-radius: 0.35556rem;
+}
+.CommodityList .list {
+  width: 26.66667rem;
+}
+.CommodityList .list li {
+  float: left;
+  width: 13.15556rem;
+  border: 0.07111rem solid #fff;
+  padding-bottom: 1.42222rem;
+}
+.CommodityList .list li .CommodityListImages img {
+  width: 100%;
+}
+.CommodityList .list li h5 {
+  height: 1.77778rem;
+  line-height: 1.77778rem;
+  padding: 0 0.71111rem;
+  font-size: 0.99556rem;
+}
+.CommodityList .list li p {
+  height: 1.77778rem;
+  line-height: 1.77778rem;
+  padding: 0 0.71111rem;
+  font-size: 0.71111rem;
+  color: #a9a9a9;
+}
+.CommodityList .overlay {
+  position: fixed;
+  top: 0;
+  padding: 0 1.06667rem;
+  width: 24.53333rem;
+  height: 100vh;
+  z-index: 10;
+  background: #fff;
+}
+.CommodityList .overlay h2 {
+  height: 1.77778rem;
+  line-height: 1.77778rem;
+  padding: 1.06667rem 0;
+  font-size: 1.42222rem;
+  font-weight: bold;
+}
+.CommodityList .overlay h2 span {
+  float: right;
+  font-weight: normal;
+  font-size: 0.71111rem;
+}
+.CommodityList .overlay .filterSearch {
+  display: none;
+}
+.CommodityList .overlay .filterSearch input {
+  width: 100%;
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  font-size: 1.13778rem;
+  border-bottom: 1px solid #a2a2a2;
+}
+.CommodityList .overlay .filterItems h3 {
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  font-size: 1.13778rem;
+}
+.CommodityList .overlay .filterItems ul li {
+  display: inline-table;
+  padding: 0 0.53333rem;
+  height: 1.77778rem;
+  line-height: 1.77778rem;
+  text-align: center;
+  font-size: 0.71111rem;
+  border: 1px solid #a2a2a2;
+}
+.CommodityList .overlay .filterBtnWrap {
+  padding-top: 1.42222rem;
+}
+.CommodityList .overlay .filterBtnWrap .btn_full {
+  text-align: center;
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  background: #000;
+  color: #fff;
+  font-size: 0.85333rem;
+}
+
+/*# sourceMappingURL=style.css.map */

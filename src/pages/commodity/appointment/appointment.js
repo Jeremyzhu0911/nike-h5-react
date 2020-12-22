@@ -1,6 +1,6 @@
-import React from "react";
+import React,{Component} from "react";
 
-function CommodityAppointment() {
+function index() {
     return (
         <div className="content">
             商品预约
@@ -8,4 +8,4 @@ function CommodityAppointment() {
     );
 }
 
-export default CommodityAppointment;
+export default index;

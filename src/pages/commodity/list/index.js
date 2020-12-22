@@ -1,11 +1,11 @@
 import React from "react";
 
-function CommodityList() {
+function index() {
     return (
-        <div className="content">
+        <div className="CommodityList">
             商品列表
         </div>
     );
 }
 
-export default CommodityList;
+export default index;

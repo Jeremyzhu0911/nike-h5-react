@@ -20,7 +20,7 @@ import ActivitiesDetails from "../pages/activities/details";
 import CommodityIndex from "../pages/commodity";
 import CommodityList from "../pages/commodity/list";
 import CommodityDetails from "../pages/commodity/details";
-import CommodityAppointment from "../pages/commodity/appointment";
+import CommodityAppointment from "../pages/commodity/appointment/appointment";
 import Fashion from "../pages/commodity/fashion/fashion";
 
 import Limit from "../pages/limit";

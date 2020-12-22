@@ -1,0 +1,162 @@
+@charset 'utf-8';
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 750px;
+$Response:true;
+
+@import "mobile-mixin";
+
+.Limit_appointment {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+  h2 {
+    text-align: center;
+    height: rem-calc(102.8);
+    line-height: rem-calc(102.8);
+    font-size: rem-calc(28.98);
+    color: #6A6A6A;
+    letter-spacing: rem-calc(1.08);
+  }
+
+  .InforDetails {
+    width: rem-calc(686);
+    margin: 0 auto;
+    padding: rem-calc(42) 0;
+  }
+  .InforTitle {
+    font-size: rem-calc(48.92);
+    font-weight: bold;
+    letter-spacing: rem-calc(1.84);
+    line-height: rem-calc(68);
+    margin-bottom: rem-calc(13.4);
+  }
+  .sellingPrice{
+    font-size: rem-calc(27.18);
+    letter-spacing: rem-calc(1.02);
+    font-weight: bold;
+    height: rem-calc(106.56);
+    line-height: rem-calc(106.56);
+  }
+  .selectSize{
+    padding: rem-calc(38.22) 0;
+    p{
+      line-height: rem-calc(34);
+      font-size: rem-calc(25.36);
+      color: rgba(106,106,106,0.6);
+    }
+    .Size{
+      width: rem-calc(696);
+      display: inline-table;
+      li{
+        width: rem-calc(102);
+        height: rem-calc(70.66);
+        font-size: rem-calc(25.36);
+        line-height: rem-calc(70.66);
+        text-align: center;
+        float: left;
+        border: rem-calc(1) solid rgba(151,151,151,0.5);
+        color: #6A6A6A;
+        border-radius: rem-calc(5);
+        margin-right: rem-calc(10);
+        margin-top: rem-calc(10);
+        &.active{
+          color: #fff;
+          background: #000;
+        }
+      }
+    }
+  }
+  .InfoEnter{
+    .items{
+      width: 100%;
+      display: inline-table;
+      padding: rem-calc(9.96) 0;
+      label{
+        width: rem-calc(160);
+        height: rem-calc(65.22);
+        line-height: rem-calc(65.22);
+        float: left;
+        color: rgba(106,106,106,0.6);
+        font-size: rem-calc(32);
+      }
+      input{
+        width: rem-calc(446);
+        height: rem-calc(65.22);
+        line-height: rem-calc(65.22);
+        border: rem-calc(1) solid rgba(151,151,151,0.5);
+        border-radius: rem-calc(10);
+        text-align: center;
+        float: right;
+        font-size: rem-calc(32);
+        &#code{
+          width: rem-calc(275.36);
+          margin-right: rem-calc(10.86);
+        }
+      }
+      .getCodeBtn{
+        width: rem-calc(156);
+        // margin: rem-calc(8.61) 0;
+        // height: rem-calc(48);
+        // line-height: rem-calc(48);
+        // border-radius: rem-calc(48);
+        height: rem-calc(65.22);
+        line-height: rem-calc(65.22);
+        border-radius: rem-calc(65.22);
+        background: #000;
+        text-align: center;
+        font-size: rem-calc(16.3);
+        color: #fff;
+        float: right;
+      }
+    }
+  }
+  .warning{
+    padding: rem-calc(30) 0;
+    line-height: rem-calc(40);
+    color: #6A6A6A;
+    font-size: rem-calc(16.3);
+  }
+  .exemption{
+    width: rem-calc(686);
+    display: inline-table;
+    .exemption-left{
+      width: rem-calc(40);
+      float: left;
+      i{
+        display: none;
+        font-size: rem-calc(32);
+        &.icon-BAI-danxuankuang{
+          display: inline-block;
+        }
+      }
+    }
+    .exemption-right{
+      float: right;
+      width: rem-calc(626);
+      font-size: rem-calc(24);
+      color: rgba(106,106,106,0.6);
+      span{
+        text-decoration:underline;
+      }
+    }
+  }
+  .Infobtn{
+    // position: fixed;
+    // bottom: 0px;
+    // width: 100vw;
+    height: rem-calc(170);
+    background: #fff;
+    z-index: 10;
+    .btn{
+      width: rem-calc(686);
+      height: rem-calc(122);
+      line-height: rem-calc(122);
+      border-radius: rem-calc(122);
+      margin: 0 auto;
+      text-align: center;
+      font-size: rem-calc(30);
+      color: #fff;
+      background: #000;
+    }
+  }
+}
