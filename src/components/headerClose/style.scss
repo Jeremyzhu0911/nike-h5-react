@@ -1,0 +1,22 @@
+@charset 'utf-8';
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 750px;
+$Response:true;
+$styleColor: #da363c;
+
+@import "mobile-mixin";
+
+.headerClose {
+  height: rem-calc(120);
+  line-height: rem-calc(120);
+  padding: 0 rem-calc(32);
+  .store-name{
+    font-size: rem-calc(36);
+    font-weight: bold;
+    span{
+      float: right;
+      font-weight: normal;
+      font-size: rem-calc(28);
+    }
+  }
+}

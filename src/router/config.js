@@ -1,10 +1,8 @@
-import Off from '../pages/Off';
-import Undefined from '../pages/Undefined';
 import ErrorPage from '../pages/ErrorPage';
 import Map from "../pages/Map";
 
 import AmbassadorContent from  '../pages/ambassador';
-import AmbassadorDetails from  '../pages/ambassador/details';
+import AmbassadorDetails from '../pages/ambassador/details';
 import AmbassadorForm from "../pages/ambassador/appointment";
 import AmbassadorSuccess from "../pages/ambassador/success";
 import AppointmentIndex from  "../pages/appointment";
@@ -20,7 +18,7 @@ import ActivitiesDetails from "../pages/activities/details";
 import CommodityIndex from "../pages/commodity";
 import CommodityList from "../pages/commodity/list";
 import CommodityDetails from "../pages/commodity/details";
-import CommodityAppointment from "../pages/commodity/appointment/appointment";
+import CommodityAppointment from "../pages/commodity/appointment";
 import Fashion from "../pages/commodity/fashion/fashion";
 
 import Limit from "../pages/limit";
@@ -34,45 +32,33 @@ import HistoricalRecord from  '../pages/historical';
 const routes = [
     {
         path: '/Off',
-        component: Off,
-        meta: {
-            title: ''
-        }
+        component: ErrorPage,
+        title: 'Nike'  //您访问的活动已下线   参数activities   ambassador   limit
     },
     {
         path: '/404',
-        component: Undefined,
-        meta: {
-            title: '页面不存在'
-        }
+        component: ErrorPage,
+        title: '页面不存在'  //404     参数404
     },
     {
         path: '/500',
         component: ErrorPage,
-        meta: {
-            title: 'Nike'
-        }
+        title: 'Nike'   //500    参数500
     },
     {
         path: '/content-ambassador',
         component: AmbassadorContent,
-        meta: {
-            title: '专属顾问'
-        }
+        title: '专属顾问'  // 顾问列表
     },
     {
         path: '/details-ambassador',
         component: AmbassadorDetails,
-        meta: {
-            title: '专属顾问详情'
-        }
+        title: '专属顾问详情'  // 顾问详情
     },
     {
         path: '/appointment',
         component: AmbassadorForm,
-        meta: {
-            title: '预约'
-        }
+        title: '预约'  // 顾问预约
     },
     {
         path: '/success',
@@ -174,16 +160,12 @@ const routes = [
     {
         path: '/commodity/limitappointment',
         component: Limitappointment,
-        meta: {
-            title: '限量发售'
-        }
+        title: '限量发售'  // 表单
     },
     {
         path: '/commodity/limitsuccess',
         component: Limitsuccess,
-        meta: {
-            title: '报名成功'
-        }
+        title: '限量发售'  // 报名成功
     },
     {
         path: '/commodity/detailsLuckydraw',

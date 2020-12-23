@@ -12,7 +12,7 @@ class Index extends Component {
 
     render() {
         return (
-            <div id="RotationBigImg">
+            <div className="RotationBigImg">
                 <div className="carousel">
                     <div className="carousel-box">
                         <div className="carousel-item">

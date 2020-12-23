@@ -7,7 +7,7 @@ class Index extends Component {
         let data = this.props.datas;
         let data2 = this.props.datas2;
         return (
-            <div id="ListBigImgBox">
+            <div className="ListBigImgBox">
                 <div className="content">
                     <div className="title">{data.title}</div>
                     <div className="time">{data.time}</div>

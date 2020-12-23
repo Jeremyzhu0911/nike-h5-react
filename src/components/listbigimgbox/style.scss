@@ -6,7 +6,7 @@ $styleColor: #da363c;
 
 @import "mobile-mixin";
 
-#ListBigImgBox {
+.ListBigImgBox {
   position: relative;
   padding: rem-calc(74.28) rem-calc(32);
   box-shadow: 0 rem-calc(8) rem-calc(40) #9e9e9e;

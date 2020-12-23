@@ -1,0 +1,91 @@
+@charset "utf-8";
+$reset: true; // 是否开启样式重置,默认false
+$rem-base: 750px;
+$Response: true;
+
+@import "mobile-mixin";
+
+.Ambassadorsuccess {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+
+  h3 {
+    padding: 0 rem-calc(32);
+    font-size: rem-calc(38);
+    height: rem-calc(90);
+    line-height: rem-calc(90);
+  }
+
+  .userinfo {
+    padding: rem-calc(48) rem-calc(32);
+    display: inline-table;
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    .userimg {
+      float: left;
+      font-size: 0;
+      overflow: hidden;
+      border-radius: rem-calc(192);
+      box-shadow: 0 1px 5px #000;
+      img {
+        width: rem-calc(192);
+        height: rem-calc(192);
+      }
+    }
+    .username{
+      float: left;
+      margin-left: rem-calc(48);
+      font-size: rem-calc(28);
+      padding-top: rem-calc(56);
+      p{
+        display: inline-table;
+        height: rem-calc(80);
+        line-height: rem-calc(40);
+      }
+    }
+  }
+  .txt{
+    padding: rem-calc(20) rem-calc(32);
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
+    p{
+      &:nth-child(1){
+        color: #bbb;
+      }
+      font-size: rem-calc(28);
+      line-height: rem-calc(50);
+    }
+    span{
+      position: absolute;
+      right: rem-calc(32);
+      top: rem-calc(20);
+      height: rem-calc(100);
+      line-height: rem-calc(100);
+      font-size: rem-calc(48);
+    }
+  }
+  .order {
+    padding-top: rem-calc(100);
+    height: rem-calc(130);
+    background: #fff;
+    z-index: 10;
+
+    .btn,.btn2 {
+      width: rem-calc(686);
+      height: rem-calc(80);
+      line-height: rem-calc(80);
+      border-radius: rem-calc(10);
+      margin: 0 auto;
+      text-align: center;
+      font-size: rem-calc(30);
+      color: #fff;
+      background: #000;
+    }
+    .btn2{
+      margin-top: rem-calc(32);
+      background: #fff;
+      color: #000;
+    }
+  }
+}
