@@ -9,7 +9,9 @@ $styleColor: #da363c;
 .headerClose {
   height: rem-calc(120);
   line-height: rem-calc(120);
-  padding: 0 rem-calc(32);
+  padding: 0 rem-calc(48);
+  width: rem-calc(654);
+  margin: 0 auto;
   .store-name{
     font-size: rem-calc(36);
     font-weight: bold;

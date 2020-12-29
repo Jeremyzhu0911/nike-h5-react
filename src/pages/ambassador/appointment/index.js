@@ -62,6 +62,7 @@ class Index extends Component{
                         </li>
                     </ul>
                 </div>
+
                 <div className={'addInfo'}>
                     <h4>填写个人信息</h4>
                     <ul>

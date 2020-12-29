@@ -20,7 +20,7 @@ $Response:true;
     }
 
     .content {
-        width: rem-calc(686);
+        width: rem-calc(654);
         margin: 0 auto;
 
         h4 {
@@ -60,28 +60,28 @@ $Response:true;
     }
 
     .img_list {
-        width: rem-calc(686);
+        width: rem-calc(654);
         margin: 0 auto;
         overflow: hidden;
         padding-bottom: rem-calc(60);
 
         ul {
-            width: rem-calc(730);
-            height: rem-calc(464);
+            width: rem-calc(669);
+            height: rem-calc(446);
             overflow: hidden;
 
             li {
                 float: left;
                 font-size: 0;
-                width: rem-calc(222);
+                width: rem-calc(208);
                 border-radius: rem-calc(15);
                 overflow: hidden;
-                margin-right: rem-calc(10);
-                margin-top: rem-calc(10);
+                margin-right: rem-calc(15);
+                margin-top: rem-calc(15);
 
                 img {
-                    width: rem-calc(222);
-                    height: rem-calc(222);
+                    width: rem-calc(208);
+                    height: rem-calc(208);
                 }
             }
         }
@@ -102,7 +102,7 @@ $Response:true;
         z-index: 10;
 
         .btn {
-            width: rem-calc(686);
+            width: rem-calc(654);
             height: rem-calc(122);
             line-height: rem-calc(122);
             border-radius: rem-calc(122);

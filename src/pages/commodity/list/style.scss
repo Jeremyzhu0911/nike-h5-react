@@ -10,16 +10,8 @@ $Response:true;
     min-height: 100vh;
     overflow: hidden;
     padding-bottom: rem-calc(100);
-    header{
-        padding: rem-calc(20) rem-calc(10);
-        font-size: rem-calc(24);
-        i{
-            float: right;
-            margin: 0 rem-calc(30);
-        }
-    }
     .resultHeader{
-        padding: rem-calc(40) rem-calc(32);
+        padding: rem-calc(40) rem-calc(48);
         h2{
             display: inline-table;
             font-size: rem-calc(30);
@@ -32,10 +24,11 @@ $Response:true;
         }
         .btn_search{
             float: right;
-            font-size: rem-calc(25);
+            font-size: rem-calc(28);
             border: 1px solid #313131;
             color: #313131;
-            padding: rem-calc(6) rem-calc(15);
+            margin-top: rem-calc(15);
+            padding: rem-calc(8) rem-calc(30);
             border-radius: rem-calc(10);
         }
     }
@@ -69,15 +62,15 @@ $Response:true;
     .overlay{
         position: fixed;
         top: 0;
-        padding: 0 rem-calc(30);
-        width: rem-calc(690);
+        width: 100%;
         height: 100vh;
         z-index: 10;
         background: #fff;
+        display: none;
         h2{
             height: rem-calc(50);
             line-height: rem-calc(50);
-            padding: rem-calc(30) 0;
+            padding: rem-calc(30) rem-calc(48);
             font-size: rem-calc(40);
             font-weight: bold;
             span{
@@ -87,30 +80,36 @@ $Response:true;
             }
         }
         .filterSearch{
-            display: none;
+            text-align: center;
+            //display: none;
             input{
-                width: 100%;
-                height: rem-calc(70);
-                line-height: rem-calc(70);
+                width: rem-calc(654);
+                margin: 0 auto;
+                height: rem-calc(110);
+                line-height: rem-calc(110);
                 font-size: rem-calc(32);
                 border-bottom: 1px solid #a2a2a2;
             }
         }
         .filterItems{
             h3{
-                height: rem-calc(70);
-                line-height: rem-calc(70);
-                font-size: rem-calc(32);
+                font-size: rem-calc(28);
+                color: #afafaf;
+                padding: rem-calc(52) rem-calc(48) 0 rem-calc(48);
             }
             ul{
+                padding-left: rem-calc(48);
                 li{
                     display: inline-table;
-                    padding: 0 rem-calc(15);
-                    height: rem-calc(50);
-                    line-height: rem-calc(50);
+                    padding: 0 rem-calc(25);
+                    height: rem-calc(60);
+                    line-height: rem-calc(60);
                     text-align: center;
-                    font-size: rem-calc(20);
+                    font-size: rem-calc(28);
                     border: 1px solid #a2a2a2;
+                    border-radius: rem-calc(10);
+                    margin-right: rem-calc(20);
+                    margin-top: rem-calc(20);
                 }
             }
         }
@@ -123,6 +122,8 @@ $Response:true;
                 background: #000;
                 color: #fff;
                 font-size: rem-calc(24);
+                width: rem-calc(654);
+                margin: 0 auto;
             }
         }
     }

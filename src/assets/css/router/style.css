@@ -190,10 +190,8 @@ body {
   font-size: 1.42222rem;
 }
 
-.aaa {
-  position: fixed;
-  height: 5.33333rem;
-  bottom: 0;
+.m-top-10 {
+  margin-top: 0.35556rem;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,7 @@ class index extends Component{
         this.bundhankClick = this.bundhankClick.bind(this);
     }
     bundhankClick () {
-        this.props.history.push({ pathname: '/appointment', state: { name: 'sunny' } })
+        this.props.history.push({ pathname: '/appointment', state: { name: '专家预约' } })
     }
     render() {
         return (

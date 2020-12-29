@@ -129,22 +129,23 @@ a {
   text-align: center;
   height: 3.65511rem;
   line-height: 3.65511rem;
-  font-size: 1.0304rem;
+  font-size: 0.99556rem;
   color: #6A6A6A;
   letter-spacing: 0.0384rem;
 }
 .CommodityIndex h1 {
   padding: 0 1.70667rem;
-  height: 5.58649rem;
-  line-height: 5.58649rem;
-  font-size: 1.70667rem;
+  height: 5.33333rem;
+  line-height: 5.33333rem;
+  letter-spacing: 0.0384rem;
+  font-size: 1.49333rem;
   color: #000;
   font-weight: bold;
 }
 .CommodityIndex h1 span {
   float: right;
   font-weight: normal;
-  font-size: 0.77298rem;
+  font-size: 0.99556rem;
   color: #8c8c8c;
   letter-spacing: 0.02347rem;
 }

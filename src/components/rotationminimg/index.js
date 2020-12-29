@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../assets/css/components/rotationminlmg/style.css";
+import "../../assets/css/components/rotationminimg/style.css";
 import img from "../../assets/images/minImg.png";
 
 class Index extends React.Component{

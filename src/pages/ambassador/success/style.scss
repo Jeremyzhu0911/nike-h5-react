@@ -11,14 +11,14 @@ $Response: true;
   padding-bottom: rem-calc(100);
 
   h3 {
-    padding: 0 rem-calc(32);
+    padding: 0 rem-calc(48);
     font-size: rem-calc(38);
     height: rem-calc(90);
     line-height: rem-calc(90);
   }
 
   .userinfo {
-    padding: rem-calc(48) rem-calc(32);
+    padding: rem-calc(48) rem-calc(48);
     display: inline-table;
     border-top: 1px solid #f5f5f5;
     border-bottom: 1px solid #f5f5f5;
@@ -46,7 +46,7 @@ $Response: true;
     }
   }
   .txt{
-    padding: rem-calc(20) rem-calc(32);
+    padding: rem-calc(20) rem-calc(48);
     border-bottom: 1px solid #f5f5f5;
     position: relative;
     p{
@@ -58,7 +58,7 @@ $Response: true;
     }
     span{
       position: absolute;
-      right: rem-calc(32);
+      right: rem-calc(48);
       top: rem-calc(20);
       height: rem-calc(100);
       line-height: rem-calc(100);
@@ -72,7 +72,7 @@ $Response: true;
     z-index: 10;
 
     .btn,.btn2 {
-      width: rem-calc(686);
+      width: rem-calc(654);
       height: rem-calc(80);
       line-height: rem-calc(80);
       border-radius: rem-calc(10);

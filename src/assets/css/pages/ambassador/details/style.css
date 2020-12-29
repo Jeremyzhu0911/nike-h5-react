@@ -135,7 +135,7 @@ a {
   letter-spacing: 0.0384rem;
 }
 .Ambassadordetails .content {
-  width: 24.39111rem;
+  width: 23.25333rem;
   margin: 0 auto;
 }
 .Ambassadordetails .content h4 {
@@ -166,28 +166,28 @@ a {
   text-decoration: underline;
 }
 .Ambassadordetails .img_list {
-  width: 24.39111rem;
+  width: 23.25333rem;
   margin: 0 auto;
   overflow: hidden;
   padding-bottom: 2.13333rem;
 }
 .Ambassadordetails .img_list ul {
-  width: 25.95556rem;
-  height: 16.49778rem;
+  width: 23.78667rem;
+  height: 15.85778rem;
   overflow: hidden;
 }
 .Ambassadordetails .img_list ul li {
   float: left;
   font-size: 0;
-  width: 7.89333rem;
+  width: 7.39556rem;
   border-radius: 0.53333rem;
   overflow: hidden;
-  margin-right: 0.35556rem;
-  margin-top: 0.35556rem;
+  margin-right: 0.53333rem;
+  margin-top: 0.53333rem;
 }
 .Ambassadordetails .img_list ul li img {
-  width: 7.89333rem;
-  height: 7.89333rem;
+  width: 7.39556rem;
+  height: 7.39556rem;
 }
 .Ambassadordetails .img_list span {
   font-size: 0.99556rem;
@@ -200,7 +200,7 @@ a {
   z-index: 10;
 }
 .Ambassadordetails .order .btn {
-  width: 24.39111rem;
+  width: 23.25333rem;
   height: 4.33778rem;
   line-height: 4.33778rem;
   border-radius: 4.33778rem;

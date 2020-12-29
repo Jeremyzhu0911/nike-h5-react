@@ -11,21 +11,23 @@ $Response:true;
     paddin-bottom: rem-calc(100);
     margin: 0 auto;
     .appointment_time{
+        width: rem-calc(750);
+        margin: 0 auto;
         h4{
             font-size: rem-calc(28);
             color: #8b8b8b;
-            padding: 0 rem-calc(32);
+            padding: 0 rem-calc(48);
         }
         ul{
             display: inline-table;
-            padding: rem-calc(20) rem-calc(32);
+            padding: rem-calc(20) rem-calc(48);
             li{
-                width: rem-calc(228.66);
+                width: rem-calc(208);
                 float: left;
                 font-size: rem-calc(28);
             }
             &.hr{
-                padding: 0 rem-calc(32);
+                padding: 0 rem-calc(48);
                 height: 1px;
                 background: #f5f5f5;
                 width: 100%;
@@ -41,8 +43,10 @@ $Response:true;
         }
     }
     .time_list{
+        width: rem-calc(750);
+        margin: 0 auto;
         h4{
-            padding: 0 rem-calc(32);
+            padding: 0 rem-calc(48);
             font-size: rem-calc(28);
             height: rem-calc(80);
             line-height: rem-calc(80);
@@ -53,12 +57,12 @@ $Response:true;
             }
         }
         ul{
-            width: rem-calc(718);
+            width: rem-calc(702);
             display: inline-table;
-            padding-left: rem-calc(32);
+            padding-left: rem-calc(48);
             li{
-                margin-right: rem-calc(32);
-                width: rem-calc(325);
+                margin-right: rem-calc(48);
+                width: rem-calc(303);
                 display: inline-table;
                 float: left;
                 p{
@@ -77,7 +81,9 @@ $Response:true;
         }
     }
     .addInfo{
-        padding: 0 rem-calc(32);
+        width: rem-calc(654);
+        margin: 0 auto;
+        padding: 0 rem-calc(48);
         h4{
             font-size: rem-calc(36);
             font-weight: bold;
@@ -110,19 +116,21 @@ $Response:true;
         }
     }
     .gender{
+        width: rem-calc(750);
+        margin: 0 auto;
         h4{
             height: rem-calc(120);
             line-height: rem-calc(120);
             font-size: rem-calc(28);
-            padding: 0 rem-calc(32);
+            padding: 0 rem-calc(48);
         }
         ul{
-            width: rem-calc(718);
+            width: rem-calc(702);
             display: inline-table;
-            padding-left: rem-calc(32);
+            padding-left: rem-calc(48);
             li{
-                margin-right: rem-calc(32);
-                width: rem-calc(325);
+                margin-right: rem-calc(48);
+                width: rem-calc(303);
                 display: inline-table;
                 float: left;
                 p{
@@ -147,7 +155,7 @@ $Response:true;
     .tips{
         height: rem-calc(80);
         line-height: rem-calc(80);
-        width: rem-calc(686);
+        width: rem-calc(654);
         margin: 0 auto;
         font-size: rem-calc(28);
         p{
@@ -159,7 +167,7 @@ $Response:true;
         }
     }
     .texts{
-        width: rem-calc(686);
+        width: rem-calc(654);
         margin: 0 auto;
         font-size: rem-calc(28);
         color: #949494;
@@ -174,7 +182,7 @@ $Response:true;
         z-index: 10;
 
         .btn {
-            width: rem-calc(686);
+            width: rem-calc(654);
             height: rem-calc(80);
             line-height: rem-calc(80);
             border-radius: rem-calc(10);

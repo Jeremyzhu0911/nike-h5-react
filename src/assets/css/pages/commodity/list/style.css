@@ -127,16 +127,8 @@ a {
   overflow: hidden;
   padding-bottom: 3.55556rem;
 }
-.CommodityList header {
-  padding: 0.71111rem 0.35556rem;
-  font-size: 0.85333rem;
-}
-.CommodityList header i {
-  float: right;
-  margin: 0 1.06667rem;
-}
 .CommodityList .resultHeader {
-  padding: 1.42222rem 1.13778rem;
+  padding: 1.42222rem 1.70667rem;
 }
 .CommodityList .resultHeader h2 {
   display: inline-table;
@@ -150,10 +142,11 @@ a {
 }
 .CommodityList .resultHeader .btn_search {
   float: right;
-  font-size: 0.88889rem;
+  font-size: 0.99556rem;
   border: 1px solid #313131;
   color: #313131;
-  padding: 0.21333rem 0.53333rem;
+  margin-top: 0.53333rem;
+  padding: 0.28444rem 1.06667rem;
   border-radius: 0.35556rem;
 }
 .CommodityList .list {
@@ -184,16 +177,16 @@ a {
 .CommodityList .overlay {
   position: fixed;
   top: 0;
-  padding: 0 1.06667rem;
-  width: 24.53333rem;
+  width: 100%;
   height: 100vh;
   z-index: 10;
   background: #fff;
+  display: none;
 }
 .CommodityList .overlay h2 {
   height: 1.77778rem;
   line-height: 1.77778rem;
-  padding: 1.06667rem 0;
+  padding: 1.06667rem 1.70667rem;
   font-size: 1.42222rem;
   font-weight: bold;
 }
@@ -203,28 +196,35 @@ a {
   font-size: 0.71111rem;
 }
 .CommodityList .overlay .filterSearch {
-  display: none;
+  text-align: center;
 }
 .CommodityList .overlay .filterSearch input {
-  width: 100%;
-  height: 2.48889rem;
-  line-height: 2.48889rem;
+  width: 23.25333rem;
+  margin: 0 auto;
+  height: 3.91111rem;
+  line-height: 3.91111rem;
   font-size: 1.13778rem;
   border-bottom: 1px solid #a2a2a2;
 }
 .CommodityList .overlay .filterItems h3 {
-  height: 2.48889rem;
-  line-height: 2.48889rem;
-  font-size: 1.13778rem;
+  font-size: 0.99556rem;
+  color: #afafaf;
+  padding: 1.84889rem 1.70667rem 0 1.70667rem;
+}
+.CommodityList .overlay .filterItems ul {
+  padding-left: 1.70667rem;
 }
 .CommodityList .overlay .filterItems ul li {
   display: inline-table;
-  padding: 0 0.53333rem;
-  height: 1.77778rem;
-  line-height: 1.77778rem;
+  padding: 0 0.88889rem;
+  height: 2.13333rem;
+  line-height: 2.13333rem;
   text-align: center;
-  font-size: 0.71111rem;
+  font-size: 0.99556rem;
   border: 1px solid #a2a2a2;
+  border-radius: 0.35556rem;
+  margin-right: 0.71111rem;
+  margin-top: 0.71111rem;
 }
 .CommodityList .overlay .filterBtnWrap {
   padding-top: 1.42222rem;
@@ -236,6 +236,8 @@ a {
   background: #000;
   color: #fff;
   font-size: 0.85333rem;
+  width: 23.25333rem;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */

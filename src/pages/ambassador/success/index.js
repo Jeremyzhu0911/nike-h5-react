@@ -1,6 +1,6 @@
 import React,{Component} from "react";
 
-import HeaderPage from "../../../components/headerPage";
+import Headers from "../../../components/headers";
 
 import "../../../assets/css/pages/ambassador/success/style.css";
 import img from "../../../assets/images/image_160074378798579956.jpeg";
@@ -17,7 +17,7 @@ class Index extends Component{
     render() {
         return (
             <div className="Ambassadorsuccess">
-                <HeaderPage datas={this.state}/>
+                <Headers datas={this.state}/>
                 <h3>预约申请成功</h3>
                 <div className={'userinfo'}>
                     <div className={'userimg'}>

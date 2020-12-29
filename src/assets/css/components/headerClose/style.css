@@ -124,7 +124,9 @@ a {
 .headerClose {
   height: 4.26667rem;
   line-height: 4.26667rem;
-  padding: 0 1.13778rem;
+  padding: 0 1.70667rem;
+  width: 23.25333rem;
+  margin: 0 auto;
 }
 .headerClose .store-name {
   font-size: 1.28rem;

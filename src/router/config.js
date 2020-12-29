@@ -5,10 +5,10 @@ import AmbassadorContent from  '../pages/ambassador';
 import AmbassadorDetails from '../pages/ambassador/details';
 import AmbassadorForm from "../pages/ambassador/appointment";
 import AmbassadorSuccess from "../pages/ambassador/success";
-import AppointmentIndex from  "../pages/appointment";
 
-import AppointmentActivities from  "../pages/appointment/Activities";
-import AppointmentDetails from  "../pages/appointment/details";
+import AppointmentIndex from  "../pages/appointment";
+import AppointmentActivities from "../pages/appointment/activities";
+import AppointmentDetails from "../pages/appointment/details";
 import Luckydraw from "../pages/appointment/luckydraw";
 import Adviser from "../pages/appointment/adviser";
 
@@ -58,28 +58,23 @@ const routes = [
     {
         path: '/appointment',
         component: AmbassadorForm,
-        title: '预约'  // 顾问预约
+        exact: true,
+        title: '预约'  // 顾问预约 and 活动预约
     },
     {
         path: '/success',
         component: AmbassadorSuccess,
-        meta: {
-            title: 'Nike'
-        }
+        title: 'Nike'  // 顾问预约 成功
     },
     {
         path: '/content-activities',
         component: ActivitiesContent,
-        meta: {
-            title: '活动'
-        }
+        title: '活动'  // 品牌活动：未知
     },
     {
         path: '/details-activities',
         component: ActivitiesDetails,
-        meta: {
-            title: '活动详情'
-        }
+        title: '活动详情'  // or 我的活动的详情
     },
     {
         path: '/map',
@@ -91,23 +86,17 @@ const routes = [
     {
         path: '/appointment/index',
         component: AppointmentIndex,
-        meta: {
-            title: '我的预约'
-        }
+        title: '我的预约'  //我的预约列表
     },
     {
         path: '/appointment/details',
         component: AppointmentDetails,
-        meta: {
-            title: '我的预约详情'
-        }
+        title: '预约详情'   //我的预约详情
     },
     {
         path: '/appointment/activities',
         component: AppointmentActivities,
-        meta: {
-            title: '我的活动'
-        }
+        title: '我的活动'   // 我的活动  ## 内页默认跳转活动详情
     },
     {
         path: '/commodity/index',
@@ -117,23 +106,17 @@ const routes = [
     {
         path: '/commodity/list',
         component: CommodityList,
-        meta: {
-            title: '最新上市'
-        }
+        title: '最新上市'  // 最新上市列表
     },
     {
         path: '/commodity/details',
         component: CommodityDetails,
-        meta: {
-            title: '商品详情'
-        }
+        title: '商品详情'  // 最新上市 商品详情
     },
     {
         path: '/commodity/appointment',
         component: CommodityAppointment,
-        meta: {
-            title: '最新上市' //商品预约
-        }
+        title: '最新上市' // 最新上市 预留产品 预约试穿 切换状态上一步
     },
     {
         path: '/commodity/limit',
@@ -171,7 +154,7 @@ const routes = [
         path: '/commodity/detailsLuckydraw',
         component: Luckydraw,
         meta: {
-            title: '活动详情'
+            title: '活动详情'   //我的预约列表页跳转的活动详情
         }
     },
     {
