@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 
-import HeaderClose from "../../../components/headerClose";
+import Headers from "../../../components/headers";
 
 import "../../../assets/css/pages/ambassador/appointment/style.css";
 
@@ -9,6 +9,7 @@ class Index extends Component{
         super(props);
         this.state = {
             storeName: '填写预约信息',
+            header_type: 'close',
             jordan:1
         }
         this.bundhankClick = this.bundhankClick.bind(this);
@@ -19,7 +20,7 @@ class Index extends Component{
     render() {
         return (
             <div className="appointment">
-                <HeaderClose datas={this.state}/>
+                <Headers datas={this.state}/>
                 <div className={'appointment_time'}>
                     <h4>选择预约时间</h4>
                     <ul>

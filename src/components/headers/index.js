@@ -18,7 +18,8 @@ class Index extends Component {
                     {
                         header_type === "home" ? <div className={'nav'}><i className={'iconfont icon-sousuo'}/><i className={'iconfont icon-home'}/></div> :
                             header_type === "details" ? <div className={'nav'}><i className={'iconfont icon-home'}/></div> :
-                            header_type === "content" ? <span>返回</span> : null
+                            header_type === "content" ? <span>返回</span> :
+                                header_type === "close" ? <span>关闭</span> : null
                     }
                 </div>
             </div>

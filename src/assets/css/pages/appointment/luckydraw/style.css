@@ -121,91 +121,80 @@ a {
     font-size: 27px;
   }
 }
-.appointment_details {
+.appointment_luckydraw {
   width: 26.66667rem;
   margin: 0 auto;
   overflow: hidden;
+  padding-top: 0.85333rem;
 }
-.appointment_details h3 {
-  padding: 0 1.70667rem;
-  font-size: 1.35111rem;
-  height: 3.2rem;
-  line-height: 3.2rem;
-}
-.appointment_details h3 span {
-  float: right;
-  font-size: 0.99556rem;
-  color: #3E3D3D;
-  font-weight: normal;
-}
-.appointment_details .appointment_content {
-  padding: 1.70667rem 1.70667rem;
+.appointment_luckydraw .luckydraw_box {
   width: 23.25333rem;
-  display: flex;
-  border-top: 1px solid #f5f5f5;
-  border-bottom: 1px solid #f5f5f5;
-}
-.appointment_details .appointment_content .appointment_img {
-  display: inline-block;
-  font-size: 0;
-  overflow: hidden;
-  border-radius: 0.71111rem;
-}
-.appointment_details .appointment_content .appointment_img img {
-  width: 6.82667rem;
-  height: 6.82667rem;
-}
-.appointment_details .appointment_content .appointment_info {
+  padding: 0 1.70667rem;
   display: inline-table;
-  margin-left: 1.70667rem;
-  width: 14.72rem;
-  font-size: 0;
 }
-.appointment_details .appointment_content .appointment_info p {
-  display: inline-table;
-  line-height: 1.42222rem;
+.appointment_luckydraw .luckydraw_box h4 {
+  height: 2.13333rem;
+  line-height: 2.13333rem;
+  font-size: 0.99556rem;
+  color: #9e9e9e;
+}
+.appointment_luckydraw .luckydraw_box .luckydraw_img {
+  font-size: 0;
+  height: 8.88889rem;
+}
+.appointment_luckydraw .luckydraw_box .luckydraw_img img {
+  width: 10.66667rem;
+  height: 8.88889rem;
+}
+.appointment_luckydraw .luckydraw_box .luckydraw_img .luckydraw_txt {
+  width: 11.52rem;
+  height: 8.88889rem;
+  float: right;
+}
+.appointment_luckydraw .luckydraw_box .luckydraw_img .luckydraw_txt h3 {
+  font-size: 1.35111rem;
+  height: 6.4rem;
+  line-height: 6.4rem;
+}
+.appointment_luckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p {
+  height: 2.48889rem;
+  line-height: 2.48889rem;
   font-size: 1.13778rem;
 }
-.appointment_details .appointment_content .appointment_info p.appointment_spit {
-  padding-top: 0.35556rem;
-  line-height: 1.77778rem;
+.appointment_luckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p span {
+  font-size: 0.85333rem;
+  float: right;
+  color: #9e9e9e;
 }
-.appointment_details .appointment_content .appointment_info p.appointment_spit span {
+.appointment_luckydraw .info-ul {
+  padding: 0.85333rem 1.70667rem;
   font-size: 0.99556rem;
-  color: #3E3D3D;
 }
-.appointment_details .appointment_content .appointment_info p.appointment_spit span.ccc {
-  color: #ccc;
+.appointment_luckydraw .info-ul li {
+  display: flex;
+  padding: 0.42667rem 0;
 }
-.appointment_details .txt {
-  padding: 0.71111rem 1.70667rem;
-  border-bottom: 1px solid #f5f5f5;
-  position: relative;
+.appointment_luckydraw .info-ul li label {
+  color: #9e9e9e;
+  width: 9.03111rem;
 }
-.appointment_details .txt p {
-  font-size: 0.99556rem;
-  line-height: 1.77778rem;
+.appointment_luckydraw .info-ul li span {
+  width: 14.22222rem;
+  text-align: right;
 }
-.appointment_details .txt p:nth-child(1) {
-  color: #bbb;
+.appointment_luckydraw .end_show {
+  height: 7.11111rem;
+  line-height: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  color: #ff9e00;
 }
-.appointment_details .txt span {
-  position: absolute;
-  right: 1.70667rem;
-  top: 0.71111rem;
-  height: 3.55556rem;
-  line-height: 3.55556rem;
-  font-size: 1.70667rem;
-}
-.appointment_details .order {
-  display: inline-table;
-  width: 100%;
-  padding-top: 3.55556rem;
-  height: 4.62222rem;
+.appointment_luckydraw .order {
+  padding: 1.70667rem 0 0.53333rem 0;
   background: #fff;
   z-index: 10;
 }
-.appointment_details .order .btn, .appointment_details .order .btn2 {
+.appointment_luckydraw .order .btn {
   width: 23.25333rem;
   height: 2.84444rem;
   line-height: 2.84444rem;
@@ -215,12 +204,27 @@ a {
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
-  border: 1px solid #000;
 }
-.appointment_details .order .btn2 {
-  margin-top: 1.13778rem;
-  background: #fff;
-  color: #000;
+.appointment_luckydraw .confirm_again {
+  position: fixed;
+  bottom: 0;
+  padding: 1.70667rem;
+  font-size: 1.35111rem;
+  border-top: 1px solid #dedede;
+}
+.appointment_luckydraw .confirm_again p {
+  font-size: 0.99556rem;
+  padding: 0.85333rem 0;
+}
+.appointment_luckydraw .confirm_again .btn_box {
+  text-align: center;
+}
+.appointment_luckydraw .confirm_again .btn_box span {
+  display: inline-block;
+  width: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  margin: 0 2.25778rem;
 }
 
 /*# sourceMappingURL=style.css.map */

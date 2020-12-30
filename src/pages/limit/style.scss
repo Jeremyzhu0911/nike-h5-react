@@ -1,0 +1,26 @@
+@charset "utf-8";
+$reset:true; // 是否开启样式重置,默认false
+$rem-base: 750px;
+$Response:true;
+$styleColor: #da363c;
+
+@import "mobile-mixin";
+
+.Limit_index{
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: rem-calc(100);
+    h2{
+        text-align: center;
+        height: rem-calc(102.8);
+        line-height: rem-calc(102.8);
+        font-size: rem-calc(28.98);
+        color: #6A6A6A;
+        letter-spacing: rem-calc(1.08);
+    }
+    .down-icon{
+        text-align: center;
+        padding-top: rem-calc(48.28);
+        font-size: rem-calc(40);
+    }
+}

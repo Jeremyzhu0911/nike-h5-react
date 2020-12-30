@@ -6,7 +6,7 @@ $styleColor: #da363c;
 
 @import "mobile-mixin";
 
-.appointment_details{
+.appointment_adviser{
     width: rem-calc(750);
     margin: 0 auto;
     overflow: hidden;
@@ -32,7 +32,7 @@ $styleColor: #da363c;
             display: inline-block;
             font-size: 0;
             overflow: hidden;
-            border-radius: rem-calc(20);
+            border-radius: rem-calc(192);
             img {
                 width: rem-calc(192);
                 height: rem-calc(192);
@@ -40,23 +40,16 @@ $styleColor: #da363c;
         }
         .appointment_info{
             display: inline-table;
-            margin-left: rem-calc(48);
             width: rem-calc(414);
+            margin-left: rem-calc(48);
             font-size: 0;
+            line-height: rem-calc(192);
             p{
                 display: inline-table;
-                line-height: rem-calc(40);
                 font-size: rem-calc(32);
-                &.appointment_spit{
-                    padding-top: rem-calc(10);
-                    line-height: rem-calc(50);
-                    span{
-                        font-size: rem-calc(28);
-                        color: #3E3D3D;
-                        &.ccc{
-                            color: #ccc;
-                        }
-                    }
+                line-height: rem-calc(50);
+                span{
+                    color: #9e9e9e;
                 }
             }
         }
@@ -82,14 +75,14 @@ $styleColor: #da363c;
         }
     }
     .order {
-        display: inline-table;
-        width: 100%;
-        padding-top: rem-calc(100);
-        height: rem-calc(130);
+        padding: rem-calc(48) 0;
         background: #fff;
         z-index: 10;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
 
-        .btn,.btn2 {
+        .btn {
             width: rem-calc(654);
             height: rem-calc(80);
             line-height: rem-calc(80);
@@ -99,12 +92,6 @@ $styleColor: #da363c;
             font-size: rem-calc(30);
             color: #fff;
             background: #000;
-            border: 1px solid #000;
-        }
-        .btn2{
-            margin-top: rem-calc(32);
-            background: #fff;
-            color: #000;
         }
     }
 }

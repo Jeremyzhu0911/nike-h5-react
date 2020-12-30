@@ -9,8 +9,8 @@ import AmbassadorSuccess from "../pages/ambassador/success";
 import AppointmentIndex from  "../pages/appointment";
 import AppointmentActivities from "../pages/appointment/activities";
 import AppointmentDetails from "../pages/appointment/details";
-import Luckydraw from "../pages/appointment/luckydraw";
-import Adviser from "../pages/appointment/adviser";
+import AppointmentLuckydraw from "../pages/appointment/luckydraw";
+import AppointmentAdviser from "../pages/appointment/adviser";
 
 import ActivitiesContent from  "../pages/activities";
 import ActivitiesDetails from "../pages/activities/details";
@@ -94,6 +94,11 @@ const routes = [
         title: '预约详情'   //我的预约详情
     },
     {
+        path: '/adviser',   //参数 store_id  booking_id
+        component: AppointmentAdviser,
+        title: '我的预约'  // 我的预约-预约专家已结束后点击跳转的评价
+    },
+    {
         path: '/appointment/activities',
         component: AppointmentActivities,
         title: '我的活动'   // 我的活动  ## 内页默认跳转活动详情
@@ -119,11 +124,9 @@ const routes = [
         title: '最新上市' // 最新上市 预留产品 预约试穿 切换状态上一步
     },
     {
-        path: '/commodity/limit',
+        path: '/commodity/limit',  // 参数 store_id
         component: Limit,
-        meta: {
-            title: '限量发售'
-        }
+        title: '限量发售'  // 和limitlist一样  测试用
     },
     {
         path: '/commodity/limitlist',
@@ -152,22 +155,13 @@ const routes = [
     },
     {
         path: '/commodity/detailsLuckydraw',
-        component: Luckydraw,
-        meta: {
-            title: '活动详情'   //我的预约列表页跳转的活动详情
-        }
+        component: AppointmentLuckydraw,
+        title: '活动详情'   // 我的预约列表页-抽鞋抽号详情，取消/成功
     },
     {
         path: '/commodity/fashion',
         component: Fashion,
         title: '潮流新品'
-    },
-    {
-        path: '/adviser',
-        component: Adviser,
-        meta: {
-            title: '我的预约'
-        }
     },
     {
         path: '/historical-record',
