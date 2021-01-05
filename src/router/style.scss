@@ -6,6 +6,9 @@ $styleColor: #da363c;
 
 @import "compass/reset","compass/layout","mobile-mixin";
 
+//移动端Web界面滚动性能优化 Passive event listeners touch事件
+* { touch-action: pan-y; }
+
 body{
 	max-width: 750px;
 	width: 100%;

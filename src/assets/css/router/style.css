@@ -177,6 +177,10 @@ a {
     font-size: 27px;
   }
 }
+* {
+  touch-action: pan-y;
+}
+
 body {
   max-width: 750px;
   width: 100%;

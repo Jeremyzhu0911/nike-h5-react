@@ -8,6 +8,7 @@
     "babel-plugin-import": "^1.13.3",
     "bundle-loader": "^0.5.6",
     "es6-promise": "^4.2.8",
+    "history": "^5.0.0",
     "normalize.css": "^8.0.1",
     "open-browser-webpack-plugin": "^0.0.5",
     "react": "^17.0.1",
@@ -44,8 +45,8 @@
     ]
   },
   "devDependencies": {
-    "element-ui": "^2.14.1",
     "fastclick": "^1.0.6",
+    "http-proxy-middleware": "^1.0.6",
     "react-router-dom": "^5.2.0",
     "redux-thunk": "^2.3.0"
   }

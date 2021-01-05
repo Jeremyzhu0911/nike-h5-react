@@ -1,5 +1,13 @@
 import React, {Component} from "react";
 
+// import {getOnFansData} from '../../fetch/onFans';
+import {getUrlData} from "../../server/config";
+
+// import { getHistoricalData } from '../../fetch/historical';
+
+// import instance from "../../server";
+import axios from "axios"
+
 import "../../assets/css/pages/historical/style.css";
 import l from "../../assets/images/record/l.png";
 import l1 from "../../assets/images/record/l (1).png";
@@ -19,6 +27,23 @@ class Historical extends Component {
         this.btnboolean = false;
         this.dataList = {type_name: "aaaa", title: "标题", booking_time: "2002年"};
     }
+
+    // componentDidMount() {
+    //     console.log('111111')
+    //     // console.log(getHistoricalData(getUrlData('store_id', window.location.search)))
+    //     // console.log(getOnFansData(3086));
+    //     // "/fans/fake-login?fans_id=3086"
+    //     instance.post("/fans/delete-history",{store_id:parseInt(getUrlData('store_id', window.location.search))}).then(res => {
+    //         console.log(res)
+    //     })
+    // }
+    async componentDidMount() {
+        let res = await axios.post('https://nspwechat-uat-2.nike.com/fans/delete-history', {store_id: parseInt(getUrlData('store_id', window.location.search))}).then(res => {
+            console.log(res)
+        });
+        console.log(res);
+    }
+
 
     render() {
         return (
@@ -131,7 +156,7 @@ class Historical extends Component {
                         <div className="fixbtn-box">
                             <button className="bttn btn-yes">{this.btnYes}</button>
                             {this.btnboolean ?
-                                <button className="bttn btn-no">{this.btnNo}</button>:null
+                                <button className="bttn btn-no">{this.btnNo}</button> : null
                             }
                         </div> : null
                 }

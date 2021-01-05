@@ -1,18 +1,25 @@
 import React from 'react';
 import {render} from 'react-dom';
+import {Provider} from 'react-redux'
 import {HashRouter} from 'react-router-dom';
+
+import configUseStore from './store/configUseStore';
+
 import App from './router/index';
 import reportWebVitals from './reportWebVitals';
+
+const store = configUseStore();
 
 //解决移动端300毫秒延迟
 const FastClick = require('fastclick');
 FastClick.attach(document.body);
 
-
 render(
-        <HashRouter basename="/historical-record">
+    <Provider store={store}>
+        <HashRouter>
             <App/>
-        </HashRouter>,
+        </HashRouter>
+    </Provider>,
     document.getElementById('root')
 );
 
