@@ -1,8 +1,11 @@
-import {createProxyMiddleware} from  'http-proxy-middleware';
+const {createProxyMiddleware} = require('http-proxy-middleware');
 
-// import {BASE_URL} from "src/server/config";
+const devBaseURl = "https://nspwechat-uat-2.nike.com";
+const proBaseURL = "http://localhost:80";
 
-const apiDimain = "https://nspwechat-uat-2.nike.com";
+const BASE_URL = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseURL;
+
+const apiDimain = BASE_URL;
 
 module.exports = function(app) {
     // app.use(createProxyMiddleware('/api',
@@ -77,15 +80,15 @@ module.exports = function(app) {
     //     }
     // ));
 
-    app.use(createProxyMiddleware('/fans',
+    app.use('/fans',createProxyMiddleware(
         {
             target: apiDimain,
-            pathRewrite: {
-                '/fans': '/fans/',
-            },
+            // pathRewrite: {
+            //     '^/fans': '/fans/',
+            // },
             changeOrigin: true,
             // secure: false, // 是否验证证书
-            // ws: true, // 启用websocket
+            ws: true, // 启用websocket
         }
     ));
 
@@ -113,5 +116,5 @@ module.exports = function(app) {
     //     }
     // ));
 
-    app.listen(3000);
+    // app.listen(3000);
 }

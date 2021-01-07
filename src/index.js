@@ -2,11 +2,16 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux'
 import {HashRouter} from 'react-router-dom';
+import "./setupProxy";// 代理
 
-import configUseStore from './store/configUseStore';
+import configUseStore from './store';
 
 import App from './router/index';
+
 import reportWebVitals from './reportWebVitals';
+
+import "./assets/css/router/style.css";
+import "./assets/fonts/iconfont.css";
 
 const store = configUseStore();
 

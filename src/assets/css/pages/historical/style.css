@@ -285,29 +285,29 @@ a {
   color: #fff;
   background: #333;
 }
-.Historical .jordan h1 {
+.Historical.jordan h1 {
   color: #fff;
 }
-.Historical .jordan .histirucal-state0 {
+.Historical.jordan .histirucal-state0 {
   color: #ccc;
 }
-.Historical .jordan .histirucal-box h2 {
+.Historical.jordan .histirucal-box h2 {
   color: #fff;
 }
-.Historical .jordan .fixbtn-box {
+.Historical.jordan .fixbtn-box {
   background: #000;
 }
-.Historical .jordan .btn-yes {
+.Historical.jordan .btn-yes {
   background: #880d29;
   border: 0.06rem solid #880d29;
 }
-.Historical .jordan .histirucal-box p.state4 {
+.Historical.jordan .histirucal-box p.state4 {
   color: #ccccc3;
 }
-.Historical .jordan .mobile_phone span {
+.Historical.jordan .mobile_phone span {
   color: #eeeeee;
 }
-.Historical .jordan .mobile_phone .testing_ck {
+.Historical.jordan .mobile_phone .testing_ck {
   background: #880d29;
 }
 .Historical .loading {
@@ -317,7 +317,6 @@ a {
   width: 100%;
   height: 100%;
   z-index: 999999;
-  /* background: #fff; */
 }
 .Historical .loading .icon {
   position: absolute;

@@ -1,13 +1,12 @@
-export default {
+const localStore = {
 	getItem:(key)=>{
 		let value
 		try{
 			value = localStorage.getItem(key)
 		}catch(err){
 			console.log(err.message);
-		}finally{
-			return value
 		}
+		return value
 	},
 	setItem:(key,value)=>{
 		try{
@@ -17,3 +16,4 @@ export default {
 		}
 	}
 }
+export default localStore;

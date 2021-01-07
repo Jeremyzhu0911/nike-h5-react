@@ -198,37 +198,32 @@ $styleColor: #da363c;
         background: #333;
     }
 
-    .jordan h1 {
-        color: #fff;
-    }
-
-    .jordan .histirucal-state0 {
-        color: #ccc;
-    }
-
-    .jordan .histirucal-box h2 {
-        color: #fff;
-    }
-
-    .jordan .fixbtn-box {
-        background: #000;
-    }
-
-    .jordan .btn-yes {
-        background: #880d29;
-        border: 0.06rem solid #880d29;
-    }
-
-    .jordan .histirucal-box p.state4 {
-        color: #ccccc3;
-    }
-
-    .jordan .mobile_phone span {
-        color: #eeeeee;
-    }
-
-    .jordan .mobile_phone .testing_ck {
-        background: #880d29;
+    &.jordan{
+        h1 {
+            color: #fff;
+        }
+        .histirucal-state0 {
+            color: #ccc;
+        }
+        .histirucal-box h2 {
+            color: #fff;
+        }
+        .fixbtn-box {
+            background: #000;
+        }
+        .btn-yes {
+            background: #880d29;
+            border: 0.06rem solid #880d29;
+        }
+        .histirucal-box p.state4 {
+            color: #ccccc3;
+        }
+        .mobile_phone span {
+            color: #eeeeee;
+        }
+        .mobile_phone .testing_ck {
+            background: #880d29;
+        }
     }
 
     .loading {
@@ -238,7 +233,6 @@ $styleColor: #da363c;
         width: 100%;
         height: 100%;
         z-index: 999999;
-        /* background: #fff; */
     }
 
     .loading .icon {

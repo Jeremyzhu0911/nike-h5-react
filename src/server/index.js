@@ -1,4 +1,3 @@
-// import React from "react";
 import axios from 'axios';
 // import {BASE_URL, TIME_OUT} from "src/server/config";
 
@@ -44,7 +43,6 @@ instance.interceptors.request.use(res => {
     //     }
     // }
     return Promise.reject(error);
-    ;
 })
 
 //响应拦截器
