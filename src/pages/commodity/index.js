@@ -11,8 +11,6 @@ import "../../assets/css/pages/commodity/style.css";
 
 const CommodityIndex = (props) => {
 
-    console.log(parseInt(getUrlData('store_id', props.location.search)))
-
     const [person,setPerson] = useState({
         title: '最新上市',
         listAll: [],
@@ -35,16 +33,14 @@ const CommodityIndex = (props) => {
         )
     },[person.store_id])
 
-    console.log(person)
-
     const bundhankClick = () => {
         props.history.push({ pathname: '/commodity/list', state: { name: 'sunny' } })
     }
 
     return (
-        <div className="CommodityIndex">
+        <div className={person.isAj ? "CommodityIndex jordan":"CommodityIndex"}>
             <h2>{person.store_name}</h2>
-            <BigImg data={person.listAll}/>
+            <BigImg data={person}/>
             <h1>店铺新品<span onClick={bundhankClick}>全部主推产品</span></h1>
             <MinImg/>
         </div>
