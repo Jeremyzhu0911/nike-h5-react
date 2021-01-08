@@ -68,24 +68,18 @@ module.exports = function(app) {
     //     }
     // ));
     //
-    // app.use(createProxyMiddleware('/product',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/product': `${apiDomain}/product/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
+    app.use('/product',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
 
     app.use('/fans',createProxyMiddleware(
         {
             target: apiDimain,
-            // pathRewrite: {
-            //     '^/fans': '/fans/',
-            // },
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket

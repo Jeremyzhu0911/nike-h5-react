@@ -13,7 +13,7 @@ import loading_gif from "../../assets/images/circle-transparent.gif";
 const Historical = (props) => {
     const [data, setData] = useState(
         {
-            isAj: false,
+            isAj: !!getUrlData('jordan', props.location.search),
             state: 6,
             btnYes: "返回",
             btnNo: "取消",
@@ -33,8 +33,7 @@ const Historical = (props) => {
         count: 61
     })
 
-    if(getUrlData('jordan', props.location.search)){
-        data.isAj = true;
+    if(data.isAj){
         window.document.body.style.backgroundColor = '#000';
     }
 

@@ -15,27 +15,29 @@ $styleColor: #da363c;
         .carousel-box{
             display: inline-table;
             white-space:nowrap;
+            font-size: 0;
             &:nth-child(1){
-                margin-left: rem-calc(46);
+                margin-left: rem-calc(96);
             }
             &:last-child{
-                margin-right: rem-calc(46) !important;
+                margin-right: rem-calc(48) !important;
             }
             .carousel-item {
                 display: inline-block;
-                width: rem-calc(658);
-                padding: 0 rem-calc(11.5); //46 / 4
+                width: rem-calc(558);
                 border-radius: rem-calc(20);
+                overflow: hidden;
+                margin-right: rem-calc(48);
                 font-size: 0;
                 img {
-                    width: rem-calc(658);
+                    width: rem-calc(558);
                     margin: 0;
                 }
             }
-        }  
+        }
     }
     .index-container{
-        margin: 0 rem-calc(46);
+        margin: 0 rem-calc(48);
         padding: rem-calc(49.32) 0;
         position: relative;
         ul{

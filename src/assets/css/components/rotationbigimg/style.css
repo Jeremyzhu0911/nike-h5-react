@@ -132,26 +132,28 @@ a {
 .RotationBigImg .carousel .carousel-box {
   display: inline-table;
   white-space: nowrap;
+  font-size: 0;
 }
 .RotationBigImg .carousel .carousel-box:nth-child(1) {
-  margin-left: 1.63556rem;
+  margin-left: 3.41333rem;
 }
 .RotationBigImg .carousel .carousel-box:last-child {
-  margin-right: 1.63556rem !important;
+  margin-right: 1.70667rem !important;
 }
 .RotationBigImg .carousel .carousel-box .carousel-item {
   display: inline-block;
-  width: 23.39556rem;
-  padding: 0 0.40889rem;
+  width: 19.84rem;
   border-radius: 0.71111rem;
+  overflow: hidden;
+  margin-right: 1.70667rem;
   font-size: 0;
 }
 .RotationBigImg .carousel .carousel-box .carousel-item img {
-  width: 23.39556rem;
+  width: 19.84rem;
   margin: 0;
 }
 .RotationBigImg .index-container {
-  margin: 0 1.63556rem;
+  margin: 0 1.70667rem;
   padding: 1.7536rem 0;
   position: relative;
 }
