@@ -10,9 +10,8 @@ const Index = (props) => {
 
     useEffect(()=>{
         setIndexCount({...indexCount, index:indexCount.index})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[indexCount.index])
-
-    console.log(props)
 
     return (
         <div className={props.data.isAj ? "RotationBigImg jordan":"RotationBigImg"}>

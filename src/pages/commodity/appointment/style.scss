@@ -77,7 +77,11 @@ $styleColor: #da363c;
           border: 1px solid #9e9e9e;
           border-radius: rem-calc(10);
           margin-right: rem-calc(20);
-          margin-bottom: rem-calc(20);;
+          margin-bottom: rem-calc(20);
+          &.on{
+            color: #fff;
+            background: #000;
+          }
         }
       }
     }

@@ -162,7 +162,6 @@ a {
   width: 100%;
 }
 .CommodityList .list li h5 {
-  height: 1.77778rem;
   line-height: 1.77778rem;
   padding: 0 0.71111rem;
   font-size: 0.99556rem;
@@ -181,7 +180,6 @@ a {
   height: 100vh;
   z-index: 10;
   background: #fff;
-  display: none;
 }
 .CommodityList .overlay h2 {
   height: 1.77778rem;
@@ -225,6 +223,10 @@ a {
   border-radius: 0.35556rem;
   margin-right: 0.71111rem;
   margin-top: 0.71111rem;
+}
+.CommodityList .overlay .filterItems ul li.on {
+  background: #000;
+  color: #fff;
 }
 .CommodityList .overlay .filterBtnWrap {
   padding-top: 1.42222rem;

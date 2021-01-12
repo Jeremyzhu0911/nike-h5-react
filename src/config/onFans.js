@@ -1,24 +1,20 @@
-import instance from '../server';
+import axios from 'axios';
 import { getUrlData } from "./common";
+import localStore from "../util/localStore";
 
 const getOnFansData = (storeId) => {
     let url = window.location.href;
     //store_id  门店
-    instance.get('/fans/index?store_id='+storeId).then(
+    axios.get('/fans/index?store_id='+storeId).then(
         (res) =>{
-            let resData = res.data;
-            if (Number(resData.code) !== 200) {
-                console.log(getUrlData('store_id', window.location.search));
+            if (Number(res.data.code) !== 200) {
                 window.location.href = '/auth/oauth/?redirect_uri=' + encodeURIComponent(url) + '&store_id=' + parseInt(getUrlData('store_id', window.location.search));
             }
-            if (Number(resData.code) === 200) {
-                // this.onLoadData();
-                // this.$cookies.set('user_name', resData.data.user_name);
-                // this.$cookies.set('mobile', resData.data.mobile);
-                // this.openId = resData.data.openid;
-                // console.log('user_name', resData.body.user_name)
-                // console.log('user_name', resData.body.mobile)
-                return resData.data;
+            if (Number(res.data.code) === 200) {
+                localStore.setItem('user_name', res.data.data.user_name);
+                localStore.setItem('mobile', res.data.data.mobile);
+                localStore.setItem('openId', res.data.data.openId);
+                return res.data.data;
             }
         },
         (err) => {

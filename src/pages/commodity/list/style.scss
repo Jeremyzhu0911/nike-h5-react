@@ -45,7 +45,6 @@ $Response:true;
                 }
             }
             h5{
-                height: rem-calc(50);
                 line-height: rem-calc(50);
                 padding: 0 rem-calc(20);
                 font-size: rem-calc(28);
@@ -66,7 +65,6 @@ $Response:true;
         height: 100vh;
         z-index: 10;
         background: #fff;
-        display: none;
         h2{
             height: rem-calc(50);
             line-height: rem-calc(50);
@@ -110,6 +108,10 @@ $Response:true;
                     border-radius: rem-calc(10);
                     margin-right: rem-calc(20);
                     margin-top: rem-calc(20);
+                    &.on{
+                        background: #000;
+                        color: #fff;
+                    }
                 }
             }
         }

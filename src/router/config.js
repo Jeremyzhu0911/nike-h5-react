@@ -15,8 +15,8 @@ import AppointmentAdviser from "../pages/appointment/adviser";
 import ActivitiesContent from  "../pages/activities";
 import ActivitiesDetails from "../pages/activities/details";
 
-import CommodityIndex from "../pages/commodity";
-import CommodityList from "../pages/commodity/list";
+import CommodityIndex from "../pages/commodity/CommodityIndex";
+import CommodityList from "../pages/commodity/list/CommodityList";
 import CommodityDetails from "../pages/commodity/details";
 import CommodityAppointment from "../pages/commodity/appointment";
 import Fashion from "../pages/commodity/fashion/fashion";
@@ -33,6 +33,7 @@ const routes = [
     {
         path: '/Off',
         component: ErrorPage,
+        apiData: '',
         title: 'Nike'  //您访问的活动已下线   参数activities   ambassador   limit
     },
     {
@@ -86,6 +87,7 @@ const routes = [
     {
         path: '/appointment/index',
         component: AppointmentIndex,
+        apiData: 'jjggjhgjh',
         title: '我的预约'  //我的预约列表
     },
     {
@@ -106,11 +108,13 @@ const routes = [
     {
         path: '/commodity/index',
         component: CommodityIndex,
+        apiData: '可以数据请求api',
         title: '最新上市'  //首页
     },
     {
         path: '/commodity/list',
         component: CommodityList,
+        apiData: '可以数据请求api',
         title: '最新上市'  // 最新上市列表
     },
     {

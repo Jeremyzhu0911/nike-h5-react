@@ -1,7 +1,5 @@
-import React,{Component} from "react";
-import PureRenderMixin from 'react-addons-pure-render-mixin';
+import React, {useState, useEffect} from "react";
 import {HashRouter as Router, Switch, Route} from "react-router-dom";
-// import {createHashHistory} from 'history';
 
 //redux流
 import {bindActionCreators} from 'redux';
@@ -16,47 +14,44 @@ import {getUrlData} from "../config/common";
 //url配置
 import routes from '../router/config';
 
-class RouteConfigExample extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-        this.state = {
-            initDone: false
-        }
-    }
+import onFans from '../config/onFans';
 
-    componentDidMount() {
-        let jordan = LocalStore.getItem(CITYNAME);
+let isAj = LocalStore.getItem(CITYNAME);
+let store_id = LocalStore.getItem(CITYNAME);
 
-        if (parseInt(getUrlData('jordan', window.location.search))) {
-            jordan = parseInt(getUrlData('jordan', window.location.search))
-        }
+const RouteConfigExample = (props) => {
+    // initData
+    const [state, setState] = useState({
+        isAj: '',
+        store_id:''
+    })
 
-        this.props.userInfoActions.update({
-            jordan: jordan
+    useEffect(() => {
+
+        props.userInfoActions.update({
+            isAj: isAj,
+            store_id:store_id
         })
 
-        this.setState({
-            initDone: true
-        })
-    }
+        setState({
+            ...state,
+            isAj: isAj,
+            store_id:store_id})
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+    console.log(state)
 
-    render() {
+    return (
+        <Router>
+            {/*此处可以增加导航*/}
+            <Switch>
+                {routes.map((route, i) => (
+                    <RouteWithSubRoutes key={i} {...route} />
+                ))}
+            </Switch>
 
-        return (
-            <Router>
-                {/*此处可以增加导航*/}
-                {this.state.initDone ?
-                    <Switch>
-                        {routes.map((route, i) => (
-                            <RouteWithSubRoutes key={i} {...route} />
-                        ))}
-                    </Switch>
-                    : <div>正在加载...</div>
-                }
-            </Router>
-        )
-    }
+        </Router>
+    )
 }
 
 const RouteWithSubRoutes = route => {
@@ -65,7 +60,10 @@ const RouteWithSubRoutes = route => {
             path={route.path}
             render={props => {
                 document.title = route.title || "Nike";
-                return <route.component {...props} routes={route.routes}/>
+                store_id = getUrlData('store_id', props.location.search)
+                isAj = !!parseInt(getUrlData('jordan', window.location.search))
+                onFans(store_id);
+                return <route.component {...props} apiData={route.apiData}/>
             }}
         />
     );

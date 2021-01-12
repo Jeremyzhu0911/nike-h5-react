@@ -187,6 +187,10 @@ a {
   margin-right: 0.71111rem;
   margin-bottom: 0.71111rem;
 }
+.CommodityAppointment .information .footage ul li.on {
+  color: #fff;
+  background: #000;
+}
 .CommodityAppointment .information .choice_time {
   font-size: 0.99556rem;
   padding: 0 1.70667rem 1.70667rem 1.70667rem;

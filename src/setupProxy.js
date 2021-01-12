@@ -8,66 +8,51 @@ const BASE_URL = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseUR
 const apiDimain = BASE_URL;
 
 module.exports = function(app) {
-    // app.use(createProxyMiddleware('/api',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/api': `/api/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
-    //
-    // app.use(createProxyMiddleware('/ambassador',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/ambassador': `${apiDomain}/ambassador/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
-    //
-    // app.use(createProxyMiddleware('/event',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/event': `${apiDomain}/event/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     },
-    // ));
-    //
-    // app.use(createProxyMiddleware('/article',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/article': `${apiDomain}/article/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
-    //
-    // app.use(createProxyMiddleware('/booking',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/booking': `${apiDomain}/booking/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
-    //
+    app.use('/api',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
+
+    app.use('/ambassador',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
+
+    app.use('/event',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        },
+    ));
+
+    app.use('/article',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
+
+    app.use('/booking',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
+
     app.use('/product',createProxyMiddleware(
         {
             target: apiDimain,
@@ -86,29 +71,21 @@ module.exports = function(app) {
         }
     ));
 
-    // app.use(createProxyMiddleware('/auth',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/auth': `${apiDomain}/auth/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
+    app.use('/auth',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
 
-    // app.use(createProxyMiddleware('/luckydraw',
-    //     {
-    //         target: apiDimain,
-    //         pathRewrite: {
-    //             '^/luckydraw': `${apiDomain}/luckydraw/`,
-    //         },
-    //         changeOrigin: true,
-    //         // secure: false, // 是否验证证书
-    //         ws: true, // 启用websocket
-    //     }
-    // ));
-
-    // app.listen(3000);
+    app.use('/luckydraw',createProxyMiddleware(
+        {
+            target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
 }
