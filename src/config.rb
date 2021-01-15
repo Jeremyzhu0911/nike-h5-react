@@ -7,7 +7,7 @@ require 'compass/import-once/activate'
 
 http_path = "/"
 additional_import_paths = ["src/_source/_function"]
-sass_dir = "src"
+sass_dir = "src/_source/sass"
 css_dir = "src/assets/css"
 images_dir = "src/assets/images"
 

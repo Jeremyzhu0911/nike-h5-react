@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-import {getUrlData} from "../config/common";
+import {getUrlData} from "../util/getUrlData";
 
 import logo from "../assets/images/logo/logo.svg";
 

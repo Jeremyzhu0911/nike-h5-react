@@ -1,10 +1,10 @@
 import ErrorPage from '../pages/ErrorPage';
 import Map from "../pages/Map";
 
-import AmbassadorContent from  '../pages/ambassador';
-import AmbassadorDetails from '../pages/ambassador/details';
-import AmbassadorForm from "../pages/ambassador/appointment";
-import AmbassadorSuccess from "../pages/ambassador/success";
+import AmbassadorContent from '../pages/ambassador/AmbassadorContent';
+import AmbassadorDetails from '../pages/ambassador/AmbassadorDetails';
+import AmbassadorForm from "../pages/ambassador/AmbassadorAppointment";
+import AmbassadorSuccess from "../pages/ambassador/AmbassadorSuccess";
 
 import AppointmentIndex from  "../pages/appointment";
 import AppointmentActivities from "../pages/appointment/activities";
@@ -12,12 +12,12 @@ import AppointmentDetails from "../pages/appointment/details";
 import AppointmentLuckydraw from "../pages/appointment/luckydraw";
 import AppointmentAdviser from "../pages/appointment/adviser";
 
-import ActivitiesContent from  "../pages/activities";
+import ActivitiesContent from "../pages/activities/ActivitiesContent";
 import ActivitiesDetails from "../pages/activities/details";
 
 import CommodityIndex from "../pages/commodity/CommodityIndex";
-import CommodityList from "../pages/commodity/list/CommodityList";
-import CommodityDetails from "../pages/commodity/details";
+import CommodityList from "../pages/commodity/CommodityList";
+import CommodityDetails from "../pages/commodity/CommodityDetails";
 import CommodityAppointment from "../pages/commodity/appointment";
 import Fashion from "../pages/commodity/fashion/fashion";
 
@@ -27,7 +27,7 @@ import Limitappointment from "../pages/limit/appointment";
 import Limitsuccess from "../pages/limit/success";
 import Limitlist from "../pages/limit/list";
 
-import HistoricalRecord from  '../pages/historical';
+import HistoricalRecord from '../pages/Historical';
 
 const routes = [
     {
@@ -39,20 +39,21 @@ const routes = [
     {
         path: '/404',
         component: ErrorPage,
-        title: '页面不存在'  //404     参数404
+        title: '页面不存在'  //404
     },
     {
         path: '/500',
         component: ErrorPage,
-        title: 'Nike'   //500    参数500
+        title: 'Nike'   //500
     },
     {
-        path: '/content-ambassador',
+        path: '/content-ambassador',    //store_id
         component: AmbassadorContent,
+        apiData: '',
         title: '专属顾问'  // 顾问列表
     },
     {
-        path: '/details-ambassador',
+        path: '/details-ambassador',    //store_id
         component: AmbassadorDetails,
         title: '专属顾问详情'  // 顾问详情
     },
@@ -87,7 +88,7 @@ const routes = [
     {
         path: '/appointment/index',
         component: AppointmentIndex,
-        apiData: 'jjggjhgjh',
+        apiData: '',
         title: '我的预约'  //我的预约列表
     },
     {
@@ -108,7 +109,7 @@ const routes = [
     {
         path: '/commodity/index',
         component: CommodityIndex,
-        apiData: '可以数据请求api',
+        apiData: '',
         title: '最新上市'  //首页
     },
     {
@@ -120,6 +121,7 @@ const routes = [
     {
         path: '/commodity/details',
         component: CommodityDetails,
+        apiData: '可以数据请求api',
         title: '商品详情'  // 最新上市 商品详情
     },
     {

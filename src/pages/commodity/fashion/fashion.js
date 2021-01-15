@@ -1,7 +1,7 @@
 import React from "react";
 
 import "../../../assets/css/pages/commodity/fashion/style.css";
-import Index from "../../../components/rotationbigimg";
+import Index from "../../../components/Rotationbigimg";
 
 function Fashion() {
     return (

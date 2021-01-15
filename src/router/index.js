@@ -9,22 +9,29 @@ import * as userInfoActionsFromOtherFiles from '../actions/userinfo';
 //本地缓存配置 & 工具类
 import {CITYNAME} from '../config/localStorekey';
 import LocalStore from '../util/localStore';
-import {getUrlData} from "../config/common";
+import {getUrlData} from "../util/getUrlData";
 
 //url配置
 import routes from '../router/config';
 
-import onFans from '../config/onFans';
+import onFans from '../util/onFans';
 
 let isAj = LocalStore.getItem(CITYNAME);
 let store_id = LocalStore.getItem(CITYNAME);
 
 const RouteConfigExample = (props) => {
-    // initData
-    const [state, setState] = useState({
-        isAj: '',
-        store_id:''
-    })
+    const [loading,setLoading] = useState(true)
+
+    store_id = getUrlData('store_id')
+    isAj = !!parseInt(getUrlData('jordan'))
+
+    // // initData
+    // const [userInfo, setUserInfo] = useState({
+    //     isAj: '',
+    //     store_id:'',
+    //     store_name:'',
+    //     open_id:''
+    // })
 
     useEffect(() => {
 
@@ -33,13 +40,15 @@ const RouteConfigExample = (props) => {
             store_id:store_id
         })
 
-        setState({
-            ...state,
-            isAj: isAj,
-            store_id:store_id})
+        setLoading(false)
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[])
-    console.log(state)
+    },[loading])
+
+    if(loading){
+        onFans(store_id);
+        return <div>正在登录</div>
+    }
 
     return (
         <Router>
@@ -60,9 +69,9 @@ const RouteWithSubRoutes = route => {
             path={route.path}
             render={props => {
                 document.title = route.title || "Nike";
-                store_id = getUrlData('store_id', props.location.search)
-                isAj = !!parseInt(getUrlData('jordan', window.location.search))
-                onFans(store_id);
+                if(isAj){
+                    window.document.body.style.backgroundColor = '#000';
+                }
                 return <route.component {...props} apiData={route.apiData}/>
             }}
         />

@@ -1,0 +1,119 @@
+.AmbassadorDetails {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+
+  h2 {
+    text-align: center;
+    height: rem-calc(102.8);
+    line-height: rem-calc(102.8);
+    font-size: rem-calc(28.98);
+    color: #6A6A6A;
+    letter-spacing: rem-calc(1.08);
+  }
+
+  .content {
+    width: rem-calc(654);
+    margin: 0 auto;
+
+    h4 {
+      font-size: rem-calc(48);
+    }
+
+    h5 {
+      font-size: rem-calc(32);
+    }
+
+    .big_img {
+      border-radius: rem-calc(22);
+      overflow: hidden;
+      width: 100%;
+      margin: rem-calc(22) 0;
+      font-size: 0;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .paragraph {
+      p {
+        font-size: rem-calc(28);
+        line-height: rem-calc(48);
+        height: rem-calc(96);
+        overflow: hidden;
+      }
+      &.on{
+        p{
+          height: auto;
+        }
+      }
+
+      span {
+        font-size: rem-calc(28);
+        font-weight: bold;
+        text-decoration: underline
+      }
+    }
+  }
+
+  .img_list {
+    width: rem-calc(654);
+    margin: 0 auto;
+    overflow: hidden;
+    padding-bottom: rem-calc(60);
+
+    ul {
+      width: rem-calc(669);
+      height: rem-calc(446);
+      overflow: hidden;
+
+      li {
+        float: left;
+        font-size: 0;
+        width: rem-calc(208);
+        border-radius: rem-calc(15);
+        overflow: hidden;
+        margin-right: rem-calc(15);
+        margin-top: rem-calc(15);
+
+        img {
+          width: rem-calc(208);
+          height: rem-calc(208);
+        }
+      }
+    }
+    &.on{
+      ul{
+        height: auto;
+      }
+    }
+
+    span {
+      font-size: rem-calc(28);
+      font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+
+  .order {
+    // position: fixed;
+    // bottom: 0px;
+    // width: 100vw;
+    height: rem-calc(170);
+    background: #fff;
+    z-index: 10;
+
+    .btn {
+      width: rem-calc(654);
+      height: rem-calc(122);
+      line-height: rem-calc(122);
+      border-radius: rem-calc(122);
+      margin: 0 auto;
+      text-align: center;
+      font-size: rem-calc(30);
+      color: #fff;
+      background: #000;
+    }
+  }
+}

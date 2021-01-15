@@ -1,0 +1,113 @@
+
+.CommodityDetails {
+  width: rem-calc(750);
+  margin: 0 auto;
+  padding-bottom: rem-calc(100);
+  overflow: hidden;
+
+  .big_title {
+    text-align: right;
+    font-weight: normal;
+    padding: 0 rem-calc(48);
+    font-size: rem-calc(28);
+    line-height: rem-calc(40);
+    padding-top: rem-calc(50);
+    color: #8c8c8c;
+    letter-spacing: rem-calc(0.66);
+
+    span {
+      float: left;
+      width: rem-calc(450);
+      font-size: rem-calc(42);
+      color: #000;
+      font-weight: bold;
+      letter-spacing: rem-calc(1.08);
+      text-align: left;
+    }
+  }
+
+  .big_image {
+    border-top: rem-calc(48) solid transparent;
+    border-bottom: rem-calc(24) solid transparent;
+    font-size: 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    ul {
+      display: inline-table;
+      white-space: nowrap;
+
+      li {
+        width: rem-calc(750);
+        display: inline-block;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .small_image {
+    font-size: 0;
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    ul {
+      display: inline-table;
+      white-space: nowrap;
+
+      li {
+        width: rem-calc(185.5);
+        display: inline-block;
+        border: rem-calc(1) solid #000;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .briefly {
+    padding: rem-calc(48);
+
+    h3 {
+      font-size: rem-calc(38);
+    }
+
+    .briefly_content {
+      padding: rem-calc(32) 0;
+      font-size: rem-calc(32);
+      line-height: rem-calc(60);
+      color: #4f4f4f;
+    }
+  }
+
+  .btn_box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: inline-table;
+    background: #fff;
+    padding: rem-calc(32) 0;
+    border-top: 1px solid #dedede;
+    text-align: center;
+
+    ul {
+      display: inline-table;
+      white-space: nowrap;
+
+      li {
+        display: inline-block;
+        width: rem-calc(330);
+        height: rem-calc(96);
+        line-height: rem-calc(96);
+        font-size: rem-calc(32);
+        color: #fff;
+        background: #000;
+        margin: 0 rem-calc(10);
+      }
+    }
+  }
+}

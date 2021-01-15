@@ -1,0 +1,126 @@
+
+.CommodityList{
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+  .resultHeader{
+    padding: rem-calc(40) rem-calc(48);
+    h2{
+      display: inline-table;
+      font-size: rem-calc(30);
+      font-weight: bold;
+      span{
+        font-size: rem-calc(20);
+        font-weight: normal;
+        color: #a9a9a9;
+      }
+    }
+    .btn_search{
+      float: right;
+      font-size: rem-calc(28);
+      border: 1px solid #313131;
+      color: #313131;
+      margin-top: rem-calc(15);
+      padding: rem-calc(8) rem-calc(30);
+      border-radius: rem-calc(10);
+    }
+  }
+  .list{
+    width: rem-calc(750);
+    li{
+      float: left;
+      width: rem-calc(370);
+      border:rem-calc(2) solid #fff;
+      padding-bottom: rem-calc(40);
+      .CommodityListImages{
+        img{
+          width: 100%;
+        }
+      }
+      h5{
+        line-height: rem-calc(50);
+        padding: 0 rem-calc(20);
+        font-size: rem-calc(28);
+      }
+      p{
+        height: rem-calc(50);
+        line-height: rem-calc(50);
+        padding: 0 rem-calc(20);
+        font-size: rem-calc(20);
+        color: #a9a9a9;
+      }
+    }
+  }
+  .overlay{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 10;
+    background: #fff;
+    h2{
+      height: rem-calc(50);
+      line-height: rem-calc(50);
+      padding: rem-calc(30) rem-calc(48);
+      font-size: rem-calc(40);
+      font-weight: bold;
+      span{
+        float: right;
+        font-weight: normal;
+        font-size: rem-calc(20);
+      }
+    }
+    .filterSearch{
+      text-align: center;
+      //display: none;
+      input{
+        width: rem-calc(654);
+        margin: 0 auto;
+        height: rem-calc(110);
+        line-height: rem-calc(110);
+        font-size: rem-calc(32);
+        border-bottom: 1px solid #a2a2a2;
+      }
+    }
+    .filterItems{
+      h3{
+        font-size: rem-calc(28);
+        color: #afafaf;
+        padding: rem-calc(52) rem-calc(48) 0 rem-calc(48);
+      }
+      ul{
+        padding-left: rem-calc(48);
+        li{
+          display: inline-table;
+          padding: 0 rem-calc(25);
+          height: rem-calc(60);
+          line-height: rem-calc(60);
+          text-align: center;
+          font-size: rem-calc(28);
+          border: 1px solid #a2a2a2;
+          border-radius: rem-calc(10);
+          margin-right: rem-calc(20);
+          margin-top: rem-calc(20);
+          &.on{
+            background: #000;
+            color: #fff;
+          }
+        }
+      }
+    }
+    .filterBtnWrap{
+      padding-top: rem-calc(40);
+      .btn_full{
+        text-align: center;
+        height: rem-calc(70);
+        line-height: rem-calc(70);
+        background: #000;
+        color: #fff;
+        font-size: rem-calc(24);
+        width: rem-calc(654);
+        margin: 0 auto;
+      }
+    }
+  }
+}

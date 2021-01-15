@@ -1,0 +1,62 @@
+.FollowPop,{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  .desk{
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index:101;
+  }
+  .box{
+    position: absolute;
+    top: 50%;
+    width: 88%;
+    left: 6%;
+    background: #fff;
+    transform: translateY(-50%);
+    z-index: 102;
+    img {
+      width: 50%;
+      display: block;
+      margin: 20% auto 5%;
+    }
+    .txt {
+      font-size: 14px;
+      line-height: 1.75;
+      text-align: center;
+      color: #111111;
+      width: 80%;
+      margin: 0 auto;
+    }
+    .close {
+      width: 90%;
+      height: 40px;
+      margin: 5% auto;
+      padding: 0;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      background: none;
+      color: #000;
+      display: block;
+    }
+    .tips {
+      font-size: 12px;
+      line-height: 1.67;
+      color: #111111;
+      background-color: #f5f5f5;
+      padding: 2% 5%;
+      span {
+        font-weight: bolder;
+        display: block;
+      }
+    }
+  }
+}

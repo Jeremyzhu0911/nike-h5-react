@@ -1,0 +1,260 @@
+
+.Historical {
+  .section {
+    h1 {
+      text-align: center;
+      font-size: rem-calc(50);
+      font-weight: bold;
+    }
+  }
+
+  .histirucal {
+    padding-bottom: 15rem;
+  }
+
+  .histirucal-img {
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    position: relative;
+    width: 100%;
+    padding: 2.56rem 0 1.5rem 0;
+    text-align: center;
+  }
+
+  .histirucal-img img {
+    width: rem-calc(150);
+    height: rem-calc(150);
+  }
+
+  .histirucal h1 {
+    text-align: center;
+    font-size: 1.38rem;
+    font-weight: bold;
+    color: #333333;
+    height: 1.88rem;
+    line-height: 1.88rem;
+  }
+
+  .p-d-t {
+    padding-top: 14.06rem;
+  }
+
+  .histirucal-state0 {
+    width: 17.3rem;
+    font-size: 0.75rem;
+    line-height: 1.06rem;
+    color: #444444;
+    margin: 0 auto;
+  }
+
+  .histirucal-box p {
+    width: 15.88rem;
+    line-height: 1.25rem;
+    font-size: 0.88rem;
+    text-align: center;
+    color: #999;
+    font-weight: bold;
+    margin: 0 auto;
+    padding: 0.81rem 0 2.56rem 0;
+  }
+
+  .histirucal-box p.state4 {
+    width: 16.5rem;
+    font-size: 0.75rem;
+    color: #444;
+    padding: 1.19rem 0 3.69rem 0;
+  }
+
+  .histirucal-box h2 {
+    padding: 0 1.19rem;
+    line-height: 1.25rem;
+    font-size: 0.88rem;
+    color: #999;
+    font-weight: bold;
+  }
+
+  .histirucal-box li {
+    padding: 0.81rem 1.19rem;
+    border-bottom: 0.06rem solid #ccc;
+  }
+
+  .histirucal-box h4,
+  .histirucal-box h3 {
+    line-height: 1.56rem;
+    color: #ccc;
+  }
+
+  .histirucal-box h4 {
+    font-size: 0.75rem;
+  }
+
+  .histirucal-box h3 {
+    font-size: 1.13rem;
+    font-weight: bold;
+  }
+
+  .histirucal-box span {
+    font-size: 0.75rem;
+    line-height: 1.06rem;
+    color: #ccc;
+  }
+
+  .mobile_phone {
+    width: 17.3rem;
+    height: 2.13rem;
+    margin: 0 auto;
+    margin-bottom: 1.13rem;
+  }
+
+  .mobile_phone span {
+    display: block;
+    height: 2.13rem;
+    line-height: 2.13rem;
+    font-size: 0.88rem;
+    color: #333;
+  }
+
+  .mobile_phone span:nth-child(1) {
+    float: left;
+  }
+
+  .mobile_phone span:nth-child(2) {
+    float: right;
+  }
+
+  .mobile_phone input {
+    float: right;
+    display: block;
+    text-align: center;
+    outline: none;
+    width: 6.56rem;
+    height: 2.13rem;
+    background: rgba(250, 250, 250, 1);
+    border-radius: 0.13rem;
+    border: none;
+    font-size: 0.88rem;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mobile_phone .testing_ck {
+    width: 5.63rem;
+    height: 2.13rem;
+    background: rgba(102, 102, 102, 1);
+    border-radius: 0.13rem;
+    text-align: center;
+    color: #fff;
+    margin-left: 0.63rem;
+  }
+
+  .histirucal3 {
+    width: 18rem;
+    height: 9.81rem;
+    line-height: 9.81rem;
+    text-align: center;
+    background: rgba(249, 249, 249, 1);
+    color: #333333;
+    font-size: 1.13rem;
+    font-weight: 600;
+    border-radius: 0.25rem;
+    margin: 2rem auto;
+  }
+
+  .fixbtn-box {
+    position: fixed;
+    bottom: 0;
+    z-index: 999999;
+    width: 100%;
+    padding-bottom: 0.5rem;
+    background: #fff;
+  }
+
+  .fixbtn-box .bttn {
+    display: block;
+    text-align: center;
+    width: 18.13rem;
+    height: 3rem;
+    line-height: 3rem;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.13rem;
+    border: 0.06rem solid rgba(51, 51, 51, 1);
+    margin: 0.5rem auto;
+    font-size: 1.13rem;
+    color: #333;
+    background: #fff;
+    outline: none;
+  }
+
+  .fixbtn-box .btn-yes {
+    color: #fff;
+    background: #333;
+  }
+
+  &.jordan {
+    h1 {
+      color: #fff;
+    }
+
+    .histirucal-state0 {
+      color: #ccc;
+    }
+
+    .histirucal-box h2 {
+      color: #fff;
+    }
+
+    .fixbtn-box {
+      background: #000;
+    }
+
+    .btn-yes {
+      background: #880d29;
+      border: 0.06rem solid #880d29;
+    }
+
+    .histirucal-box p.state4 {
+      color: #ccccc3;
+    }
+
+    .mobile_phone span {
+      color: #eeeeee;
+    }
+
+    .mobile_phone .testing_ck {
+      background: #880d29;
+    }
+  }
+
+  .loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+  }
+
+  .loading .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -30px;
+    width: 32px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  .loading .tip {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #8b8b8b !important;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+}

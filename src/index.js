@@ -10,7 +10,7 @@ import App from './router/index';
 
 import reportWebVitals from './reportWebVitals';
 
-import "./assets/css/router/style.css";
+import "./assets/css/style.css";
 import "./assets/fonts/iconfont.css";
 
 const store = configUseStore();
