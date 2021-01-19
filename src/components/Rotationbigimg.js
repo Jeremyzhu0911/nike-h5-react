@@ -14,11 +14,11 @@ const Rotationbigimg = (props) => {
     },[indexCount.index])
 
     return (
-        <div className={!!getUrlData('jordan') ? "RotationBigImg jordan":"RotationBigImg"}>
+        <div className={getUrlData('jordan') ? "RotationBigImg jordan":"RotationBigImg"}>
             <div className="carousel">
                 <div className="carousel-box">
                     {
-                        props.data.listAll.map((item, appointmentIndex) => {
+                        props.data.listAll.map((item, limitAppointment) => {
                             return <div className="carousel-item" key={index}>
                                 <img alt={''} onClick={()=>{setIndexCount({...indexCount, index:index})}} src={item.image_path}/>
                             </div>
@@ -29,13 +29,13 @@ const Rotationbigimg = (props) => {
             <div className="index-container">
                 <ul>
                     {
-                        props.data.listAll.map((item, appointmentIndex) => {
+                        props.data.listAll.map((item, limitAppointment) => {
                             return <li className={index === indexCount.index ? 'selected' : ''} style={{width:100/props.data.listAll.length}} key={index}></li>
                         })
                     }
                 </ul>
                 {
-                    props.data.listAll.map((item, appointmentIndex) => {
+                    props.data.listAll.map((item, limitAppointment) => {
                         return <span key={index}>{indexCount.index+1}/{props.data.listAll.length}</span>
                     })
                 }

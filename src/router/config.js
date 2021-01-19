@@ -9,7 +9,7 @@ import AmbassadorSuccess from "../pages/ambassador/AmbassadorSuccess";
 import AppointmentIndex from "../pages/appointment/AppointmentIndex";
 import AppointmentActivities from "../pages/appointment/activities";
 import AppointmentDetails from "../pages/appointment/AppointmentDetails";
-import AppointmentLuckydraw from "../pages/appointment/luckydraw";
+import AppointmentLuckydraw from "../pages/appointment/AppointmentLuckydraw";
 import AppointmentAdviser from "../pages/appointment/adviser";
 
 import ActivitiesContent from "../pages/activities/ActivitiesContent";
@@ -21,11 +21,11 @@ import CommodityDetails from "../pages/commodity/CommodityDetails";
 import CommodityAppointment from "../pages/commodity/appointment";
 import Fashion from "../pages/commodity/fashion/fashion";
 
-import Limit from "../pages/limit";
-import Limit_details from "../pages/limit/details";
-import Limitappointment from "../pages/limit/appointment";
+import Limit from "../pages/limit/LimitIndex";
+import LimitDetails from "../pages/limit/LimitDetails";
+import LimitAppointment from "../pages/limit/LimitAppointment";
 import Limitsuccess from "../pages/limit/success";
-import Limitlist from "../pages/limit/list";
+import LimitList from "../pages/limit/LimitList";
 
 import HistoricalRecord from '../pages/Historical';
 
@@ -79,20 +79,20 @@ const routes = [
         title: '活动详情'  // or 我的活动的详情
     },
     {
-        path: '/map',
+        path: '/map',   //参数 lng  lat
         component: Map,
         meta: {
             title: '门店地址'
         }
     },
     {
-        path: '/appointment/index',
+        path: '/appointment/index', //参数 store_id
         component: AppointmentIndex,
         apiData: '',
         title: '我的预约'  //我的预约列表
     },
     {
-        path: '/appointment/details',
+        path: '/appointment/details', //参数 store_id  booking_id   type
         component: AppointmentDetails,
         title: '详细信息'   //我的预约详情
     },
@@ -107,19 +107,19 @@ const routes = [
         title: '我的活动'   // 我的活动  ## 内页默认跳转活动详情
     },
     {
-        path: '/commodity/appointmentIndex',
+        path: '/commodity/index',   // store_id
         component: CommodityIndex,
         apiData: '',
         title: '最新上市'  //首页
     },
     {
-        path: '/commodity/list',
+        path: '/commodity/list',    // store_id
         component: CommodityList,
         apiData: '可以数据请求api',
         title: '最新上市'  // 最新上市列表
     },
     {
-        path: '/commodity/details',
+        path: '/commodity/details', // store_id  product_code
         component: CommodityDetails,
         apiData: '可以数据请求api',
         title: '商品详情'  // 最新上市 商品详情
@@ -135,23 +135,23 @@ const routes = [
         title: '限量发售'  // 和limitlist一样  测试用
     },
     {
-        path: '/commodity/limitlist',
-        component: Limitlist,
+        path: '/commodity/limitlist', // 参数 store_id
+        component: LimitList,
         title: '限量发售' // 列表
     },
     {
         path: '/commodity/limitdetails',
-        component: Limit_details,
+        component: LimitDetails,
         title: '限量发售' // 详情
     },
     {
         path: '/commodity/limitdetailspreview',
-        component: Limit_details,
+        component: LimitDetails,
         title: '限量发售(预览)'
     },
     {
         path: '/commodity/limitappointment',
-        component: Limitappointment,
+        component: LimitAppointment,
         title: '限量发售'  // 表单
     },
     {

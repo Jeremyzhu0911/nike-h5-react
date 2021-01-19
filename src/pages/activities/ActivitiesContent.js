@@ -4,8 +4,6 @@ import img from "../../assets/images/sp.jpg";
 
 const ActivitiesContent = (props) => {
 
-
-
     const [loading,setLoading] = useState(true);
 
     useEffect(()=>{

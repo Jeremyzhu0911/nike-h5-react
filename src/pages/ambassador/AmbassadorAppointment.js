@@ -44,7 +44,6 @@ const AmbassadorAppointment = (props) => {
     })
     useEffect(() => {
         setCodeTime(codeTime)
-        console.log('超时', codeTime)
     }, [codeTime])
     const updateCodeTime = (state) => {
         setCodeTime(state)

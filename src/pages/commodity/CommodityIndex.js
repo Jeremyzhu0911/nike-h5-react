@@ -34,6 +34,10 @@ const CommodityIndex = (props) => {
 
                         setLoading(false)
                     }
+                },
+                (error)=>{
+                    console.log(error)
+                    props.history.push('/500');
                 }
             )
         }
@@ -48,7 +52,7 @@ const CommodityIndex = (props) => {
     return (
         <div className={!!getUrlData('jordan') ? "CommodityIndex jordan" : "CommodityIndex"}>
             <h2>{cookie.load('store_name')}</h2>
-            <BigImg data={CommodityIndexData}/>
+            <BigImg {...props} data={CommodityIndexData}/>
             <h1>店铺新品<span onClick={() => {
                 props.history.push("/commodity/list" + props.location.search)
             }}>全部主推产品</span></h1>

@@ -1,9 +1,12 @@
 {
   "name": "nike-h5-react",
-  "version": "0.1.0",
+  "version": "3.0.0",
   "private": true,
+  "homepage": "/nike-h5-vue/dist/",
   "dependencies": {
+    "@ant-design/icons": "^4.4.0",
     "@uiw/react-baidu-map": "^1.18.2",
+    "antd": "^4.10.3",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.0",
     "babel-plugin-import": "^1.13.3",

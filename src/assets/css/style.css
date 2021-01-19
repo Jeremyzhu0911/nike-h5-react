@@ -217,6 +217,56 @@ body {
   height: 100vh;
 }
 
+.pop_up {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 999;
+}
+.pop_up .pop_up_box {
+  position: absolute;
+  width: 70%;
+  left: 15%;
+  top: 20%;
+  background: #fff;
+  font-size: 16px;
+  padding: 5% 0;
+  max-height: 55%;
+  overflow-y: scroll;
+}
+.pop_up .pop_up_box h2 {
+  padding-bottom: 10%;
+  font-size: 20px;
+  text-align: center;
+}
+.pop_up .pop_up_box p {
+  padding: 0 15%;
+  line-height: 1.5;
+  font-size: 12px;
+  margin-left: 10%;
+}
+.pop_up .pop_up_box p span {
+  display: inline-block;
+  width: 40%;
+}
+.pop_up .pop_up_box p span.tc {
+  text-align: center;
+  color: #ccc;
+}
+.pop_up .pop_up_box button {
+  width: 50%;
+  display: block;
+  background: #fff;
+  color: #000;
+  height: 30px;
+  line-height: 30px;
+  margin: 5% auto;
+  border: 1px solid #000;
+}
+
 .RotationBigImg {
   width: 100%;
   overflow: hidden;
@@ -366,6 +416,62 @@ body {
 .FollowPop .box .content_txt .bipErr {
   font-size: 1.13778rem;
   color: darkred;
+}
+
+.ListBigImgBox {
+  position: relative;
+  padding: 2.64107rem 1.13778rem;
+  box-shadow: 0 0.28444rem 1.42222rem #9e9e9e;
+  margin-bottom: 0.77298rem;
+}
+.ListBigImgBox .content {
+  width: 24.39111rem;
+  margin: 0 auto;
+}
+.ListBigImgBox .content .title {
+  font-size: 1.28853rem;
+  letter-spacing: 0.04836rem;
+  color: #6A6A6A;
+  padding-right: 10.30827rem;
+  padding-bottom: 0.55324rem;
+}
+.ListBigImgBox .content .time {
+  letter-spacing: 0.05547rem;
+  font-size: 1.48124rem;
+  font-weight: bold;
+}
+.ListBigImgBox .content .images {
+  margin: 1.1584rem 0;
+  width: 24.39111rem;
+  border-radius: 1.06667rem;
+  overflow: hidden;
+  font-size: 0;
+}
+.ListBigImgBox .content .images img {
+  width: 24.39111rem;
+}
+.ListBigImgBox .content .s_btn {
+  width: 24.39111rem;
+  height: 4.33778rem;
+  line-height: 4.33778rem;
+  border-radius: 4.33778rem;
+  text-align: center;
+  color: #fff;
+}
+.ListBigImgBox .content .s_btn.s_btn1 {
+  background: #000;
+}
+.ListBigImgBox .content .s_btn.s_btn2 {
+  background: #3E3D3D;
+}
+.ListBigImgBox .mask {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .AmbassadorContent {
@@ -1096,6 +1202,112 @@ body {
   color: #000;
 }
 
+.AppointmentLuckydraw {
+  width: 26.66667rem;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-top: 0.85333rem;
+}
+.AppointmentLuckydraw .luckydraw_box {
+  width: 23.25333rem;
+  padding: 0 1.70667rem;
+  display: inline-table;
+}
+.AppointmentLuckydraw .luckydraw_box h4 {
+  height: 2.13333rem;
+  line-height: 2.13333rem;
+  font-size: 0.99556rem;
+  color: #9e9e9e;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img {
+  font-size: 0;
+  height: 8.88889rem;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img img {
+  width: 10.66667rem;
+  height: 8.88889rem;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt {
+  width: 11.52rem;
+  height: 8.88889rem;
+  float: right;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt h3 {
+  font-size: 1.35111rem;
+  height: 6.4rem;
+  line-height: 6.4rem;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p {
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  font-size: 1.13778rem;
+}
+.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p span {
+  font-size: 0.85333rem;
+  float: right;
+  color: #9e9e9e;
+}
+.AppointmentLuckydraw .info-ul {
+  padding: 0.85333rem 1.70667rem;
+  font-size: 0.99556rem;
+}
+.AppointmentLuckydraw .info-ul li {
+  display: flex;
+  padding: 0.42667rem 0;
+}
+.AppointmentLuckydraw .info-ul li label {
+  color: #9e9e9e;
+  width: 9.03111rem;
+}
+.AppointmentLuckydraw .info-ul li span {
+  width: 14.22222rem;
+  text-align: right;
+}
+.AppointmentLuckydraw .end_show {
+  height: 7.11111rem;
+  line-height: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  color: #ff9e00;
+}
+.AppointmentLuckydraw .order {
+  padding: 1.70667rem 0 0.53333rem 0;
+  background: #fff;
+  z-index: 10;
+}
+.AppointmentLuckydraw .order .btn {
+  width: 23.25333rem;
+  height: 2.84444rem;
+  line-height: 2.84444rem;
+  border-radius: 0.35556rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.06667rem;
+  color: #fff;
+  background: #000;
+}
+.AppointmentLuckydraw .confirm_again {
+  position: fixed;
+  bottom: 0;
+  padding: 1.70667rem;
+  font-size: 1.35111rem;
+  border-top: 1px solid #dedede;
+}
+.AppointmentLuckydraw .confirm_again p {
+  font-size: 0.99556rem;
+  padding: 0.85333rem 0;
+}
+.AppointmentLuckydraw .confirm_again .btn_box {
+  text-align: center;
+}
+.AppointmentLuckydraw .confirm_again .btn_box span {
+  display: inline-block;
+  width: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  margin: 0 2.25778rem;
+}
+
 .ActivitiesContent {
   width: 100%;
   overflow: hidden;
@@ -1398,6 +1610,254 @@ body {
   color: #fff;
   background: #000;
   margin: 0 0.35556rem;
+}
+
+.Limit_list {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 3.55556rem;
+}
+.Limit_list h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.Limit_list .down-icon {
+  text-align: center;
+  padding-top: 1.71662rem;
+  font-size: 1.42222rem;
+}
+
+.LimitDetails {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 3.55556rem;
+}
+.LimitDetails h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.LimitDetails .CommodityDetails {
+  width: 24.39111rem;
+  margin: 0 auto;
+  padding: 1.49333rem 0;
+}
+.LimitDetails .CommodityDetails .commodityTitle {
+  font-size: 1.73938rem;
+  font-weight: bold;
+  letter-spacing: 0.06542rem;
+  height: 2.41778rem;
+  line-height: 2.41778rem;
+  margin-bottom: 0.47644rem;
+}
+.LimitDetails .CommodityDetails .commodityName {
+  font-size: 1.35253rem;
+  letter-spacing: 0.05049rem;
+  color: #6A6A6A;
+  height: 1.92rem;
+  line-height: 1.92rem;
+}
+.LimitDetails .CommodityDetails .commodityImg {
+  margin: 2.33102rem 0;
+  width: 24.39111rem;
+  border-radius: 1.06667rem;
+  overflow: hidden;
+  font-size: 0;
+}
+.LimitDetails .CommodityDetails .commodityImg img {
+  width: 24.39111rem;
+}
+.LimitDetails .CommodityDetails .commodityText {
+  font-size: 0.9664rem;
+  letter-spacing: 0.03627rem;
+  line-height: 1.80338rem;
+}
+.LimitDetails .CommodityDetails .Img100 {
+  padding: 0.9664rem 0;
+  width: 24.39111rem;
+}
+.LimitDetails .CommodityDetails .Img100 img {
+  width: 24.39111rem;
+}
+.LimitDetails .CommodityDetails .commodityTimes {
+  padding-bottom: 2.64107rem;
+}
+.LimitDetails .CommodityDetails .commodityTimes .title {
+  font-size: 1.48124rem;
+  letter-spacing: 0.05547rem;
+  font-weight: bold;
+  padding-bottom: 0.9664rem;
+}
+.LimitDetails .CommodityDetails .commodityTimes .timeArea {
+  border-bottom: 0.03556rem solid #979797;
+  padding: 0.29156rem 0;
+}
+.LimitDetails .CommodityDetails .commodityTimes .timeArea p {
+  font-size: 0.77298rem;
+  letter-spacing: 0.02916rem;
+  color: rgba(97, 97, 97, 0.51);
+}
+.LimitDetails .CommodityDetails .commodityTimes .timeArea .time {
+  font-size: 0.9664rem;
+  letter-spacing: 0.03627rem;
+}
+.LimitDetails .CommodityDetails .btn {
+  width: 24.39111rem;
+  height: 4.33778rem;
+  line-height: 4.33778rem;
+  border-radius: 4.33778rem;
+  text-align: center;
+  color: #fff;
+  background: #000;
+}
+
+.LimitAppointment {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 3.55556rem;
+}
+.LimitAppointment h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.LimitAppointment .InforDetails {
+  width: 24.39111rem;
+  margin: 0 auto;
+  padding: 1.49333rem 0;
+}
+.LimitAppointment .InforTitle {
+  font-size: 1.73938rem;
+  font-weight: bold;
+  letter-spacing: 0.06542rem;
+  line-height: 2.41778rem;
+  margin-bottom: 0.47644rem;
+}
+.LimitAppointment .sellingPrice {
+  font-size: 0.9664rem;
+  letter-spacing: 0.03627rem;
+  font-weight: bold;
+  height: 3.7888rem;
+  line-height: 3.7888rem;
+}
+.LimitAppointment .selectSize {
+  padding: 1.35893rem 0;
+}
+.LimitAppointment .selectSize p {
+  line-height: 1.20889rem;
+  font-size: 0.90169rem;
+  color: rgba(106, 106, 106, 0.6);
+}
+.LimitAppointment .selectSize .Size {
+  width: 24.74667rem;
+  display: inline-table;
+}
+.LimitAppointment .selectSize .Size li {
+  width: 3.62667rem;
+  height: 2.51236rem;
+  font-size: 0.90169rem;
+  line-height: 2.51236rem;
+  text-align: center;
+  float: left;
+  border: 0.03556rem solid rgba(151, 151, 151, 0.5);
+  color: #6A6A6A;
+  border-radius: 0.17778rem;
+  margin-right: 0.35556rem;
+  margin-top: 0.35556rem;
+}
+.LimitAppointment .selectSize .Size li.active {
+  color: #fff;
+  background: #000;
+}
+.LimitAppointment .InfoEnter .items {
+  width: 100%;
+  display: inline-table;
+  padding: 0.35413rem 0;
+}
+.LimitAppointment .InfoEnter .items label {
+  width: 5.68889rem;
+  height: 2.31893rem;
+  line-height: 2.31893rem;
+  float: left;
+  color: rgba(106, 106, 106, 0.6);
+  font-size: 1.13778rem;
+}
+.LimitAppointment .InfoEnter .items input {
+  width: 15.85778rem;
+  height: 2.31893rem;
+  line-height: 2.31893rem;
+  border: 0.03556rem solid rgba(151, 151, 151, 0.5);
+  border-radius: 0.35556rem;
+  text-align: center;
+  float: right;
+  font-size: 1.13778rem;
+}
+.LimitAppointment .InfoEnter .items input#code {
+  width: 9.79058rem;
+  margin-right: 0.38613rem;
+}
+.LimitAppointment .InfoEnter .items .getCodeBtn {
+  width: 5.54667rem;
+  height: 2.31893rem;
+  line-height: 2.31893rem;
+  border-radius: 2.31893rem;
+  background: #000;
+  text-align: center;
+  font-size: 0.57956rem;
+  color: #fff;
+  float: right;
+}
+.LimitAppointment .warning {
+  padding: 1.06667rem 0;
+  line-height: 1.42222rem;
+  color: #6A6A6A;
+  font-size: 0.57956rem;
+}
+.LimitAppointment .exemption {
+  width: 24.39111rem;
+  display: inline-table;
+}
+.LimitAppointment .exemption .exemption-left {
+  width: 1.42222rem;
+  float: left;
+}
+.LimitAppointment .exemption .exemption-left i {
+  font-size: 1.13778rem;
+}
+.LimitAppointment .exemption .exemption-right {
+  float: right;
+  width: 22.25778rem;
+  font-size: 0.85333rem;
+  color: rgba(106, 106, 106, 0.6);
+}
+.LimitAppointment .exemption .exemption-right span {
+  text-decoration: underline;
+}
+.LimitAppointment .Infobtn {
+  height: 6.04444rem;
+  background: #fff;
+  z-index: 10;
+}
+.LimitAppointment .Infobtn .btn {
+  width: 24.39111rem;
+  height: 4.33778rem;
+  line-height: 4.33778rem;
+  border-radius: 4.33778rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.06667rem;
+  color: #fff;
+  background: #000;
 }
 
 .Historical .section h1 {

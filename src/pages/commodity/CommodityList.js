@@ -153,10 +153,6 @@ const CommodityList = (props) => {
                                                                items.click = true;
                                                                state.productInfoSearch[item.id].push(items.id)
                                                            }
-                                                           console.log(state.productInfoSearch[item.id])
-                                                           console.log(item.id)
-                                                           console.log(items.click)
-                                                           console.log(index)
                                                            setState({...state, isShowOverlay: true})
                                                        }}>{items.name}</li>
                                         })
