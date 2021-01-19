@@ -52,12 +52,15 @@ body{
 @import "components/RotationBigImg";
 @import "components/FollowPop";
 
-@import "ActivitiesContent";
-
 @import "AmbassadorContent";
 @import "AmbassadorDetails";
 @import "AmbassadorAppointment";
 @import "AmbassadorSuccess";
+
+@import "AppointmentIndex";
+@import "AppointmentDetails";
+
+@import "ActivitiesContent";
 
 @import "CommodityIndex";
 @import "CommodityList";

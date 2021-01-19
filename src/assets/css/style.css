@@ -308,15 +308,16 @@ body {
   margin: 20% auto 5%;
 }
 .FollowPop .box .txt {
-  font-size: 14px;
+  font-size: 0.99556rem;
   line-height: 1.75;
   text-align: center;
   color: #111111;
   width: 80%;
   margin: 0 auto;
+  border: none;
 }
 .FollowPop .box .close {
-  width: 90%;
+  width: 60%;
   height: 40px;
   margin: 5% auto;
   padding: 0;
@@ -326,6 +327,12 @@ body {
   background: none;
   color: #000;
   display: block;
+}
+.FollowPop .box .btnBox {
+  padding: 1.70667rem 0;
+}
+.FollowPop .box .btnBox .close {
+  border: 1px solid #000;
 }
 .FollowPop .box .tips {
   font-size: 12px;
@@ -338,62 +345,27 @@ body {
   font-weight: bolder;
   display: block;
 }
-
-.ActivitiesContent {
-  width: 100%;
-  overflow: hidden;
-}
-.ActivitiesContent h2 {
+.FollowPop .box .content_txt {
+  font-size: 0.99556rem;
+  line-height: 1.75;
   text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
+  color: #111111;
+  width: 80%;
+  margin: 0 auto;
+  border: none;
 }
-.ActivitiesContent .content {
-  width: 23.25333rem;
+.FollowPop .box .content_txt .bip {
+  padding: 1.70667rem 0;
+  font-size: 0.85333rem;
+  line-height: 1.75;
+  text-align: center;
+  color: #666666;
+  width: 80%;
   margin: 0 auto;
 }
-.ActivitiesContent .content h1 {
-  height: 3.2rem;
-  line-height: 3.2rem;
-  font-size: 1.49333rem;
-  color: #000;
-}
-.ActivitiesContent .content p {
-  font-size: 0.99556rem;
-  color: #8f8f8f;
-  margin-bottom: 0.99556rem;
-}
-.ActivitiesContent .content .big_img {
-  width: 23.25333rem;
-  font-size: 0;
-  border-radius: 0.71111rem;
-}
-.ActivitiesContent .content .big_img img {
-  width: 100%;
-}
-.ActivitiesContent .content .btn {
-  width: 100%;
-  padding: 1.13778rem 0 1.70667rem 0;
-}
-.ActivitiesContent .content .btn span {
-  display: inline-block;
-  width: 8.17778rem;
-  height: 2.84444rem;
-  line-height: 2.84444rem;
-  text-align: center;
-  border-radius: 2.84444rem;
-  background: #000;
-  font-size: 0.99556rem;
-  color: #fff;
-}
-.ActivitiesContent .content .page_top {
-  text-align: center;
+.FollowPop .box .content_txt .bipErr {
   font-size: 1.13778rem;
-  color: #969696;
-  padding-bottom: 1.70667rem;
+  color: darkred;
 }
 
 .AmbassadorContent {
@@ -890,6 +862,295 @@ body {
   margin-top: 1.13778rem;
   background: #fff;
   color: #000;
+}
+
+.AppointmentIndex {
+  width: 26.66667rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.AppointmentIndex .appointment_type {
+  width: 100%;
+  display: inline-table;
+}
+.AppointmentIndex .appointment_type h5 {
+  padding-left: 1.70667rem;
+  font-size: 0.99556rem;
+  margin-bottom: 0.71111rem;
+}
+.AppointmentIndex .appointment_type ul {
+  margin-left: 1.70667rem;
+}
+.AppointmentIndex .appointment_type ul li {
+  margin-right: 0.384rem;
+  margin-bottom: 0.384rem;
+  width: 4.26667rem;
+  text-align: center;
+  float: left;
+  font-size: 0.74667rem;
+  height: 1.77778rem;
+  line-height: 1.77778rem;
+  border-radius: 0.35556rem;
+  background: #cccccc;
+}
+.AppointmentIndex .appointment_type ul li.on {
+  color: #fff;
+  background: #000;
+}
+.AppointmentIndex .appointment_content {
+  width: 100%;
+  overflow: hidden;
+}
+.AppointmentIndex .appointment_content .appointment_list {
+  width: 23.25333rem;
+  margin: 0 auto;
+  border-bottom: 1px solid #dedede;
+  padding: 1.06667rem 0;
+}
+.AppointmentIndex .appointment_content .appointment_list p {
+  font-size: 0.85333rem;
+  line-height: 1.42222rem;
+}
+.AppointmentIndex .appointment_content .appointment_list p.appointment_list_type {
+  color: #cccccc;
+  padding-bottom: 0.71111rem;
+}
+.AppointmentIndex .appointment_content .appointment_list p.appointment_list_title {
+  font-size: 0.99556rem;
+}
+.AppointmentIndex .appointment_content .appointment_list p span {
+  float: right;
+}
+.AppointmentIndex .appointment_content .appointment_list.end {
+  color: #cccccc;
+}
+.AppointmentIndex .appointment_resultList {
+  width: 100%;
+  overflow: hidden;
+}
+.AppointmentIndex .appointment_resultList .noHasList {
+  text-align: center;
+  margin-top: 2.13333rem;
+  font-size: 0.85333rem;
+}
+.AppointmentIndex .appointment_resultList .resultHeader {
+  padding: 0 1.70667rem;
+  line-height: 3.2rem;
+  font-size: 1.13778rem;
+}
+.AppointmentIndex .appointment_resultList .row {
+  width: 100%;
+}
+.AppointmentIndex .appointment_resultList .row .resultItems {
+  width: 23.25333rem;
+  margin: 0 auto;
+}
+.AppointmentIndex .appointment_resultList .row .resultItems .imgGrid {
+  font-size: 0;
+  width: 100%;
+  position: relative;
+}
+.AppointmentIndex .appointment_resultList .row .resultItems .imgGrid img {
+  width: 100%;
+}
+.AppointmentIndex .appointment_resultList .row .resultItems .imgGrid span {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 0.99556rem;
+}
+
+.AppointmentDetails {
+  width: 26.66667rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.AppointmentDetails h3 {
+  padding: 0 1.70667rem;
+  font-size: 1.35111rem;
+  height: 3.2rem;
+  line-height: 3.2rem;
+}
+.AppointmentDetails h3 span {
+  float: right;
+  font-size: 0.99556rem;
+  color: #3E3D3D;
+  font-weight: normal;
+}
+.AppointmentDetails .appointment_content {
+  padding: 1.70667rem 1.70667rem;
+  width: 23.25333rem;
+  display: flex;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+.AppointmentDetails .appointment_content .appointment_img {
+  display: inline-block;
+  font-size: 0;
+  overflow: hidden;
+}
+.AppointmentDetails .appointment_content .appointment_img img {
+  width: 6.82667rem;
+  height: 6.82667rem;
+}
+.AppointmentDetails .appointment_content .appointment_info {
+  display: inline-table;
+  margin-left: 1.70667rem;
+  width: 14.72rem;
+  font-size: 0;
+}
+.AppointmentDetails .appointment_content .appointment_info p {
+  display: inline-table;
+  line-height: 1.42222rem;
+  font-size: 1.13778rem;
+}
+.AppointmentDetails .appointment_content .appointment_info p.appointment_spit {
+  padding-top: 0.35556rem;
+  line-height: 1.77778rem;
+}
+.AppointmentDetails .appointment_content .appointment_info p.appointment_spit span {
+  font-size: 0.99556rem;
+  color: #3E3D3D;
+}
+.AppointmentDetails .appointment_content .appointment_info p.appointment_spit span.ccc {
+  color: #ccc;
+}
+.AppointmentDetails .userinfo {
+  padding: 1.70667rem 1.70667rem;
+  display: inline-table;
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+.AppointmentDetails .userinfo .userimg {
+  float: left;
+  font-size: 0;
+  overflow: hidden;
+}
+.AppointmentDetails .userinfo .userimg img {
+  width: 6.82667rem;
+  height: 6.82667rem;
+}
+.AppointmentDetails .userinfo .username {
+  float: left;
+  margin-left: 1.70667rem;
+  font-size: 0.99556rem;
+  padding-top: 1.99111rem;
+}
+.AppointmentDetails .userinfo .username p {
+  display: inline-table;
+  height: 2.84444rem;
+  line-height: 1.42222rem;
+}
+.AppointmentDetails .userinfo .username p span {
+  font-size: 1.13778rem;
+}
+.AppointmentDetails .userinfo.ambassador .userimg {
+  border-radius: 6.82667rem;
+  box-shadow: 0 1px 5px #000;
+}
+.AppointmentDetails .txt {
+  padding: 0.71111rem 1.70667rem;
+  border-bottom: 1px solid #f5f5f5;
+  position: relative;
+}
+.AppointmentDetails .txt p {
+  width: 19.55556rem;
+  font-size: 0.99556rem;
+  line-height: 1.77778rem;
+  min-height: 1.77778rem;
+}
+.AppointmentDetails .txt p:nth-child(1) {
+  color: #bbb;
+}
+.AppointmentDetails .txt span {
+  position: absolute;
+  right: 1.70667rem;
+  top: 0.71111rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  font-size: 1.70667rem;
+}
+.AppointmentDetails .order {
+  display: inline-table;
+  width: 100%;
+  padding-top: 3.55556rem;
+  height: 4.62222rem;
+  background: #fff;
+  z-index: 10;
+}
+.AppointmentDetails .order .btn, .AppointmentDetails .order .btn2 {
+  width: 23.25333rem;
+  height: 2.84444rem;
+  line-height: 2.84444rem;
+  border-radius: 0.35556rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.06667rem;
+  color: #fff;
+  background: #000;
+  border: 1px solid #000;
+}
+.AppointmentDetails .order .btn2 {
+  margin-top: 1.13778rem;
+  background: #fff;
+  color: #000;
+}
+
+.ActivitiesContent {
+  width: 100%;
+  overflow: hidden;
+}
+.ActivitiesContent h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.ActivitiesContent .content {
+  width: 23.25333rem;
+  margin: 0 auto;
+}
+.ActivitiesContent .content h1 {
+  height: 3.2rem;
+  line-height: 3.2rem;
+  font-size: 1.49333rem;
+  color: #000;
+}
+.ActivitiesContent .content p {
+  font-size: 0.99556rem;
+  color: #8f8f8f;
+  margin-bottom: 0.99556rem;
+}
+.ActivitiesContent .content .big_img {
+  width: 23.25333rem;
+  font-size: 0;
+  border-radius: 0.71111rem;
+}
+.ActivitiesContent .content .big_img img {
+  width: 100%;
+}
+.ActivitiesContent .content .btn {
+  width: 100%;
+  padding: 1.13778rem 0 1.70667rem 0;
+}
+.ActivitiesContent .content .btn span {
+  display: inline-block;
+  width: 8.17778rem;
+  height: 2.84444rem;
+  line-height: 2.84444rem;
+  text-align: center;
+  border-radius: 2.84444rem;
+  background: #000;
+  font-size: 0.99556rem;
+  color: #fff;
+}
+.ActivitiesContent .content .page_top {
+  text-align: center;
+  font-size: 1.13778rem;
+  color: #969696;
+  padding-bottom: 1.70667rem;
 }
 
 .CommodityIndex {

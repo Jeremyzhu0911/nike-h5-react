@@ -96,7 +96,7 @@ const AmbassadorDetails = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={()=>{
-                    props.history.push("/appointment" + props.location.search + "&&is_ambassador=1")
+                    props.history.push("/appointment" + props.location.search + "&is_ambassador=1")
                 }}>
                     预约此顾问
                 </div>

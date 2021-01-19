@@ -108,9 +108,9 @@ const AmbassadorSuccess = (props) => {
                         setShowHide(true)
                     } else {
                         if (getUrlData('jordan')) {
-                            props.history.push('/appointment/index?jordan=1&store_id=' + AmbassadorSuccessData.data.store_id);
+                            props.history.push('/appointment/appointmentDetails?jordan=1&store_id=' + AmbassadorSuccessData.data.store_id);
                         } else {
-                            props.history.push("/appointment/index?store_id=" + AmbassadorSuccessData.data.store_id);
+                            props.history.push("/appointment/appointmentDetails?store_id=" + AmbassadorSuccessData.data.store_id);
                         }
                     }
                 }}>

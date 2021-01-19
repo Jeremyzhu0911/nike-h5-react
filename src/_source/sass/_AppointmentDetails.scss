@@ -1,0 +1,139 @@
+
+.AppointmentDetails{
+  width: rem-calc(750);
+  margin: 0 auto;
+  overflow: hidden;
+  h3{
+    padding: 0 rem-calc(48);
+    font-size: rem-calc(38);
+    height: rem-calc(90);
+    line-height: rem-calc(90);
+    span{
+      float: right;
+      font-size: rem-calc(28);
+      color: #3E3D3D;
+      font-weight: normal;
+    }
+  }
+  .appointment_content {
+    padding: rem-calc(48) rem-calc(48);
+    width: rem-calc(654);
+    display: flex;
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    .appointment_img {
+      display: inline-block;
+      font-size: 0;
+      overflow: hidden;
+      img {
+        width: rem-calc(192);
+        height: rem-calc(192);
+      }
+    }
+    .appointment_info{
+      display: inline-table;
+      margin-left: rem-calc(48);
+      width: rem-calc(414);
+      font-size: 0;
+      p{
+        display: inline-table;
+        line-height: rem-calc(40);
+        font-size: rem-calc(32);
+        &.appointment_spit{
+          padding-top: rem-calc(10);
+          line-height: rem-calc(50);
+          span{
+            font-size: rem-calc(28);
+            color: #3E3D3D;
+            &.ccc{
+              color: #ccc;
+            }
+          }
+        }
+      }
+    }
+  }
+  .userinfo {
+    padding: rem-calc(48) rem-calc(48);
+    display: inline-table;
+    border-top: 1px solid #f5f5f5;
+    border-bottom: 1px solid #f5f5f5;
+    .userimg {
+      float: left;
+      font-size: 0;
+      overflow: hidden;
+      img {
+        width: rem-calc(192);
+        height: rem-calc(192);
+      }
+    }
+    .username{
+      float: left;
+      margin-left: rem-calc(48);
+      font-size: rem-calc(28);
+      padding-top: rem-calc(56);
+      p{
+        display: inline-table;
+        height: rem-calc(80);
+        line-height: rem-calc(40);
+        span{
+          font-size: rem-calc(32);
+        }
+      }
+    }
+    &.ambassador{
+      .userimg{
+        border-radius: rem-calc(192);
+        box-shadow: 0 1px 5px #000;
+      }
+    }
+  }
+  .txt{
+    padding: rem-calc(20) rem-calc(48);
+    border-bottom: 1px solid #f5f5f5;
+    position: relative;
+    p{
+      width: rem-calc(550);
+      &:nth-child(1){
+        color: #bbb;
+      }
+      font-size: rem-calc(28);
+      line-height: rem-calc(50);
+      min-height: rem-calc(50);
+    }
+    span{
+      position: absolute;
+      right: rem-calc(48);
+      top: rem-calc(20);
+      height: rem-calc(100);
+      line-height: rem-calc(100);
+      font-size: rem-calc(48);
+    }
+  }
+  .order {
+    display: inline-table;
+    width: 100%;
+    padding-top: rem-calc(100);
+    height: rem-calc(130);
+    background: #fff;
+    z-index: 10;
+
+    .btn,.btn2 {
+      width: rem-calc(654);
+      height: rem-calc(80);
+      line-height: rem-calc(80);
+      border-radius: rem-calc(10);
+      margin: 0 auto;
+      text-align: center;
+      font-size: rem-calc(30);
+      color: #fff;
+      background: #000;
+      border: 1px solid #000;
+    }
+    .btn2{
+      margin-top: rem-calc(32);
+      background: #fff;
+      color: #000;
+    }
+  }
+}

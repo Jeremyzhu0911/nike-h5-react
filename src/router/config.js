@@ -6,9 +6,9 @@ import AmbassadorDetails from '../pages/ambassador/AmbassadorDetails';
 import AmbassadorForm from "../pages/ambassador/AmbassadorAppointment";
 import AmbassadorSuccess from "../pages/ambassador/AmbassadorSuccess";
 
-import AppointmentIndex from  "../pages/appointment";
+import AppointmentIndex from "../pages/appointment/AppointmentIndex";
 import AppointmentActivities from "../pages/appointment/activities";
-import AppointmentDetails from "../pages/appointment/details";
+import AppointmentDetails from "../pages/appointment/AppointmentDetails";
 import AppointmentLuckydraw from "../pages/appointment/luckydraw";
 import AppointmentAdviser from "../pages/appointment/adviser";
 
@@ -94,7 +94,7 @@ const routes = [
     {
         path: '/appointment/details',
         component: AppointmentDetails,
-        title: '预约详情'   //我的预约详情
+        title: '详细信息'   //我的预约详情
     },
     {
         path: '/adviser',   //参数 store_id  booking_id
@@ -107,7 +107,7 @@ const routes = [
         title: '我的活动'   // 我的活动  ## 内页默认跳转活动详情
     },
     {
-        path: '/commodity/index',
+        path: '/commodity/appointmentIndex',
         component: CommodityIndex,
         apiData: '',
         title: '最新上市'  //首页

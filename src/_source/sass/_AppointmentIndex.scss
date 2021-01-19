@@ -1,0 +1,95 @@
+.AppointmentIndex{
+  width: rem-calc(750);
+  margin: 0 auto;
+  overflow: hidden;
+  .appointment_type{
+    width: 100%;
+    display: inline-table;
+    h5{
+      padding-left: rem-calc(48);
+      font-size: rem-calc(28);
+      margin-bottom: rem-calc(20);
+    }
+    ul{
+      margin-left: rem-calc(48);
+      li{
+        margin-right: rem-calc(10.8);
+        margin-bottom: rem-calc(10.8);
+        width: rem-calc(120);
+        text-align: center;
+        float: left;
+        font-size: rem-calc(21);
+        height: rem-calc(50);
+        line-height: rem-calc(50);
+        border-radius: rem-calc(10);
+        background: #cccccc;
+        &.on{
+          color: #fff;
+          background: #000;
+        }
+      }
+    }
+  }
+  .appointment_content{
+    width: 100%;
+    overflow: hidden;
+    .appointment_list{
+      width: rem-calc(654);
+      margin: 0 auto;
+      border-bottom: 1px solid #dedede;
+      padding: rem-calc(30) 0;
+      p{
+        font-size: rem-calc(24);
+        line-height: rem-calc(40);
+        &.appointment_list_type{
+          color: #cccccc;
+          padding-bottom: rem-calc(20);
+        }
+        &.appointment_list_title{
+          font-size: rem-calc(28);
+        }
+        span{
+          float: right;
+        }
+      }
+      &.end{
+        color: #cccccc;
+      }
+    }
+  }
+  .appointment_resultList{
+    width: 100%;
+    overflow: hidden;
+    .noHasList{
+      text-align: center;
+      margin-top: rem-calc(60);
+      font-size: rem-calc(24);
+    }
+    .resultHeader{
+      padding: 0 rem-calc(48);
+      line-height: rem-calc(90);
+      font-size: rem-calc(32);
+    }
+    .row{
+      width: 100%;
+      .resultItems{
+        width: rem-calc(654);
+        margin: 0 auto;
+        .imgGrid{
+          font-size: 0;
+          width: 100%;
+          position: relative;
+          img{
+            width: 100%;
+          }
+          span{
+            position: absolute;
+            bottom: 0px;
+            right: 0px;
+            font-size: rem-calc(28);
+          }
+        }
+      }
+    }
+  }
+}

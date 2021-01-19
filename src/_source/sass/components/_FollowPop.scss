@@ -28,15 +28,16 @@
       margin: 20% auto 5%;
     }
     .txt {
-      font-size: 14px;
+      font-size: rem-calc(28);
       line-height: 1.75;
       text-align: center;
       color: #111111;
       width: 80%;
       margin: 0 auto;
+      border: none;
     }
     .close {
-      width: 90%;
+      width: 60%;
       height: 40px;
       margin: 5% auto;
       padding: 0;
@@ -47,6 +48,12 @@
       color: #000;
       display: block;
     }
+    .btnBox{
+      padding: rem-calc(48) 0;
+      .close{
+        border:1px solid #000;
+      }
+    }
     .tips {
       font-size: 12px;
       line-height: 1.67;
@@ -56,6 +63,28 @@
       span {
         font-weight: bolder;
         display: block;
+      }
+    }
+    .content_txt{
+      font-size: rem-calc(28);
+      line-height: 1.75;
+      text-align: center;
+      color: #111111;
+      width: 80%;
+      margin: 0 auto;
+      border: none;
+      .bip{
+        padding: rem-calc(48) 0;
+        font-size: rem-calc(24);
+        line-height: 1.75;
+        text-align: center;
+        color: #666666;
+        width: 80%;
+        margin: 0 auto;
+      }
+      .bipErr{
+        font-size: rem-calc(32);
+        color: darkred;
       }
     }
   }
