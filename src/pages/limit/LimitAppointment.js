@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
-import {getUrlData} from "../../util/getUrlData";
 import cookie from "react-cookies";
+
 import GetCode from "../../components/GetCode";
+//本地缓存配置 & 工具类
+import {getUrlData} from "../../util/getUrlData";
 
 const LimitAppointment = (props) => {
 
@@ -202,15 +204,46 @@ const LimitAppointment = (props) => {
                             <p>身份证后四位：<span>{postDate.identity_code}</span></p>
                             <p>手机号：<span>{postDate.mobile}</span></p>
                             <p className="tc">信息提交后不可更改</p>
-                            <button>确认</button>
-                            <button className="close">取消</button>
+                            <button onClick={() => {
+                                props.history.push("/commodity/limitsuccess" + props.location.search)
+                                // axios({
+                                //     url: '/luckydraw/default/booking',
+                                //     method: 'post',
+                                //     data: postDate,
+                                //     transformRequest: [function (data) {
+                                //         let ret = ''
+                                //         for (let it in data) {
+                                //             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                                //         }
+                                //         return ret
+                                //     }],
+                                //     headers: {
+                                //         'Content-Type': 'application/x-www-form-urlencoded'
+                                //     },
+                                // }).then((res) => {
+                                //         let resData = res.data;
+                                //         if (Number(resData.code) === 200) {
+                                //             console.log(resData)
+                                //         } else {
+                                //             alert(resData.message);
+                                //         }
+                                //     },
+                                //     (err) => {
+                                //         alert(err);
+                                //     }
+                                // );
+                            }}>确认
+                            </button>
+                            <button onClick={() => {
+                                setIsModalVisible(false)
+                            }} className="close">取消
+                            </button>
                         </div>
                     </div> : null
             }
 
         </div>
     )
-
 }
 
 export default LimitAppointment;

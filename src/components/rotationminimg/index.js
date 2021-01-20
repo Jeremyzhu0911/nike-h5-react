@@ -12,7 +12,7 @@ class Index extends React.Component{
     render() {
 
         return (
-            <div id="RotationMinImg">
+            <div className="RotationMinImg">
                 <div className="carousel">
                     <div className="carousel-box">
                         <div className="carousel-item">

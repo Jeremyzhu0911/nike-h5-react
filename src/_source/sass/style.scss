@@ -108,6 +108,7 @@ body{
 @import "components/RotationBigImg";
 @import "components/FollowPop";
 @import "components/ListBigImgBox";
+@import "components/RotationMinImg";
 
 @import "AmbassadorContent";
 @import "AmbassadorDetails";
@@ -117,8 +118,10 @@ body{
 @import "AppointmentIndex";
 @import "AppointmentDetails";
 @import "AppointmentLuckydraw";
+@import "AppointmentActivities";
 
 @import "ActivitiesContent";
+@import "ActivitiesDetails";
 
 @import "CommodityIndex";
 @import "CommodityList";
@@ -127,6 +130,7 @@ body{
 @import "LimitList";
 @import "LimitDetails";
 @import "LimitAppointment";
+@import "LimitSuccess";
 
 @import "Historical";
 

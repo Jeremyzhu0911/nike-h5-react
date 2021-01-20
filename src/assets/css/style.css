@@ -474,6 +474,77 @@ body {
   background: rgba(255, 255, 255, 0.4);
 }
 
+.RotationMinImg {
+  width: 100%;
+  overflow: hidden;
+}
+.RotationMinImg .carousel {
+  width: 100%;
+  overflow-y: hidden;
+}
+.RotationMinImg .carousel .carousel-box {
+  display: inline-table;
+  white-space: nowrap;
+}
+.RotationMinImg .carousel .carousel-box:nth-child(1) {
+  margin-left: 1.63556rem;
+}
+.RotationMinImg .carousel .carousel-box:last-child {
+  margin-right: 1.63556rem !important;
+}
+.RotationMinImg .carousel .carousel-box .carousel-item {
+  display: inline-block;
+  width: 7.21422rem;
+  margin-right: 0.69476rem;
+  border-radius: 0.71111rem;
+  font-size: 0;
+}
+.RotationMinImg .carousel .carousel-box .carousel-item img {
+  width: 7.21422rem;
+  height: 7.21422rem;
+  margin: 0;
+}
+.RotationMinImg .carousel .carousel-box .carousel-item h4 {
+  height: 1.70667rem;
+  line-height: 0.85333rem;
+  font-size: 0.64427rem;
+  padding: 0 0.57956rem;
+  margin-top: 0.64427rem;
+  overflow: hidden;
+}
+.RotationMinImg .carousel .carousel-box .carousel-item p {
+  font-size: 0.64427rem;
+  color: #9A9A9A;
+  padding: 0 0.57956rem;
+}
+.RotationMinImg .index-container {
+  margin: 0 1.63556rem;
+  padding: 1.7536rem 0;
+  position: relative;
+}
+.RotationMinImg .index-container ul {
+  width: 21.04889rem;
+  height: 0.21333rem;
+  background: #D8D8D8;
+  overflow: hidden;
+}
+.RotationMinImg .index-container ul li {
+  float: left;
+  width: 33.33%;
+  height: 0.21333rem;
+}
+.RotationMinImg .index-container ul li.selected {
+  background: #9A9A9A;
+}
+.RotationMinImg .index-container span {
+  font-size: 0.57956rem;
+  height: 3.72053rem;
+  line-height: 3.72053rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .AmbassadorContent {
   width: 100%;
   overflow: hidden;
@@ -1308,6 +1379,67 @@ body {
   margin: 0 2.25778rem;
 }
 
+.AppointmentActivities {
+  width: 26.66667rem;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.AppointmentActivities h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.AppointmentActivities h5 {
+  height: 7.11111rem;
+  line-height: 7.11111rem;
+  font-size: 1.49333rem;
+  padding: 0 1.70667rem;
+  color: #9e9e9e;
+  text-align: center;
+}
+.AppointmentActivities h4 {
+  height: 4.26667rem;
+  line-height: 4.26667rem;
+  font-size: 1.49333rem;
+  padding: 0 1.70667rem;
+}
+.AppointmentActivities .list_recommend {
+  padding-left: 1.70667rem;
+  display: inline-table;
+}
+.AppointmentActivities .list_recommend .list_box {
+  margin-right: 1.70667rem;
+  width: 10.77333rem;
+  float: left;
+  text-align: center;
+}
+.AppointmentActivities .list_recommend .list_box .list_img {
+  width: 10.77333rem;
+  height: 10.77333rem;
+  font-size: 0;
+  border-radius: 0.71111rem;
+  overflow: hidden;
+}
+.AppointmentActivities .list_recommend .list_box .list_img img {
+  width: 100%;
+  height: 100%;
+}
+.AppointmentActivities .list_recommend .list_box h3 {
+  margin: 0.53333rem 0;
+  font-size: 1.28rem;
+  height: 3.2rem;
+  line-height: 1.6rem;
+  overflow: hidden;
+}
+.AppointmentActivities .list_recommend .list_box p {
+  font-size: 0.99556rem;
+  color: #9e9e9e;
+  padding-bottom: 0.88889rem;
+}
+
 .ActivitiesContent {
   width: 100%;
   overflow: hidden;
@@ -1363,6 +1495,109 @@ body {
   font-size: 1.13778rem;
   color: #969696;
   padding-bottom: 1.70667rem;
+}
+
+.ActivitiesDetails {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 3.55556rem;
+}
+.ActivitiesDetails h2 {
+  text-align: center;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 1.0304rem;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+.ActivitiesDetails .content {
+  width: 23.25333rem;
+  margin: 0 auto;
+}
+.ActivitiesDetails .content .big_img {
+  width: 23.25333rem;
+  font-size: 0;
+  border-radius: 0.71111rem;
+}
+.ActivitiesDetails .content .big_img img {
+  width: 100%;
+}
+.ActivitiesDetails .content p {
+  font-size: 1.13778rem;
+  color: #8f8f8f;
+  padding: 0.99556rem 0;
+}
+.ActivitiesDetails .content p.time {
+  font-size: 0.85333rem;
+}
+.ActivitiesDetails .content h1 {
+  font-size: 1.35111rem;
+  color: #000;
+}
+.ActivitiesDetails .const {
+  width: 23.25333rem;
+  margin: 0 auto;
+}
+.ActivitiesDetails .const h3 {
+  padding: 0.99556rem 0;
+  font-size: 1.35111rem;
+  color: #000;
+}
+.ActivitiesDetails .const .details_content {
+  font-size: 0.85333rem;
+  color: #3E3D3D;
+}
+.ActivitiesDetails .const .big_img {
+  margin: 1.70667rem 0;
+  width: 23.25333rem;
+  font-size: 0;
+  border-radius: 0.71111rem;
+}
+.ActivitiesDetails .const .big_img img {
+  width: 100%;
+}
+.ActivitiesDetails .const .tips {
+  padding: 3.41333rem 0;
+  text-align: center;
+  font-size: 0.85333rem;
+  line-height: 2.84444rem;
+}
+.ActivitiesDetails .const .txt {
+  padding: 0.71111rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  position: relative;
+}
+.ActivitiesDetails .const .txt p {
+  font-size: 0.99556rem;
+  line-height: 1.77778rem;
+}
+.ActivitiesDetails .const .txt p:nth-child(1) {
+  color: #bbb;
+}
+.ActivitiesDetails .const .txt span {
+  position: absolute;
+  right: 1.70667rem;
+  top: 0.71111rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  font-size: 1.70667rem;
+}
+.ActivitiesDetails .order {
+  padding-top: 1.77778rem;
+  height: 4.62222rem;
+  background: #fff;
+  z-index: 10;
+}
+.ActivitiesDetails .order .btn {
+  width: 23.25333rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  border-radius: 3.55556rem;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.06667rem;
+  color: #fff;
+  background: #000;
 }
 
 .CommodityIndex {
@@ -1858,6 +2093,67 @@ body {
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
+}
+
+.LimitSuccess {
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: 5.33333rem;
+}
+.LimitSuccess .topArea {
+  width: 100vw;
+  text-align: center;
+  padding-top: 3.55556rem;
+  padding-bottom: 0.35556rem;
+}
+.LimitSuccess .topArea i {
+  font-size: 3.55556rem;
+}
+.LimitSuccess .topArea h2 {
+  font-size: 1.42222rem;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 1.77778rem;
+}
+.LimitSuccess .time-box {
+  background: #f9f9f9;
+  width: 21.33333rem;
+  padding: 3.2rem 0;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 0.35556rem;
+}
+.LimitSuccess .time-box p {
+  line-height: 2;
+  font-size: 1.06667rem;
+  color: #666;
+}
+.LimitSuccess .time-box p span {
+  color: #000;
+  font-weight: bold;
+  font-size: 1.06667rem;
+}
+.LimitSuccess .tips {
+  font-size: 0.99556rem;
+  margin: 1.42222rem 0;
+  line-height: 1.42222rem;
+  text-align: center;
+}
+.LimitSuccess .emm {
+  width: 8.53333rem;
+  margin: 0 auto;
+  padding: 0.35556rem;
+  background: #fff;
+}
+.LimitSuccess .emm img {
+  width: 8.53333rem;
+  outline: none;
+}
+.LimitSuccess .tips2 {
+  padding: 0 1.42222rem;
+  margin-top: 1.42222rem;
+  font-size: 0.85333rem;
+  line-height: 1.42222rem;
 }
 
 .Historical .section h1 {

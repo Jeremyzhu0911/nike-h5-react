@@ -7,13 +7,13 @@ import AmbassadorForm from "../pages/ambassador/AmbassadorAppointment";
 import AmbassadorSuccess from "../pages/ambassador/AmbassadorSuccess";
 
 import AppointmentIndex from "../pages/appointment/AppointmentIndex";
-import AppointmentActivities from "../pages/appointment/activities";
+import AppointmentActivities from "../pages/appointment/AppointmentActivities";
 import AppointmentDetails from "../pages/appointment/AppointmentDetails";
 import AppointmentLuckydraw from "../pages/appointment/AppointmentLuckydraw";
 import AppointmentAdviser from "../pages/appointment/adviser";
 
 import ActivitiesContent from "../pages/activities/ActivitiesContent";
-import ActivitiesDetails from "../pages/activities/details";
+import ActivitiesDetails from "../pages/activities/details/ActivitiesDetails";
 
 import CommodityIndex from "../pages/commodity/CommodityIndex";
 import CommodityList from "../pages/commodity/CommodityList";
@@ -24,7 +24,7 @@ import Fashion from "../pages/commodity/fashion/fashion";
 import Limit from "../pages/limit/LimitIndex";
 import LimitDetails from "../pages/limit/LimitDetails";
 import LimitAppointment from "../pages/limit/LimitAppointment";
-import Limitsuccess from "../pages/limit/success";
+import Limitsuccess from "../pages/limit/LimitSuccess";
 import LimitList from "../pages/limit/LimitList";
 
 import HistoricalRecord from '../pages/Historical';
