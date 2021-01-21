@@ -52,6 +52,7 @@ const LimitAppointment = (props) => {
     })
     useEffect(() => {
         setCodeTime(codeTime)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [codeTime])
     const updateCodeTime = (state) => {
         setCodeTime(state)
@@ -90,6 +91,7 @@ const LimitAppointment = (props) => {
                 }
             )
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
     if (loading) {

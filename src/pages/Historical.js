@@ -64,6 +64,7 @@ const Historical = (props) => {
             }
             setData({...data, ...resData.data});
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data.store_id]);
 
     function getCode() {

@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/nike-h5-vue/dist/static/css/main.d5303122.chunk.css",
+    "main.js": "/nike-h5-vue/dist/static/js/main.0378dc7f.chunk.js",
+    "main.js.map": "/nike-h5-vue/dist/static/js/main.0378dc7f.chunk.js.map",
+    "runtime-main.js": "/nike-h5-vue/dist/static/js/runtime-main.9a218d71.js",
+    "runtime-main.js.map": "/nike-h5-vue/dist/static/js/runtime-main.9a218d71.js.map",
+    "static/js/2.6925cf0b.chunk.js": "/nike-h5-vue/dist/static/js/2.6925cf0b.chunk.js",
+    "static/js/2.6925cf0b.chunk.js.map": "/nike-h5-vue/dist/static/js/2.6925cf0b.chunk.js.map",
+    "static/js/3.991064bd.chunk.js": "/nike-h5-vue/dist/static/js/3.991064bd.chunk.js",
+    "static/js/3.991064bd.chunk.js.map": "/nike-h5-vue/dist/static/js/3.991064bd.chunk.js.map",
+    "index.html": "/nike-h5-vue/dist/index.html",
+    "static/css/main.d5303122.chunk.css.map": "/nike-h5-vue/dist/static/css/main.d5303122.chunk.css.map",
+    "static/js/2.6925cf0b.chunk.js.LICENSE.txt": "/nike-h5-vue/dist/static/js/2.6925cf0b.chunk.js.LICENSE.txt",
+    "static/media/Bitmap Copy.966b0ab2.png": "/nike-h5-vue/dist/static/media/Bitmap Copy.966b0ab2.png",
+    "static/media/Image-1.372f5c22.jpg": "/nike-h5-vue/dist/static/media/Image-1.372f5c22.jpg",
+    "static/media/iconfont.css": "/nike-h5-vue/dist/static/media/iconfont.f900eeeb.ttf",
+    "static/media/image_160074378798579956.b9541e06.jpeg": "/nike-h5-vue/dist/static/media/image_160074378798579956.b9541e06.jpeg",
+    "static/media/logo.cbf13103.svg": "/nike-h5-vue/dist/static/media/logo.cbf13103.svg",
+    "static/media/markers.2260d1c0.png": "/nike-h5-vue/dist/static/media/markers.2260d1c0.png",
+    "static/media/minImg.6f355a1c.png": "/nike-h5-vue/dist/static/media/minImg.6f355a1c.png",
+    "static/media/sp.8a744fdf.jpg": "/nike-h5-vue/dist/static/media/sp.8a744fdf.jpg",
+    "static/media/tb.bde35ad3.jpg": "/nike-h5-vue/dist/static/media/tb.bde35ad3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9a218d71.js",
+    "static/js/2.6925cf0b.chunk.js",
+    "static/css/main.d5303122.chunk.css",
+    "static/js/main.0378dc7f.chunk.js"
+  ]
+}

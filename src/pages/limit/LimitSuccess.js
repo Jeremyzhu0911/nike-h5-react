@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import img from "../../assets/images/Image-1.jpg";
 
 const LimitSuccess = (props) => {

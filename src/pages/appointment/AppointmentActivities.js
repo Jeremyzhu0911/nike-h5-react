@@ -60,6 +60,7 @@ const AppointmentActivities = (props) => {
 
             setLoading(false)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
     if (loading) {

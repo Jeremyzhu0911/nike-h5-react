@@ -50,6 +50,7 @@ const AppointmentLuckydraw = (props) => {
                 }
             )
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cancelBooking])
 
     useEffect(() => {
@@ -73,6 +74,7 @@ const AppointmentLuckydraw = (props) => {
                 }
             )
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [resultBtn])
 
     useEffect(() => {

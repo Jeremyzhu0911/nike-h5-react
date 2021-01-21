@@ -18,9 +18,9 @@ const Rotationbigimg = (props) => {
             <div className="carousel">
                 <div className="carousel-box">
                     {
-                        props.data.listAll.map((item, limitAppointment) => {
-                            return <div className="carousel-item" key={limitSuccess}>
-                                <img alt={''} onClick={()=>{setIndexCount({...indexCount, index:limitSuccess})}} src={item.image_path}/>
+                        props.data.listAll.map((item, index) => {
+                            return <div className="carousel-item" key={index}>
+                                <img alt={''} onClick={()=>{setIndexCount({...indexCount, index:index})}} src={item.image_path}/>
                             </div>
                         })
                     }
@@ -29,14 +29,14 @@ const Rotationbigimg = (props) => {
             <div className="index-container">
                 <ul>
                     {
-                        props.data.listAll.map((item, limitAppointment) => {
-                            return <li className={limitSuccess === indexCount.index ? 'selected' : ''} style={{width:100/props.data.listAll.length}} key={limitSuccess}></li>
+                        props.data.listAll.map((item, index) => {
+                            return <li className={index === indexCount.index ? 'selected' : ''} style={{width:100/props.data.listAll.length}} key={index}/>
                         })
                     }
                 </ul>
                 {
-                    props.data.listAll.map((item, limitAppointment) => {
-                        return <span key={limitSuccess}>{indexCount.index+1}/{props.data.listAll.length}</span>
+                    props.data.listAll.map((item, index) => {
+                        return <span key={index}>{indexCount.index+1}/{props.data.listAll.length}</span>
                     })
                 }
             </div>

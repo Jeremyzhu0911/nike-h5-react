@@ -4,7 +4,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 
 import BigImg from "../../components/Rotationbigimg";
-import MinImg from "../../components/rotationminimg";
+import MinImg from "../../components/RotationMinImg";
 
 const CommodityIndex = (props) => {
 

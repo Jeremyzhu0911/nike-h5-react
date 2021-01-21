@@ -1,0 +1,39 @@
+
+.CommodityFashion{
+  width: 100%;
+  overflow: hidden;
+  padding-bottom: rem-calc(100);
+  h2{
+    text-align: center;
+    height: rem-calc(102.8);
+    line-height: rem-calc(102.8);
+    font-size: rem-calc(28.98);
+    color: #6A6A6A;
+    letter-spacing: rem-calc(1.08);
+  }
+  h1{
+    font-size: rem-calc(54.34);
+    font-weight: bold;
+    letter-spacing: rem-calc(1.64);
+    margin: 0 rem-calc(46);
+    padding: rem-calc(30) 0;
+    padding-right: rem-calc(190);
+  }
+  h4{
+    margin: 0 rem-calc(46);
+    letter-spacing: rem-calc(0.92);
+    padding-bottom: rem-calc(30);
+    color: #6A6A6A;
+    font-size: rem-calc(30.8);
+  }
+  .s_btn{
+    margin-left: rem-calc(46);
+    width: rem-calc(202);
+    height: rem-calc(86);
+    font-size: rem-calc(27.18);
+    letter-spacing: rem-calc(1.02);
+    background: #000;
+    color: #fff;
+    border-radius: rem-calc(86);
+  }
+}

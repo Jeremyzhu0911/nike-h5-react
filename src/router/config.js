@@ -10,16 +10,16 @@ import AppointmentIndex from "../pages/appointment/AppointmentIndex";
 import AppointmentActivities from "../pages/appointment/AppointmentActivities";
 import AppointmentDetails from "../pages/appointment/AppointmentDetails";
 import AppointmentLuckydraw from "../pages/appointment/AppointmentLuckydraw";
-import AppointmentAdviser from "../pages/appointment/adviser";
+import AppointmentAdviser from "../pages/appointment/AppointmentAdviser";
 
 import ActivitiesContent from "../pages/activities/ActivitiesContent";
-import ActivitiesDetails from "../pages/activities/details/ActivitiesDetails";
+import ActivitiesDetails from "../pages/activities/ActivitiesDetails";
 
 import CommodityIndex from "../pages/commodity/CommodityIndex";
 import CommodityList from "../pages/commodity/CommodityList";
 import CommodityDetails from "../pages/commodity/CommodityDetails";
-import CommodityAppointment from "../pages/commodity/appointment";
-import Fashion from "../pages/commodity/fashion/fashion";
+import CommodityAppointment from "../pages/commodity/CommodityAppointment";
+import Fashion from "../pages/commodity/CommodityFashion";
 
 import Limit from "../pages/limit/LimitIndex";
 import LimitDetails from "../pages/limit/LimitDetails";

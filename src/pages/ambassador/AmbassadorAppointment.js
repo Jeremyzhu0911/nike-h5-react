@@ -44,6 +44,7 @@ const AmbassadorAppointment = (props) => {
     })
     useEffect(() => {
         setCodeTime(codeTime)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [codeTime])
     const updateCodeTime = (state) => {
         setCodeTime(state)
