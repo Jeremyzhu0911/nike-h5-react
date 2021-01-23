@@ -38,6 +38,12 @@
         line-height: rem-calc(40);
       }
     }
+    &.product{
+      .userimg{
+        border-radius: revert;
+        box-shadow: none;
+      }
+    }
   }
   .txt{
     padding: rem-calc(20) rem-calc(48);

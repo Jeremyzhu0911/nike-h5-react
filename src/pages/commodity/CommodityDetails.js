@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import axios from "axios";
 
 import {getUrlData} from "../../util/getUrlData";
+import Swiper from "swiper";
 
 const CommodityDetails = (props) => {
 
@@ -43,6 +44,16 @@ const CommodityDetails = (props) => {
                     }
                     console.log(resData)
 
+                    new Swiper(".swiper-container", {
+                        slidesPerView: 1,
+                        centeredSlides: true,
+                        spaceBetween: 0,
+                        watchSlidesProgress: true,
+                        pagination: {
+                            el: '.swiper-pagination',
+                        },
+                    });
+
                 },
                 (error) => {
                     console.log(error)
@@ -62,30 +73,33 @@ const CommodityDetails = (props) => {
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
-                    <div className={'nav'}><i
-                        className={'iconfont icon-home'}/></div>
+                    <div className={'nav'}><i onClick={()=>{
+                        props.history.push("/commodity/index?store_id="+getUrlData("store_id"))
+                    }} className={'iconfont icon-home'}/></div>
                 </div>
             </div>
             <div className={'big_title'}>
                 <span>{state.product_name}</span>
                 建议零售价<br/>¥ {state.price}
             </div>
-            <div className={'big_image'}>
-                <ul>
+            <div className={'big_image swiper-container'}>
+                <ul className={"swiper-wrapper"}>
                     {
                         state.product_color[productIndex].color_image.map((item, index) => {
-                            return <li key={index}><img alt={''} src={item.img}/></li>
+                            return <li key={index} className={"swiper-slide"}><img alt={''} src={item.img}/></li>
                         })
                     }
                 </ul>
+                <div className={"swiper-pagination"}></div>
             </div>
             <div className={'small_image'}>
                 <ul>
                     {
                         state.product_color.map((item, index) => {
-                            return <li onClick={() => {
-                                setProductIndex(index)
-                            }} key={index}><img alt={''} src={item.color_image[0].img}/></li>
+                            if(item.color_image[0])
+                                return <li onClick={() => {
+                                    setProductIndex(index)
+                                }} key={index}><img alt={''} src={item.color_image[0].img}/></li>
                         })
                     }
                 </ul>

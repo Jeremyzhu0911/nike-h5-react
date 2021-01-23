@@ -101,8 +101,11 @@ const CommodityList = (props) => {
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
-                    <div className={'nav'}><i className={'iconfont icon-sousuo'}/><i
-                        className={'iconfont icon-home'}/></div>
+                    <div className={'nav'}><i onClick={() => {
+                        setState({...state, isShowOverlay: true, isSearch: true,overlayTxt:'搜索'})
+                    }} className={'iconfont icon-sousuo'}/><i onClick={()=>{
+                        props.history.push("/commodity/index?store_id="+getUrlData("store_id"))
+                    }} className={'iconfont icon-home'}/></div>
                 </div>
             </div>
             <div className={'resultHeader'}>
@@ -135,10 +138,7 @@ const CommodityList = (props) => {
                     {
                         state.isSearch ? <div className={'filterSearch'}>
                             <input type={'txt'} placeholder="关键字搜索"/>
-                        </div> : null
-                    }
-                    {
-                        state.searchList.map((item, index) => {
+                        </div> : state.searchList.map((item, index) => {
                             return <div className={'filterItems'} key={index}>
                                 <h3>{item.name}</h3>
                                 <ul>

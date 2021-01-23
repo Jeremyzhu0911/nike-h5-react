@@ -1,106 +1,304 @@
-import React,{Component} from "react";
-import img from "../../assets/images/sp.jpg";
+import React, {useState, useEffect} from "react";
+import cookie from 'react-cookies';
+import axios from "axios";
+import {getUrlData} from "../../util/getUrlData";
+import DateApi from "../../util/DateApi";
+import GetCode from "../../components/GetCode";
 
-class CommodityAppointment extends Component{
-    constructor () {
-        super(...arguments);
-        this.state = {
-            isEmptyState: true
-        }
+const CommodityAppointment = (props) => {
+
+    const [loading, setLoading] = useState(true);
+
+    const [isPageShow, setIsPageShow] = useState(true);
+
+    const [iconfont,setIconfont] = useState(false)
+
+    const [codeTime, setCodeTime] = useState({
+        timeout: false,
+        postData: {
+            mobile: cookie.load('mobile'),
+            store_id: getUrlData('store_id'),
+        },
+        codeUrl: '/api/v1/ambassador/info/send-code'
+    })
+    useEffect(() => {
+        setCodeTime(codeTime)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [codeTime])
+    const updateCodeTime = (state) => {
+        setCodeTime(state)
     }
-    triggerAddTripState = () => {
-        this.setState({
-            ...this.state,
-            isEmptyState: !this.state.isEmptyState
-        })
-    }
-    goto_page = () => {
-        this.props.history.push({ pathname: '/success', state: { name: 'sunny' } })
-    }
-    render() {
-        return (
-            <div className="CommodityAppointment">
-                {
-                    this.state.isEmptyState ? <div className={'information'}>
-                        <div className={"big_title"}>
-                            填写预约信息
-                            <span>取消</span>
-                        </div>
-                        <div className={'content'}>
-                            <h3>选择颜色</h3>
-                            <p>已选：CT6619-010</p>
-                            <div className={'content_img'}>
-                                <img alt={''} src={img}/>
-                            </div>
-                        </div>
-                        <div className={'footage'}>
-                            <h3>选择尺码</h3>
-                            <ul>
-                                <li>10C</li>
-                                <li>10.5C</li>
-                                <li>10C</li>
-                                <li>10.5C</li>
-                                <li>10C</li>
-                                <li>10.5C</li>
-                            </ul>
-                        </div>
-                        <div className={'choice_time'}>
-                            <h3>选择来店日期</h3>
-                            <select className="opt-datetime">
-                                <option value="2020-12-30">2020-12-30</option>
-                                <option value="2020-12-31">2020-12-31</option>
-                                <option value="2021-01-01">2021-01-01</option>
-                            </select>
-                        </div>
-                        <div className={'btn_box'}>
-                            <div className={'btn'} onClick={this.triggerAddTripState}>
-                                下一步
-                            </div>
-                        </div>
-                    </div> : <div className={'infoForm'}>
-                        <div className={"big_title"}>
-                            完善个人信息
-                            <span onClick={this.triggerAddTripState}>上一步</span>
-                        </div>
-                        <h6>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</h6>
-                        <div className={'addInfo'}>
-                            <ul>
-                                <li>
-                                    <input type={'text'}  placeholder="您的姓名"/>
-                                </li>
-                                <li className={'mobile'}>
-                                    <input type={'tel'}  placeholder="手机号"/>
-                                    <span>获取验证码</span>
-                                </li>
-                                <li>
-                                    <input type={'num'}  placeholder="请输入验证码"/>
-                                </li>
-                            </ul>
-                        </div>
-                        <div className={'gender'}>
-                            <h4>称呼</h4>
-                            <ul>
-                                <li className={'on'}><p>先生</p></li>
-                                <li><p>女士</p></li>
-                            </ul>
-                        </div>
-                        <div className={'tips'}>
-                            <p>同意隐私信息授权条款</p>
-                            <span>按钮</span>
-                        </div>
-                        <div className={'order'}>
-                            <div className="btn" onClick={this.goto_page}>
-                                提交预约申请
-                            </div>
-                        </div>
-                        <div className={'texts'}>预约信息提交后将无法更改，请确认信息内容后进行提交。</div>
-                    </div>
+
+    const [optDateTime] = useState({
+        time: [
+            DateApi.getDate(1, "yyyy-MM-dd"),
+            DateApi.getDate(2, "yyyy-MM-dd"),
+            DateApi.getDate(3, "yyyy-MM-dd")
+        ],
+        isTimeIdx: DateApi.getDate(2, "yyyy-MM-dd")
+    })
+
+    const [postData, setPostData] = useState({
+        product_code: getUrlData("product_code"),
+        user_name: cookie.load("user_name"),
+        mobile: cookie.load("mobile"),
+        gender: 1,
+        store_id: getUrlData("store_id"),
+        code: "",
+        sku: "",    // default
+        size: "",
+        book_type: getUrlData("type"),
+        color_index: "",
+        book_day: DateApi.getDate(1, "yyyy-MM-dd"),
+    })
+
+    const [stateData, setStateData] = useState({
+        product_color: [
+            {
+                size_list: [],
+                product_store_id: '',
+                sku: '',
+                color_image: [
+                    {
+                        img: ''
+                    }
+                ]
+            }
+        ],
+        product_name: '',
+        status: '',
+        product_description: '',
+        product_code: '',
+        price: ''
+    })
+
+    useEffect(() => {
+        if (loading) {
+            let url = "/product/default/view-product?store_id=" + getUrlData("store_id") +
+                "&product_code=" + getUrlData("product_code");
+            const GetData = axios.get(url);
+            GetData.then(
+                (res) => {
+                    let restDate = res.data;
+                    if (Number(restDate.code) === 200) {
+                        console.log(restDate.data)
+                        setPostData({
+                            ...postData,
+                            isLackStock: restDate.data.product_color[0].lack_stock,
+                            sku: restDate.data.product_color[0].sku,
+                            color_index: restDate.data.product_color[0].color_index
+                        })
+                        setStateData(restDate.data)
+                        setLoading(false)
+                    }
+                },
+                (error) => {
+                    console.log(error)
+                    props.history.push('/500');
                 }
+            )
+        }
+    }, [loading])
 
+    if (loading)
+        return <div>正在加载</div>
 
-            </div>
-        )
-    }
+    return (
+        <div className="CommodityAppointment">
+            {
+                isPageShow ? <div className={'information'}>
+                    <div className={"big_title"}>
+                        填写预约信息
+                        <span>取消</span>
+                    </div>
+                    <div className={'content'}>
+                        <h3>选择颜色</h3>
+                        <p>已选：{postData.sku}</p>
+                        <div className={'content_img'}>
+                            {
+                                stateData.product_color.map((item, index) => {
+                                    return <img key={index} onClick={() => {
+                                        setPostData({
+                                            ...postData,
+                                            sku: item.sku
+                                        })
+                                        console.log("sku")
+                                        console.log(item.sku)
+                                    }} alt={''} src={item.color_image[0].img}/>
+                                })
+                            }
+                        </div>
+                    </div>
+                    <div className={'footage'}>
+                        <h3>选择尺码</h3>
+                        <ul>
+                            {
+                                stateData.product_color[0].size_list.map((item, index) => {
+                                    return <li className={item.size === postData.size ? "on" : null} key={index}
+                                               onClick={() => {
+                                                   setPostData({
+                                                       ...postData,
+                                                       size: item.size
+                                                   })
+                                               }}>{item.size}</li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                    <div className={'choice_time'}>
+                        <h3>选择来店日期</h3>
+                        <select className="opt-datetime" defaultValue={postData.book_day} onChange={(event) => {
+                            setPostData({
+                                ...postData,
+                                book_day: event.target.value
+                            })
+                            console.log(event.target.value)
+                        }}>
+                            {
+                                optDateTime.time.map((item, index) => {
+                                    return <option key={index} value={item}>{item}</option>
+                                })
+                            }
+                        </select>
+                    </div>
+                    <div className={'btn_box'}>
+                        <div className={'btn'} onClick={() => {
+                            if (postData.size) {
+                                setIsPageShow(!isPageShow)
+                            } else {
+                                alert("请选择尺码或日期")
+                            }
+                        }}>
+                            下一步
+                        </div>
+                    </div>
+                </div> : <div className={'infoForm'}>
+                    <div className={"big_title"}>
+                        完善个人信息
+                        <span onClick={() => {
+                            setIsPageShow(!isPageShow)
+                        }}>上一步</span>
+                    </div>
+                    <h6>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</h6>
+                    <div className={'addInfo'}>
+                        <ul>
+                            <li>
+                                <input type={'text'} onChange={(event)=>{
+                                    setPostData({
+                                        ...postData,
+                                        user_name:event.target.value
+                                    })
+                                }} placeholder="您的姓名" defaultValue={postData.user_name}/>
+                            </li>
+                            <li className={'mobile'}>
+                                <input type={'tel'} onChange={(event)=>{
+                                    setPostData({
+                                        ...postData,
+                                        mobile:event.target.value
+                                    })
+                                }} placeholder="手机号" defaultValue={postData.mobile}/>
+                                <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
+                            </li>
+                            <li>
+                                <input type={'num'} onChange={(event)=>{
+                                    setPostData({
+                                        ...postData,
+                                        code:event.target.value
+                                    })
+                                }} placeholder="请输入验证码"/>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className={'gender'}>
+                        <h4>称呼</h4>
+                        <ul>
+                            <li onClick={()=>{
+                                setPostData({
+                                    ...postData,
+                                    gender:1
+                                })
+                            }} className={postData.gender === 1?'on':null}><p>先生</p></li>
+                            <li onClick={()=>{
+                                setPostData({
+                                    ...postData,
+                                    gender:2
+                                })
+                            }} className={postData.gender === 2?'on':null}><p>女士</p></li>
+                        </ul>
+                    </div>
+                    <div className={'tips'}>
+                        <p onClick={()=>{
+                            setIconfont(!iconfont)
+                        }} className={iconfont?"iconfont icon-tongyi":"iconfont icon-butongyi"}>我已仔细阅读并同意《<span>隐私信息授权条款</span>》</p>
+                    </div>
+                    <div className={'order'}>
+                        <div className="btn" onClick={() => {
+                            if(postData.code){
+                                if(iconfont){
+                                    axios({
+                                        url: "/product/default/booking",
+                                        method: "post",
+                                        data: postData,
+                                        transformRequest: [
+                                            function (data) {
+                                                let ret = "";
+                                                for (let it in data) {
+                                                    ret +=
+                                                        encodeURIComponent(it) +
+                                                        "=" +
+                                                        encodeURIComponent(data[it]) +
+                                                        "&";
+                                                }
+                                                return ret;
+                                            },
+                                        ],
+                                        headers: {
+                                            "Content-Type": "application/x-www-form-urlencoded",
+                                        },
+                                    }).then(
+                                        (res)=>{
+                                            let resData = res.data;
+                                            if (Number(resData.code) === 200) {
+                                                // /success?type=2&booking_id=177&status=0&is_subscribe=0
+                                                let url;
+                                                if(getUrlData("jordan")){
+                                                    url="/commodity/success?type=" +
+                                                        (Number(postData.book_type) + 1) +
+                                                        "&booking_id=" +
+                                                        resData.data.booking_id +
+                                                        "&is_subscribe=" +
+                                                        resData.data.is_subscribe +
+                                                        "&status=0" +
+                                                        "&jordan=1";
+                                                }else{
+                                                    url="/commodity/success?type=" +
+                                                        (Number(postData.book_type) + 1) +
+                                                        "&booking_id=" +
+                                                        resData.data.booking_id +
+                                                        "&is_subscribe=" +
+                                                        resData.data.is_subscribe +
+                                                        "&status=0";
+                                                }
+                                                props.history.push(url)
+                                            }
+                                        }
+                                    )
+                                }else{
+                                    alert("请阅读并同意本店服务与保密协议")
+                                }
+                            }else{
+                                alert("请输入验证码")
+                            }
+
+                        }}>
+                            提交预约申请
+                        </div>
+                    </div>
+                    <div className={'texts'}>预约信息提交后将无法更改，请确认信息内容后进行提交。</div>
+                </div>
+            }
+        </div>
+    )
 }
 
 export default CommodityAppointment;

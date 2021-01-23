@@ -19,6 +19,7 @@
       float: left;
       width: rem-calc(450);
       font-size: rem-calc(42);
+      line-height: rem-calc(50);
       color: #000;
       font-weight: bold;
       letter-spacing: rem-calc(1.08);
@@ -32,6 +33,7 @@
     font-size: 0;
     overflow-y: hidden;
     overflow-x: scroll;
+    width: 100%;
 
     ul {
       display: inline-table;
@@ -107,6 +109,28 @@
         color: #fff;
         background: #000;
         margin: 0 rem-calc(10);
+      }
+    }
+  }
+  .swiper-container{
+    position: relative;
+    .swiper-pagination{
+      position: absolute;
+      bottom: rem-calc(50);
+      width: rem-calc(750);
+      left: 0;
+      text-align: center;
+      z-index: 99;
+      .swiper-pagination-bullet{
+        display: inline-block;
+        width: rem-calc(15);
+        height: rem-calc(15);
+        border-radius: rem-calc(15);
+        background: #9e9e9e;
+        margin: 0 rem-calc(5);
+        &.swiper-pagination-bullet-active{
+          background: #fff;
+        }
       }
     }
   }

@@ -19,6 +19,7 @@ import CommodityIndex from "../pages/commodity/CommodityIndex";
 import CommodityList from "../pages/commodity/CommodityList";
 import CommodityDetails from "../pages/commodity/CommodityDetails";
 import CommodityAppointment from "../pages/commodity/CommodityAppointment";
+import CommoditySuccess from "../pages/commodity/CommoditySuccess";
 import Fashion from "../pages/commodity/CommodityFashion";
 
 import Limit from "../pages/limit/LimitIndex";
@@ -128,6 +129,11 @@ const routes = [
         path: '/commodity/appointment',
         component: CommodityAppointment,
         title: '最新上市' // 最新上市 预留产品 预约试穿 切换状态上一步
+    },
+    {
+        path: '/commodity/success',
+        component:CommoditySuccess,
+        title: '预约成功'
     },
     {
         path: '/commodity/limit',  // 参数 store_id

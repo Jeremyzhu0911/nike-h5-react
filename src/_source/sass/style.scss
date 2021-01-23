@@ -49,6 +49,18 @@ body{
 	height: 100vh;
 }
 
+.tips{
+	padding-top: rem-calc(20);
+	width: rem-calc(654);
+	margin: 0 auto;
+	font-size: rem-calc(28);
+	p{
+		span{
+			text-decoration: underline;
+		}
+	}
+}
+
 .pop_up{
 	position: fixed;
 	width: 100%;
@@ -127,6 +139,8 @@ body{
 @import "CommodityIndex";
 @import "CommodityList";
 @import "CommodityDetails";
+@import "CommodityAppointment";
+@import "CommodityFashion";
 
 @import "LimitList";
 @import "LimitDetails";
