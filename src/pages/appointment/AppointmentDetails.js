@@ -9,6 +9,9 @@ const AppointmentDetails = (props) => {
 
     const [loading, setLoading] = useState(true);
 
+    const [showCancel, setShowCancel] = useState(false)
+    const [cancelBooking, setCancelBooking] = useState(false)
+
     const [appointmentDetailsData, setAppointmentDetailsData] = useState({
         // 共有
         book_type: '',   //  0 试穿 1 预留
@@ -48,6 +51,45 @@ const AppointmentDetails = (props) => {
     const updateShowHide = (state) => {
         setShowHide(state)
     }
+
+    useEffect(() => {
+        if (cancelBooking) {
+            let getUrl;
+            let typeTxt;
+            switch (getUrlData('type')) {
+                case 'luckydraw':   //  抽签
+                    getUrl = '/luckydraw/default/cancel-booking?id=';
+                    break;
+                case 'ambassador':  //  专属顾问
+                    getUrl = '/ambassador/site/cancel-booking?id=';
+                    typeTxt = "我的专属顾问预约";
+                    break;
+                case 'event':   //  活动
+                    getUrl = '/event/default/cancel-booking?id=';
+                    typeTxt = "我的活动预约";
+                    break;
+                default:    //  预约试穿    预留产品
+                    getUrl = '/product/default/cancel-booking?booking_id=';
+                    typeTxt = getUrlData('type') === "product_try" ? "我的预约试穿" : "我的预留产品";
+            }
+            axios.get(getUrl + getUrlData('booking_id')).then(
+                (res) => {
+                    let resData = res.data;
+                    if (Number(resData.code) === 200) {
+                        alert(typeTxt+"已取消")
+                        setLoading(true)
+                        setShowCancel(false)
+                        setCancelBooking(false)
+                    }
+                },
+                (err) => {
+                    console.log(err)
+                    props.history.push('/500');
+                }
+            )
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [cancelBooking])
 
     useEffect(() => {
         if (loading) {
@@ -212,13 +254,33 @@ const AppointmentDetails = (props) => {
                             展示二维码
                         </div> : null
                 }
-                <div className="btn2">
-                    取消预约
-                </div>
+                {
+                    appointmentDetailsData.status === 0 || appointmentDetailsData.status === 1 || appointmentDetailsData.status === 4 ?
+                        <div className="btn2" onClick={() => {
+                            setShowCancel(!showCancel)
+                        }}>
+                            取消预约
+                        </div> : null
+                }
             </div>
             {
                 showHide ? <QrPop {...props} updateShowHide={updateShowHide}
-                                      data={appointmentDetailsData}/> : null
+                                  data={appointmentDetailsData}/> : null
+            }
+            {
+                showCancel ?
+                    <div className={'confirm_again'}>
+                        <h4>是否继续本次操作</h4>
+                        <p>取消后不可撤回，如需恢复预约，请重新提交预约申请，是否继续本次操作</p>
+                        <div className={'btn_box'}>
+                            <span onClick={() => {
+                                setCancelBooking(showCancel)
+                            }}>继续</span>
+                            <span onClick={() => {
+                                setShowCancel(!showCancel)
+                            }}>我再想想</span>
+                        </div>
+                    </div> : null
             }
         </div>
     )

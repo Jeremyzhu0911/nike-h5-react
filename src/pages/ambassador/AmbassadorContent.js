@@ -1,14 +1,15 @@
- import React, {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import cookie from 'react-cookies';
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
+import Swiper from "swiper";
 
 
 const AmbassadorContent = (props) => {
 
     const [loading, setLoading] = useState(true);
 
-    const [AmbassadorContentData, setAmbassadorContentData] = useState({
+    const [stateData, setStateData] = useState({
         store: {
             store_name: ''
         },
@@ -36,9 +37,25 @@ const AmbassadorContent = (props) => {
 
                             cookie.save('store_name', resData.data.store.store_name)
 
-                            setAmbassadorContentData(resData.data)
+                            setStateData(resData.data)
 
                             setLoading(false)
+
+                            new Swiper(".swiper-container", {
+                                slidesPerView: (750 / 654) * 4,
+                                slidesPerGroup: 1,
+                                spaceBetween: 5,
+                                on: {
+                                    slideChange: function () {
+                                        console.log(this.realIndex)
+                                        console.log(this.$el.find(".swiper-slide").length)
+                                        if(this.realIndex + 1 === 1)
+                                            this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
+                                        else if(Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length)
+                                            this.$el.find(".swiper-slide").eq(0).addClass("right_one");
+                                    }
+                                }
+                            });
                         }
                     }, (error) => {
                         console.log(error)
@@ -58,16 +75,17 @@ const AmbassadorContent = (props) => {
     return (
         <div className="AmbassadorContent">
             <h2>{cookie.load('store_name')}</h2>
-            <div className={'list'}>
+            <div className={'list swiper-container'}>
                 <ul className={
-                    AmbassadorContentData.am_list.length === 2 ? "ul_align1" :
-                        AmbassadorContentData.am_list.length === 3 ? "ul_align2" : "ul_align3"
+                    stateData.am_list.length === 2 ? "ul_align1 swiper-wrapper" :
+                        stateData.am_list.length === 3 ? "ul_align2 swiper-wrapper" : "ul_align3 swiper-wrapper"
                 }>
                     {
-                        AmbassadorContentData.am_list.map((item, index) => {
-                            return <li key={index} className={index === tabIndex ? 'on': null} onClick={()=>{
-                                setTabIndex(index)
-                            }}>
+                        stateData.am_list.map((item, index) => {
+                            return <li key={index} className={index === 0 ? 'swiper-slide left_one':'swiper-slide'}
+                                       onClick={() => {
+                                           setTabIndex(index)
+                                       }}>
                                 <div className={'images'}>
                                     <img alt={''} src={item.imgUrl}/>
                                 </div>
@@ -80,11 +98,11 @@ const AmbassadorContent = (props) => {
             </div>
             <div className={'synopsis'}>
                 <div className={'images'}>
-                    <img alt={''} src={AmbassadorContentData.am_list[tabIndex].imgUrl}/>
+                    <img alt={''} src={stateData.am_list[tabIndex].imgUrl}/>
                 </div>
-                <h4>{AmbassadorContentData.am_list[tabIndex].cnName}</h4>
-                <p>标签 <span onClick={()=>{
-                    props.history.push("/details-ambassador" + props.location.search +"&ambassador_id=" + AmbassadorContentData.am_list[tabIndex].id)
+                <h4>{stateData.am_list[tabIndex].cnName}</h4>
+                <p>标签 <span onClick={() => {
+                    props.history.push("/details-ambassador" + props.location.search + "&ambassador_id=" + stateData.am_list[tabIndex].id)
                 }}>了解详情</span></p>
             </div>
         </div>

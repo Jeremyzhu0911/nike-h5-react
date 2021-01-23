@@ -103,11 +103,17 @@
         margin: 0 auto;
 
         li {
-          &:first-child {
+          //&:first-child {
+          //  margin-left: rem-calc(32);
+          //}
+          //
+          //margin-right: rem-calc(32);
+          &.left_one{
             margin-left: rem-calc(32);
           }
-
-          margin-right: rem-calc(32);
+          &.right_one{
+            margin-left: rem-calc(-64);
+          }
         }
       }
     }

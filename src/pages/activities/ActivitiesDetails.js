@@ -36,6 +36,9 @@ const ActivitiesDetails = (props) => {
                         })
                         setLoading(false)
                     }
+                    if(Number(resData.code) === 206){
+                        props.history.push('/Off?type=activities');
+                    }
                 },
                 (error) => {
                     console.log(error)

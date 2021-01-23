@@ -96,9 +96,11 @@ const CommodityFashion = (props) => {
                             </div>
 
                         </div>
-                        <input type="submit" value="查看穿搭" onClick={()=>{
-                            window.location.href = stateList.link
-                        }} className="s_btn"/>
+                        {
+                            stateList.link ? <input type="submit" value="查看穿搭" onClick={()=>{
+                                window.location.href = stateList.link
+                            }} className="s_btn"/> : null
+                        }
                     </div>
                 })
             }

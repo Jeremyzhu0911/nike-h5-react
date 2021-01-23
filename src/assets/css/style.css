@@ -227,6 +227,28 @@ body {
   text-decoration: underline;
 }
 
+.confirm_again {
+  position: fixed;
+  bottom: 0;
+  padding: 1.70667rem;
+  font-size: 1.35111rem;
+  border-top: 1px solid #dedede;
+}
+.confirm_again p {
+  font-size: 0.99556rem;
+  padding: 0.85333rem 0;
+}
+.confirm_again .btn_box {
+  text-align: center;
+}
+.confirm_again .btn_box span {
+  display: inline-block;
+  width: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  margin: 0 2.25778rem;
+}
+
 .pop_up {
   position: fixed;
   width: 100%;
@@ -657,11 +679,11 @@ body {
   display: inline-table;
   margin: 0 auto;
 }
-.AmbassadorContent .list ul.ul_align3 li {
-  margin-right: 1.13778rem;
-}
-.AmbassadorContent .list ul.ul_align3 li:first-child {
+.AmbassadorContent .list ul.ul_align3 li.left_one {
   margin-left: 1.13778rem;
+}
+.AmbassadorContent .list ul.ul_align3 li.right_one {
+  margin-left: -2.27556rem;
 }
 .AmbassadorContent .synopsis {
   width: 23.25333rem;
@@ -1382,27 +1404,6 @@ body {
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
-}
-.AppointmentLuckydraw .confirm_again {
-  position: fixed;
-  bottom: 0;
-  padding: 1.70667rem;
-  font-size: 1.35111rem;
-  border-top: 1px solid #dedede;
-}
-.AppointmentLuckydraw .confirm_again p {
-  font-size: 0.99556rem;
-  padding: 0.85333rem 0;
-}
-.AppointmentLuckydraw .confirm_again .btn_box {
-  text-align: center;
-}
-.AppointmentLuckydraw .confirm_again .btn_box span {
-  display: inline-block;
-  width: 7.11111rem;
-  text-align: center;
-  font-size: 1.13778rem;
-  margin: 0 2.25778rem;
 }
 
 .AppointmentActivities {
