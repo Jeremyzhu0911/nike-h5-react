@@ -41,21 +41,23 @@ const AmbassadorContent = (props) => {
 
                             setLoading(false)
 
-                            new Swiper(".swiper-container", {
-                                slidesPerView: (750 / 654) * 4,
-                                slidesPerGroup: 1,
-                                spaceBetween: 5,
-                                on: {
-                                    slideChange: function () {
-                                        console.log(this.realIndex)
-                                        console.log(this.$el.find(".swiper-slide").length)
-                                        if(this.realIndex + 1 === 1)
-                                            this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                        else if(Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length)
-                                            this.$el.find(".swiper-slide").eq(0).addClass("right_one");
+                            if (resData.data.am_list.length < 4) {
+                                new Swiper(".swiper-container", {
+                                    slidesPerView: (750 / 654) * 4,
+                                    slidesPerGroup: 1,
+                                    spaceBetween: 5,
+                                    on: {
+                                        slideChange: function () {
+                                            console.log(this.realIndex)
+                                            console.log(this.$el.find(".swiper-slide").length)
+                                            if (this.realIndex + 1 === 1)
+                                                this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
+                                            else if (Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length)
+                                                this.$el.find(".swiper-slide").eq(0).addClass("right_one");
+                                        }
                                     }
-                                }
-                            });
+                                });
+                            }
                         }
                     }, (error) => {
                         console.log(error)
@@ -82,7 +84,7 @@ const AmbassadorContent = (props) => {
                 }>
                     {
                         stateData.am_list.map((item, index) => {
-                            return <li key={index} className={index === 0 ? 'swiper-slide left_one':'swiper-slide'}
+                            return <li key={index} className={index === 0 ? 'swiper-slide left_one' : 'swiper-slide'}
                                        onClick={() => {
                                            setTabIndex(index)
                                        }}>
