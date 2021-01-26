@@ -2,7 +2,6 @@
 $reset:true; // 是否开启样式重置,默认false
 $rem-base: 750px;
 $Response:true;
-$styleColor: #da363c;
 
 @import "compass/reset","compass/layout","mobile-mixin";
 
@@ -141,6 +140,12 @@ body{
 		}
 	}
 }
+.jordan{
+	color: #fff;
+	h2,p,span{
+		color: #fff !important;
+	}
+}
 
 @import "components/RotationBigImg";
 @import "components/FollowPop";
@@ -173,4 +178,6 @@ body{
 @import "LimitSuccess";
 
 @import "Historical";
+
+
 

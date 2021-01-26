@@ -3,7 +3,6 @@
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  padding-bottom: rem-calc(100);
   .resultHeader{
     padding: rem-calc(40) rem-calc(48);
     h2{
@@ -28,10 +27,11 @@
   }
   .list{
     width: rem-calc(750);
+    display: inline-table;
     li{
       float: left;
       width: rem-calc(370);
-      border:rem-calc(2) solid #fff;
+      border:rem-calc(2) solid transparent;
       padding-bottom: rem-calc(40);
       .CommodityListImages{
         img{
@@ -120,6 +120,31 @@
         font-size: rem-calc(24);
         width: rem-calc(654);
         margin: 0 auto;
+      }
+    }
+  }
+  &.jordan{
+    .list{
+      background: #fff;
+    }
+    .resultHeader{
+      i{
+        color: red;
+      }
+    }
+    .btn_search{
+      border: 1px solid #fff;
+      color: #fff;
+    }
+    h5{
+      color: #000 !important;
+    }
+    p{
+      color: #a9a9a9 !important;
+    }
+    .overlay{
+      h2,span,li{
+        color: #000 !important;
       }
     }
   }

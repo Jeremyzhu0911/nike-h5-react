@@ -3,7 +3,7 @@
   overflow: hidden;
   .carousel,.swiper-container{
     width: 100%;
-    overflow-y: hidden;
+    overflow: hidden;
     .carousel-box,.swiper-wrapper{
       display: inline-table;
       white-space:nowrap;
@@ -67,7 +67,7 @@
       }
     }
     .swiper-num{
-      font-size: rem-calc(16.3);
+      font-size: rem-calc(24);
       height: rem-calc(104.64);
       line-height: rem-calc(104.64);
       position: absolute;

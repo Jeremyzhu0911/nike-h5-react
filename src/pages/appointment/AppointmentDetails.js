@@ -76,7 +76,7 @@ const AppointmentDetails = (props) => {
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        alert(typeTxt+"已取消")
+                        alert(typeTxt + "已取消")
                         setLoading(true)
                         setShowCancel(false)
                         setCancelBooking(false)
@@ -136,7 +136,7 @@ const AppointmentDetails = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AppointmentDetails">
+        <div className={getUrlData('jordan') ? "AppointmentDetails jordan" : "AppointmentDetails"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}

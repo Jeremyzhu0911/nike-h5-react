@@ -31,8 +31,7 @@
     border-top: rem-calc(48) solid transparent;
     border-bottom: rem-calc(24) solid transparent;
     font-size: 0;
-    overflow-y: hidden;
-    overflow-x: scroll;
+    overflow: hidden;
     width: 100%;
 
     ul {
@@ -131,6 +130,17 @@
         &.swiper-pagination-bullet-active{
           background: #fff;
         }
+      }
+    }
+  }
+  &.jordan{
+    .big_title{
+      color: #fff;
+    }
+    .btn_box{
+      background: #000;
+      li{
+        background: #b7052d;
       }
     }
   }

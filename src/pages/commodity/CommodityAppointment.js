@@ -11,7 +11,7 @@ const CommodityAppointment = (props) => {
 
     const [isPageShow, setIsPageShow] = useState(true);
 
-    const [iconfont,setIconfont] = useState(false)
+    const [iconfont, setIconfont] = useState(false)
 
     const [codeTime, setCodeTime] = useState({
         timeout: false,
@@ -104,7 +104,7 @@ const CommodityAppointment = (props) => {
         return <div>正在加载</div>
 
     return (
-        <div className="CommodityAppointment">
+        <div className={getUrlData("jordan") ? "CommodityAppointment jordan" : "CommodityAppointment"}>
             {
                 isPageShow ? <div className={'information'}>
                     <div className={"big_title"}>
@@ -183,27 +183,27 @@ const CommodityAppointment = (props) => {
                     <div className={'addInfo'}>
                         <ul>
                             <li>
-                                <input type={'text'} onChange={(event)=>{
+                                <input type={'text'} onChange={(event) => {
                                     setPostData({
                                         ...postData,
-                                        user_name:event.target.value
+                                        user_name: event.target.value
                                     })
                                 }} placeholder="您的姓名" defaultValue={postData.user_name}/>
                             </li>
                             <li className={'mobile'}>
-                                <input type={'tel'} onChange={(event)=>{
+                                <input type={'tel'} onChange={(event) => {
                                     setPostData({
                                         ...postData,
-                                        mobile:event.target.value
+                                        mobile: event.target.value
                                     })
                                 }} placeholder="手机号" defaultValue={postData.mobile}/>
                                 <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                             </li>
                             <li>
-                                <input type={'num'} onChange={(event)=>{
+                                <input type={'num'} onChange={(event) => {
                                     setPostData({
                                         ...postData,
-                                        code:event.target.value
+                                        code: event.target.value
                                     })
                                 }} placeholder="请输入验证码"/>
                             </li>
@@ -212,29 +212,31 @@ const CommodityAppointment = (props) => {
                     <div className={'gender'}>
                         <h4>称呼</h4>
                         <ul>
-                            <li onClick={()=>{
+                            <li onClick={() => {
                                 setPostData({
                                     ...postData,
-                                    gender:1
+                                    gender: 1
                                 })
-                            }} className={postData.gender === 1?'on':null}><p>先生</p></li>
-                            <li onClick={()=>{
+                            }} className={postData.gender === 1 ? 'on' : null}><p>先生</p></li>
+                            <li onClick={() => {
                                 setPostData({
                                     ...postData,
-                                    gender:2
+                                    gender: 2
                                 })
-                            }} className={postData.gender === 2?'on':null}><p>女士</p></li>
+                            }} className={postData.gender === 2 ? 'on' : null}><p>女士</p></li>
                         </ul>
                     </div>
                     <div className={'tips'}>
-                        <p onClick={()=>{
+                        <p onClick={() => {
                             setIconfont(!iconfont)
-                        }} className={iconfont?"iconfont icon-tongyi":"iconfont icon-butongyi"}>我已仔细阅读并同意《<span>隐私信息授权条款</span>》</p>
+                        }}
+                           className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<span>隐私信息授权条款</span>》
+                        </p>
                     </div>
                     <div className={'order'}>
                         <div className="btn" onClick={() => {
-                            if(postData.code){
-                                if(iconfont){
+                            if (postData.code) {
+                                if (iconfont) {
                                     axios({
                                         url: "/product/default/booking",
                                         method: "post",
@@ -256,13 +258,13 @@ const CommodityAppointment = (props) => {
                                             "Content-Type": "application/x-www-form-urlencoded",
                                         },
                                     }).then(
-                                        (res)=>{
+                                        (res) => {
                                             let resData = res.data;
                                             if (Number(resData.code) === 200) {
                                                 // /success?type=2&booking_id=177&status=0&is_subscribe=0
                                                 let url;
-                                                if(getUrlData("jordan")){
-                                                    url="/commodity/success?type=" +
+                                                if (getUrlData("jordan")) {
+                                                    url = "/commodity/success?type=" +
                                                         (Number(postData.book_type) + 1) +
                                                         "&booking_id=" +
                                                         resData.data.booking_id +
@@ -270,8 +272,8 @@ const CommodityAppointment = (props) => {
                                                         resData.data.is_subscribe +
                                                         "&status=0" +
                                                         "&jordan=1";
-                                                }else{
-                                                    url="/commodity/success?type=" +
+                                                } else {
+                                                    url = "/commodity/success?type=" +
                                                         (Number(postData.book_type) + 1) +
                                                         "&booking_id=" +
                                                         resData.data.booking_id +
@@ -283,10 +285,10 @@ const CommodityAppointment = (props) => {
                                             }
                                         }
                                     )
-                                }else{
+                                } else {
                                     alert("请阅读并同意本店服务与保密协议")
                                 }
-                            }else{
+                            } else {
                                 alert("请输入验证码")
                             }
 

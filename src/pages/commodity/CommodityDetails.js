@@ -69,12 +69,12 @@ const CommodityDetails = (props) => {
     }
 
     return (
-        <div className="CommodityDetails">
+        <div className={getUrlData("jordan") ? "CommodityDetails jordan" : "CommodityDetails"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
-                    <div className={'nav'}><i onClick={()=>{
-                        props.history.push("/commodity/index?store_id="+getUrlData("store_id"))
+                    <div className={'nav'}><i onClick={() => {
+                        props.history.push("/commodity/index?store_id=" + getUrlData("store_id"))
                     }} className={'iconfont icon-home'}/></div>
                 </div>
             </div>
@@ -96,7 +96,7 @@ const CommodityDetails = (props) => {
                 <ul>
                     {
                         state.product_color.map((item, index) => {
-                            if(item.color_image[0])
+                            if (item.color_image[0])
                                 return <li onClick={() => {
                                     setProductIndex(index)
                                 }} key={index}><img alt={''} src={item.color_image[0].img}/></li>

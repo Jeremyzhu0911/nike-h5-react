@@ -41,7 +41,7 @@ const AmbassadorContent = (props) => {
 
                             setLoading(false)
 
-                            if (resData.data.am_list.length < 4) {
+                            if (resData.data.am_list.length > 4) {
                                 new Swiper(".swiper-container", {
                                     slidesPerView: (750 / 654) * 4,
                                     slidesPerGroup: 1,

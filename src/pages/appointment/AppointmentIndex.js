@@ -8,7 +8,7 @@ const AppointmentIndex = (props) => {
     const [loading, setLoading] = useState(true);
 
     const [typeList] = useState([
-        {'id': 0, 'name': '全部', type: ["ALL"]},
+        {'id': 0, 'name': '全部', type: ["luckydraw", "product_try", "product_buy", "ambassador", "event"]},
         {'id': 1, 'name': '抽鞋/抽号', type: ["luckydraw"]},
         {'id': 2, 'name': '产品', type: ["product_try", "product_buy"]},
         {'id': 3, 'name': '顾问', type: ["ambassador"]},
@@ -19,7 +19,9 @@ const AppointmentIndex = (props) => {
     const [navList, setNavList] = useState([])
     const [navListBtn, setNavListBtn] = useState(0)
 
-    const [appointmentIndexData, setAppointmentIndexData] = useState({
+    const [bookingList, setBookingList] = useState({})
+
+    const [stateData, setStateData] = useState({
         booking_list: {
             id: '',  //  id
             title: '',   //  名称
@@ -41,33 +43,33 @@ const AppointmentIndex = (props) => {
         switch (typeListBtn) {
             case 0:
                 setNavList([
-                    {id: 0, list: '全部', status: ["-2", "-1", "0", "1", "2", "3", "4"]},
-                    {id: 1, list: '待处理', status: ["0"]},
-                    {id: 2, list: '已接受', status: ["1", "4"]},
-                    {id: 3, list: '已拒绝', status: ["-1"]},
-                    {id: 4, list: '已结束', status: ["-2", "2", "3"]},
-                    {id: 5, list: '未公布', status: ["0"]},
-                    {id: 6, list: '未中选', status: ["1"]},
-                    {id: 7, list: '已中选', status: ["2", "4"]},
-                    {id: 8, list: '已取消', status: ["-1"]},
+                    {idx: 0, id: 0, list: '全部', status: [0, 1, 2, 3, 4, 5, 6, 7, 8]},
+                    {idx: 1, id: 1, list: '待处理', status: [1]},
+                    {idx: 2, id: 2, list: '已接受', status: [2]},
+                    {idx: 3, id: 3, list: '已拒绝', status: [3]},
+                    {idx: 4, id: 4, list: '已结束', status: [4]},
+                    {idx: 5, id: 5, list: '未公布', status: [5]},
+                    {idx: 6, id: 6, list: '未中选', status: [6]},
+                    {idx: 7, id: 7, list: '已中选', status: [7]},
+                    {idx: 8, id: 8, list: '已取消', status: [8]},
                 ]);
                 break;
             case 1:
                 setNavList([
-                    {id: 0, list: '全部', status: ["-1", "0", "1", "2", "4"]},
-                    {id: 1, list: '未公布', status: ["0"]},
-                    {id: 2, list: '未中选', status: ["1"]},
-                    {id: 3, list: '已中选', status: ["2", "4"]},
-                    {id: 4, list: '已取消', status: ["-1"]},
+                    {idx: 0, id: 0, list: '全部', status: [0, 5, 6, 7, 8]},
+                    {idx: 1, id: 5, list: '未公布', status: [5]},
+                    {idx: 2, id: 6, list: '未中选', status: [6]},
+                    {idx: 3, id: 7, list: '已中选', status: [7]},
+                    {idx: 4, id: 8, list: '已取消', status: [8]},
                 ]);
                 break;
             default:
                 setNavList([
-                    {id: 0, list: '全部', status: ["-2", "-1", "0", "1", "2", "3", "4"]},
-                    {id: 1, list: '待处理', status: ["0"]},
-                    {id: 2, list: '已接受', status: ["1", "4"]},
-                    {id: 3, list: '已拒绝', status: ["-1"]},
-                    {id: 4, list: '已结束', status: ["-2", "2", "3"]},
+                    {idx: 0, id: 0, list: '全部', status: [0, 1, 2, 3, 4]},
+                    {idx: 1, id: 1, list: '待处理', status: [1]},
+                    {idx: 2, id: 2, list: '已接受', status: [2]},
+                    {idx: 3, id: 3, list: '已拒绝', status: [3]},
+                    {idx: 4, id: 4, list: '已结束', status: [4]},
                 ]);
         }
     }, [typeListBtn])
@@ -82,7 +84,47 @@ const AppointmentIndex = (props) => {
                         console.log(resData)
                         cookie.save('store_name', resData.data.store_info.store_name)
 
-                        setAppointmentIndexData(resData.data)
+                        resData.data.booking_list.forEach((item, index) => {
+                            if (item.type === "luckydraw") {
+                                resData.data.booking_list[index].link = "/commodity/detailsLuckydraw" + props.location.search + "&booking_id=" + item.id;
+                                switch (item.status) {
+                                    case "-1":
+                                        resData.data.booking_list[index].statusId = 8;
+                                        break;
+                                    case "0":
+                                        resData.data.booking_list[index].statusId = 5;
+                                        break;
+                                    case "1":
+                                        resData.data.booking_list[index].statusId = 6;
+                                        break;
+                                    default:
+                                        resData.data.booking_list[index].statusId = 7;
+                                        break;
+                                }
+                            } else {
+                                resData.data.booking_list[index].link = "/appointment/details" + props.location.search + "&booking_id=" + item.id + "&type=" + item.type;
+                                switch (item.status) {
+                                    case "-1":
+                                        resData.data.booking_list[index].statusId = 3;
+                                        break;
+                                    case "0":
+                                        resData.data.booking_list[index].statusId = 1;
+                                        break;
+                                    case "1":
+                                        resData.data.booking_list[index].statusId = 2;
+                                        break;
+                                    case "4":
+                                        resData.data.booking_list[index].statusId = 2;
+                                        break;
+                                    default:
+                                        resData.data.booking_list[index].statusId = 4;
+                                        break;
+                                }
+                            }
+                        })
+                        console.log(resData)
+
+                        setStateData(resData.data)
 
                         setLoading(false)
                     }
@@ -125,208 +167,57 @@ const AppointmentIndex = (props) => {
                         navList.map((item, index) => {
                             return <li key={index} onClick={() => {
                                 setNavListBtn(index)
-                            }} className={item.id === navListBtn ? 'on' : ''}>{item.list}</li>
+                            }} className={item.idx === navListBtn ? 'on' : ''}>{item.list}</li>
                         })
                     }
                 </ul>
             </div>
             <div className={'appointment_content'}>
                 {
-                    appointmentIndexData.booking_list.map((item, index) => {
-                        if (typeListBtn === 0) {
-                            if (item.type !== "luckydraw") {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={
-                                        item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
-                                            "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/appointment/details" + props.location.search + "&booking_id=" + item.id + "&type=" + item.type)
-                                    }}>
-                                        <p className={'appointment_list_type'}>{
-                                            item.type === 'product_try' ?
-                                                "预约试穿" : item.type === 'product_buy' ?
-                                                "预留产品" : item.type === 'event' ?
-                                                    "活动预约" : item.type === 'ambassador' &&
-                                                    "专属顾问预约"
-                                        }</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>
-                                            {item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-2' ?
-                                            "已结束" : item.status === '-1' ?
-                                            "已拒绝" : item.status === '0' ?
-                                                "待处理" : item.status === '1' ?
-                                                    "已接受" : item.status === '2' ?
-                                                        "已结束" : item.status === '3' ?
-                                                            "已结束" : item.status === '4' ?
-                                                                "已接受" : null
-                                    }
-                                    </span>
-                                        </p>
-                                    </div>
-                            } else {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={item.status === '-1' ?
+                    stateData.booking_list.map((item, index) => {
+                        if (typeList[typeListBtn].type.some(some => {
+                            return some === item.type
+                        })) {
+                            if (navList[navListBtn].status.some(some => {
+                                return some === item.statusId
+                            }))
+                                return <div className={
+                                    item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
                                         "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/commodity/detailsLuckydraw" + props.location.search + "&booking_id=" + item.id)
-                                    }}>
-                                        <p className={'appointment_list_type'}>{
-                                            item.luckydraw_type === 0 ?
-                                                "抽号活动" : "抽鞋活动"
-                                        }</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>{item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-1' ?
-                                            "已取消" : item.status === '0' ?
-                                            "未公布" : item.status === '1' ?
-                                                "未中选" : item.status === '2' ?
-                                                    "已中选" : item.status === '4' ?
-                                                        "已中选" : null
-                                    }
-                                </span>
-                                        </p>
-                                    </div>
-                            }
-                        } else if (typeListBtn === 1) {
-                            if (item.type === "luckydraw") {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={item.status === '-1' ?
-                                        "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/commodity/detailsLuckydraw" + props.location.search + "&booking_id=" + item.id)
-                                    }}>
-                                        <p className={'appointment_list_type'}>{
-                                            item.luckydraw_type === 0 ?
-                                                "抽号活动" : "抽鞋活动"
-                                        }</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>{item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-1' ?
-                                            "已取消" : item.status === '0' ?
-                                            "未公布" : item.status === '1' ?
-                                                "未中选" : item.status === '2' ?
-                                                    "已中选" : item.status === '4' ?
-                                                        "已中选" : null
-                                    }
-                                </span>
-                                        </p>
-                                    </div>
-                            }
-                        } else if (typeListBtn === 2) {
-                            if (item.type === "product_try" || item.type === "product_buy") {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={
-                                        item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
-                                            "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/appointment/details" + props.location.search + "&booking_id=" + item.id + "&type=" + item.type)
-                                    }}>
-                                        <p className={'appointment_list_type'}>{
-                                            item.type === 'product_try' ?
-                                                "预约试穿" : item.type === 'product_buy' ?
-                                                "预留产品" : null
-                                        }</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>
-                                            {item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-2' ?
-                                            "已结束" : item.status === '-1' ?
-                                            "已拒绝" : item.status === '0' ?
-                                                "待处理" : item.status === '1' ?
-                                                    "已接受" : item.status === '2' ?
-                                                        "已结束" : item.status === '3' ?
-                                                            "已结束" : item.status === '4' ?
-                                                                "已接受" : null
-                                    }
-                                    </span>
-                                        </p>
-                                    </div>
-                            }
-
-                        } else if (typeListBtn === 3) {
-                            if (item.type === "ambassador") {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={
-                                        item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
-                                            "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/appointment/details" + props.location.search + "&booking_id=" + item.id + "&type=" + item.type)
-                                    }}>
-                                        <p className={'appointment_list_type'}>专属顾问预约</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>
-                                            {item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-2' ?
-                                            "已结束" : item.status === '-1' ?
-                                            "已拒绝" : item.status === '0' ?
-                                                "待处理" : item.status === '1' ?
-                                                    "已接受" : item.status === '2' ?
-                                                        "已结束" : item.status === '3' ?
-                                                            "已结束" : item.status === '4' ?
-                                                                "已接受" : null
-                                    }
-                                    </span>
-                                        </p>
-                                    </div>
-                            }
-                        } else if (typeListBtn === 4) {
-                            if (item.type === "event") {
-                                if (navList[navListBtn].status.some(sond => {
-                                    return sond === item.status
-                                }))
-                                    return <div className={
-                                        item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
-                                            "appointment_list end" : "appointment_list"} key={index} onClick={() => {
-                                        props.history.push("/appointment/details" + props.location.search + "&booking_id=" + item.id + "&type=" + item.type)
-                                    }}>
-                                        <p className={'appointment_list_type'}>活动预约</p>
-                                        <p className={'appointment_list_title'}>{item.title}</p>
-                                        <p>
-                                            {item.booking_time}
-                                            <span>
-                                    {
-                                        item.status === '-2' ?
-                                            "已结束" : item.status === '-1' ?
-                                            "已拒绝" : item.status === '0' ?
-                                                "待处理" : item.status === '1' ?
-                                                    "已接受" : item.status === '2' ?
-                                                        "已结束" : item.status === '3' ?
-                                                            "已结束" : item.status === '4' ?
-                                                                "已接受" : null
-                                    }
-                                    </span>
-                                        </p>
-                                    </div>
-                            }
+                                    props.history.push(item.link)
+                                }}>
+                                    <p className={'appointment_list_type'}>{
+                                        item.type === 'product_try' ?
+                                            "预约试穿" : item.type === 'product_buy' ?
+                                            "预留产品" : item.type === 'event' ?
+                                                "活动预约" : item.type === 'ambassador' ?
+                                                    "专属顾问预约" : item.type === 'luckydraw' ?
+                                                        item.luckydraw_type === 0 ?
+                                                            "抽号活动" : "抽鞋活动"
+                                                        : null
+                                    }</p>
+                                    <p className={'appointment_list_title'}>{item.title}</p>
+                                    <p>
+                                        {item.booking_time}
+                                        {navList.map((some, index) => {
+                                            if (some.id === item.statusId)
+                                                return <span key={index}>{some.list}</span>
+                                        })}
+                                    </p>
+                                </div>
                         }
                     })
                 }
             </div>
             {
-                appointmentIndexData.booking_list.length === 0 &&
+                stateData.booking_list.length === 0 &&
                 <div className={"appointment_resultList"}>
                     <p className="noHasList">暂无预约记录</p>
                     <div className="resultHeader">
                         为您推荐
                     </div>
                     {
-                        appointmentIndexData.prod_list.map((item, index) => {
+                        stateData.prod_list.map((item, index) => {
                             return <div className="row" key={index} onClick={() => {
                                 props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
                             }}>

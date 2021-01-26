@@ -52,6 +52,7 @@
     border-bottom: 1px solid #f5f5f5;
     position: relative;
     p{
+      width: rem-calc(500);
       &:nth-child(1){
         color: #bbb;
       }
@@ -85,6 +86,52 @@
       font-size: rem-calc(30);
       color: #fff;
       background: #000;
+    }
+  }
+  .evaluate{
+    padding: 0 rem-calc(48);
+    font-size: rem-calc(32);
+    line-height: rem-calc(70);
+    color: #3E3D3D;
+    .stars{
+      text-align: center;
+      line-height: rem-calc(70);
+      span{
+        padding: 0 rem-calc(5);
+        &.iconfont{
+          font-size: rem-calc(50);
+        }
+        &.icon-starsOn{
+          color: #fff700;
+        }
+        &.icon-starsOff{
+          color: #dedede;
+        }
+      }
+    }
+    .serves{
+      font-size: rem-calc(28);
+      text-indent: 2rem;
+      .isNo{
+        display: inline-table;
+        float: right;
+        span{
+          padding: rem-calc(10) rem-calc(30);
+          font-size: rem-calc(24);
+          background: #f9f9f9;
+          &.on{
+            background: #666;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .page-info{
+    text-align: center;
+    font-size: rem-calc(38);
+    p{
+      font-size: rem-calc(250);
     }
   }
 }

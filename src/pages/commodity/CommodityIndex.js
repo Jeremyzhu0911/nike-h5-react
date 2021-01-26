@@ -9,39 +9,81 @@ const CommodityIndex = (props) => {
 
     const [loading, setLoading] = useState(true)
 
-    const [swiperList, setSwiperList] = useState([]);
+    const [swiperList, setSwiperList] = useState([6, 1]);
 
-    const [CommodityIndexData, setCommodityIndexData] = useState({
-        title: '最新上市',
-        listAll: [
+    const [productNewList, setProductNewList] = useState({
+        data: [
             {
-                image_path: ''
+                image_path: "",
+                link_url: ""
             }
         ],
-        listSwiper: [],
-        realListSwiper: [],
-        listBox: [],
-        listSBox: [],
+        product_list: [
+            {
+                id: "",
+                owner_id: "",
+                owner_type: "",
+                product_code: "",
+                product_name: "",
+                thumbnail: "",
+                price: ""
+            }
+        ]
     })
 
     useEffect(() => {
         if (loading) {
-            axios.get("/product/default/index?store_id=" + getUrlData('store_id')).then(
+            axios.get("/product/default/new?store_id=" + getUrlData('store_id')).then(
                 (res) => {
-                    let restDate = res.data;
-                    if (Number(restDate.code) === 200) {
+                    let restData = res.data;
+                    if (Number(restData.code) === 200) {
                         let imgLength = [];
-                        setCommodityIndexData({
-                            ...CommodityIndexData,
-                            listAll: restDate.data.data,
-                        });
-
-                        restDate.data.data.forEach((item,index)=>{
-                            imgLength[index] = [restDate.data.data.length,1]
+                        console.log(restData.data)
+                        restData.data.data.map((item, index) => {
+                            if (index < 6) {
+                                setProductNewList({
+                                    ...productNewList,
+                                    data: [
+                                        ...productNewList.data,
+                                        productNewList.data[index] = item
+                                    ]
+                                })
+                                setSwiperList(
+                                    [
+                                        swiperList[0] = [index + 1, 1]
+                                    ]
+                                )
+                            } else {
+                                return
+                            }
                         })
-                        setSwiperList(imgLength)
 
-                        cookie.save('store_name', restDate.data.store_info.store_name);
+                        restData.data.product_list.map((item, index) => {
+                            if (index < 9) {
+                                setProductNewList({
+                                    ...productNewList,
+                                    product_list: [
+                                        ...productNewList.product_list,
+                                        productNewList.product_list[index] = item
+                                    ]
+                                })
+                                let idx;
+                                if (index % 3 === 0)
+                                    idx = index / 3
+                                else
+                                    idx = parseInt(index / 3) + 1
+                                setSwiperList(
+                                    [
+                                        ...swiperList,
+                                        swiperList[1] = [idx, 1]
+                                    ]
+                                )
+                            } else {
+                                return
+                            }
+                        })
+
+                        cookie.save('store_name', restData.data.store_info.store_name);
 
                         setLoading(false)
 
@@ -69,12 +111,18 @@ const CommodityIndex = (props) => {
                             },
                             on: {
                                 slideChange: function () {
-                                    if(this.realIndex + 1 === 4)
+                                    if (this.realIndex + 1 === 4)
                                         this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                    else if(Number(this.realIndex + 4) === this.$el.find(".swiper-slide").length)
+                                    else if (Number(this.realIndex + 4) === this.$el.find(".swiper-slide").length)
                                         this.$el.find(".swiper-slide").eq(0).addClass("right_one");
 
-                                    this.$el.find(".swiper-num span").text(this.realIndex + 1)
+                                    let idx;
+                                    if (this.realIndex % 3 === 0)
+                                        idx = this.realIndex / 3
+                                    else
+                                        idx = parseInt(this.realIndex / 3) + 1
+
+                                    this.$el.find(".swiper-num span").text(idx)
                                 }
                             }
                         });
@@ -95,15 +143,17 @@ const CommodityIndex = (props) => {
     }
 
     return (
-        <div className={!!getUrlData('jordan') ? "CommodityIndex jordan" : "CommodityIndex"}>
+        <div className={getUrlData('jordan') ? "CommodityIndex jordan" : "CommodityIndex"}>
             <h2>{cookie.load('store_name')}</h2>
-            {/*<BigImg {...props} data={CommodityIndexData}/>*/}
             <div className={"RotationBigImg"}>
                 <div className={"swiper-container carousel"}>
                     <div className="swiper-wrapper carousel-box">
                         {
-                            CommodityIndexData.listAll.map((item, index) => {
-                                return <div className="carousel-item swiper-slide" key={index}>
+                            productNewList.data.map((item, index) => {
+                                return <div className="carousel-item swiper-slide" key={index} onClick={() => {
+                                    if(item.link_url)
+                                        props.history.push(item.link_url)
+                                }}>
                                     <img alt={''} src={item.image_path}/>
                                 </div>
                             })
@@ -121,50 +171,23 @@ const CommodityIndex = (props) => {
             <div className="RotationBigImg">
                 <div className="swiper-mini carousel">
                     <div className="swiper-wrapper carousel-box">
-                        <div className="swiper-slide carousel-item left_one">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
-                        <div className="swiper-slide carousel-item">
-                            <img alt={''} src={img}/>
-                            <h4>Nike Aero Swift</h4>
-                            <p>¥ 899</p>
-                        </div>
+                        {
+                            productNewList.product_list.map((item, index) => {
+                                return <div
+                                    className={index === 0 ? "carousel-item swiper-slide left_one" : "carousel-item swiper-slide"}
+                                    key={index} onClick={() => {
+                                    props.history.push("/commodity/details?store_id=" + getUrlData("store_id") + "&product_code=" + item.product_code)
+                                }}>
+                                    <img alt={''} src={item.thumbnail}/>
+                                    <h4>{item.product_name}</h4>
+                                    <p>¥ {item.price}</p>
+                                </div>
+                            })
+                        }
                     </div>
                     <div className="index-container">
                         <div className={"swiper-pagination"}/>
-                        <span className="swiper-num"><span>{swiperList[0][1]}</span>/{swiperList[0][0]}</span>
+                        <span className="swiper-num"><span>{swiperList[1][1]}</span>/{swiperList[1][0]}</span>
                     </div>
                 </div>
             </div>

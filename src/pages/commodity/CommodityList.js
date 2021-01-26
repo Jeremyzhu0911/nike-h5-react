@@ -97,7 +97,7 @@ const CommodityList = (props) => {
     }
 
     return (
-        <div className={!!getUrlData('jordan') ? "CommodityList jordan" : "CommodityList"}>
+        <div className={getUrlData('jordan') ? "CommodityList jordan" : "CommodityList"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -109,7 +109,7 @@ const CommodityList = (props) => {
                 </div>
             </div>
             <div className={'resultHeader'}>
-                <h2>{state.pageTitle}<br/><span>共{state.listNum}件商品</span></h2>
+                <h2>{state.pageTitle}<br/><span>共 <i>{state.listNum}</i> 件商品</span></h2>
                 <div className={'btn_search'} onClick={() => {
                     setState({...state, isShowOverlay: true, isSearch: false,overlayTxt:'筛选'})
                 }}>筛选
