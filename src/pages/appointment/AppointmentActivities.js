@@ -53,8 +53,8 @@ const AppointmentActivities = (props) => {
                         let imgLength = [];
                         cookie.save('store_name', resData.data.store_info.store_name)
                         console.log(resData.data)
-                        resData.data.type_list.forEach((item,index)=>{
-                            imgLength[index] = [resData.data.type_list[index].list.length,1]
+                        resData.data.type_list.forEach((item, index) => {
+                            imgLength[index] = [resData.data.type_list[index].list.length, 1]
                         })
                         setSwiperList(imgLength)
                         setDataList(resData.data)
@@ -95,7 +95,7 @@ const AppointmentActivities = (props) => {
     }
 
     return (
-        <div className="AppointmentActivities">
+        <div className={getUrlData("jordan") ? "AppointmentActivities jordan" : "AppointmentActivities"}>
             <h2>{cookie.load("store_name")}</h2>
             {
                 dataList.booking_list.length === 0 ?
@@ -133,8 +133,8 @@ const AppointmentActivities = (props) => {
                                                 item.list.map((listItem, index) => {
                                                     return <div
                                                         className={index === 0 ? "carousel-item swiper-slide left_one" : "carousel-item swiper-slide"}
-                                                        key={index} onClick={()=>{
-                                                            props.history.push("/details-activities" + props.location.search + "&store_event_id=" + listItem.store_event_id)
+                                                        key={index} onClick={() => {
+                                                        props.history.push("/details-activities" + props.location.search + "&store_event_id=" + listItem.store_event_id)
                                                     }}>
                                                         <img alt={''} src={listItem.event_url}/>
                                                         <h4>{listItem.event_title}</h4>
@@ -145,7 +145,8 @@ const AppointmentActivities = (props) => {
                                         </div>
                                         <div className="index-container">
                                             <div className={"swiper-pagination"}/>
-                                            <span className="swiper-num"><span>{swiperList[0][1]}</span>/{swiperList[0][0]}</span>
+                                            <span
+                                                className="swiper-num"><span>{swiperList[0][1]}</span>/{swiperList[0][0]}</span>
                                         </div>
                                     </div>
                                 </div>

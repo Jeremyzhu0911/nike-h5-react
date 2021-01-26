@@ -109,7 +109,9 @@ const CommodityAppointment = (props) => {
                 isPageShow ? <div className={'information'}>
                     <div className={"big_title"}>
                         填写预约信息
-                        <span>取消</span>
+                        <span onClick={() => {
+                            props.history.goBack()
+                        }}>取消</span>
                     </div>
                     <div className={'content'}>
                         <h3>选择颜色</h3>
@@ -117,14 +119,15 @@ const CommodityAppointment = (props) => {
                         <div className={'content_img'}>
                             {
                                 stateData.product_color.map((item, index) => {
-                                    return <img key={index} onClick={() => {
-                                        setPostData({
-                                            ...postData,
-                                            sku: item.sku
-                                        })
-                                        console.log("sku")
-                                        console.log(item.sku)
-                                    }} alt={''} src={item.color_image[0].img}/>
+                                    if (item.color_image[0])
+                                        return <img key={index} onClick={() => {
+                                            setPostData({
+                                                ...postData,
+                                                sku: item.sku
+                                            })
+                                            console.log("sku")
+                                            console.log(item.sku)
+                                        }} alt={''} src={item.color_image[0].img}/>
                                 })
                             }
                         </div>
@@ -230,7 +233,7 @@ const CommodityAppointment = (props) => {
                         <p onClick={() => {
                             setIconfont(!iconfont)
                         }}
-                           className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<span>隐私信息授权条款</span>》
+                           className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》
                         </p>
                     </div>
                     <div className={'order'}>

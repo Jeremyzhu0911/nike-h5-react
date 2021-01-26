@@ -14,6 +14,8 @@ import AppointmentAdviser from "../pages/appointment/AppointmentAdviser";
 
 import ActivitiesContent from "../pages/activities/ActivitiesContent";
 import ActivitiesDetails from "../pages/activities/ActivitiesDetails";
+import ActivitiesAppointment from "../pages/activities/ActivitiesAppointment";
+import ActivitiesSuccess from "../pages/activities/ActivitiesSuccess";
 
 import CommodityIndex from "../pages/commodity/CommodityIndex";
 import CommodityList from "../pages/commodity/CommodityList";
@@ -78,6 +80,16 @@ const routes = [
         path: '/details-activities',
         component: ActivitiesDetails,
         title: '活动详情'  // or 我的活动的详情
+    },
+    {
+        path: '/appointment-activities',
+        component: ActivitiesAppointment,
+        title: '活动预约'  // or 我的活动的详情
+    },
+    {
+        path: '/success-activities',
+        component: ActivitiesSuccess,
+        title: '活动预约'  // or 我的活动的详情
     },
     {
         path: '/map',   //参数 lng  lat

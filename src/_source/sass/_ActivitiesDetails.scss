@@ -2,7 +2,7 @@
 .ActivitiesDetails{
   width: 100%;
   overflow: hidden;
-  padding-bottom: rem-calc(100);
+  padding-bottom: rem-calc(180);
   h2{
     text-align: center;
     height: rem-calc(102.8);
@@ -68,6 +68,7 @@
       position: relative;
       p{
         min-height: rem-calc(50);
+        width: rem-calc(500);
         &:nth-child(1){
           color: #bbb;
         }
@@ -88,6 +89,9 @@
     padding-top: rem-calc(50);
     height: rem-calc(130);
     background: #fff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     z-index: 10;
 
     .btn {
@@ -100,6 +104,14 @@
       font-size: rem-calc(30);
       color: #fff;
       background: #000;
+    }
+  }
+  &.jordan{
+    .order{
+      background: #000;
+      .btn{
+        background: #b7052d;
+      }
     }
   }
 }

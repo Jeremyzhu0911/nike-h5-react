@@ -52,9 +52,10 @@ body{
 	padding-top: rem-calc(20);
 	width: rem-calc(654);
 	margin: 0 auto;
-	font-size: rem-calc(28);
+	font-size: rem-calc(24);
+	line-height: rem-calc(80);
 	p{
-		span{
+		i{
 			text-decoration: underline;
 		}
 	}

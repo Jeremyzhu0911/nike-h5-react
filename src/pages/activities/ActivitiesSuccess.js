@@ -4,37 +4,21 @@ import {getUrlData} from "../../util/getUrlData";
 import axios from "axios";
 import FollowPop from "../../components/FollowPop";
 
-const CommoditySuccess = (props) => {
-
-    ///commodity/success?type=2&booking_id=179&is_subscribe=0&status=0&jordan=1
+const ActivitiesSuccess = (props) => {
 
     const [loading, setLoading] = useState(true);
 
     const [stateData, setStateData] = useState({
-        type: Number(getUrlData('type')),   //  1 预约试穿 2 预留产品
-        data: {
-            book_day: "",
-            book_type: '',
-            booking_id: '',
-            checkin_qrcode: "",
-            checkin_status: 0,
-            color_name: "",
-            gender: 1,
-            mobile: "",
-            prize: "",
-            product_img: "",
-            product_name: "Nike F.C. 男子足球T恤",
-            qrcode: "",
-            size: "M",
-            sku: "",
-            status: 0,
-            store_id: '',
-            store_info: {store_name: "", shop_unique_id: "", share_img: ""},
-            store_latitude: '',
-            store_longitude: '',
-            store_name: "",
-            user_name: "",
-        }
+        event_url:"",
+        event_title:"",
+        event_start_date:"",
+        event_end_date:"",
+        longitude:"",
+        latitude:"",
+        event_address:"",
+        booking_name:"",
+        booking_mobile:"",
+        qrcode:"",
     })
 
     const [showHide, setShowHide] = useState(false)
@@ -47,15 +31,12 @@ const CommoditySuccess = (props) => {
 
     useEffect(() => {
         if (loading) {
-            let url = '/product/default/view-booking?booking_id=';
-
-            axios.get(url + getUrlData('booking_id')).then(
+            axios.get("/event/default/view-booking?id=" + getUrlData('booking_id')).then(
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
                         console.log(resData)
                         setStateData({
-                            ...stateData,
                             ...resData.data
                         })
                     }
@@ -70,43 +51,43 @@ const CommoditySuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
+        <div className="AmbassadorSuccess">
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
                 </div>
             </div>
             <h3>
-                {
-                    stateData.type === 2 ? '预留产品' : '预约试穿'
-                }成功
+                活动预约成功
             </h3>
-            <div className={'userinfo product'}>
+            <div className={'userinfo'}>
                 <div className={'userimg'}>
-                    <img alt={''} src={stateData.data.product_img}/>
+                    <img alt={''} src={stateData.event_url}/>
                 </div>
                 <div className={'username'}>
                     <p>
-                        {stateData.data.product_name}
-                        <br/>
-                        <span>¥ {stateData.data.prize}</span>
+                        {stateData.event_title}
                     </p>
                 </div>
             </div>
             <div className={'txt'}>
-                <p>预约时间</p>
-                <p>{stateData.data.book_day}</p>
+                <p>活动开始时间</p>
+                <p>{stateData.event_start_date}</p>
+            </div>
+            <div className={'txt'}>
+                <p>活动结束时间</p>
+                <p>{stateData.event_end_date}</p>
             </div>
             <div className={'txt'} onClick={() => {
-                props.history.push('/map?lng=' + stateData.data.store_longitude + '&lat=' + stateData.data.store_latitude);
+                props.history.push('/map?lng=' + stateData.longitude + '&lat=' + stateData.latitude);
             }}>
                 <p>门店地址</p>
-                <p>{stateData.data.store_name}</p>
+                <p>{stateData.event_address}</p>
                 <span className={'iconfont icon-dingwei'}/>
             </div>
             <div className={'txt'}>
                 <p>预留信息</p>
-                <p>{stateData.data.user_name + ' ' + stateData.data.mobile}</p>
+                <p>{stateData.booking_name + ' ' + stateData.booking_mobile}</p>
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
@@ -114,18 +95,21 @@ const CommoditySuccess = (props) => {
                         setShowHide(true)
                     } else {
                         if (getUrlData('jordan')) {
-                            props.history.push('/appointment/appointmentDetails?jordan=1&store_id=' + stateData.data.store_id);
+                            props.history.push('/appointment/appointmentDetails?jordan=1&store_id=' + stateData.store_id);
                         } else {
-                            props.history.push("/appointment/appointmentDetails?store_id=" + stateData.data.store_id);
+                            props.history.push("/appointment/appointmentDetails?store_id=" + stateData.store_id);
                         }
                     }
                 }}>
                     查看我的预约
                 </div>
+                <div className="btn2">
+                    返回活动
+                </div>
             </div>
             {
                 showHide ? <FollowPop {...props} updateShowHide={updateShowHide}
-                                      data={stateData.data.qrcode}/> : null
+                                      data={stateData.qrcode}/> : null
             }
 
         </div>
@@ -133,4 +117,4 @@ const CommoditySuccess = (props) => {
 
 }
 
-export default CommoditySuccess;
+export default ActivitiesSuccess;

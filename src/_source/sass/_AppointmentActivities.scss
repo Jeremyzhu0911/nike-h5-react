@@ -58,4 +58,9 @@
       }
     }
   }
+  .RotationBigImg{
+    .carousel-item{
+      border-radius: revert !important;
+    }
+  }
 }

@@ -125,10 +125,11 @@
         width: rem-calc(15);
         height: rem-calc(15);
         border-radius: rem-calc(15);
-        background: #9e9e9e;
+        background: #4c4c4c;
         margin: 0 rem-calc(5);
+        border:1px solid #dedede;
         &.swiper-pagination-bullet-active{
-          background: #fff;
+          background: #dfdfdf;
         }
       }
     }

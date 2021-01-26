@@ -59,7 +59,7 @@ const ActivitiesContent = (props) => {
                             <img alt={''} src={item.event_img_url}/>
                         </div>
                         <div className={'btn'} onClick={() => {
-                            props.history.push("/details-activities?store_id=" + getUrlData('store_id') + "&store_event=" + item.store_event_id)
+                            props.history.push("/details-activities?store_id=" + getUrlData('store_id') + "&store_event_id=" + item.store_event_id)
                         }}>
                             <span>活动详情</span>
                         </div>
