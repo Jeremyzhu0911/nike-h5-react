@@ -36,7 +36,7 @@
     letter-spacing: rem-calc(1.08);
   }
   .CommodityDetails {
-    width: rem-calc(686);
+    width: rem-calc(654);
     margin: 0 auto;
     padding: rem-calc(42) 0;
     .commodityTitle{
@@ -56,25 +56,18 @@
     }
     .commodityImg{
       margin: rem-calc(65.56) 0;
-      width: rem-calc(686);
+      width: rem-calc(654);
       border-radius: rem-calc(30);
       overflow: hidden;
       font-size: 0;
       img{
-        width: rem-calc(686);
+        width: rem-calc(654);
       }
     }
     .commodityText{
       font-size: rem-calc(27.18);
       letter-spacing: rem-calc(1.02);
       line-height: rem-calc(50.72);
-    }
-    .Img100{
-      padding: rem-calc(27.18) 0;
-      width: rem-calc(686);
-      img{
-        width: rem-calc(686);
-      }
     }
     .commodityTimes{
       padding-bottom: rem-calc(74.28);
@@ -99,10 +92,11 @@
       }
     }
     .btn{
-      width: rem-calc(686);
+      width: rem-calc(654);
       height: rem-calc(122);
       line-height: rem-calc(122);
       border-radius: rem-calc(122);
+      font-size: rem-calc(32);
       text-align: center;
       color: #fff;
       background: #000;

@@ -1,8 +1,7 @@
 import React from "react";
+import cookie from "react-cookies";
 
 const LimitSuccess = (props) => {
-
-    console.log(props)
 
     return (
         <div className="LimitSuccess">
@@ -13,16 +12,14 @@ const LimitSuccess = (props) => {
             <div className="time-box">
                 <p>
                     结果公布时间<br/>
-                    <span>
-                        2020-08-20 18:00
-                        </span>
+                    <span>{cookie.load('result_time')}</span>
                 </p>
             </div>
-            <p className="tips">即刻扫描二维码，关注店铺微信公众号，<br/>预约结果将通过微信及时告知您。</p>
+            <p className="tipsWechat">即刻扫描二维码，关注店铺微信公众号，<br/>预约结果将通过微信及时告知您。</p>
             <div className="emm">
-                {/*<img src={img} alt={''}/>*/}
+                <img src={cookie.load('qrcode_url')} alt={''}/>
             </div>
-            <p className="tips2">您也可以在公众号菜单中点击“我的预约”，查看预约结果。<br/>友情提醒：未关注公众号的小伙伴将无法获得预约结果。</p>
+            <p className="help">您也可以在公众号菜单中点击“我的预约”，查看预约结果。<br/>友情提醒：未关注公众号的小伙伴将无法获得预约结果。</p>
         </div>
     )
 }

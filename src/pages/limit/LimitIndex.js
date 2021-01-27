@@ -23,7 +23,7 @@ const LimitIndex = (props) => {
 
     useEffect(()=>{
         if(loading){
-            axios.get("/luckydraw/default/limited-product?store_id=" + getUrlData('store_id')).then(
+            axios.get("/article/limited-product?cate_id=1&store_id=" + getUrlData('store_id')).then(
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
@@ -52,9 +52,7 @@ const LimitIndex = (props) => {
             <h2>{cookie.load('store_name')}</h2>
             {
                 limitList.map((item,index)=>{
-                    return <div className="ListBigImgBox" key={index} onClick={()=>{
-                        props.history.push(item.link)
-                    }}>
+                    return <div className="ListBigImgBox" key={index}>
                         <div className="content">
                             <div className="title">{item.title}</div>
                             <div className="time">{item.created_at}</div>

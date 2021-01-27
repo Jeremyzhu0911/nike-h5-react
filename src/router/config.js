@@ -27,7 +27,7 @@ import Fashion from "../pages/commodity/CommodityFashion";
 import Limit from "../pages/limit/LimitIndex";
 import LimitDetails from "../pages/limit/LimitDetails";
 import LimitAppointment from "../pages/limit/LimitAppointment";
-import Limitsuccess from "../pages/limit/LimitSuccess";
+import LimitSuccess from "../pages/limit/LimitSuccess";
 import LimitList from "../pages/limit/LimitList";
 
 import HistoricalRecord from '../pages/Historical';
@@ -150,31 +150,31 @@ const routes = [
     {
         path: '/commodity/limit',  // 参数 store_id
         component: Limit,
-        title: '限量发售'  // 和limitlist一样  测试用
+        title: '限量发售'  // 和limitList一样  测试用
     },
     {
-        path: '/commodity/limitlist', // 参数 store_id
+        path: '/commodity/limitList', // 参数 store_id
         component: LimitList,
         title: '限量发售' // 列表
     },
     {
-        path: '/commodity/limitdetails',
+        path: '/commodity/limitDetails',
         component: LimitDetails,
         title: '限量发售' // 详情
     },
     {
-        path: '/commodity/limitdetailspreview',
+        path: '/commodity/limitDetailsPreview',
         component: LimitDetails,
         title: '限量发售(预览)'
     },
     {
-        path: '/commodity/limitappointment',
+        path: '/commodity/limitAppointment',
         component: LimitAppointment,
         title: '限量发售'  // 表单
     },
     {
-        path: '/commodity/limitsuccess',
-        component: Limitsuccess,
+        path: '/commodity/limitSuccess',
+        component: LimitSuccess,
         title: '限量发售'  // 报名成功
     },
     {

@@ -124,7 +124,6 @@ const ActivitiesAppointment = (props) => {
             <div className={'texts'}>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
-                    // props.history.push('/success')
                     console.log(postData)
                     if (iconfont)
                         axios({

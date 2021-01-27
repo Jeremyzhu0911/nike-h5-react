@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import tb from "../../assets/images/tb.jpg";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import cookie from "react-cookies";
@@ -64,7 +63,7 @@ const LimitDetails = (props) => {
     if (preview)
         return (
             <div className={"previewBox"}>
-                <div className={"iconfont icon-icon-jinggao"}></div>
+                <div className={"iconfont icon-icon-jinggao"}/>
                 <p>二维码已失效</p>
             </div>
         )
@@ -75,7 +74,6 @@ const LimitDetails = (props) => {
                 getUrlData('code') ?
                     <div className="preview">此为预览页面，仅用于发布预览，将在短期内失效。</div> : null
             }
-
             <h2>{cookie.load('store_name')}</h2>
             <div className="CommodityDetails">
                 <div className="commodityTitle">
@@ -89,9 +87,6 @@ const LimitDetails = (props) => {
                 </div>
                 <div className="commodityText" dangerouslySetInnerHTML={{__html: limitDetails.product_desc}}/>
                 <div className="commodityText" dangerouslySetInnerHTML={{__html: limitDetails.content}}/>
-                <div className="Img100">
-                    <img alt={''} src={tb}/>
-                </div>
                 <div className="commodityTimes">
                     <div className="title">活动时间</div>
                     <div className="timeArea">
@@ -127,10 +122,10 @@ const LimitDetails = (props) => {
                                 <div className="btn">报名已结束</div> :
                                 limitDetails.is_start_booking ?
                                     <div className="btn" onClick={() => {
-                                        props.history.push('/commodity/limitappointment' + props.location.search)
+                                        props.history.push('/commodity/limitAppointment' + props.location.search)
                                     }}>即刻报名</div> :
                                     <div className="btn" onClick={() => {
-                                        props.history.push('/commodity/limitappointment' + props.location.search)
+                                        props.history.push('/commodity/limitAppointment' + props.location.search)
                                     }}>报名未开始</div> : <div className="btn">即刻报名</div>
                 }
             </div>

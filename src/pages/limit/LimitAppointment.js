@@ -14,9 +14,9 @@ const LimitAppointment = (props) => {
 
     const [isModalVisible, setIsModalVisible] = useState(false);    //  提交状态
 
-    const [exemption, setExemption] = useState(false);
+    const [iconfont, setIconfont] = useState(false)
 
-    const [limitAppointment, setLimitAppointment] = useState({
+    const [stateData, setStateData] = useState({
         title: '', // 标题
         kv: '', //  图片
         product_desc: '',   // 描述
@@ -59,12 +59,12 @@ const LimitAppointment = (props) => {
     }
 
     const [postDate, setPostDate] = useState({
-        luckydraw_id: '',   // limitAppointment.luckydraw_id
+        luckydraw_id: '',   // stateData.luckydraw_id
         user_name: cookie.load('user_name'),
         mobile: cookie.load('mobile'),
         code: '',   //  验证码
         product_id: '',   // size id
-        identity_code: ''   //  身份证后4位
+        identity_code: '',   //  身份证后4位
     });    //  提交数据
 
     useEffect(() => {
@@ -76,11 +76,11 @@ const LimitAppointment = (props) => {
 
                         cookie.save('store_name', resData.data.store_info.store_name)
                         console.log(resData.data);
-                        setLimitAppointment(resData.data);
+                        setStateData(resData.data);
                         setPostDate({
                             ...postDate,
-                            product_id: limitAppointment.product_sizes[0].id,
-                            luckydraw_id: limitAppointment.luckydraw_id
+                            product_id: resData.data.product_sizes[0].id,
+                            luckydraw_id: resData.data.luckydraw_id
                         })
                         setLoading(false)
                     }
@@ -101,28 +101,29 @@ const LimitAppointment = (props) => {
     return (
         <div className="LimitAppointment">
             <h2>{cookie.load('store_name')}</h2>
-            <div className="InforDetails">
-                <div className="InforTitle">
-                    {limitAppointment.title}
+            <div className="infoDetails">
+                <div className="infoTitle">
+                    {stateData.title}
                 </div>
-                <div className="sellingPrice">
-                    发售价 ¥1599
-                </div>
-                <div className="selectSize">
-                    <p>选择尺寸</p>
-                    <ul className="Size">
-                        {
-                            limitAppointment.product_sizes.map((item, index) => {
-                                return <li key={index} className={sizeList === index ? 'active' : null} onClick={() => {
-                                    setSizeList(index)
-                                    setPostDate({
-                                        ...postDate,
-                                        product_id: item.id
-                                    })
-                                }}>{item.size}</li>
-                            })
-                        }
-                    </ul>
+                <div className="sellingImg">
+                    <img alt={''} src={stateData.kv}/>
+                    <div className="selectSize">
+                        <p>选择尺寸</p>
+                        <ul className="Size">
+                            {
+                                stateData.product_sizes.map((item, index) => {
+                                    return <li key={index} className={sizeList === index ? 'active' : null}
+                                               onClick={() => {
+                                                   setSizeList(index)
+                                                   setPostDate({
+                                                       ...postDate,
+                                                       product_id: item.id
+                                                   })
+                                               }}>{item.size}</li>
+                                })
+                            }
+                        </ul>
+                    </div>
                 </div>
                 <div className="InfoEnter">
                     <div className="items">
@@ -161,7 +162,7 @@ const LimitAppointment = (props) => {
                             <div className="getCodeBtn">
                                 <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                             </div>
-                            <input type="text" id="code" name="code" onChange={(event) => {
+                            <input type="text" className="code" name="code" onChange={(event) => {
                                 setPostDate({
                                     ...postDate,
                                     code: event.target.value
@@ -173,19 +174,16 @@ const LimitAppointment = (props) => {
                 <div className="warning">
                     如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问。
                 </div>
-                <div className="exemption" onClick={() => {
-                    setExemption(!exemption)
-                }}>
-                    <div className="exemption-left">
-                        <i className={exemption ? "iconfont icon-BAI-danxuankuangs" : "iconfont icon-BAI-danxuankuang"}/>
-                    </div>
-                    <div className="exemption-right">
-                        我已仔细阅读并同意《<span>隐私信息授权条款</span>》及《<span>免责声明</span>》内容
-                    </div>
+                <div className={'tips'}>
+                    <p onClick={() => {
+                        setIconfont(!iconfont)
+                    }}
+                       className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》及《<i>免责声明</i>》内容
+                    </p>
                 </div>
-                <div className={'Infobtn'}>
+                <div className={'infoBtn'}>
                     <div className="btn" onClick={() => {
-                        if (exemption) {
+                        if (iconfont) {
                             setIsModalVisible(true)
                         } else {
                             alert("仔细阅读并同意《隐私信息授权条款》及《免责声明》")
@@ -201,39 +199,41 @@ const LimitAppointment = (props) => {
                         <div className="pop_up_box">
                             <h2>核对信息</h2>
                             <p className="product-p"><span className="product-name">活动名称：</span><span
-                                className="product-title">{limitAppointment.title}</span></p>
+                                className="product-title">{stateData.title}</span></p>
                             <p>姓名：<span>{postDate.user_name}</span></p>
                             <p>身份证后四位：<span>{postDate.identity_code}</span></p>
                             <p>手机号：<span>{postDate.mobile}</span></p>
                             <p className="tc">信息提交后不可更改</p>
                             <button onClick={() => {
-                                props.history.push("/commodity/limitsuccess" + props.location.search)
-                                // axios({
-                                //     url: '/luckydraw/default/booking',
-                                //     method: 'post',
-                                //     data: postDate,
-                                //     transformRequest: [function (data) {
-                                //         let ret = ''
-                                //         for (let it in data) {
-                                //             ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                                //         }
-                                //         return ret
-                                //     }],
-                                //     headers: {
-                                //         'Content-Type': 'application/x-www-form-urlencoded'
-                                //     },
-                                // }).then((res) => {
-                                //         let resData = res.data;
-                                //         if (Number(resData.code) === 200) {
-                                //             console.log(resData)
-                                //         } else {
-                                //             alert(resData.message);
-                                //         }
-                                //     },
-                                //     (err) => {
-                                //         alert(err);
-                                //     }
-                                // );
+                                axios({
+                                    url: '/luckydraw/default/booking',
+                                    method: 'post',
+                                    data: postDate,
+                                    transformRequest: [function (data) {
+                                        let ret = ''
+                                        for (let it in data) {
+                                            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+                                        }
+                                        return ret
+                                    }],
+                                    headers: {
+                                        'Content-Type': 'application/x-www-form-urlencoded'
+                                    },
+                                }).then((res) => {
+                                        let resData = res.data;
+                                        if (Number(resData.code) === 200) {
+                                            console.log(resData)
+                                            cookie.save("result_time", stateData.result_time)
+                                            cookie.save("qrcode_url",resData.data.qrcode_url)
+                                            props.history.push("/commodity/limitSuccess" + props.location.search)
+                                        } else {
+                                            alert(resData.message);
+                                        }
+                                    },
+                                    (err) => {
+                                        alert(err);
+                                    }
+                                );
                             }}>确认
                             </button>
                             <button onClick={() => {

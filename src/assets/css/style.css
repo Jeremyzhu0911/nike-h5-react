@@ -236,10 +236,14 @@ body {
   padding-top: 0.71111rem;
   width: 23.25333rem;
   margin: 0 auto;
-  font-size: 0.85333rem;
-  line-height: 2.84444rem;
+  font-size: 1.13778rem;
+  line-height: 1.77778rem;
+}
+.tips p {
+  font-size: 1.13778rem;
 }
 .tips p i {
+  font-size: 1.13778rem;
   text-decoration: underline;
 }
 
@@ -2527,7 +2531,7 @@ body {
   letter-spacing: 0.0384rem;
 }
 .LimitDetails .CommodityDetails {
-  width: 24.39111rem;
+  width: 23.25333rem;
   margin: 0 auto;
   padding: 1.49333rem 0;
 }
@@ -2548,25 +2552,18 @@ body {
 }
 .LimitDetails .CommodityDetails .commodityImg {
   margin: 2.33102rem 0;
-  width: 24.39111rem;
+  width: 23.25333rem;
   border-radius: 1.06667rem;
   overflow: hidden;
   font-size: 0;
 }
 .LimitDetails .CommodityDetails .commodityImg img {
-  width: 24.39111rem;
+  width: 23.25333rem;
 }
 .LimitDetails .CommodityDetails .commodityText {
   font-size: 0.9664rem;
   letter-spacing: 0.03627rem;
   line-height: 1.80338rem;
-}
-.LimitDetails .CommodityDetails .Img100 {
-  padding: 0.9664rem 0;
-  width: 24.39111rem;
-}
-.LimitDetails .CommodityDetails .Img100 img {
-  width: 24.39111rem;
 }
 .LimitDetails .CommodityDetails .commodityTimes {
   padding-bottom: 2.64107rem;
@@ -2591,10 +2588,11 @@ body {
   letter-spacing: 0.03627rem;
 }
 .LimitDetails .CommodityDetails .btn {
-  width: 24.39111rem;
+  width: 23.25333rem;
   height: 4.33778rem;
   line-height: 4.33778rem;
   border-radius: 4.33778rem;
+  font-size: 1.13778rem;
   text-align: center;
   color: #fff;
   background: #000;
@@ -2603,7 +2601,7 @@ body {
 .LimitAppointment {
   width: 100%;
   overflow: hidden;
-  padding-bottom: 3.55556rem;
+  padding-bottom: 4.97778rem;
 }
 .LimitAppointment h2 {
   text-align: center;
@@ -2613,38 +2611,43 @@ body {
   color: #6A6A6A;
   letter-spacing: 0.0384rem;
 }
-.LimitAppointment .InforDetails {
-  width: 24.39111rem;
+.LimitAppointment .infoDetails {
+  width: 23.25333rem;
   margin: 0 auto;
   padding: 1.49333rem 0;
 }
-.LimitAppointment .InforTitle {
+.LimitAppointment .infoTitle {
   font-size: 1.73938rem;
   font-weight: bold;
   letter-spacing: 0.06542rem;
   line-height: 2.41778rem;
   margin-bottom: 0.47644rem;
 }
-.LimitAppointment .sellingPrice {
-  font-size: 0.9664rem;
-  letter-spacing: 0.03627rem;
-  font-weight: bold;
-  height: 3.7888rem;
-  line-height: 3.7888rem;
+.LimitAppointment .sellingImg {
+  font-size: 0;
+  width: 23.25333rem;
+  padding-bottom: 1.70667rem;
 }
-.LimitAppointment .selectSize {
-  padding: 1.35893rem 0;
+.LimitAppointment .sellingImg img {
+  display: inline-block;
+  width: 45%;
 }
-.LimitAppointment .selectSize p {
-  line-height: 1.20889rem;
-  font-size: 0.90169rem;
+.LimitAppointment .sellingImg .selectSize {
+  margin-left: 5%;
+  display: inline-block;
+  width: 50%;
+  float: right;
+}
+.LimitAppointment .sellingImg .selectSize p {
+  line-height: 1.6rem;
+  font-size: 1.13778rem;
   color: rgba(106, 106, 106, 0.6);
 }
-.LimitAppointment .selectSize .Size {
-  width: 24.74667rem;
+.LimitAppointment .sellingImg .selectSize .Size {
+  width: 100%;
   display: inline-table;
 }
-.LimitAppointment .selectSize .Size li {
+.LimitAppointment .sellingImg .selectSize .Size li {
   width: 3.62667rem;
   height: 2.51236rem;
   font-size: 0.90169rem;
@@ -2657,7 +2660,7 @@ body {
   margin-right: 0.35556rem;
   margin-top: 0.35556rem;
 }
-.LimitAppointment .selectSize .Size li.active {
+.LimitAppointment .sellingImg .selectSize .Size li.active {
   color: #fff;
   background: #000;
 }
@@ -2668,31 +2671,31 @@ body {
 }
 .LimitAppointment .InfoEnter .items label {
   width: 5.68889rem;
-  height: 2.31893rem;
-  line-height: 2.31893rem;
+  height: 2.48889rem;
+  line-height: 2.48889rem;
   float: left;
   color: rgba(106, 106, 106, 0.6);
   font-size: 1.13778rem;
 }
 .LimitAppointment .InfoEnter .items input {
   width: 15.85778rem;
-  height: 2.31893rem;
-  line-height: 2.31893rem;
-  border: 0.03556rem solid rgba(151, 151, 151, 0.5);
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  border: 0.03556rem solid #d0d0d0;
   border-radius: 0.35556rem;
   text-align: center;
   float: right;
   font-size: 1.13778rem;
 }
-.LimitAppointment .InfoEnter .items input#code {
-  width: 9.79058rem;
+.LimitAppointment .InfoEnter .items input.code {
+  width: 9.06667rem;
   margin-right: 0.38613rem;
 }
 .LimitAppointment .InfoEnter .items .getCodeBtn {
-  width: 5.54667rem;
-  height: 2.31893rem;
-  line-height: 2.31893rem;
-  border-radius: 2.31893rem;
+  width: 6.4rem;
+  height: 2.48889rem;
+  line-height: 2.48889rem;
+  border-radius: 0.17778rem;
   background: #000;
   text-align: center;
   font-size: 0.57956rem;
@@ -2705,32 +2708,13 @@ body {
   color: #6A6A6A;
   font-size: 0.57956rem;
 }
-.LimitAppointment .exemption {
-  width: 24.39111rem;
-  display: inline-table;
-}
-.LimitAppointment .exemption .exemption-left {
-  width: 1.42222rem;
-  float: left;
-}
-.LimitAppointment .exemption .exemption-left i {
-  font-size: 1.13778rem;
-}
-.LimitAppointment .exemption .exemption-right {
-  float: right;
-  width: 22.25778rem;
-  font-size: 0.85333rem;
-  color: rgba(106, 106, 106, 0.6);
-}
-.LimitAppointment .exemption .exemption-right span {
-  text-decoration: underline;
-}
-.LimitAppointment .Infobtn {
-  height: 6.04444rem;
+.LimitAppointment .infoBtn {
+  padding-top: 1.13778rem;
+  height: 4.97778rem;
   background: #fff;
   z-index: 10;
 }
-.LimitAppointment .Infobtn .btn {
+.LimitAppointment .infoBtn .btn {
   width: 24.39111rem;
   height: 4.33778rem;
   line-height: 4.33778rem;
@@ -2780,7 +2764,7 @@ body {
   font-weight: bold;
   font-size: 1.06667rem;
 }
-.LimitSuccess .tips {
+.LimitSuccess .tipsWechat {
   font-size: 0.99556rem;
   margin: 1.42222rem 0;
   line-height: 1.42222rem;
@@ -2796,7 +2780,7 @@ body {
   width: 8.53333rem;
   outline: none;
 }
-.LimitSuccess .tips2 {
+.LimitSuccess .help {
   padding: 0 1.42222rem;
   margin-top: 1.42222rem;
   font-size: 0.85333rem;
