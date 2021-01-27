@@ -93,6 +93,7 @@ const CommodityIndex = (props) => {
                             watchSlidesProgress: true,
                             pagination: {
                                 el: '.swiper-pagination',
+                                type: "progressbar",
                             },
                             on: {
                                 slideChange: function () {
@@ -152,7 +153,7 @@ const CommodityIndex = (props) => {
                             productNewList.data.map((item, index) => {
                                 return <div className="carousel-item swiper-slide" key={index} onClick={() => {
                                     if(item.link_url)
-                                        props.history.push(item.link_url)
+                                        window.location.href = item.link_url
                                 }}>
                                     <img alt={''} src={item.image_path}/>
                                 </div>

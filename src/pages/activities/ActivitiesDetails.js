@@ -98,7 +98,9 @@ const ActivitiesDetails = (props) => {
                         </div> : null
                 }
 
-                <div className={'txt'}>
+                <div className={'txt'} onClick={() => {
+                    props.history.push('/map?lng=' + dataList.longitude + '&lat=' + dataList.latitude);
+                }}>
                     <p>门店地址</p>
                     <p>{dataList.event_address} </p>
                     <span className={'iconfont icon-dingwei'}/>

@@ -44,8 +44,23 @@ body{
 	}
 }
 .map{
+	position: relative;
 	width: 100vw;
 	height: 100vh;
+	.icon-withdraw-fill{
+		position: absolute;
+		top: rem-calc(48);
+		right: rem-calc(48);
+		font-size: rem-calc(70);
+		width: rem-calc(100);
+		height: rem-calc(100);
+		line-height: rem-calc(100);
+		border-radius: rem-calc(100);
+		background: #fff;
+		border:1px solid #dedede;
+		text-align: center;
+		z-index: 999;
+	}
 }
 
 .tips{

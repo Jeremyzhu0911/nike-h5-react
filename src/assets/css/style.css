@@ -213,8 +213,23 @@ body {
 }
 
 .map {
+  position: relative;
   width: 100vw;
   height: 100vh;
+}
+.map .icon-withdraw-fill {
+  position: absolute;
+  top: 1.70667rem;
+  right: 1.70667rem;
+  font-size: 2.48889rem;
+  width: 3.55556rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  border-radius: 3.55556rem;
+  background: #fff;
+  border: 1px solid #dedede;
+  text-align: center;
+  z-index: 999;
 }
 
 .tips {
@@ -2472,10 +2487,36 @@ body {
   font-size: 1.42222rem;
 }
 
+.previewBox {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+}
+.previewBox .icon-icon-jinggao {
+  padding-top: 10.66667rem;
+  font-size: 8.88889rem;
+}
+.previewBox p {
+  font-size: 1.70667rem;
+}
+
 .LimitDetails {
   width: 100%;
   overflow: hidden;
   padding-bottom: 3.55556rem;
+}
+.LimitDetails .preview {
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 0.99556rem;
+  text-align: center;
+  z-index: 99;
+  width: 100%;
+  background: #333333e6;
+  height: 2.84444rem;
+  line-height: 2.84444rem;
 }
 .LimitDetails h2 {
   text-align: center;

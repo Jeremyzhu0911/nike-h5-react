@@ -6,20 +6,21 @@ import cookie from "react-cookies";
 
 const LimitDetails = (props) => {
     const [loading, setLoading] = useState(true);
+    const [preview, setPreview] = useState(false);
 
     const [limitDetails, setLimitDetails] = useState({
         title: '', // 标题
         kv: '', //  图片
         product_desc: '',   // 描述
-        content:'', //  简介
+        content: '', //  简介
         enroll_begin_time: '',  // 开始
         enroll_end_time: '',    // 结束
         result_time: '',    //  结果
         consume_time: '',   //  签到
-        is_avail_booking: false,    //  已报名
-        is_booking: true,   // ？
-        is_end_booking: true,   // 报名结束
-        is_start_booking: false,    // 报名开始
+        is_start_booking: "",   // 已经到了报名开始时间
+        is_avail_booking: "", // 是否已经报名  true 未报名 false 已报名
+        is_end_booking: '', // 报名结束
+        is_booking: "", // 活动是否需要报名
     })
 
     if (getUrlData('jordan')) {
@@ -28,7 +29,11 @@ const LimitDetails = (props) => {
 
     useEffect(() => {
         if (loading) {
-            axios.get("/luckydraw/default/detail?luckydraw_id=" + getUrlData('luckydraw_id')).then(
+            let getUrl = "/luckydraw/default/detail?luckydraw_id=" + getUrlData('luckydraw_id');
+            if (getUrlData('code')) {
+                getUrl = "/luckydraw/default/preview?preview_code=" + getUrlData('code') + "&luckydraw_id=" + getUrlData('luckydraw_id');
+            }
+            axios.get(getUrl).then(
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
@@ -37,6 +42,10 @@ const LimitDetails = (props) => {
                         console.log(resData.data);
                         setLimitDetails(resData.data)
                         setLoading(false)
+                    }
+                    if (Number(resData.code) === 403) {
+                        setLoading(false);
+                        setPreview(true);
                     }
                 },
                 (error) => {
@@ -52,8 +61,21 @@ const LimitDetails = (props) => {
         return (<div>正在加载...</div>)
     }
 
+    if (preview)
+        return (
+            <div className={"previewBox"}>
+                <div className={"iconfont icon-icon-jinggao"}></div>
+                <p>二维码已失效</p>
+            </div>
+        )
+
     return (
         <div className="LimitDetails">
+            {
+                getUrlData('code') ?
+                    <div className="preview">此为预览页面，仅用于发布预览，将在短期内失效。</div> : null
+            }
+
             <h2>{cookie.load('store_name')}</h2>
             <div className="CommodityDetails">
                 <div className="commodityTitle">
@@ -104,12 +126,12 @@ const LimitDetails = (props) => {
                             limitDetails.is_end_booking ?
                                 <div className="btn">报名已结束</div> :
                                 limitDetails.is_start_booking ?
-                                    <div className="btn" onClick={()=>{
+                                    <div className="btn" onClick={() => {
                                         props.history.push('/commodity/limitappointment' + props.location.search)
                                     }}>即刻报名</div> :
-                                    <div className="btn" onClick={()=>{
+                                    <div className="btn" onClick={() => {
                                         props.history.push('/commodity/limitappointment' + props.location.search)
-                                    }}>报名未开始</div> : null
+                                    }}>报名未开始</div> : <div className="btn">即刻报名</div>
                 }
             </div>
         </div>

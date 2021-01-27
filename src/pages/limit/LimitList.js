@@ -18,6 +18,10 @@ const LimitList = (props) => {
             store_id: 57,
             sub_title: "测试-hogan 2021年1月18日",
             title: "测试-hogan 2021年1月18日",
+            is_start_booking: "",   // 已经到了报名开始时间
+            is_avail_booking: "", // 是否已经报名  true 未报名 false 已报名
+            is_end_booking: '', // 报名结束
+            is_booking: "", // 活动是否需要报名
         }
     ])
 
@@ -61,15 +65,25 @@ const LimitList = (props) => {
                             <div className="images">
                                 <img alt={''} src={item.article_img}/>
                             </div>
-                            <button type="submit" className={"s_btn s_btn1"}>报名未开始</button>
+                            {
+                                item.is_booking ?
+                                    item.is_avail_booking ?
+                                        <div className="s_btn s_btn1">已报名</div> :
+                                        item.is_end_booking ?
+                                            <div className="s_btn s_btn1">报名已结束</div> :
+                                            item.is_start_booking ?
+                                                <div className="s_btn s_btn1">即刻报名</div> :
+                                                <div className="s_btn s_btn1">报名未开始</div> :null
+                            }
                             {
                                 index === 0 ?
                                     <div className="down-icon iconfont icon-xiangxia"/> : null
                             }
                         </div>
-                        {/*{data2.types === 3 ?*/}
-                        {/*    <div className="mask"/> : null*/}
-                        {/*}*/}
+                        {
+                            item.is_end_booking ?
+                                <div className="mask"/> :null
+                        }
                     </div>
                 })
             }
