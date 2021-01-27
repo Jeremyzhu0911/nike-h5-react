@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react";
-
-import img from "../../assets/images/image_160074378798579956.jpeg";
 import {getUrlData} from "../../util/getUrlData";
 import axios from "axios";
 import cookie from "react-cookies";
+import Swiper from "swiper";
 
 const AmbassadorDetails = (props) => {
 
     const [loading, setLoading] = useState(true);
+
+    const [swiperList, setSwiperList] = useState([9, 1]);
+
+    const [showBigSwiper, setShowBigSwiper] = useState(false)
 
     const [AmbassadorDetailsData, setAmbassadorDetailsData] = useState({
         store_info: {
@@ -59,30 +62,59 @@ const AmbassadorDetails = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
+    useEffect(() => {
+        if (showBigSwiper) {
+
+            setSwiperList(
+                [AmbassadorDetailsData.file_list.length, 1]
+            )
+
+            new Swiper(".swiper-container", {
+                slidesPerView: (750 / 654),
+                centeredSlides: true,
+                spaceBetween: 10,
+                watchSlidesProgress: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: "progressbar",
+                },
+                on: {
+                    slideChange: function () {
+                        this.$el.find(".swiper-num span").text(this.realIndex + 1)
+                    }
+                }
+            });
+        }
+    }, [showBigSwiper])
+
     if (loading)
         return (<div>loading</div>)
 
     return (
-        <div className="AmbassadorDetails">
+        <div className={getUrlData("jordan") ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={'content'}>
                 <h4>{AmbassadorDetailsData.am_info.cnName}</h4>
-                <h5>{AmbassadorDetailsData.am_info.enName}</h5>
+                <h5>{AmbassadorDetailsData.am_info.enName}大使</h5>
                 <div className={'big_img'}>
                     <img alt={''} src={AmbassadorDetailsData.am_info.imgUrl}/>
                 </div>
                 <div className={paragraphHide ? 'paragraph' : 'paragraph on'}>
                     <p dangerouslySetInnerHTML={{__html: AmbassadorDetailsData.am_info.msg}}/>
-                    <span onClick={() => {
-                        setParagraphHide(!paragraphHide)
-                    }}>展开+</span>
+                    {
+                        AmbassadorDetailsData.am_info.msg ? <span onClick={() => {
+                            setParagraphHide(!paragraphHide)
+                        }}>展开+</span> : null
+                    }
                 </div>
             </div>
             <div className={AmbassadorDetailsData.file_list.length > 6 && imgHide ? 'img_list' : 'img_list on'}>
                 <ul>
                     {
                         AmbassadorDetailsData.file_list.map((item, index) => {
-                            return <li key={index}>
+                            return <li key={index} onClick={() => {
+                                setShowBigSwiper(!showBigSwiper)
+                            }}>
                                 <img alt={''} src={item.imgUrl}/>
                             </li>
                         })
@@ -95,12 +127,40 @@ const AmbassadorDetails = (props) => {
                 }
             </div>
             <div className={'order'}>
-                <div className="btn" onClick={()=>{
+                <div className="btn" onClick={() => {
                     props.history.push("/appointment" + props.location.search + "&is_ambassador=1")
                 }}>
                     预约此顾问
                 </div>
             </div>
+            {
+                showBigSwiper ?
+                    <div className={"bigSwiper"}>
+                        <h2>{cookie.load('store_name')}</h2>
+                        <h4>{AmbassadorDetailsData.am_info.cnName} <span className={"iconfont icon-close"} onClick={() => {
+                            setShowBigSwiper(!showBigSwiper)
+                        }}/></h4>
+                        <h5>{AmbassadorDetailsData.am_info.enName}</h5>
+                        <div className={"RotationBigImg"}>
+                            <div className={"swiper-container carousel"}>
+                                <div className="swiper-wrapper carousel-box">
+                                    {
+                                        AmbassadorDetailsData.file_list.map((item, index) => {
+                                            return <div className="carousel-item swiper-slide" key={index}>
+                                                <img alt={''} src={item.imgUrl}/>
+                                            </div>
+                                        })
+                                    }
+                                </div>
+                                <div className="index-container">
+                                    <div className={"swiper-pagination"}/>
+                                    <span className="swiper-num"><span>{swiperList[1]}</span>/{swiperList[0]}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div> : null
+            }
+
         </div>
     )
 

@@ -1,30 +1,26 @@
 {
   "files": {
-    "main.css": "/nike-h5-vue/dist/static/css/main.ac2cc4e6.chunk.css",
-    "main.js": "/nike-h5-vue/dist/static/js/main.8867440d.chunk.js",
-    "main.js.map": "/nike-h5-vue/dist/static/js/main.8867440d.chunk.js.map",
+    "main.css": "/nike-h5-vue/dist/static/css/main.5808b921.chunk.css",
+    "main.js": "/nike-h5-vue/dist/static/js/main.75073321.chunk.js",
+    "main.js.map": "/nike-h5-vue/dist/static/js/main.75073321.chunk.js.map",
     "runtime-main.js": "/nike-h5-vue/dist/static/js/runtime-main.9a218d71.js",
     "runtime-main.js.map": "/nike-h5-vue/dist/static/js/runtime-main.9a218d71.js.map",
-    "static/js/2.4e1e6088.chunk.js": "/nike-h5-vue/dist/static/js/2.4e1e6088.chunk.js",
-    "static/js/2.4e1e6088.chunk.js.map": "/nike-h5-vue/dist/static/js/2.4e1e6088.chunk.js.map",
+    "static/js/2.f30d3f94.chunk.js": "/nike-h5-vue/dist/static/js/2.f30d3f94.chunk.js",
+    "static/js/2.f30d3f94.chunk.js.map": "/nike-h5-vue/dist/static/js/2.f30d3f94.chunk.js.map",
     "static/js/3.991064bd.chunk.js": "/nike-h5-vue/dist/static/js/3.991064bd.chunk.js",
     "static/js/3.991064bd.chunk.js.map": "/nike-h5-vue/dist/static/js/3.991064bd.chunk.js.map",
     "index.html": "/nike-h5-vue/dist/index.html",
-    "static/css/main.ac2cc4e6.chunk.css.map": "/nike-h5-vue/dist/static/css/main.ac2cc4e6.chunk.css.map",
-    "static/js/2.4e1e6088.chunk.js.LICENSE.txt": "/nike-h5-vue/dist/static/js/2.4e1e6088.chunk.js.LICENSE.txt",
-    "static/media/Image-1.372f5c22.jpg": "/nike-h5-vue/dist/static/media/Image-1.372f5c22.jpg",
-    "static/media/iconfont.css": "/nike-h5-vue/dist/static/media/iconfont.e3057561.woff",
-    "static/media/image_160074378798579956.b9541e06.jpeg": "/nike-h5-vue/dist/static/media/image_160074378798579956.b9541e06.jpeg",
+    "static/css/main.5808b921.chunk.css.map": "/nike-h5-vue/dist/static/css/main.5808b921.chunk.css.map",
+    "static/js/2.f30d3f94.chunk.js.LICENSE.txt": "/nike-h5-vue/dist/static/js/2.f30d3f94.chunk.js.LICENSE.txt",
+    "static/media/iconfont.css": "/nike-h5-vue/dist/static/media/iconfont.b98a8afc.ttf",
     "static/media/logo.cbf13103.svg": "/nike-h5-vue/dist/static/media/logo.cbf13103.svg",
     "static/media/markers.2260d1c0.png": "/nike-h5-vue/dist/static/media/markers.2260d1c0.png",
-    "static/media/minImg.6f355a1c.png": "/nike-h5-vue/dist/static/media/minImg.6f355a1c.png",
-    "static/media/sp.8a744fdf.jpg": "/nike-h5-vue/dist/static/media/sp.8a744fdf.jpg",
     "static/media/tb.bde35ad3.jpg": "/nike-h5-vue/dist/static/media/tb.bde35ad3.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.9a218d71.js",
-    "static/js/2.4e1e6088.chunk.js",
-    "static/css/main.ac2cc4e6.chunk.css",
-    "static/js/main.8867440d.chunk.js"
+    "static/js/2.f30d3f94.chunk.js",
+    "static/css/main.5808b921.chunk.css",
+    "static/js/main.75073321.chunk.js"
   ]
 }

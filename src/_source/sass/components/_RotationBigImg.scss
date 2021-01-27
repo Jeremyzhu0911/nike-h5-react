@@ -1,12 +1,14 @@
 .RotationBigImg {
   width: 100%;
   overflow: hidden;
-  .carousel,.swiper-container{
+
+  .carousel, .swiper-container {
     width: 100%;
     overflow: hidden;
-    .carousel-box,.swiper-wrapper{
+
+    .carousel-box, .swiper-wrapper {
       display: inline-table;
-      white-space:nowrap;
+      white-space: nowrap;
       font-size: 0;
       //&:nth-child(1){
       //  margin-left: rem-calc(96);
@@ -14,24 +16,28 @@
       //&:last-child{
       //  margin-right: rem-calc(48) !important;
       //}
-      .left_one{
+      .left_one {
         margin-left: rem-calc(48);
       }
-      .right_one{
+
+      .right_one {
         margin-left: rem-calc(-48);
       }
-      .carousel-item,.swiper-slide{
+
+      .carousel-item, .swiper-slide {
         display: inline-block;
         width: rem-calc(558);
         border-radius: rem-calc(20);
         overflow: hidden;
         margin-right: rem-calc(48);
         font-size: 0;
+
         img {
           width: 100%;
           margin: 0;
         }
-        h4{
+
+        h4 {
           height: rem-calc(48);
           line-height: rem-calc(24);
           font-size: rem-calc(18.12);
@@ -39,7 +45,8 @@
           margin-top: rem-calc(18.12);
           overflow: hidden;
         }
-        p{
+
+        p {
           font-size: rem-calc(18.12);
           color: #9A9A9A;
           padding: 0 rem-calc(16.3);
@@ -47,26 +54,33 @@
       }
     }
   }
-  .index-container{
+
+  .index-container {
     margin: 0 rem-calc(48);
     padding: rem-calc(49.32) 0;
     position: relative;
     overflow: hidden;
-    .swiper-pagination{
+
+    .swiper-pagination {
       width: rem-calc(592);
       height: rem-calc(6);
       background: #D8D8D8;
       overflow: hidden;
-      span{
+
+      span {
         float: left;
-        width: 16.66%;
+        transform-origin: left top;
+        width: rem-calc(592);
         height: rem-calc(6);
-        &.swiper-pagination-bullet-active{
-          background: #9A9A9A;
-        }
+        background: #9A9A9A;
+
+        //&.swiper-pagination-bullet-active {
+        //  background: #9A9A9A;
+        //}
       }
     }
-    .swiper-num{
+
+    .swiper-num {
       font-size: rem-calc(24);
       height: rem-calc(104.64);
       line-height: rem-calc(104.64);

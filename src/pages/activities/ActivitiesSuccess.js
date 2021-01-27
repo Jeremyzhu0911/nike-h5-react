@@ -9,16 +9,17 @@ const ActivitiesSuccess = (props) => {
     const [loading, setLoading] = useState(true);
 
     const [stateData, setStateData] = useState({
-        event_url:"",
-        event_title:"",
-        event_start_date:"",
-        event_end_date:"",
-        longitude:"",
-        latitude:"",
-        event_address:"",
-        booking_name:"",
-        booking_mobile:"",
-        qrcode:"",
+        event_url: "",
+        event_title: "",
+        event_owner_type:"",
+        event_start_date: "",
+        event_end_date: "",
+        longitude: "",
+        latitude: "",
+        event_address: "",
+        booking_name: "",
+        booking_mobile: "",
+        qrcode: "",
     })
 
     const [showHide, setShowHide] = useState(false)
@@ -51,7 +52,7 @@ const ActivitiesSuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AmbassadorSuccess">
+        <div className={getUrlData("jordan") ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -61,11 +62,12 @@ const ActivitiesSuccess = (props) => {
                 活动预约成功
             </h3>
             <div className={'userinfo'}>
-                <div className={'userimg'}>
+                <div className={'activitiesimg'}>
                     <img alt={''} src={stateData.event_url}/>
                 </div>
                 <div className={'username'}>
                     <p>
+                        {stateData.event_owner_type}<br/>
                         {stateData.event_title}
                     </p>
                 </div>
@@ -103,7 +105,15 @@ const ActivitiesSuccess = (props) => {
                 }}>
                     查看我的预约
                 </div>
-                <div className="btn2">
+                <div className="btn2" onClick={() => {
+                    if(getUrlData("jordan"))
+                        props.history.push("/details-activities?store_id=" + getUrlData("store_id") +
+                            "&store_event_id=" + getUrlData("store_event_id") + "&jordan=1")
+                    else{
+                        props.history.push("/details-activities?store_id=" + getUrlData("store_id") +
+                            "&store_event_id=" + getUrlData("store_event_id"))
+                    }
+                }}>
                     返回活动
                 </div>
             </div>

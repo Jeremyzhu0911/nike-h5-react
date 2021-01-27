@@ -289,7 +289,7 @@ const CommodityAppointment = (props) => {
                                         }
                                     )
                                 } else {
-                                    alert("请阅读并同意本店服务与保密协议")
+                                    alert("请阅读并同意服务与保密协议")
                                 }
                             } else {
                                 alert("请输入验证码")

@@ -9,6 +9,8 @@ const AmbassadorAppointment = (props) => {
 
     const [loading, setLoading] = useState(true);
 
+    const [iconfont, setIconfont] = useState(false)
+
     const [AmbassadorAppointmentData, setAmbassadorAppointmentData] = useState([
         {
             date_day: '',    //  预约时间
@@ -28,7 +30,7 @@ const AmbassadorAppointment = (props) => {
     const [stateDate, setStateDate] = useState({
         postUrl: '',
         postData: '',
-        bookingType:''
+        bookingType: ''
     })
 
     const [tabHide, setTabHide] = useState(true)
@@ -108,6 +110,18 @@ const AmbassadorAppointment = (props) => {
 
                             setLoading(false)
                         }
+                        if (Number(resData.code) === 201) {
+                            alert("没有可用时间，5秒后自动返回顾问首页")
+                            let timeout = setTimeout(()=>{
+                                if(getUrlData("jordan")){
+                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") +"&jordan=1");
+                                }else{
+                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id"));
+                                }
+
+                                clearTimeout(timeout)
+                            },5000)
+                        }
                     }, (error) => {
                         console.log(error)
                         return props.history.push("/500")
@@ -124,14 +138,16 @@ const AmbassadorAppointment = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AmbassadorAppointment">
+        <div className={getUrlData("jordan") ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             {
                 Number(getUrlData('is_ambassador')) === 1 &&
                 <div className={'Ambassador'}>
                     <div className={'headers'}>
                         <div className="name">
                             填写预约信息
-                            <span>返回</span>
+                            <span onClick={() => {
+                                props.history.goBack()
+                            }}>返回</span>
                         </div>
                     </div>
                     <div className={'appointment_time'}>
@@ -310,58 +326,63 @@ const AmbassadorAppointment = (props) => {
                 </ul>
             </div>
             <div className={'tips'}>
-                <p>同意隐私信息授权条款</p>
-                <span>按钮</span>
+                <p onClick={() => {
+                    setIconfont(!iconfont)
+                }}
+                   className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》
+                </p>
             </div>
             <div className={'texts'}>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
-                    // props.history.push('/success')
                     console.log(stateDate)
-                    axios({
-                        url: stateDate.postUrl,
-                        method: "post",
-                        data: stateDate.postData,
-                        transformRequest: [
-                            function (data) {
-                                let ret = "";
-                                for (let it in data) {
-                                    ret +=
-                                        encodeURIComponent(it) +
-                                        "=" +
-                                        encodeURIComponent(data[it]) +
-                                        "&";
-                                }
-                                return ret;
+                    if (iconfont)
+                        axios({
+                            url: stateDate.postUrl,
+                            method: "post",
+                            data: stateDate.postData,
+                            transformRequest: [
+                                function (data) {
+                                    let ret = "";
+                                    for (let it in data) {
+                                        ret +=
+                                            encodeURIComponent(it) +
+                                            "=" +
+                                            encodeURIComponent(data[it]) +
+                                            "&";
+                                    }
+                                    return ret;
+                                },
+                            ],
+                            headers: {
+                                "Content-Type": "application/x-www-form-urlencoded",
                             },
-                        ],
-                        headers: {
-                            "Content-Type": "application/x-www-form-urlencoded",
-                        },
-                    }).then(
-                        (res) => {
-                            let resData = res.data;
-                            if (Number(resData.code) === 200) {
-                                console.log(resData)
-                                // /success?booking_id=167&is_subscribe=0&status=0&type=4
-                                if(getUrlData('jordan')){
-                                    props.history.push(
-                                        '/success?booking_id=' + resData.data.booking_id +
-                                        "&is_subscribe=" + resData.data.is_subscribe+
-                                        "&status=0&jordan=1&type=" + stateDate.bookingType
-                                    )
-                                }else {
-                                    props.history.push(
-                                        '/success?booking_id=' + resData.data.booking_id +
-                                        "&is_subscribe=" + resData.data.is_subscribe+
-                                        "&status=0&type=" + stateDate.bookingType
-                                    )
+                        }).then(
+                            (res) => {
+                                let resData = res.data;
+                                if (Number(resData.code) === 200) {
+                                    console.log(resData)
+                                    // /success?booking_id=167&is_subscribe=0&status=0&type=4
+                                    if (getUrlData('jordan')) {
+                                        props.history.push(
+                                            '/success?booking_id=' + resData.data.booking_id +
+                                            "&is_subscribe=" + resData.data.is_subscribe +
+                                            "&status=0&jordan=1&type=" + stateDate.bookingType
+                                        )
+                                    } else {
+                                        props.history.push(
+                                            '/success?booking_id=' + resData.data.booking_id +
+                                            "&is_subscribe=" + resData.data.is_subscribe +
+                                            "&status=0&type=" + stateDate.bookingType
+                                        )
+                                    }
+                                } else {
+                                    alert(res.data.message)
                                 }
-                            }else{
-                                alert(res.data.message)
                             }
-                        }
-                    )
+                        )
+                    else
+                        alert("请阅读并同意服务与保密协议")
                 }}>
                     提交预约申请
                 </div>

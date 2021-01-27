@@ -92,4 +92,18 @@
       }
     }
   }
+  &.jordan{
+    .appointment_type{
+      ul{
+        li{
+          background: #fff;
+          color: #000;
+          &.on{
+            background: #b7052d;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
 }

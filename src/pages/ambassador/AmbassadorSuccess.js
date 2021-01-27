@@ -63,7 +63,7 @@ const AmbassadorSuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AmbassadorSuccess">
+        <div className={getUrlData("jordan") ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -116,7 +116,23 @@ const AmbassadorSuccess = (props) => {
                 }}>
                     查看我的预约
                 </div>
-                <div className="btn2">
+
+                <div className="btn2" onClick={()=>{
+                    let gotoUrl;
+                    if(AmbassadorSuccessData.type === 4){
+                        gotoUrl = "/content-ambassador"
+                    }else if(AmbassadorSuccessData.type === 3){
+                        gotoUrl = "/content-ambassador"
+                    }else{
+                        gotoUrl = "/content-ambassador"
+                    }
+                    if (getUrlData("jordan")) {
+                        props.history.push(gotoUrl +"?store_id=" + AmbassadorSuccessData.data.store_id + "&jordan=1");
+                    } else {
+                        props.history.push(gotoUrl +"?store_id=" + AmbassadorSuccessData.data.store_id);
+                    }
+
+                }}>
                     {
                         AmbassadorSuccessData.type === 4 ? '返回顾问' :
                             AmbassadorSuccessData.type === 3 ? '返回活动' : '返回'

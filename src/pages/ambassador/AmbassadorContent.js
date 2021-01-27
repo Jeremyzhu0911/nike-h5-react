@@ -3,6 +3,7 @@ import cookie from 'react-cookies';
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
+import defaultImd from "../../assets/images/ambassadorImd.jpg";
 
 
 const AmbassadorContent = (props) => {
@@ -28,7 +29,7 @@ const AmbassadorContent = (props) => {
     useEffect(() => {
         if (loading) {
             if (getUrlData('store_id')) {
-                const url = '/ambassador/site/get-ambassador-list?store_id=' + getUrlData('store_id');
+                let url = '/ambassador/site/get-ambassador-list?store_id=' + getUrlData('store_id');
                 axios.get(url).then(
                     (res) => {
                         let resData = res.data;
@@ -43,16 +44,16 @@ const AmbassadorContent = (props) => {
 
                             if (resData.data.am_list.length > 4) {
                                 new Swiper(".swiper-container", {
-                                    slidesPerView: (750 / 654) * 4,
+                                    slidesPerView: (750 / 654) * 4.5,
                                     slidesPerGroup: 1,
-                                    spaceBetween: 5,
+                                    spaceBetween: 10,
                                     on: {
                                         slideChange: function () {
                                             console.log(this.realIndex)
                                             console.log(this.$el.find(".swiper-slide").length)
                                             if (this.realIndex + 1 === 1)
                                                 this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                            else if (Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length)
+                                            else if (Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length - 5)
                                                 this.$el.find(".swiper-slide").eq(0).addClass("right_one");
                                         }
                                     }
@@ -75,7 +76,7 @@ const AmbassadorContent = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AmbassadorContent">
+        <div className={getUrlData("jordan") ? "AmbassadorContent jordan" : "AmbassadorContent"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={'list swiper-container'}>
                 <ul className={
@@ -84,12 +85,13 @@ const AmbassadorContent = (props) => {
                 }>
                     {
                         stateData.am_list.map((item, index) => {
-                            return <li key={index} className={index === 0 ? 'swiper-slide left_one' : 'swiper-slide'}
+                            return <li key={index} className={
+                                index === 0 ? 'swiper-slide left_one' : 'swiper-slide'}
                                        onClick={() => {
                                            setTabIndex(index)
                                        }}>
                                 <div className={'images'}>
-                                    <img alt={''} src={item.imgUrl}/>
+                                    <img alt={''} src={item.imgUrl ? item.imgUrl : defaultImd}/>
                                 </div>
                                 <h4>{item.cnName}</h4>
                                 <p>标签</p>
@@ -100,7 +102,7 @@ const AmbassadorContent = (props) => {
             </div>
             <div className={'synopsis'}>
                 <div className={'images'}>
-                    <img alt={''} src={stateData.am_list[tabIndex].imgUrl}/>
+                    <img alt={''} src={stateData.am_list[tabIndex].imgUrl?stateData.am_list[tabIndex].imgUrl:defaultImd}/>
                 </div>
                 <h4>{stateData.am_list[tabIndex].cnName}</h4>
                 <p>标签 <span onClick={() => {

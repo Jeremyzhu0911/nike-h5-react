@@ -141,7 +141,7 @@ const AppointmentIndex = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AppointmentIndex">
+        <div className={getUrlData("jordan")?"AppointmentIndex jordan":"AppointmentIndex"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}

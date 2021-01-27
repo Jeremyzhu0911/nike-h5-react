@@ -365,10 +365,9 @@ body {
 }
 .RotationBigImg .index-container .swiper-pagination span {
   float: left;
-  width: 16.66%;
+  transform-origin: left top;
+  width: 21.04889rem;
   height: 0.21333rem;
-}
-.RotationBigImg .index-container .swiper-pagination span.swiper-pagination-bullet-active {
   background: #9A9A9A;
 }
 .RotationBigImg .index-container .swiper-num {
@@ -648,7 +647,7 @@ body {
 }
 .AmbassadorContent .list ul li p {
   font-size: 0.85333rem;
-  color: #8f8f8f;
+  color: #8f8f8f !important;
 }
 .AmbassadorContent .list ul li.on {
   zoom: 1.2;
@@ -693,13 +692,14 @@ body {
   margin-left: 1.13778rem;
 }
 .AmbassadorContent .list ul.ul_align3 li.right_one {
-  margin-left: -2.27556rem;
+  margin-left: 0;
 }
 .AmbassadorContent .synopsis {
   width: 23.25333rem;
   margin: 0 auto;
   box-shadow: 0 1px 5px #6A6A6A;
   border-radius: 1.42222rem;
+  background: #fff;
   overflow: hidden;
 }
 .AmbassadorContent .synopsis .images {
@@ -713,6 +713,7 @@ body {
   padding: 0 1.70667rem;
   padding-top: 1.13778rem;
   font-size: 1.70667rem;
+  color: #000;
   font-weight: bold;
 }
 .AmbassadorContent .synopsis p {
@@ -720,6 +721,7 @@ body {
   padding-bottom: 1.13778rem;
   font-size: 1.13778rem;
   height: 1.77778rem;
+  color: #000 !important;
 }
 .AmbassadorContent .synopsis p span {
   float: right;
@@ -729,12 +731,13 @@ body {
   height: 2.13333rem;
   line-height: 2.13333rem;
   padding: 0 0.71111rem;
+  color: #000 !important;
 }
 
 .AmbassadorDetails {
   width: 100%;
   overflow: hidden;
-  padding-bottom: 3.55556rem;
+  padding-bottom: 4.97778rem;
 }
 .AmbassadorDetails h2 {
   text-align: center;
@@ -811,20 +814,56 @@ body {
   text-decoration: underline;
 }
 .AmbassadorDetails .order {
-  height: 6.04444rem;
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  padding: 1.77778rem 0;
   background: #fff;
   z-index: 10;
 }
 .AmbassadorDetails .order .btn {
   width: 23.25333rem;
-  height: 4.33778rem;
-  line-height: 4.33778rem;
-  border-radius: 4.33778rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  border-radius: 3.55556rem;
   margin: 0 auto;
   text-align: center;
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
+}
+.AmbassadorDetails .bigSwiper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  background: #000;
+  z-index: 9;
+}
+.AmbassadorDetails .bigSwiper h4 {
+  padding: 0 1.70667rem;
+  padding-top: 3.55556rem;
+  font-size: 2.06222rem;
+  position: revert;
+}
+.AmbassadorDetails .bigSwiper h4 span {
+  position: absolute;
+  right: 1.70667rem;
+  font-size: 2.13333rem;
+}
+.AmbassadorDetails .bigSwiper h5 {
+  padding: 0.85333rem 1.70667rem;
+  font-size: 1.49333rem;
+}
+.AmbassadorDetails .bigSwiper .RotationBigImg .carousel-item {
+  width: 23.25333rem;
+  height: 23.25333rem;
+}
+.AmbassadorDetails.jordan .order {
+  background: #000;
+}
+.AmbassadorDetails.jordan .order .btn {
+  background: #b7052d;
 }
 
 .AmbassadorAppointment {
@@ -997,6 +1036,44 @@ body {
   color: #fff;
   background: #000;
 }
+.AmbassadorAppointment.jordan .hr li.on {
+  background: #b7052d !important;
+}
+.AmbassadorAppointment.jordan .time_list h4 {
+  color: #fff !important;
+}
+.AmbassadorAppointment.jordan .time_list ul li p {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #000 !important;
+}
+.AmbassadorAppointment.jordan .time_list ul li p.ons {
+  background: #b7052d !important;
+  color: #fff !important;
+  border-color: #b7052d !important;
+}
+.AmbassadorAppointment.jordan .addInfo li {
+  border-color: #fff !important;
+}
+.AmbassadorAppointment.jordan .addInfo li input {
+  color: #fff !important;
+}
+.AmbassadorAppointment.jordan .gender li p {
+  background: #fff !important;
+  border-color: #fff !important;
+  color: #000 !important;
+}
+.AmbassadorAppointment.jordan .gender li.on p {
+  background: #b7052d !important;
+  border-color: #b7052d !important;
+  color: #fff !important;
+}
+.AmbassadorAppointment.jordan .order {
+  background: #000 !important;
+}
+.AmbassadorAppointment.jordan .order .btn {
+  background: #b7052d !important;
+}
 
 .AmbassadorSuccess {
   width: 100%;
@@ -1024,6 +1101,16 @@ body {
   box-shadow: 0 1px 5px #000;
 }
 .AmbassadorSuccess .userinfo .userimg img {
+  width: 6.82667rem;
+  height: 6.82667rem;
+}
+.AmbassadorSuccess .userinfo .activitiesimg {
+  float: left;
+  font-size: 0;
+  overflow: hidden;
+  box-shadow: 0 1px 5px #000;
+}
+.AmbassadorSuccess .userinfo .activitiesimg img {
   width: 6.82667rem;
   height: 6.82667rem;
 }
@@ -1187,6 +1274,14 @@ body {
   right: 0px;
   font-size: 0.99556rem;
 }
+.AppointmentIndex.jordan .appointment_type ul li {
+  background: #fff;
+  color: #000;
+}
+.AppointmentIndex.jordan .appointment_type ul li.on {
+  background: #b7052d;
+  color: #fff;
+}
 
 .AppointmentDetails {
   width: 26.66667rem;
@@ -1244,13 +1339,15 @@ body {
   color: #ccc;
 }
 .AppointmentDetails .userinfo {
-  padding: 1.70667rem 1.70667rem;
+  padding: 1.70667rem 0;
   display: inline-table;
   border-top: 1px solid #f5f5f5;
   border-bottom: 1px solid #f5f5f5;
+  width: 100%;
 }
 .AppointmentDetails .userinfo .userimg {
   float: left;
+  margin-left: 1.70667rem;
   font-size: 0;
   overflow: hidden;
 }
@@ -1322,6 +1419,12 @@ body {
   margin-top: 1.13778rem;
   background: #fff;
   color: #000;
+}
+.AppointmentDetails.jordan .order {
+  background: #000;
+}
+.AppointmentDetails.jordan .order .btn {
+  background: #b7052d;
 }
 
 .AppointmentLuckydraw {

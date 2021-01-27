@@ -28,6 +28,17 @@
         height: rem-calc(192);
       }
     }
+    .activitiesimg {
+      float: left;
+      font-size: 0;
+      overflow: hidden;
+      box-shadow: 0 1px 5px #000;
+      img {
+        width: rem-calc(192);
+        height: rem-calc(192);
+      }
+
+    }
     .username{
       float: left;
       margin-left: rem-calc(48);

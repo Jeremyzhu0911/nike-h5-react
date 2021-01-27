@@ -3,7 +3,6 @@ import cookie from 'react-cookies';
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from 'swiper';
-import img from "../../assets/images/minImg.png";
 
 const CommodityIndex = (props) => {
 
@@ -108,6 +107,7 @@ const CommodityIndex = (props) => {
                             spaceBetween: 10,
                             pagination: {
                                 el: '.swiper-pagination',
+                                type: "progressbar",
                             },
                             on: {
                                 slideChange: function () {

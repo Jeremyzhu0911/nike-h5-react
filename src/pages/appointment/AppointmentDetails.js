@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import img from "../../assets/images/image_160074378798579956.jpeg";
 import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";

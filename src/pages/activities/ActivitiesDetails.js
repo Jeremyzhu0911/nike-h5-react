@@ -25,8 +25,8 @@ const ActivitiesDetails = (props) => {
         is_start_booking: "",   // 已经到了报名开始时间
         is_avail_booking: "", // 是否已经报名  true 未报名 false 已报名
         is_end_booking: '', // 报名结束
-        is_booking:"", // 活动是否需要报名
-        statusTxt: "预约活动",
+        is_booking: "", // 活动是否需要报名
+        booking_id:"",  //  已报名 id   0
     })
     // let isStatus;
 
@@ -37,13 +37,6 @@ const ActivitiesDetails = (props) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
                         console.log(resData)
-
-                        if (dataList.is_booking) {
-                            if(dataList.is_avail_booking){
-                                resData.data.statusTxt = "已报名";
-                            }
-
-                        }
 
                         setDataList({
                             ...dataList,
@@ -140,8 +133,8 @@ const ActivitiesDetails = (props) => {
                         }}>
                             {
                                 dataList.is_end_booking ? "报名已结束" :
-                                    !dataList.is_avail_booking ? "已报名":
-                                    dataList.is_start_booking ? "报名中": "报名未开始"
+                                    !dataList.is_avail_booking ? "已报名" :
+                                        dataList.is_start_booking ? "报名中" : "报名未开始"
 
                             }
                         </div>
@@ -157,7 +150,8 @@ const ActivitiesDetails = (props) => {
                                     dataList.is_end_booking ? "十分遗憾活动预约时间已过。您可以尝试了解其他活动，进行预约！" :
                                         !dataList.is_start_booking ? "还未到活动预约时间，请在可报名时间内再次尝试！" :
                                             Number(dataList.event_allow_count) <= Number(dataList.event_booking_count) ? "此活动预约人数已满，无法报名。您可以尝试了解其他活动，进行预约！" :
-                                                props.history.push("/appointment-activities" + props.location.search)
+                                                !dataList.is_avail_booking ? props.history.push("/appointment/details" + props.location.search +"&type=event&booking_id=" + dataList.booking_id) :
+                                                    props.history.push("/appointment-activities" + props.location.search)
 
                                 }
                             </p>

@@ -2,8 +2,6 @@ import React, {useState, useEffect} from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
-
-import img from "../../assets/images/minImg.png";
 import Swiper from "swiper";
 
 const AppointmentActivities = (props) => {

@@ -54,12 +54,14 @@
     }
   }
   .userinfo {
-    padding: rem-calc(48) rem-calc(48);
+    padding: rem-calc(48) 0;
     display: inline-table;
     border-top: 1px solid #f5f5f5;
     border-bottom: 1px solid #f5f5f5;
+    width: 100%;
     .userimg {
       float: left;
+      margin-left: rem-calc(48);
       font-size: 0;
       overflow: hidden;
       img {
@@ -134,6 +136,14 @@
       margin-top: rem-calc(32);
       background: #fff;
       color: #000;
+    }
+  }
+  &.jordan{
+    .order{
+      background: #000;
+      .btn{
+        background: #b7052d;
+      }
     }
   }
 }

@@ -7,6 +7,8 @@ import GetCode from "../../components/GetCode";
 
 const ActivitiesAppointment = (props) => {
 
+    const [loading, setLoading] = useState(true);
+
     const [iconfont, setIconfont] = useState(false)
 
     const [postData, setPostData] = useState({
@@ -34,16 +36,26 @@ const ActivitiesAppointment = (props) => {
         setCodeTime(state)
     }
 
-    return (
-        <div className="AmbassadorAppointment">
+    useEffect(() => {
+        if (loading) {
+            setLoading(false)
+        }
+    }, [loading])
 
+    if (loading)
+        return (<div>loading</div>)
+
+    return (
+        <div className={getUrlData("jordan") ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             <div className={'headers'}>
                 <div className="name">
                     填写个人信息
                     {
                         Number(getUrlData('is_ambassador')) === 1 ?
                             '' :
-                            <span>返回</span>
+                            <span onClick={() => {
+                                props.history.goBack()
+                            }}>返回</span>
                     }
                 </div>
             </div>
