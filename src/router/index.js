@@ -13,7 +13,6 @@ import {getUrlData} from "../util/getUrlData";
 
 //url配置
 import routes from '../router/config';
-
 import onFans from '../util/onFans';
 
 let isAj = LocalStore.getItem(CITYNAME);

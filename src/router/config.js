@@ -183,7 +183,7 @@ const routes = [
         title: '活动详情'   // 我的预约列表页-抽鞋抽号详情，取消/成功
     },
     {
-        path: '/commodity/fashion',
+        path: '/commodity/fashion',     // 参数 store_id
         component: Fashion,
         title: '潮流新品'
     },

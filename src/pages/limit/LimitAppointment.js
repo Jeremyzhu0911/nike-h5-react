@@ -99,7 +99,7 @@ const LimitAppointment = (props) => {
     }
 
     return (
-        <div className="LimitAppointment">
+        <div className={getUrlData("jordan")?"LimitAppointment jordan":"LimitAppointment"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className="infoDetails">
                 <div className="infoTitle">

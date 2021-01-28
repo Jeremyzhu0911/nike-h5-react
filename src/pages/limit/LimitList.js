@@ -7,7 +7,7 @@ const LimitList = (props) => {
 
     const [loading, setLoading] = useState(true)
 
-    const [limitList,setLimitList] = useState([
+    const [limitList, setLimitList] = useState([
         {
             article_img: "",
             created_at: "2021/01/18",
@@ -25,8 +25,8 @@ const LimitList = (props) => {
         }
     ])
 
-    useEffect(()=>{
-        if(loading){
+    useEffect(() => {
+        if (loading) {
             axios.get("/luckydraw/default/limited-product?store_id=" + getUrlData('store_id')).then(
                 (res) => {
                     let resData = res.data;
@@ -38,25 +38,25 @@ const LimitList = (props) => {
                         setLoading(false)
                     }
                 },
-                (error)=>{
+                (error) => {
                     console.log(error)
                     props.history.push('/500');
                 }
             )
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[loading])
+    }, [loading])
 
     if (loading) {
         return (<div>正在加载...</div>)
     }
 
     return (
-        <div className="Limit_list">
+        <div className={getUrlData("jordan") ? "Limit_list jordan" : "Limit_list"}>
             <h2>{cookie.load('store_name')}</h2>
             {
-                limitList.map((item,index)=>{
-                    return <div className="ListBigImgBox" key={index} onClick={()=>{
+                limitList.map((item, index) => {
+                    return <div className="ListBigImgBox" key={index} onClick={() => {
                         window.location.href = item.link
                     }}>
                         <div className="content">
@@ -69,11 +69,11 @@ const LimitList = (props) => {
                                 item.is_booking ?
                                     // item.is_avail_booking ?
                                     //     <div className="s_btn s_btn1">已报名</div> :
-                                        item.is_end_booking ?
-                                            <div className="s_btn s_btn1">报名已结束</div> :
-                                            item.is_start_booking ?
-                                                <div className="s_btn s_btn1">即刻报名</div> :
-                                                <div className="s_btn s_btn1">报名未开始</div> :null
+                                    item.is_end_booking ?
+                                        <div className="s_btn s_btn2">报名已结束</div> :
+                                        item.is_start_booking ?
+                                            <div className="s_btn s_btn1">即刻报名</div> :
+                                            <div className="s_btn s_btn1">报名未开始</div> : null
                             }
                             {
                                 index === 0 ?
@@ -82,7 +82,7 @@ const LimitList = (props) => {
                         </div>
                         {
                             item.is_end_booking ?
-                                <div className="mask"/> :null
+                                <div className="mask"/> : null
                         }
                     </div>
                 })

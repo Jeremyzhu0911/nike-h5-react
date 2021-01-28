@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cookie from "react-cookies";
 import { getUrlData } from "./getUrlData";
+import DataTracking from "./DataStatistics"
 
 const getOnFansData = (storeId) => {
     let url = window.location.href;
@@ -14,6 +15,7 @@ const getOnFansData = (storeId) => {
                 cookie.save('user_name', res.data.data.user_name)
                 cookie.save('mobile', res.data.data.mobile)
                 cookie.save('openId', res.data.data.openId)
+                DataTracking.GAOpenId(res.data.data.openId)
                 return res.data.data;
             }
         },

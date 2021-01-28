@@ -46,6 +46,7 @@ const CommodityFashion = (props) => {
                             watchSlidesProgress: true,
                             pagination: {
                                 el: '.swiper-pagination',
+                                type: "progressbar",
                             },
                             on:{
                                 slideChange:function (){

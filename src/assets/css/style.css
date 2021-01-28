@@ -1447,14 +1447,13 @@ body {
 }
 
 .AppointmentLuckydraw {
-  width: 26.66667rem;
+  width: 22.93333rem;
   margin: 0 auto;
   overflow: hidden;
-  padding-top: 0.85333rem;
+  padding: 0.85333rem 1.70667rem;
 }
 .AppointmentLuckydraw .luckydraw_box {
   width: 23.25333rem;
-  padding: 0 1.70667rem;
   display: inline-table;
 }
 .AppointmentLuckydraw .luckydraw_box h4 {
@@ -1465,34 +1464,36 @@ body {
 }
 .AppointmentLuckydraw .luckydraw_box .luckydraw_img {
   font-size: 0;
-  height: 8.88889rem;
+  width: 9.03111rem;
+  float: left;
 }
 .AppointmentLuckydraw .luckydraw_box .luckydraw_img img {
-  width: 10.66667rem;
-  height: 8.88889rem;
+  width: 9.03111rem;
 }
-.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt {
-  width: 11.52rem;
-  height: 8.88889rem;
+.AppointmentLuckydraw .luckydraw_box .luckydraw_txt {
+  width: 12.58667rem;
   float: right;
 }
-.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt h3 {
+.AppointmentLuckydraw .luckydraw_box .luckydraw_txt h3 {
   font-size: 1.35111rem;
   height: 6.4rem;
   line-height: 6.4rem;
+  color: #000 !important;
 }
-.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p {
+.AppointmentLuckydraw .luckydraw_box .luckydraw_txt p {
   height: 2.48889rem;
   line-height: 2.48889rem;
   font-size: 1.13778rem;
+  color: #000 !important;
 }
-.AppointmentLuckydraw .luckydraw_box .luckydraw_img .luckydraw_txt p span {
-  font-size: 0.85333rem;
+.AppointmentLuckydraw .luckydraw_box .luckydraw_txt p span {
+  font-size: 1.13778rem;
   float: right;
-  color: #9e9e9e;
+  margin-right: 1.06667rem;
+  color: #9e9e9e !important;
 }
 .AppointmentLuckydraw .info-ul {
-  padding: 0.85333rem 1.70667rem;
+  padding: 0.85333rem 0;
   font-size: 0.99556rem;
 }
 .AppointmentLuckydraw .info-ul li {
@@ -1516,7 +1517,6 @@ body {
 }
 .AppointmentLuckydraw .order {
   padding: 1.70667rem 0 0.53333rem 0;
-  background: #fff;
   z-index: 10;
 }
 .AppointmentLuckydraw .order .btn {
@@ -1529,6 +1529,14 @@ body {
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
+}
+.AppointmentLuckydraw.jordan .luckydraw_box {
+  background: #fff;
+  width: 22.96889rem;
+  border: 0.14222rem solid #fff;
+}
+.AppointmentLuckydraw.jordan .order .btn {
+  background: #b7052d;
 }
 
 .AppointmentActivities {
@@ -2490,6 +2498,15 @@ body {
   padding-top: 1.71662rem;
   font-size: 1.42222rem;
 }
+.Limit_list.jordan .ListBigImgBox {
+  box-shadow: none;
+}
+.Limit_list.jordan .ListBigImgBox .title {
+  color: #fff;
+}
+.Limit_list.jordan .ListBigImgBox .s_btn1 {
+  background: #b7052d;
+}
 
 .previewBox {
   width: 100%;
@@ -2597,11 +2614,16 @@ body {
   color: #fff;
   background: #000;
 }
+.LimitDetails.jordan .CommodityDetails .commodityName {
+  color: #dedede;
+}
+.LimitDetails.jordan .CommodityDetails .btn {
+  background: #b7052d;
+}
 
 .LimitAppointment {
   width: 100%;
   overflow: hidden;
-  padding-bottom: 4.97778rem;
 }
 .LimitAppointment h2 {
   text-align: center;
@@ -2711,19 +2733,41 @@ body {
 .LimitAppointment .infoBtn {
   padding-top: 1.13778rem;
   height: 4.97778rem;
-  background: #fff;
   z-index: 10;
 }
 .LimitAppointment .infoBtn .btn {
-  width: 24.39111rem;
-  height: 4.33778rem;
-  line-height: 4.33778rem;
-  border-radius: 4.33778rem;
+  width: 23.25333rem;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+  border-radius: 3.55556rem;
   margin: 0 auto;
   text-align: center;
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
+}
+.LimitAppointment.jordan .sellingImg .Size li {
+  background: #fff !important;
+  border-color: #fff !important;
+}
+.LimitAppointment.jordan .sellingImg .Size li.active {
+  background: #b7052d !important;
+  border-color: #b7052d !important;
+}
+.LimitAppointment.jordan .InfoEnter label {
+  color: #fff !important;
+}
+.LimitAppointment.jordan .InfoEnter input {
+  background: #fff !important;
+}
+.LimitAppointment.jordan .InfoEnter .getCodeBtn {
+  background: #b7052d !important;
+}
+.LimitAppointment.jordan .warning {
+  color: #ffffffa1;
+}
+.LimitAppointment.jordan .infoBtn .btn {
+  background: #b7052d !important;
 }
 
 .LimitSuccess {

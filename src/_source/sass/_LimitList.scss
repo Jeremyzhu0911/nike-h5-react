@@ -16,4 +16,15 @@
     padding-top: rem-calc(48.28);
     font-size: rem-calc(40);
   }
+  &.jordan{
+    .ListBigImgBox{
+      box-shadow: none;
+      .title{
+        color: #fff;
+      }
+      .s_btn1{
+        background: #b7052d;
+      }
+    }
+  }
 }

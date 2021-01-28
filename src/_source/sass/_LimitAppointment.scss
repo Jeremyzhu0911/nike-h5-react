@@ -2,7 +2,6 @@
 .LimitAppointment {
   width: 100%;
   overflow: hidden;
-  padding-bottom: rem-calc(140);
   h2 {
     text-align: center;
     height: rem-calc(102.8);
@@ -123,18 +122,50 @@
     //width: 100vw;
     padding-top: rem-calc(32);
     height: rem-calc(140);
-    background: #fff;
     z-index: 10;
     .btn{
-      width: rem-calc(686);
-      height: rem-calc(122);
-      line-height: rem-calc(122);
-      border-radius: rem-calc(122);
+      width: rem-calc(654);
+      height: rem-calc(100);
+      line-height: rem-calc(100);
+      border-radius: rem-calc(100);
       margin: 0 auto;
       text-align: center;
       font-size: rem-calc(30);
       color: #fff;
       background: #000;
+    }
+  }
+  &.jordan{
+    .sellingImg{
+      .Size{
+        li{
+          background: #fff !important;
+          border-color: #fff !important;
+          &.active{
+            background: #b7052d !important;
+            border-color: #b7052d !important;
+          }
+        }
+      }
+    }
+    .InfoEnter{
+      label{
+        color: #fff !important;
+      }
+      input{
+        background: #fff !important;
+      }
+      .getCodeBtn{
+        background: #b7052d !important;
+      }
+    }
+    .warning{
+      color: #ffffffa1;
+    }
+    .infoBtn{
+      .btn{
+        background: #b7052d !important;
+      }
     }
   }
 }

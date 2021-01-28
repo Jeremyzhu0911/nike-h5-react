@@ -102,21 +102,23 @@ const AppointmentLuckydraw = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className="AppointmentLuckydraw">
+        <div className={getUrlData("jordan") ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
             <div className={'luckydraw_box'}>
-                <h4>查看活动详情页 ></h4>
+                <h4 onClick={()=>{
+                    props.history.push("/commodity/Limitdetails" + props.location.search + "&luckydraw_id=" + luckydraw.luckydraw_id)
+                }}>查看活动详情页 ></h4>
                 <div className={'luckydraw_img'}>
                     <img alt={''} src={luckydraw.kv}/>
-                    <div className={'luckydraw_txt'}>
-                        <h3>{luckydraw.title}</h3>
-                        <p>
-                            {luckydraw.product_size}
-                            {
-                                luckydraw.status === -1 ?
-                                    <span>取消报名</span> : <span>报名成功</span>
-                            }
-                        </p>
-                    </div>
+                </div>
+                <div className={'luckydraw_txt'}>
+                    <h3>{luckydraw.title}</h3>
+                    <p>
+                        {luckydraw.product_size}码
+                        {
+                            luckydraw.status === -1 ?
+                                <span>取消报名</span> : <span>报名成功</span>
+                        }
+                    </p>
                 </div>
             </div>
             <ul className="info-ul">

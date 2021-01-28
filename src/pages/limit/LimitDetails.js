@@ -69,7 +69,7 @@ const LimitDetails = (props) => {
         )
 
     return (
-        <div className="LimitDetails">
+        <div className={getUrlData("jordan")?"LimitDetails jordan":"LimitDetails"}>
             {
                 getUrlData('code') ?
                     <div className="preview">此为预览页面，仅用于发布预览，将在短期内失效。</div> : null

@@ -3,6 +3,7 @@ import cookie from 'react-cookies';
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from 'swiper';
+import DataTracking from "../../util/DataStatistics"
 
 const CommodityIndex = (props) => {
 
@@ -36,7 +37,6 @@ const CommodityIndex = (props) => {
                 (res) => {
                     let restData = res.data;
                     if (Number(restData.code) === 200) {
-                        let imgLength = [];
                         console.log(restData.data)
                         restData.data.data.map((item, index) => {
                             if (index < 6) {
@@ -83,6 +83,7 @@ const CommodityIndex = (props) => {
                         })
 
                         cookie.save('store_name', restData.data.store_info.store_name);
+                        DataTracking.GAPage('最新上市')
 
                         setLoading(false)
 
@@ -152,8 +153,11 @@ const CommodityIndex = (props) => {
                         {
                             productNewList.data.map((item, index) => {
                                 return <div className="carousel-item swiper-slide" key={index} onClick={() => {
-                                    if(item.link_url)
+                                    if(item.link_url){
+                                        DataTracking.GAEvent('最新上市', item.image_path)
                                         window.location.href = item.link_url
+                                    }
+
                                 }}>
                                     <img alt={''} src={item.image_path}/>
                                 </div>
@@ -167,7 +171,8 @@ const CommodityIndex = (props) => {
                 </div>
             </div>
             <h1>店铺新品<span onClick={() => {
-                props.history.push("/commodity/list" + props.location.search)
+                DataTracking.GAEvent('最新上市', '全部主推产品');
+                props.history.push("/commodity/list" + props.location.search);
             }}>全部主推产品</span></h1>
             <div className="RotationBigImg">
                 <div className="swiper-mini carousel">

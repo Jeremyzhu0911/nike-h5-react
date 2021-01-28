@@ -1,13 +1,12 @@
 
 .AppointmentLuckydraw {
-  width: rem-calc(750);
+  width: rem-calc(645);
   margin: 0 auto;
   overflow: hidden;
-  padding-top: rem-calc(24);
+  padding: rem-calc(24) rem-calc(48);
 
   .luckydraw_box {
     width: rem-calc(654);
-    padding: 0 rem-calc(48);
     display: inline-table;
 
     h4 {
@@ -19,41 +18,39 @@
 
     .luckydraw_img {
       font-size: 0;
-      height: rem-calc(250);
-
+      width: rem-calc(254);
+      float: left;
       img {
-        width: rem-calc(300);
-        height: rem-calc(250);
+        width: rem-calc(254);
       }
+    }
+    .luckydraw_txt {
+      width: rem-calc(354);
+      float: right;
+      h3 {
+        font-size: rem-calc(38);
+        height: rem-calc(180);
+        line-height: rem-calc(180);
+        color: #000 !important;
+      }
+      p {
+        height: rem-calc(70);
+        line-height: rem-calc(70);
+        font-size: rem-calc(32);
+        color: #000 !important;
 
-      .luckydraw_txt {
-        width: rem-calc(324);
-        height: rem-calc(250);
-        float: right;
-
-        h3 {
-          font-size: rem-calc(38);
-          height: rem-calc(180);
-          line-height: rem-calc(180);
-        }
-
-        p {
-          height: rem-calc(70);
-          line-height: rem-calc(70);
+        span {
           font-size: rem-calc(32);
-
-          span {
-            font-size: rem-calc(24);
-            float: right;
-            color: #9e9e9e;
-          }
+          float: right;
+          margin-right: rem-calc(30);
+          color: #9e9e9e !important;
         }
       }
     }
   }
 
   .info-ul {
-    padding: rem-calc(24) rem-calc(48);
+    padding: rem-calc(24) 0;
     font-size: rem-calc(28);
 
     li {
@@ -82,7 +79,6 @@
 
   .order {
     padding: rem-calc(48) 0 rem-calc(15) 0;
-    background: #fff;
     z-index: 10;
 
     .btn {
@@ -95,6 +91,18 @@
       font-size: rem-calc(30);
       color: #fff;
       background: #000;
+    }
+  }
+  &.jordan{
+    .luckydraw_box{
+      background: #fff;
+      width: rem-calc(646);
+      border: rem-calc(4) solid #fff;
+    }
+    .order{
+      .btn{
+        background: #b7052d;
+      }
     }
   }
 }
