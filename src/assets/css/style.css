@@ -247,6 +247,13 @@ body {
   text-decoration: underline;
 }
 
+.jordan {
+  color: #fff;
+}
+.jordan h2, .jordan p, .jordan span {
+  color: #fff !important;
+}
+
 .pop_up {
   position: fixed;
   width: 100%;
@@ -271,20 +278,23 @@ body {
   padding-bottom: 10%;
   font-size: 20px;
   text-align: center;
+  color: #000 !important;
 }
 .pop_up .pop_up_box p {
   padding: 0 15%;
   line-height: 1.5;
   font-size: 12px;
   margin-left: 10%;
+  color: #000 !important;
 }
 .pop_up .pop_up_box p span {
   display: inline-block;
   width: 40%;
+  color: #000 !important;
 }
 .pop_up .pop_up_box p span.tc {
   text-align: center;
-  color: #ccc;
+  color: #ccc !important;
 }
 .pop_up .pop_up_box button {
   width: 50%;
@@ -295,13 +305,6 @@ body {
   line-height: 30px;
   margin: 5% auto;
   border: 1px solid #000;
-}
-
-.jordan {
-  color: #fff;
-}
-.jordan h2, .jordan p, .jordan span {
-  color: #fff !important;
 }
 
 .confirm_again {
@@ -1524,6 +1527,11 @@ body {
   font-size: 1.13778rem;
   color: #ff9e00;
 }
+.AppointmentLuckydraw .end_show.on {
+  color: #6dbb5c;
+  height: 3.55556rem;
+  line-height: 3.55556rem;
+}
 .AppointmentLuckydraw .order {
   padding: 1.70667rem 0 0.53333rem 0;
   z-index: 10;
@@ -1539,12 +1547,33 @@ body {
   color: #fff;
   background: #000;
 }
+.AppointmentLuckydraw .btn_normal {
+  font-size: 1.13778rem;
+  width: 16.14222rem;
+  height: 2.84444rem;
+  line-height: 2.84444rem;
+  text-align: center;
+  background: #000;
+  color: #fff;
+  margin: 0 auto;
+}
+.AppointmentLuckydraw .hasQrcode {
+  width: 23.25333rem;
+  padding: 1.70667rem 0;
+  text-align: center;
+}
+.AppointmentLuckydraw .hasQrcode img {
+  width: 10.66667rem;
+}
 .AppointmentLuckydraw.jordan .luckydraw_box {
   background: #fff;
   width: 22.96889rem;
   border: 0.14222rem solid #fff;
 }
 .AppointmentLuckydraw.jordan .order .btn {
+  background: #b7052d;
+}
+.AppointmentLuckydraw.jordan .btn_normal {
   background: #b7052d;
 }
 

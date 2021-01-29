@@ -75,6 +75,11 @@
     text-align: center;
     font-size: rem-calc(32);
     color: #ff9e00;
+    &.on{
+      color: #6dbb5c;
+      height: rem-calc(100);
+      line-height: rem-calc(100);
+    }
   }
 
   .order {
@@ -93,6 +98,24 @@
       background: #000;
     }
   }
+  .btn_normal{
+    font-size: rem-calc(32);
+    width: rem-calc(454);
+    height: rem-calc(80);
+    line-height: rem-calc(80);
+    text-align: center;
+    background: #000;
+    color: #fff;
+    margin: 0 auto;
+  }
+  .hasQrcode{
+    width: rem-calc(654);
+    padding: rem-calc(48) 0;
+    text-align: center;
+    img{
+      width: rem-calc(300);
+    }
+  }
   &.jordan{
     .luckydraw_box{
       background: #fff;
@@ -103,6 +126,9 @@
       .btn{
         background: #b7052d;
       }
+    }
+    .btn_normal{
+      background: #b7052d;
     }
   }
 }

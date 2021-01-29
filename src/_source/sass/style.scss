@@ -78,7 +78,12 @@ body{
 	}
 }
 
-
+.jordan{
+	color: #fff;
+	h2,p,span{
+		color: #fff !important;
+	}
+}
 
 .pop_up{
 	position: fixed;
@@ -104,6 +109,7 @@ body{
 			padding-bottom: 10%;
 			font-size: 20px;
 			text-align: center;
+			color: #000 !important;
 		}
 
 		p {
@@ -111,14 +117,16 @@ body{
 			line-height: 1.5;
 			font-size: 12px;
 			margin-left: 10%;
+			color: #000 !important;
 
 			span {
 				display: inline-block;
 				width: 40%;
+				color: #000 !important;
 
 				&.tc {
 					text-align: center;
-					color: #ccc;
+					color: #ccc !important;
 				}
 			}
 		}
@@ -133,12 +141,6 @@ body{
 			margin: 5% auto;
 			border: 1px solid #000;
 		}
-	}
-}
-.jordan{
-	color: #fff;
-	h2,p,span{
-		color: #fff !important;
 	}
 }
 

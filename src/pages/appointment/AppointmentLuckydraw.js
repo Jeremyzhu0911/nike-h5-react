@@ -10,10 +10,12 @@ const AppointmentLuckydraw = (props) => {
     const [cancelBooking, setCancelBooking] = useState(false)
 
     const [resultBtn, setResultBtn] = useState(false)
-    const [resultList, setResultList] = useState({
-        username: '',
-        mobile: ''
-    })
+    const [resultList, setResultList] = useState([
+        {
+            username: '',
+            mobile: ''
+        }
+    ])
 
     const [luckydraw, setLuckydraw] = useState({
         kv: '',  //  图片
@@ -58,14 +60,10 @@ const AppointmentLuckydraw = (props) => {
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        setResultList({
-                            ...resultList,
-                            ...resData.data
-                        })
+                        setResultList(resData.data)
                     } else {
                         props.history.push('/404');
                     }
-                    console.log(res)
                 },
                 (err) => {
                     console.log(err)
@@ -104,7 +102,7 @@ const AppointmentLuckydraw = (props) => {
     return (
         <div className={getUrlData("jordan") ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
             <div className={'luckydraw_box'}>
-                <h4 onClick={()=>{
+                <h4 onClick={() => {
                     props.history.push("/commodity/Limitdetails" + props.location.search + "&luckydraw_id=" + luckydraw.luckydraw_id)
                 }}>查看活动详情页 ></h4>
                 <div className={'luckydraw_img'}>
@@ -143,6 +141,17 @@ const AppointmentLuckydraw = (props) => {
                 }
             </ul>
             {
+                luckydraw.status === 0 ?
+                    <div className={'end_show'}>结果未公布</div> :
+                    luckydraw.status === 1 ?
+                        <div className={'end_show'}>未中选</div> :
+                        luckydraw.status === 2 ?
+                            <div className={'end_show on'}>恭喜您中选</div> :
+                            luckydraw.status === 4 ?
+                                <div className={'end_show'}>已签到</div> : null
+            }
+
+            {
                 luckydraw.status === 1 || luckydraw.status === 2 || luckydraw.status === 4 ?
                     <div className="btn_normal" onClick={() => {
                         setResultBtn(!resultBtn)
@@ -155,16 +164,7 @@ const AppointmentLuckydraw = (props) => {
                         <p>恭喜您中选<span>签到二维码仅限签到时间当日有效<br/>该二维码仅限于本人使用，且仅能使用1次</span></p>
                     </div> : null
             }
-            {
-                luckydraw.status === 0 ?
-                    <div className={'end_show'}>结果未公布</div> :
-                    luckydraw.status === 1 ?
-                        <div className={'end_show'}>未中选</div> :
-                        luckydraw.status === 2 ?
-                            <div className={'end_show'}>恭喜您中选</div> :
-                            luckydraw.status === 4 ?
-                                <div className={'end_show'}>已签到</div> : null
-            }
+
             {
                 luckydraw.status === 0 ?
                     <div className={'order'}>
@@ -191,8 +191,8 @@ const AppointmentLuckydraw = (props) => {
             }
             {
                 resultBtn ?
-                    <div className={'pop-up'}>
-                        <div className="pop-up-box">
+                    <div className={'pop_up'}>
+                        <div className="pop_up_box">
                             <h2>获得资格名单</h2>
                             <p><span className="tc">姓名</span><span className="tc">手机</span></p>
                             {
