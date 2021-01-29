@@ -5,6 +5,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 
 import Swiper from 'swiper';
+import addTag from "../../util/addTag";
 
 const CommodityFashion = (props) => {
 
@@ -50,6 +51,8 @@ const CommodityFashion = (props) => {
                             },
                             on:{
                                 slideChange:function (){
+                                    if(this.realIndex === 1)
+                                        addTag(this.$el.find(".swiper-slide").data("idx"))
                                     this.$el.find(".swiper-num span").text(this.realIndex + 1)
                                 }
                             }
@@ -82,7 +85,7 @@ const CommodityFashion = (props) => {
                                     {
                                         stateList.images.length >= 1?
                                         stateList.images.map((item, index) => {
-                                            return <div className="carousel-item swiper-slide" key={index}>
+                                            return <div className="carousel-item swiper-slide" key={index} data-idx={stateList.relation_id}>
                                                 <img alt={''} src={item}/>
                                             </div>
                                         }) : <div className="carousel-item swiper-slide">

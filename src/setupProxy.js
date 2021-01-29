@@ -5,6 +5,8 @@ const proBaseURL = "http://localhost:80";
 
 const BASE_URL = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseURL;
 
+const BASE_URL_TAG = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseURL;
+
 const apiDimain = BASE_URL;
 
 module.exports = function(app) {
@@ -83,6 +85,15 @@ module.exports = function(app) {
     app.use('/luckydraw',createProxyMiddleware(
         {
             target: apiDimain,
+            changeOrigin: true,
+            // secure: false, // 是否验证证书
+            ws: true, // 启用websocket
+        }
+    ));
+
+    app.use('/tag',createProxyMiddleware(
+        {
+            target: BASE_URL_TAG,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket

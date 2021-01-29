@@ -90,6 +90,7 @@ const CommodityAppointment = (props) => {
                         })
                         setStateData(restDate.data)
                         setLoading(false)
+
                     }
                 },
                 (error) => {
@@ -203,7 +204,7 @@ const CommodityAppointment = (props) => {
                                 <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                             </li>
                             <li>
-                                <input type={'num'} onChange={(event) => {
+                                <input type={'num'} maxLength={'6'} onChange={(event) => {
                                     setPostData({
                                         ...postData,
                                         code: event.target.value

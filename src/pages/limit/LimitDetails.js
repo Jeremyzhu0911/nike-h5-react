@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import cookie from "react-cookies";
+import addTag from "../../util/addTag";
 
 const LimitDetails = (props) => {
     const [loading, setLoading] = useState(true);
@@ -41,6 +42,8 @@ const LimitDetails = (props) => {
                         console.log(resData.data);
                         setLimitDetails(resData.data)
                         setLoading(false)
+
+                        addTag(resData.data.relation_id)
                     }
                     if (Number(resData.code) === 403) {
                         setLoading(false);

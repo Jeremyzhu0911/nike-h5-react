@@ -88,7 +88,7 @@ const ActivitiesAppointment = (props) => {
                         <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                     </li>
                     <li>
-                        <input type={'num'} placeholder="请输入验证码" value={postData.code} onChange={(event) => {
+                        <input type={'num'} placeholder="请输入验证码" value={postData.code} maxLength={'6'} onChange={(event) => {
                             setPostData({
                                 ...postData,
                                 code: event.target.value,   //  验证码

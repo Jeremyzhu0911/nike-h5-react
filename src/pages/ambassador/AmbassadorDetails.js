@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {getUrlData} from "../../util/getUrlData";
+import addTag from "../../util/addTag";
 import axios from "axios";
 import cookie from "react-cookies";
 import Swiper from "swiper";
@@ -49,6 +50,8 @@ const AmbassadorDetails = (props) => {
                             setAmbassadorDetailsData(resData.data)
 
                             setLoading(false)
+
+                            addTag(resData.data.am_info.relation_id)
                         }
                     }, (error) => {
                         console.log(error)
@@ -137,9 +140,10 @@ const AmbassadorDetails = (props) => {
                 showBigSwiper ?
                     <div className={"bigSwiper"}>
                         <h2>{cookie.load('store_name')}</h2>
-                        <h4>{AmbassadorDetailsData.am_info.cnName} <span className={"iconfont icon-close"} onClick={() => {
-                            setShowBigSwiper(!showBigSwiper)
-                        }}/></h4>
+                        <h4>{AmbassadorDetailsData.am_info.cnName} <span className={"iconfont icon-close"}
+                                                                         onClick={() => {
+                                                                             setShowBigSwiper(!showBigSwiper)
+                                                                         }}/></h4>
                         <h5>{AmbassadorDetailsData.am_info.enName}</h5>
                         <div className={"RotationBigImg"}>
                             <div className={"swiper-container carousel"}>

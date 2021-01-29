@@ -162,7 +162,7 @@ const LimitAppointment = (props) => {
                             <div className="getCodeBtn">
                                 <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                             </div>
-                            <input type="text" className="code" name="code" onChange={(event) => {
+                            <input type="text" className="code" name="code" maxLength={'6'} onChange={(event) => {
                                 setPostDate({
                                     ...postDate,
                                     code: event.target.value

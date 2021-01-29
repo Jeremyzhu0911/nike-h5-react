@@ -247,28 +247,6 @@ body {
   text-decoration: underline;
 }
 
-.confirm_again {
-  position: fixed;
-  bottom: 0;
-  padding: 1.70667rem;
-  font-size: 1.35111rem;
-  border-top: 1px solid #dedede;
-}
-.confirm_again p {
-  font-size: 0.99556rem;
-  padding: 0.85333rem 0;
-}
-.confirm_again .btn_box {
-  text-align: center;
-}
-.confirm_again .btn_box span {
-  display: inline-block;
-  width: 7.11111rem;
-  text-align: center;
-  font-size: 1.13778rem;
-  margin: 0 2.25778rem;
-}
-
 .pop_up {
   position: fixed;
   width: 100%;
@@ -324,6 +302,37 @@ body {
 }
 .jordan h2, .jordan p, .jordan span {
   color: #fff !important;
+}
+
+.confirm_again {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1.70667rem 0;
+  width: 100%;
+  font-size: 1.35111rem;
+  border-top: 1px solid #dedede;
+  background: #fff;
+}
+.confirm_again h4 {
+  padding: 0 1.70667rem;
+  color: #000;
+}
+.confirm_again p {
+  font-size: 0.99556rem;
+  padding: 0.85333rem 1.70667rem;
+  color: #000 !important;
+}
+.confirm_again .btn_box {
+  text-align: center;
+}
+.confirm_again .btn_box span {
+  display: inline-block;
+  width: 7.11111rem;
+  text-align: center;
+  font-size: 1.13778rem;
+  margin: 0 2.25778rem;
+  color: #000 !important;
 }
 
 .RotationBigImg {

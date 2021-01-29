@@ -12,6 +12,7 @@ const getOnFansData = (storeId) => {
                 window.location.href = '/auth/oauth/?redirect_uri=' + encodeURIComponent(url) + '&store_id=' + parseInt(getUrlData('store_id', window.location.search));
             }
             if (Number(res.data.code) === 200) {
+                cookie.save('fans_id', res.data.data.id)
                 cookie.save('user_name', res.data.data.user_name)
                 cookie.save('mobile', res.data.data.mobile)
                 cookie.save('openId', res.data.data.openId)

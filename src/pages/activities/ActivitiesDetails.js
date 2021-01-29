@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
+import addTag from "../../util/addTag";
 
 
 const ActivitiesDetails = (props) => {
@@ -43,6 +44,8 @@ const ActivitiesDetails = (props) => {
                             ...resData.data,
                         })
                         setLoading(false)
+
+                        addTag(resData.data.relation_id)
                     }
                     if (Number(resData.code) === 206) {
                         props.history.push('/Off?type=activities');

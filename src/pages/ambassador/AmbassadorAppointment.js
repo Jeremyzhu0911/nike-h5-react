@@ -290,7 +290,7 @@ const AmbassadorAppointment = (props) => {
                         <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                     </li>
                     <li>
-                        <input type={'num'} placeholder="请输入验证码" value={stateDate.postData.code} onChange={(event) => {
+                        <input type={'num'} placeholder="请输入验证码" maxLength={'6'} value={stateDate.postData.code} onChange={(event) => {
                             setStateDate({
                                 ...stateDate,
                                 postData: {
