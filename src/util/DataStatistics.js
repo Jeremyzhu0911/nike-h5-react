@@ -6,7 +6,7 @@ const GAid = "UA-137909240-1";
 const DataTracking = {
     GAEvent:(action, label)=>{
         ReactGA.initialize(GAid,{
-            debug:true,
+            // debug:true,
             gaOptions: {
                 send: {
                     hitType: 'event', // Required.
@@ -20,7 +20,7 @@ const DataTracking = {
     },
     GAPage: (pageTitle)=>{
         ReactGA.initialize(GAid,{
-            debug:true,
+            // debug:true,
             gaOptions: {
                 page_title: cookie.load("store_name") + " | " + pageTitle
             }
@@ -28,7 +28,7 @@ const DataTracking = {
     },
     GAOpenId:(openId)=>{
         ReactGA.initialize(GAid,{
-            debug:true,
+            // debug:true,
             gaOptions: {
                 user_id: openId
             }

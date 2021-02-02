@@ -4,6 +4,7 @@ import axios from "axios";
 
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
+import addTag from "../../util/addTag";
 
 const CommodityDetails = (props) => {
 
@@ -41,6 +42,8 @@ const CommodityDetails = (props) => {
                             ...resData.data,
                         })
                         setLoading(false)
+
+                        addTag(resData.data.relation_id)
                     }
                     console.log(resData)
 

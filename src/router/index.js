@@ -14,6 +14,7 @@ import {getUrlData} from "../util/getUrlData";
 //url配置
 import routes from '../router/config';
 import onFans from '../util/onFans';
+import MapSDK from "../util/MapSDK";
 
 let isAj = LocalStore.getItem(CITYNAME);
 let store_id = LocalStore.getItem(CITYNAME);
@@ -71,6 +72,7 @@ const RouteWithSubRoutes = route => {
                 if(isAj){
                     window.document.body.style.backgroundColor = '#000';
                 }
+                // MapSDK()
                 return <route.component {...props} apiData={route.apiData}/>
             }}
         />
