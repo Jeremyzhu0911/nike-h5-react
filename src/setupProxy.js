@@ -1,18 +1,15 @@
 const {createProxyMiddleware} = require('http-proxy-middleware');
 
-const devBaseURl = "https://nspwechat-uat-2.nike.com";
 const proBaseURL = "http://localhost:80";
 
-const BASE_URL = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseURL;
+const BASE_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY : proBaseURL;
 
-const BASE_URL_TAG = process.env.NODE_ENV === 'development' ? devBaseURl : proBaseURL;
-
-const apiDimain = BASE_URL;
+const BASE_URL_TAG = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY_TAG : proBaseURL;
 
 module.exports = function(app) {
     app.use('/api',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -21,7 +18,7 @@ module.exports = function(app) {
 
     app.use('/ambassador',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -30,7 +27,7 @@ module.exports = function(app) {
 
     app.use('/event',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -39,7 +36,7 @@ module.exports = function(app) {
 
     app.use('/article',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -48,7 +45,7 @@ module.exports = function(app) {
 
     app.use('/booking',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -57,7 +54,7 @@ module.exports = function(app) {
 
     app.use('/product',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -66,7 +63,7 @@ module.exports = function(app) {
 
     app.use('/fans',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -75,7 +72,7 @@ module.exports = function(app) {
 
     app.use('/auth',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket
@@ -84,7 +81,7 @@ module.exports = function(app) {
 
     app.use('/luckydraw',createProxyMiddleware(
         {
-            target: apiDimain,
+            target: BASE_URL,
             changeOrigin: true,
             // secure: false, // 是否验证证书
             ws: true, // 启用websocket

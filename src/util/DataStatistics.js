@@ -1,7 +1,7 @@
 import ReactGA from 'react-ga';
 import cookie from "react-cookies";
 
-const GAid = "UA-137909240-1";
+const GAid = process.env.REACT_APP_GA_CODE;
 
 const DataTracking = {
     GAEvent:(action, label)=>{

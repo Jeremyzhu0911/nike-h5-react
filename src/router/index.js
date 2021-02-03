@@ -72,7 +72,7 @@ const RouteWithSubRoutes = route => {
                 if(isAj){
                     window.document.body.style.backgroundColor = '#000';
                 }
-                // MapSDK()
+                MapSDK()
                 return <route.component {...props} apiData={route.apiData}/>
             }}
         />
