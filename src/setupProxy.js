@@ -1,10 +1,8 @@
 const {createProxyMiddleware} = require('http-proxy-middleware');
 
-const proBaseURL = "http://localhost:80";
+const BASE_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY_ALL : process.env.REACT_APP_PROXY;
 
-const BASE_URL = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY : proBaseURL;
-
-const BASE_URL_TAG = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY_TAG : proBaseURL;
+const BASE_URL_TAG = process.env.NODE_ENV === 'development' ? process.env.REACT_APP_PROXY_ALL  : process.env.REACT_APP_PROXY_TAG;
 
 module.exports = function(app) {
     app.use('/api',createProxyMiddleware(
