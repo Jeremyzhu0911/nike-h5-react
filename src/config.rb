@@ -24,7 +24,7 @@ relative_assets = true
 line_comments = false
 
 # 是否开启调试模式
-sourcemap = false
+sourcemap = true
 
 
 # If you prefer the indented syntax, you might want to regenerate this
