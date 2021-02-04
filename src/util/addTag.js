@@ -1,16 +1,18 @@
-import axios from "axios";
 import cookie from "react-cookies";
 import {getUrlData} from "./getUrlData";
+import axios from 'axios';
 
 const addTag = (relation_id) => {
     if (Number(relation_id) !== 0)
         axios({
-            url: "/tag/add-tag",
+            url: process.env.NODE_ENV === 'development' ? "/tag/add-tag" : process.env.REACT_APP_PROXY_TAG_SK + "/tag/add-tag",
             method: "post",
             data: {
                 fans_id: cookie.load("fans_id"),
                 store_id: getUrlData("store_id"),
-                relation_id: relation_id
+                relation_id: relation_id,
+                province:'',
+                city:''
             },
             transformRequest: [
                 function (data) {

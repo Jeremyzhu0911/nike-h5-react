@@ -127,9 +127,7 @@ const LimitDetails = (props) => {
                                     <div className="btn" onClick={() => {
                                         props.history.push('/commodity/limitAppointment' + props.location.search)
                                     }}>即刻报名</div> :
-                                    <div className="btn" onClick={() => {
-                                        props.history.push('/commodity/limitAppointment' + props.location.search)
-                                    }}>报名未开始</div> : <div className="btn">即刻报名</div>
+                                    <div className="btn">报名未开始</div> : <div className="btn">即刻报名</div>
                 }
             </div>
         </div>

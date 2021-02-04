@@ -9,6 +9,7 @@
     "antd": "^4.10.3",
     "antd-mobile": "^2.3.4",
     "axios": "^0.21.0",
+    "axios-debug-log": "^0.8.2",
     "babel-plugin-import": "^1.13.3",
     "bundle-loader": "^0.5.6",
     "es6-promise": "^4.2.8",
