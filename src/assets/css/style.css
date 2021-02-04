@@ -1488,9 +1488,11 @@ body {
 }
 .AppointmentLuckydraw .luckydraw_box .luckydraw_txt h3 {
   font-size: 1.35111rem;
-  height: 6.4rem;
-  line-height: 6.4rem;
+  height: 5.33333rem;
+  vertical-align: bottom;
+  display: table-cell;
   color: #000 !important;
+  padding-bottom: 1.06667rem;
 }
 .AppointmentLuckydraw .luckydraw_box .luckydraw_txt p {
   height: 2.48889rem;
@@ -3086,5 +3088,3 @@ body {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
-/*# sourceMappingURL=style.css.map */

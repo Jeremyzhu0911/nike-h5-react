@@ -154,8 +154,8 @@ const ActivitiesDetails = (props) => {
                                 {
                                     dataList.is_end_booking ? "十分遗憾活动预约时间已过。您可以尝试了解其他活动，进行预约！" :
                                         !dataList.is_start_booking ? "还未到活动预约时间，请在可报名时间内再次尝试！" :
-                                            Number(dataList.event_allow_count) <= Number(dataList.event_booking_count) ? "此活动预约人数已满，无法报名。您可以尝试了解其他活动，进行预约！" :
-                                                !dataList.is_avail_booking ? props.history.push("/appointment/details" + props.location.search +"&type=event&booking_id=" + dataList.booking_id) :
+                                            Number(dataList.event_allow_count) <= Number(dataList.event_booking_count) && Number(dataList.event_allow_count) !== 0 ? "此活动预约人数已满，无法报名。您可以尝试了解其他活动，进行预约！" :
+                                                !dataList.is_avail_booking ? props.history.push("/appointment/details?store_id=" + getUrlData("store_id") +"&type=event&booking_id=" + dataList.booking_id) + "&jordan=" + getUrlData("jordan") :
                                                     props.history.push("/appointment-activities" + props.location.search)
 
                                 }

@@ -29,9 +29,11 @@
       float: right;
       h3 {
         font-size: rem-calc(38);
-        height: rem-calc(180);
-        line-height: rem-calc(180);
+        height: rem-calc(150);
+        vertical-align: bottom;
+        display: table-cell;
         color: #000 !important;
+        padding-bottom: rem-calc(30);
       }
       p {
         height: rem-calc(70);
