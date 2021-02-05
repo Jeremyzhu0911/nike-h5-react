@@ -339,12 +339,11 @@ body {
 }
 
 .RotationBigImg {
-  width: 100%;
-  overflow: hidden;
+  width: 23.25333rem;
+  margin: 0 auto;
 }
 .RotationBigImg .carousel, .RotationBigImg .swiper-container {
   width: 100%;
-  overflow: hidden;
 }
 .RotationBigImg .carousel .carousel-box, .RotationBigImg .carousel .swiper-wrapper, .RotationBigImg .swiper-container .carousel-box, .RotationBigImg .swiper-container .swiper-wrapper {
   display: inline-table;
@@ -383,7 +382,6 @@ body {
   padding: 0 0.57956rem;
 }
 .RotationBigImg .index-container {
-  margin: 0 1.70667rem;
   padding: 1.7536rem 0;
   position: relative;
   overflow: hidden;
@@ -391,14 +389,16 @@ body {
 .RotationBigImg .index-container .swiper-pagination {
   width: 21.04889rem;
   height: 0.21333rem;
-  background: #D8D8D8;
   overflow: hidden;
 }
 .RotationBigImg .index-container .swiper-pagination span {
   float: left;
   transform-origin: left top;
-  width: 21.04889rem;
+  width: 2.84444rem;
   height: 0.21333rem;
+  background: #dedede;
+}
+.RotationBigImg .index-container .swiper-pagination span.swiper-pagination-bullet-active {
   background: #9A9A9A;
 }
 .RotationBigImg .index-container .swiper-num {
@@ -1959,6 +1959,7 @@ body {
   height: 3.65511rem;
   line-height: 3.65511rem;
   font-size: 0.99556rem;
+  font-weight: bold;
   color: #6A6A6A;
   letter-spacing: 0.0384rem;
 }
@@ -1976,6 +1977,7 @@ body {
   font-size: 0.99556rem;
   color: #8c8c8c;
   letter-spacing: 0.02347rem;
+  text-decoration: underline;
 }
 
 .CommodityList {
@@ -3088,3 +3090,5 @@ body {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+
+/*# sourceMappingURL=style.css.map */

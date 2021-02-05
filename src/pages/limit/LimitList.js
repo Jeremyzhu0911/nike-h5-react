@@ -65,17 +65,17 @@ const LimitList = (props) => {
                             <div className="images">
                                 <img alt={''} src={item.article_img}/>
                             </div>
-                            <div className="s_btn s_btn1">查看详情</div>
-                            {/*{*/}
-                            {/*    item.is_booking ?*/}
-                            {/*        // item.is_avail_booking ?*/}
-                            {/*        //     <div className="s_btn s_btn1">已报名</div> :*/}
-                            {/*        item.is_end_booking ?*/}
-                            {/*            <div className="s_btn s_btn2">报名已结束</div> :*/}
-                            {/*            item.is_start_booking ?*/}
-                            {/*                <div className="s_btn s_btn1">即刻报名</div> :*/}
-                            {/*                <div className="s_btn s_btn1">报名未开始</div> : null*/}
-                            {/*}*/}
+                            {/*<div className="s_btn s_btn1">查看详情</div>*/}
+                            {
+                                item.is_booking ?
+                                    // item.is_avail_booking ?
+                                    //     <div className="s_btn s_btn1">已报名</div> :
+                                    item.is_end_booking ?
+                                        <div className="s_btn s_btn2">报名已结束</div> :
+                                        item.is_start_booking ?
+                                            <div className="s_btn s_btn1">即刻报名</div> :
+                                            <div className="s_btn s_btn1">报名未开始</div> : null
+                            }
                             {
                                 index === 0 ?
                                     <div className="down-icon iconfont icon-xiangxia"/> : null

@@ -11,7 +11,7 @@ const CommodityFashion = (props) => {
 
     const [loading, setLoading] = useState(true);
 
-    const [swiperList,setSwiperList] = useState([]);
+    const [swiperList, setSwiperList] = useState([]);
 
     const [stateDate, setStateDate] = useState({
         id: "",
@@ -31,8 +31,8 @@ const CommodityFashion = (props) => {
                     if (Number(restDate.code) === 200) {
                         let imgLength = [];
                         cookie.save('store_name', restDate.data.store_info.store_name);
-                        restDate.data.data.forEach((item,index)=>{
-                            imgLength[index] = [item.images.length,1]
+                        restDate.data.data.forEach((item, index) => {
+                            imgLength[index] = [item.images.length, 1]
                         })
                         setSwiperList(imgLength)
 
@@ -41,19 +41,21 @@ const CommodityFashion = (props) => {
                         setLoading(false)
 
                         new Swiper(".swiper-container", {
-                            slidesPerView: (750 / 654),
+                            slidesPerView: 1,
                             centeredSlides: true,
                             spaceBetween: 10,
                             watchSlidesProgress: true,
                             pagination: {
                                 el: '.swiper-pagination',
-                                type: "progressbar",
+                                // type: "bullets",
+                                renderBullet: function (index) {
+                                        return '<span class="swiper-pagination-bullet" style="width:' + 100 / this.slides.length + '%">' + (index + 1) + '</span>';
+                                }
                             },
-                            on:{
-                                slideChange:function (){
-                                    if(this.realIndex === 1)
-                                        addTag(this.$el.find(".swiper-slide").data("idx"))
-                                    this.$el.find(".swiper-num span").text(this.realIndex + 1)
+                            on: {
+                                slideChange: function () {
+                                    if (this.slides.length > 1)
+                                        this.$el.find(".swiper-num span").text(this.realIndex + 1)
                                 }
                             }
                         });
@@ -83,25 +85,27 @@ const CommodityFashion = (props) => {
                             <div className={"swiper-container carousel"}>
                                 <div className="swiper-wrapper carousel-box">
                                     {
-                                        stateList.images.length >= 1?
-                                        stateList.images.map((item, index) => {
-                                            return <div className="carousel-item swiper-slide" key={index} data-idx={stateList.relation_id}>
-                                                <img alt={''} src={item}/>
-                                            </div>
-                                        }) : <div className="carousel-item swiper-slide">
+                                        stateList.images.length >= 1 ?
+                                            stateList.images.map((item, index) => {
+                                                return <div className="carousel-item swiper-slide" key={index}
+                                                            data-idx={stateList.relation_id}>
+                                                    <img alt={''} src={item}/>
+                                                </div>
+                                            }) : <div className="carousel-item swiper-slide">
                                                 <img alt={''} src={stateList.article_img}/>
                                             </div>
                                     }
                                 </div>
                                 <div className="index-container">
                                     <div className={"swiper-pagination"}/>
-                                    <span className="swiper-num"><span>{swiperList[index][1]}</span>/{swiperList[index][0]}</span>
+                                    <span
+                                        className="swiper-num"><span>{swiperList[index][1]}</span>/{swiperList[index][0]}</span>
                                 </div>
                             </div>
 
                         </div>
                         {
-                            stateList.link ? <input type="submit" value="查看穿搭" onClick={()=>{
+                            stateList.link ? <input type="submit" value="查看穿搭" onClick={() => {
                                 window.location.href = stateList.link
                             }} className="s_btn"/> : null
                         }

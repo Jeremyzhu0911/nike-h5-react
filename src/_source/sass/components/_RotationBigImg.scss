@@ -1,10 +1,9 @@
 .RotationBigImg {
-  width: 100%;
-  overflow: hidden;
+  width: rem-calc(654);
+  margin: 0 auto;
 
   .carousel, .swiper-container {
     width: 100%;
-    overflow: hidden;
 
     .carousel-box, .swiper-wrapper {
       display: inline-table;
@@ -56,7 +55,6 @@
   }
 
   .index-container {
-    margin: 0 rem-calc(48);
     padding: rem-calc(49.32) 0;
     position: relative;
     overflow: hidden;
@@ -64,19 +62,18 @@
     .swiper-pagination {
       width: rem-calc(592);
       height: rem-calc(6);
-      background: #D8D8D8;
       overflow: hidden;
 
       span {
         float: left;
         transform-origin: left top;
-        width: rem-calc(592);
+        width: rem-calc(80);
         height: rem-calc(6);
-        background: #9A9A9A;
+        background: rgba(222,222,222,50%);
 
-        //&.swiper-pagination-bullet-active {
-        //  background: #9A9A9A;
-        //}
+        &.swiper-pagination-bullet-active {
+          background: #9A9A9A;
+        }
       }
     }
 

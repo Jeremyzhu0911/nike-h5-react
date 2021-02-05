@@ -54,26 +54,35 @@ const AppointmentActivities = (props) => {
                         resData.data.type_list.forEach((item, index) => {
                             imgLength[index] = [resData.data.type_list[index].list.length, 1]
                         })
+                        let maxlength = imgLength.length
                         setSwiperList(imgLength)
                         setDataList(resData.data)
 
                         setLoading(false)
 
                         new Swiper(".swiper-mini", {
-                            slidesPerView: (750 / 654) * 3,
+                            slidesPerView: 3,
                             slidesPerGroup: 3,
                             spaceBetween: 10,
                             pagination: {
                                 el: '.swiper-pagination',
+                                // type: "bullets",
+                                renderBullet: function (index) {
+
+                                    maxlength = (this.slides.length % 3 === 0 ? this.slides.length/3 : parseInt(this.slides.length/3)+1)
+
+                                    setSwiperList(
+                                        [
+                                            ...swiperList,
+                                            swiperList[1] = [maxlength, 1]
+                                        ]
+                                    )
+                                    return '<span class="swiper-pagination-bullet" style="width:' + 100 / maxlength + '%">' + (index + 1) + '</span>';
+                                }
                             },
                             on: {
                                 slideChange: function () {
-                                    if (this.realIndex + 1 === 4)
-                                        this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                    else if (Number(this.realIndex + 4) === this.$el.find(".swiper-slide").length)
-                                        this.$el.find(".swiper-slide").eq(0).addClass("right_one");
-
-                                    this.$el.find(".swiper-num span").text(this.realIndex + 1)
+                                    this.$el.find(".swiper-num span").text(this.realIndex / 3 + 1)
                                 }
                             }
                         });
@@ -130,7 +139,7 @@ const AppointmentActivities = (props) => {
                                             {
                                                 item.list.map((listItem, index) => {
                                                     return <div
-                                                        className={index === 0 ? "carousel-item swiper-slide left_one" : "carousel-item swiper-slide"}
+                                                        className={"carousel-item swiper-slide"}
                                                         key={index} onClick={() => {
                                                         props.history.push("/details-activities" + props.location.search + "&store_event_id=" + listItem.store_event_id)
                                                     }}>

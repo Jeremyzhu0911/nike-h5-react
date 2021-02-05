@@ -49,38 +49,68 @@ const CommodityIndex = (props) => {
                                 })
                                 setSwiperList(
                                     [
+                                        ...swiperList,
                                         swiperList[0] = [index + 1, 1]
                                     ]
                                 )
-                            } else {
-                                return
                             }
                         })
+                        let maxlength = restData.data.product_list.length
 
-                        restData.data.product_list.map((item, index) => {
-                            if (index < 9) {
-                                setProductNewList({
-                                    ...productNewList,
-                                    product_list: [
-                                        ...productNewList.product_list,
-                                        productNewList.product_list[index] = item
-                                    ]
-                                })
-                                let idx;
-                                if (index % 3 === 0)
-                                    idx = index / 3
-                                else
-                                    idx = parseInt(index / 3) + 1
-                                setSwiperList(
-                                    [
-                                        ...swiperList,
-                                        swiperList[1] = [idx, 1]
-                                    ]
+                        if (maxlength <= 9) {
+                            if (maxlength % 3 === 1) {
+                                restData.data.product_list.push(
+                                    {
+                                        id: "",
+                                        owner_id: "",
+                                        owner_type: "",
+                                        product_code: "",
+                                        product_name: "",
+                                        thumbnail: "",
+                                        price: ""
+                                    }
                                 )
-                            } else {
-                                return
-                            }
-                        })
+                                restData.data.product_list.push(
+                                    {
+                                        id: "",
+                                        owner_id: "",
+                                        owner_type: "",
+                                        product_code: "",
+                                        product_name: "",
+                                        thumbnail: "",
+                                        price: ""
+                                    }
+                                )
+                            } else if (maxlength % 3 === 2)
+                                restData.data.product_list.push(
+                                    {
+                                        id: "",
+                                        owner_id: "",
+                                        owner_type: "",
+                                        product_code: "",
+                                        product_name: "",
+                                        thumbnail: "",
+                                        price: ""
+                                    }
+                                )
+
+                            setProductNewList({
+                                ...productNewList,
+                                product_list: restData.data.product_list
+                            })
+                        } else {
+                            restData.data.product_list.map((item, index) => {
+                                if (index < 9) {
+                                    setProductNewList({
+                                        ...productNewList,
+                                        product_list: [
+                                            ...productNewList.product_list,
+                                            productNewList.product_list[index] = item
+                                        ]
+                                    })
+                                }
+                            })
+                        }
 
                         cookie.save('store_name', restData.data.store_info.store_name);
                         DataTracking.GAPage('最新上市')
@@ -88,13 +118,16 @@ const CommodityIndex = (props) => {
                         setLoading(false)
 
                         new Swiper(".swiper-container", {
-                            slidesPerView: (750 / 654),
+                            slidesPerView: 1,
                             centeredSlides: true,
                             spaceBetween: 10,
                             watchSlidesProgress: true,
                             pagination: {
                                 el: '.swiper-pagination',
-                                type: "progressbar",
+                                // type: "bullets",
+                                renderBullet: function (index) {
+                                    return '<span class="swiper-pagination-bullet" style="width:' + 100 / this.slides.length + '%">' + (index + 1) + '</span>';
+                                }
                             },
                             on: {
                                 slideChange: function () {
@@ -104,27 +137,28 @@ const CommodityIndex = (props) => {
                         });
 
                         new Swiper(".swiper-mini", {
-                            slidesPerView: (750 / 654) * 3,
+                            slidesPerView: 3,
                             slidesPerGroup: 3,
                             spaceBetween: 10,
                             pagination: {
                                 el: '.swiper-pagination',
-                                type: "progressbar",
+                                // type: "bullets",
+                                renderBullet: function (index) {
+
+                                    maxlength = (this.slides.length % 3 === 0 ? this.slides.length/3 : parseInt(this.slides.length/3)+1)
+
+                                    setSwiperList(
+                                        [
+                                            ...swiperList,
+                                            swiperList[1] = [maxlength, 1]
+                                        ]
+                                    )
+                                    return '<span class="swiper-pagination-bullet" style="width:' + 100 / maxlength + '%">' + (index + 1) + '</span>';
+                                }
                             },
                             on: {
                                 slideChange: function () {
-                                    if (this.realIndex + 1 === 4)
-                                        this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                    else if (Number(this.realIndex + 4) === this.$el.find(".swiper-slide").length)
-                                        this.$el.find(".swiper-slide").eq(0).addClass("right_one");
-
-                                    let idx;
-                                    if (this.realIndex % 3 === 0)
-                                        idx = this.realIndex / 3
-                                    else
-                                        idx = parseInt(this.realIndex / 3) + 1
-
-                                    this.$el.find(".swiper-num span").text(idx)
+                                    this.$el.find(".swiper-num span").text(this.realIndex / 3 + 1)
                                 }
                             }
                         });
@@ -153,7 +187,7 @@ const CommodityIndex = (props) => {
                         {
                             productNewList.data.map((item, index) => {
                                 return <div className="carousel-item swiper-slide" key={index} onClick={() => {
-                                    if(item.link_url){
+                                    if (item.link_url) {
                                         DataTracking.GAEvent('最新上市', item.image_path)
                                         window.location.href = item.link_url
                                     }
@@ -180,13 +214,14 @@ const CommodityIndex = (props) => {
                         {
                             productNewList.product_list.map((item, index) => {
                                 return <div
-                                    className={index === 0 ? "carousel-item swiper-slide left_one" : "carousel-item swiper-slide"}
+                                    className={"carousel-item swiper-slide"}
                                     key={index} onClick={() => {
+                                    item.product_code &&
                                     props.history.push("/commodity/details?store_id=" + getUrlData("store_id") + "&product_code=" + item.product_code)
                                 }}>
                                     <img alt={''} src={item.thumbnail}/>
                                     <h4>{item.product_name}</h4>
-                                    <p>¥ {item.price}</p>
+                                    <p>{item.price && "¥ " + item.price}</p>
                                 </div>
                             })
                         }
