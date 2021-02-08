@@ -11,6 +11,7 @@ const LimitList = (props) => {
         {
             article_img: "",
             created_at: "2021/01/18",
+            now_time: '',
             des: "",
             link: "",
             luckydraw_id: "251",
@@ -65,16 +66,12 @@ const LimitList = (props) => {
                             <div className="images">
                                 <img alt={''} src={item.article_img}/>
                             </div>
-                            {/*<div className="s_btn s_btn1">查看详情</div>*/}
                             {
-                                item.is_booking ?
-                                    // item.is_avail_booking ?
-                                    //     <div className="s_btn s_btn1">已报名</div> :
-                                    item.is_end_booking ?
+                                item.now_time < item.enroll_begin_time ?
+                                    <div className="s_btn s_btn1">报名未开始</div> :
+                                    item.enroll_end_time < item.now_time?
                                         <div className="s_btn s_btn2">报名已结束</div> :
-                                        item.is_start_booking ?
-                                            <div className="s_btn s_btn1">即刻报名</div> :
-                                            <div className="s_btn s_btn1">报名未开始</div> : null
+                                        <div className="s_btn s_btn1">即刻报名</div>
                             }
                             {
                                 index === 0 ?
