@@ -23,7 +23,7 @@ const LimitDetails = (props) => {
         is_booking: "", // 活动是否需要报名
     })
 
-    if (getUrlData('jordan')) {
+    if (getUrlData("jordan")) {
         window.document.body.style.backgroundColor = '#000';
     }
 
@@ -72,7 +72,7 @@ const LimitDetails = (props) => {
         )
 
     return (
-        <div className={getUrlData("jordan")?"LimitDetails jordan":"LimitDetails"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitDetails jordan" : "LimitDetails"}>
             {
                 getUrlData('code') ?
                     <div className="preview">此为预览页面，仅用于发布预览，将在短期内失效。</div> : null

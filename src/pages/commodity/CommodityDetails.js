@@ -5,6 +5,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
 import addTag from "../../util/addTag";
+import DataTracking from "../../util/DataStatistics";
 
 const CommodityDetails = (props) => {
 
@@ -41,6 +42,8 @@ const CommodityDetails = (props) => {
                             ...state,
                             ...resData.data,
                         })
+
+                        DataTracking.GAPage(getUrlData('product_code'))
                         setLoading(false)
 
                         addTag(resData.data.relation_id)
@@ -72,11 +75,12 @@ const CommodityDetails = (props) => {
     }
 
     return (
-        <div className={getUrlData("jordan") ? "CommodityDetails jordan" : "CommodityDetails"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityDetails jordan" : "CommodityDetails"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
                     <div className={'nav'}><i onClick={() => {
+                        DataTracking.GAEvent(state.product_name, '返回首页');
                         props.history.push("/commodity/index?store_id=" + getUrlData("store_id"))
                     }} className={'iconfont icon-home'}/></div>
                 </div>
@@ -122,10 +126,14 @@ const CommodityDetails = (props) => {
             <div className={'btn_box'}>
                 <ul>
                     <li onClick={() => {
+                        DataTracking.GAEvent(state.product_name, '预留产品' + state.product_code);
+                        DataTracking.GAPage("预留产品 | " + state.product_code)
                         props.history.push("/commodity/appointment" + props.location.search + "&type=" + 1)
                     }}>预留产品
                     </li>
                     <li onClick={() => {
+                        DataTracking.GAEvent(state.product_name, '预约试穿' + state.product_code);
+                        DataTracking.GAPage("预约试穿 | " + state.product_code)
                         props.history.push("/commodity/appointment" + props.location.search + "&type=" + 0)
                     }}>预约试穿
                     </li>

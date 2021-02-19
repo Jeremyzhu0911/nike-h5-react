@@ -3,11 +3,13 @@ import cookie from "react-cookies";
 import axios from "axios";
 
 import {getUrlData} from "../../util/getUrlData";
-
+import DataTracking from "../../util/DataStatistics";
 
 const CommodityList = (props) => {
 
     const [loading, setLoading] = useState(true)
+
+    const [load, setLoad] = useState(true)
 
     const [state, setState] = useState({
         title: '最新上市',
@@ -77,10 +79,13 @@ const CommodityList = (props) => {
                             totalPage: resData.data.page_info.total_page,
                             currentPage: resData.data.page_info.current_page,
                             listNum: resData.data.page_info.total_count,
-                            searchList: resData.data.filter
+                            searchList: resData.data.filter,
+                            productInfoSearch: {'category': [], 'gender': [], 'product_group': [], 'tag_id': ''},
                         });
-
+                        if (load)
+                            DataTracking.GAPage('全部商品')
                         setLoading(false)
+                        setLoad(false)
                     }
                 },
                 (error) => {
@@ -97,29 +102,35 @@ const CommodityList = (props) => {
     }
 
     return (
-        <div className={getUrlData('jordan') ? "CommodityList jordan" : "CommodityList"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityList jordan" : "CommodityList"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
                     <div className={'nav'}><i onClick={() => {
-                        setState({...state, isShowOverlay: true, isSearch: true,overlayTxt:'搜索'})
-                    }} className={'iconfont icon-sousuo'}/><i onClick={()=>{
-                        props.history.push("/commodity/index?store_id="+getUrlData("store_id"))
+                        DataTracking.GAPage('搜索')
+                        DataTracking.GAEvent('搜索结果', '搜索')
+                        setState({...state, isShowOverlay: true, isSearch: true, overlayTxt: '搜索'})
+                    }} className={'iconfont icon-sousuo'}/><i onClick={() => {
+                        DataTracking.GAEvent(state.gaPageName, '返回首页')
+                        props.history.push("/commodity/index?store_id=" + getUrlData("store_id"))
                     }} className={'iconfont icon-home'}/></div>
                 </div>
             </div>
             <div className={'resultHeader'}>
                 <h2>{state.pageTitle}<br/><span>共 <i>{state.listNum}</i> 件商品</span></h2>
                 <div className={'btn_search'} onClick={() => {
-                    setState({...state, isShowOverlay: true, isSearch: false,overlayTxt:'筛选'})
+                    DataTracking.GAPage('筛选')
+                    DataTracking.GAEvent('筛选结果', '筛选')
+                    setState({...state, isShowOverlay: true, isSearch: false, overlayTxt: '筛选'})
                 }}>筛选
                 </div>
             </div>
             <ul className={'list'}>
                 {
                     state.commodityList.map((item, index) => {
-                        return <li key={index} onClick={()=>{
-                            props.history.push("/commodity/details"+ props.location.search + "&product_code=" + item.product_code)
+                        return <li key={index} onClick={() => {
+                            DataTracking.GAEvent(state.gaPageName, item.product_code)
+                            props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
                         }}>
                             <div className={'CommodityListImages'}>
                                 <img alt={''} src={item.thumbnail}/>
@@ -133,11 +144,14 @@ const CommodityList = (props) => {
             {
                 state.isShowOverlay && <div className={'overlay'}>
                     <h2>{state.overlayTxt}产品<span onClick={() => {
+                        DataTracking.GAEvent(state.overlayTxt, '关闭')
                         setState({...state, isShowOverlay: false})
                     }}>关闭</span></h2>
                     {
                         state.isSearch ? <div className={'filterSearch'}>
-                            <input type={'txt'} placeholder="关键字搜索"/>
+                            <input type={'txt'} placeholder="关键字搜索" onChange={(event) => {
+                                setState({...state, keyWord: event.target.value})
+                            }}/>
                         </div> : state.searchList.map((item, index) => {
                             return <div className={'filterItems'} key={index}>
                                 <h3>{item.name}</h3>
@@ -162,17 +176,18 @@ const CommodityList = (props) => {
                         })
                     }
                     <div className={'filterBtnWrap'}>
-                        <div className={'btn_full'} onClick={()=>{
+                        <div className={'btn_full'} onClick={() => {
                             setLoading(true)
-                            setState({...state, isShowOverlay: false,pageTitle:'搜索结果'})
-                        }}>显示{state.overlayTxt}结果</div>
+                            if (state.keyWord)
+                                DataTracking.GAEvent(state.overlayTxt, '提交：' + state.keyWord)
+                            setState({...state, isShowOverlay: false, pageTitle: state.overlayTxt + '结果'})
+                        }}>显示{state.overlayTxt}结果
+                        </div>
                     </div>
                 </div>
             }
-
         </div>
     )
-
 }
 
 export default CommodityList;

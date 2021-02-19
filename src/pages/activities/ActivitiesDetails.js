@@ -65,7 +65,7 @@ const ActivitiesDetails = (props) => {
     }
 
     return (
-        <div className={getUrlData("jordan") ? "ActivitiesDetails jordan" : "ActivitiesDetails"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "ActivitiesDetails jordan" : "ActivitiesDetails"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={'content'}>
                 <div className={'big_img'}>
@@ -80,18 +80,18 @@ const ActivitiesDetails = (props) => {
             <div className={'const'}>
                 <h3>活动介绍</h3>
                 <div className={'details_content'} dangerouslySetInnerHTML={{__html: dataList.event_content}}/>
-                <div className={'tips'}>
-                    活动时间：{
-                    dataList.event_end_time ?
-                        dataList.event_start_time + " 至 " + dataList.event_end_time : dataList.event_start_time} <br/>
-                    活动地点：{dataList.event_address} <br/>
-                    还不爱来报名
-                </div>
+                {/*<div className={'tips'}>*/}
+                {/*    活动时间：{*/}
+                {/*    dataList.event_end_time ?*/}
+                {/*        dataList.event_start_time + " 至 " + dataList.event_end_time : dataList.event_start_time} <br/>*/}
+                {/*    活动地点：{dataList.event_address} <br/>*/}
+                {/*    还不快来报名*/}
+                {/*</div>*/}
                 <h3>活动信息</h3>
                 {
                     dataList.is_booking ?
                         <div className={'txt'}>
-                            <p>活动时间</p>
+                            <p>门店活动时间</p>
                             <p>
                                 {
                                     dataList.event_end_time ?

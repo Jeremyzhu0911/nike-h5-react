@@ -1,10 +1,11 @@
 import React from "react";
 import cookie from "react-cookies";
+import {getUrlData} from "../../util/getUrlData";
 
 const LimitSuccess = (props) => {
 
     return (
-        <div className="LimitSuccess">
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitSuccess jordan" : "LimitSuccess"}>
             <div className="topArea">
                 <i className="iconfont icon-rili"/>
                 <h2>报名成功</h2>

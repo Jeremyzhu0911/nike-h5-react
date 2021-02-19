@@ -14,16 +14,15 @@ import {getUrlData} from "../util/getUrlData";
 //url配置
 import routes from '../router/config';
 import onFans from '../util/onFans';
-import MapSDK from "../util/MapSDK";
 
 let isAj = LocalStore.getItem(CITYNAME);
 let store_id = LocalStore.getItem(CITYNAME);
 
 const RouteConfigExample = (props) => {
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
 
     store_id = getUrlData('store_id')
-    isAj = !!parseInt(getUrlData('jordan'))
+    isAj = !!parseInt(getUrlData("jordan"))
 
     // // initData
     // const [userInfo, setUserInfo] = useState({
@@ -37,15 +36,15 @@ const RouteConfigExample = (props) => {
 
         props.userInfoActions.update({
             isAj: isAj,
-            store_id:store_id
+            store_id: store_id
         })
 
         setLoading(false)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[loading])
+    }, [loading])
 
-    if(loading){
+    if (loading) {
         onFans(store_id);
         return <div>正在登录</div>
     }
@@ -69,10 +68,9 @@ const RouteWithSubRoutes = route => {
             path={route.path}
             render={props => {
                 document.title = route.title || "Nike";
-                if(isAj){
+                if (isAj) {
                     window.document.body.style.backgroundColor = '#000';
                 }
-                MapSDK()
                 return <route.component {...props} apiData={route.apiData}/>
             }}
         />

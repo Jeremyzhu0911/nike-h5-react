@@ -90,4 +90,27 @@
       }
     }
   }
+  .Priacy{
+    position: absolute;
+    top: 50%;
+    width: 88%;
+    left: 6%;
+    background: #fff;
+    transform: translateY(-50%);
+    z-index: 102;
+    max-height: 80vh;
+    overflow-y: scroll;
+    .Priacy_box{
+      padding: 10px;
+      h2{
+        text-align: center;
+        line-height: rem-calc(60);
+        font-size: rem-calc(28);
+      }
+      p{
+        line-height: rem-calc(35);
+      }
+    }
+  }
 }
+

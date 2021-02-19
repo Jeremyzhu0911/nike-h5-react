@@ -5,7 +5,6 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 
 import Swiper from 'swiper';
-import addTag from "../../util/addTag";
 
 const CommodityFashion = (props) => {
 
@@ -67,6 +66,7 @@ const CommodityFashion = (props) => {
                 }
             )
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
     if (loading) {
@@ -74,11 +74,11 @@ const CommodityFashion = (props) => {
     }
 
     return (
-        <div className="CommodityFashion">
-            <h2>上海长宁来福士NIKE体验店</h2>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityFashion jordan" : "CommodityFashion"}>
+            <h2>{cookie.load('store_name')}</h2>
             {
                 stateDate.map((stateList, index) => {
-                    return <div key={index}>
+                    return <div key={index} className={'FashionBox'}>
                         <h1>{stateList.title}</h1>
                         <h4>{stateList.subtitle}</h4>
                         <div className={"RotationBigImg"}>
@@ -105,9 +105,9 @@ const CommodityFashion = (props) => {
 
                         </div>
                         {
-                            stateList.link ? <input type="submit" value="查看穿搭" onClick={() => {
+                            stateList.link ? <div onClick={() => {
                                 window.location.href = stateList.link
-                            }} className="s_btn"/> : null
+                            }} className="s_btn">查看穿搭</div> : null
                         }
                     </div>
                 })

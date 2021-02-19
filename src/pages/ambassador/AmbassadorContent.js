@@ -76,7 +76,7 @@ const AmbassadorContent = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorContent jordan" : "AmbassadorContent"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorContent jordan" : "AmbassadorContent"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={'list swiper-container'}>
                 <ul className={
@@ -94,7 +94,7 @@ const AmbassadorContent = (props) => {
                                     <img alt={''} src={item.imgUrl ? item.imgUrl : defaultImd}/>
                                 </div>
                                 <h4>{item.cnName}</h4>
-                                <p>标签</p>
+                                <p>{item.tag}大使</p>
                             </li>
                         })
                     }
@@ -105,7 +105,7 @@ const AmbassadorContent = (props) => {
                     <img alt={''} src={stateData.am_list[tabIndex].imgUrl?stateData.am_list[tabIndex].imgUrl:defaultImd}/>
                 </div>
                 <h4>{stateData.am_list[tabIndex].cnName}</h4>
-                <p>标签 <span onClick={() => {
+                <p>{stateData.am_list[tabIndex].tag}大使 <span onClick={() => {
                     props.history.push("/details-ambassador" + props.location.search + "&ambassador_id=" + stateData.am_list[tabIndex].id)
                 }}>了解详情</span></p>
             </div>

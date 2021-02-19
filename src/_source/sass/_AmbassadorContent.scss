@@ -33,6 +33,7 @@
           height: rem-calc(120);
           border-radius: rem-calc(100);
           overflow: hidden;
+          display: inline-block;
           font-size: 0;
           box-shadow: 0 1px 5px #000;
 
@@ -43,7 +44,6 @@
         }
 
         h4 {
-          width: rem-calc(120);
           overflow: hidden;
           margin-top: rem-calc(20);
           font-size: rem-calc(32);
@@ -51,6 +51,8 @@
         }
 
         p {
+          text-align: center;
+          white-space: normal;
           font-size: rem-calc(24);
           color: #8f8f8f !important;
         }

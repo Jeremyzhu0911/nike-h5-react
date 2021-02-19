@@ -79,7 +79,9 @@ const AmbassadorDetails = (props) => {
                 watchSlidesProgress: true,
                 pagination: {
                     el: '.swiper-pagination',
-                    type: "progressbar",
+                    renderBullet: function (index) {
+                        return '<span class="swiper-pagination-bullet" style="width:' + 100 / this.slides.length + '%">' + (index + 1) + '</span>';
+                    }
                 },
                 on: {
                     slideChange: function () {
@@ -94,11 +96,11 @@ const AmbassadorDetails = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={'content'}>
                 <h4>{AmbassadorDetailsData.am_info.cnName}</h4>
-                <h5>{AmbassadorDetailsData.am_info.enName}大使</h5>
+                <h5>{AmbassadorDetailsData.am_info.tag}大使</h5>
                 <div className={'big_img'}>
                     <img alt={''} src={AmbassadorDetailsData.am_info.imgUrl}/>
                 </div>
@@ -158,7 +160,7 @@ const AmbassadorDetails = (props) => {
                                 </div>
                                 <div className="index-container">
                                     <div className={"swiper-pagination"}/>
-                                    <span className="swiper-num"><span>{swiperList[1]}</span>/{swiperList[0]}</span>
+                                    <span className="swiper-num swiper-numCL"><span>{swiperList[1]}</span>/{swiperList[0]}</span>
                                 </div>
                             </div>
                         </div>

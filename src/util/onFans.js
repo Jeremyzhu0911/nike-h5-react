@@ -17,6 +17,19 @@ const getOnFansData = (storeId) => {
                 cookie.save('mobile', res.data.data.mobile)
                 cookie.save('openId', res.data.data.openId)
                 DataTracking.GAOpenId(res.data.data.openId)
+
+                // 百度地图地理位置api
+                let BMap = window.BMap;
+                let geoc = new BMap.Geocoder();
+                let geolocation = new BMap.Geolocation();
+                geolocation.getCurrentPosition(function (r) {
+                    geoc.getLocation(r.point, function (rs) {
+                        // console.log(rs)   //具体信息可以打印出来看一下，根据需求取值     经纬度，城市，街道等等
+                        let addComp = rs.addressComponents;
+                        cookie.save('city', addComp.city)
+                        cookie.save('province', addComp.province)
+                    });
+                });
                 return res.data.data;
             }
         },

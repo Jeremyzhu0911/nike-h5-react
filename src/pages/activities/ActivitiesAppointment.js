@@ -4,6 +4,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 
 import GetCode from "../../components/GetCode";
+import Priacy from "../../components/Privacy";
 
 const ActivitiesAppointment = (props) => {
 
@@ -36,6 +37,8 @@ const ActivitiesAppointment = (props) => {
         setCodeTime(state)
     }
 
+    const [priacyShow, setPriacyShow] = useState(false)
+
     useEffect(() => {
         if (loading) {
             setLoading(false)
@@ -46,7 +49,7 @@ const ActivitiesAppointment = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             <div className={'headers'}>
                 <div className="name">
                     填写个人信息
@@ -62,7 +65,7 @@ const ActivitiesAppointment = (props) => {
             <div className={'addInfo'}>
                 <ul>
                     <li>
-                        <input type={'text'} placeholder="您的姓名" maxLength={'8'} value={cookie.load("user_name")}
+                        <input type={'text'} placeholder="您的姓名" maxLength={'8'} defaultValue={cookie.load("user_name")}
                                onChange={(event) => {
                                    setPostData({
                                        ...postData,
@@ -71,7 +74,7 @@ const ActivitiesAppointment = (props) => {
                                }}/>
                     </li>
                     <li className={'mobile'}>
-                        <input type={'tel'} placeholder="手机号" maxLength={'11'} value={cookie.load('mobile')}
+                        <input type={'tel'} placeholder="手机号" maxLength={'11'} defaultValue={cookie.load('mobile')}
                                onChange={(event) => {
                                    setPostData({
                                        ...postData,
@@ -115,10 +118,13 @@ const ActivitiesAppointment = (props) => {
                 </ul>
             </div>
             <div className={'tips'}>
-                <p onClick={() => {
-                    setIconfont(!iconfont)
-                }}
-                   className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》
+                <p>
+                    <span onClick={() => {
+                        setIconfont(!iconfont)
+                    }} className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意</span>
+                    《<i onClick={() => {
+                    setPriacyShow(true)
+                }}>隐私信息授权条款</i>》
                 </p>
             </div>
             <div className={'texts'}>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</div>
@@ -167,6 +173,14 @@ const ActivitiesAppointment = (props) => {
                     提交预约申请
                 </div>
             </div>
+            {
+                priacyShow ? <div className={"FollowPop"}>
+                    <Priacy/>
+                    <div className={"desk"} onClick={()=>{
+                        setPriacyShow(!priacyShow)
+                    }}/>
+                </div> : null
+            }
         </div>
     )
 }

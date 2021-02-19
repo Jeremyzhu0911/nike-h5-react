@@ -4,6 +4,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from 'swiper';
 import DataTracking from "../../util/DataStatistics"
+import wxconfig from "../../server/wx.config"
 
 const CommodityIndex = (props) => {
 
@@ -114,6 +115,7 @@ const CommodityIndex = (props) => {
 
                         cookie.save('store_name', restData.data.store_info.store_name);
                         DataTracking.GAPage('最新上市')
+                        wxconfig()
 
                         setLoading(false)
 
@@ -145,7 +147,7 @@ const CommodityIndex = (props) => {
                                 // type: "bullets",
                                 renderBullet: function (index) {
 
-                                    maxlength = (this.slides.length % 3 === 0 ? this.slides.length/3 : parseInt(this.slides.length/3)+1)
+                                    maxlength = (this.slides.length % 3 === 0 ? this.slides.length / 3 : parseInt(this.slides.length / 3) + 1)
 
                                     setSwiperList(
                                         [
@@ -179,7 +181,7 @@ const CommodityIndex = (props) => {
     }
 
     return (
-        <div className={getUrlData('jordan') ? "CommodityIndex jordan" : "CommodityIndex"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityIndex jordan" : "CommodityIndex"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className={"RotationBigImg"}>
                 <div className={"swiper-container carousel"}>

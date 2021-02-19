@@ -4,6 +4,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import DateApi from "../../util/DateApi";
 import GetCode from "../../components/GetCode";
+import Priacy from "../../components/Privacy";
 
 const CommodityAppointment = (props) => {
 
@@ -28,6 +29,8 @@ const CommodityAppointment = (props) => {
     const updateCodeTime = (state) => {
         setCodeTime(state)
     }
+
+    const [priacyShow, setPriacyShow] = useState(false)
 
     const [optDateTime] = useState({
         time: [
@@ -99,13 +102,14 @@ const CommodityAppointment = (props) => {
                 }
             )
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading])
 
     if (loading)
         return <div>正在加载</div>
 
     return (
-        <div className={getUrlData("jordan") ? "CommodityAppointment jordan" : "CommodityAppointment"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityAppointment jordan" : "CommodityAppointment"}>
             {
                 isPageShow ? <div className={'information'}>
                     <div className={"big_title"}>
@@ -231,10 +235,13 @@ const CommodityAppointment = (props) => {
                         </ul>
                     </div>
                     <div className={'tips'}>
-                        <p onClick={() => {
-                            setIconfont(!iconfont)
-                        }}
-                           className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》
+                        <p>
+                    <span onClick={() => {
+                        setIconfont(!iconfont)
+                    }} className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意</span>
+                            《<i onClick={() => {
+                            setPriacyShow(true)
+                        }}>隐私信息授权条款</i>》
                         </p>
                     </div>
                     <div className={'order'}>
@@ -285,7 +292,10 @@ const CommodityAppointment = (props) => {
                                                         resData.data.is_subscribe +
                                                         "&status=0";
                                                 }
+                                                console.log(url)
                                                 props.history.push(url)
+                                            } else {
+                                                alert(resData.message);
                                             }
                                         }
                                     )
@@ -302,6 +312,14 @@ const CommodityAppointment = (props) => {
                     </div>
                     <div className={'texts'}>预约信息提交后将无法更改，请确认信息内容后进行提交。</div>
                 </div>
+            }
+            {
+                priacyShow ? <div className={"FollowPop"}>
+                    <Priacy/>
+                    <div className={"desk"} onClick={() => {
+                        setPriacyShow(!priacyShow)
+                    }}/>
+                </div> : null
             }
         </div>
     )

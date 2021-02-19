@@ -63,7 +63,7 @@ const AmbassadorSuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -107,10 +107,10 @@ const AmbassadorSuccess = (props) => {
                     if (Number(getUrlData('is_subscribe')) === 0) {   //  是否关注公众号
                         setShowHide(true)
                     } else {
-                        if (getUrlData('jordan')) {
-                            props.history.push('/appointment/appointmentDetails?jordan=1&store_id=' + AmbassadorSuccessData.data.store_id);
+                        if (getUrlData("jordan")) {
+                            props.history.push('/appointment/index?jordan=1&store_id=' + AmbassadorSuccessData.data.store_id);
                         } else {
-                            props.history.push("/appointment/appointmentDetails?store_id=" + AmbassadorSuccessData.data.store_id);
+                            props.history.push("/appointment/index?store_id=" + AmbassadorSuccessData.data.store_id);
                         }
                     }
                 }}>

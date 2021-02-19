@@ -30,25 +30,46 @@
         overflow: hidden;
         margin-right: rem-calc(48);
         font-size: 0;
+        vertical-align: top;
 
         img {
           width: 100%;
           margin: 0;
+          border-radius: rem-calc(20);
+        }
+
+        .img-box{
+          overflow: hidden;
+          img{
+            border-radius: 0;
+          }
         }
 
         h4 {
-          height: rem-calc(48);
           line-height: rem-calc(24);
           font-size: rem-calc(18.12);
           padding: 0 rem-calc(16.3);
           margin-top: rem-calc(18.12);
-          overflow: hidden;
+          white-space: initial;
+          &.actTxt{
+            //font-weight: bold;
+            text-align: center;
+            font-size: rem-calc(22);
+            line-height: rem-calc(30);
+            height: rem-calc(60);
+            text-overflow:ellipsis;
+            overflow: hidden;
+            padding: 0;
+          }
         }
 
         p {
-          font-size: rem-calc(18.12);
+          font-size: rem-calc(22);
           color: #9A9A9A;
           padding: 0 rem-calc(16.3);
+          &.timeTxt{
+            text-align: center;
+          }
         }
       }
     }
@@ -84,6 +105,9 @@
       position: absolute;
       top: 0;
       right: 0;
+      &.swiper-numCL{
+        color: #fff;
+      }
     }
   }
 }

@@ -100,7 +100,7 @@ const AppointmentLuckydraw = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
             <div className={'luckydraw_box'}>
                 <h4 onClick={() => {
                     props.history.push("/commodity/Limitdetails" + props.location.search + "&luckydraw_id=" + luckydraw.luckydraw_id)

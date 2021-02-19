@@ -363,23 +363,42 @@ body {
   overflow: hidden;
   margin-right: 1.70667rem;
   font-size: 0;
+  vertical-align: top;
 }
 .RotationBigImg .carousel .carousel-box .carousel-item img, .RotationBigImg .carousel .carousel-box .swiper-slide img, .RotationBigImg .carousel .swiper-wrapper .carousel-item img, .RotationBigImg .carousel .swiper-wrapper .swiper-slide img, .RotationBigImg .swiper-container .carousel-box .carousel-item img, .RotationBigImg .swiper-container .carousel-box .swiper-slide img, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item img, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide img {
   width: 100%;
   margin: 0;
+  border-radius: 0.71111rem;
+}
+.RotationBigImg .carousel .carousel-box .carousel-item .img-box, .RotationBigImg .carousel .carousel-box .swiper-slide .img-box, .RotationBigImg .carousel .swiper-wrapper .carousel-item .img-box, .RotationBigImg .carousel .swiper-wrapper .swiper-slide .img-box, .RotationBigImg .swiper-container .carousel-box .carousel-item .img-box, .RotationBigImg .swiper-container .carousel-box .swiper-slide .img-box, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item .img-box, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide .img-box {
+  overflow: hidden;
+}
+.RotationBigImg .carousel .carousel-box .carousel-item .img-box img, .RotationBigImg .carousel .carousel-box .swiper-slide .img-box img, .RotationBigImg .carousel .swiper-wrapper .carousel-item .img-box img, .RotationBigImg .carousel .swiper-wrapper .swiper-slide .img-box img, .RotationBigImg .swiper-container .carousel-box .carousel-item .img-box img, .RotationBigImg .swiper-container .carousel-box .swiper-slide .img-box img, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item .img-box img, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide .img-box img {
+  border-radius: 0;
 }
 .RotationBigImg .carousel .carousel-box .carousel-item h4, .RotationBigImg .carousel .carousel-box .swiper-slide h4, .RotationBigImg .carousel .swiper-wrapper .carousel-item h4, .RotationBigImg .carousel .swiper-wrapper .swiper-slide h4, .RotationBigImg .swiper-container .carousel-box .carousel-item h4, .RotationBigImg .swiper-container .carousel-box .swiper-slide h4, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item h4, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide h4 {
-  height: 1.70667rem;
   line-height: 0.85333rem;
   font-size: 0.64427rem;
   padding: 0 0.57956rem;
   margin-top: 0.64427rem;
+  white-space: initial;
+}
+.RotationBigImg .carousel .carousel-box .carousel-item h4.actTxt, .RotationBigImg .carousel .carousel-box .swiper-slide h4.actTxt, .RotationBigImg .carousel .swiper-wrapper .carousel-item h4.actTxt, .RotationBigImg .carousel .swiper-wrapper .swiper-slide h4.actTxt, .RotationBigImg .swiper-container .carousel-box .carousel-item h4.actTxt, .RotationBigImg .swiper-container .carousel-box .swiper-slide h4.actTxt, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item h4.actTxt, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide h4.actTxt {
+  text-align: center;
+  font-size: 0.78222rem;
+  line-height: 1.06667rem;
+  height: 2.13333rem;
+  text-overflow: ellipsis;
   overflow: hidden;
+  padding: 0;
 }
 .RotationBigImg .carousel .carousel-box .carousel-item p, .RotationBigImg .carousel .carousel-box .swiper-slide p, .RotationBigImg .carousel .swiper-wrapper .carousel-item p, .RotationBigImg .carousel .swiper-wrapper .swiper-slide p, .RotationBigImg .swiper-container .carousel-box .carousel-item p, .RotationBigImg .swiper-container .carousel-box .swiper-slide p, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item p, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide p {
-  font-size: 0.64427rem;
+  font-size: 0.78222rem;
   color: #9A9A9A;
   padding: 0 0.57956rem;
+}
+.RotationBigImg .carousel .carousel-box .carousel-item p.timeTxt, .RotationBigImg .carousel .carousel-box .swiper-slide p.timeTxt, .RotationBigImg .carousel .swiper-wrapper .carousel-item p.timeTxt, .RotationBigImg .carousel .swiper-wrapper .swiper-slide p.timeTxt, .RotationBigImg .swiper-container .carousel-box .carousel-item p.timeTxt, .RotationBigImg .swiper-container .carousel-box .swiper-slide p.timeTxt, .RotationBigImg .swiper-container .swiper-wrapper .carousel-item p.timeTxt, .RotationBigImg .swiper-container .swiper-wrapper .swiper-slide p.timeTxt {
+  text-align: center;
 }
 .RotationBigImg .index-container {
   padding: 1.7536rem 0;
@@ -408,6 +427,9 @@ body {
   position: absolute;
   top: 0;
   right: 0;
+}
+.RotationBigImg .index-container .swiper-num.swiper-numCL {
+  color: #fff;
 }
 
 .FollowPop {
@@ -503,6 +525,28 @@ body {
   font-size: 1.13778rem;
   color: darkred;
 }
+.FollowPop .Priacy {
+  position: absolute;
+  top: 50%;
+  width: 88%;
+  left: 6%;
+  background: #fff;
+  transform: translateY(-50%);
+  z-index: 102;
+  max-height: 80vh;
+  overflow-y: scroll;
+}
+.FollowPop .Priacy .Priacy_box {
+  padding: 10px;
+}
+.FollowPop .Priacy .Priacy_box h2 {
+  text-align: center;
+  line-height: 2.13333rem;
+  font-size: 0.99556rem;
+}
+.FollowPop .Priacy .Priacy_box p {
+  line-height: 1.24444rem;
+}
 
 .ListBigImgBox {
   position: relative;
@@ -560,75 +604,6 @@ body {
   background: rgba(255, 255, 255, 0.4);
 }
 
-.RotationMinImg {
-  width: 100%;
-  overflow: hidden;
-}
-.RotationMinImg .carousel {
-  width: 100%;
-  overflow-y: hidden;
-}
-.RotationMinImg .carousel .carousel-box {
-  display: inline-table;
-  white-space: nowrap;
-}
-.RotationMinImg .carousel .carousel-box:nth-child(1) {
-  margin-left: 1.70667rem;
-}
-.RotationMinImg .carousel .carousel-box:last-child {
-  margin-right: 1.70667rem !important;
-}
-.RotationMinImg .carousel .carousel-box .carousel-item {
-  display: inline-block;
-  width: 7.21422rem;
-  border-radius: 0.71111rem;
-  font-size: 0;
-}
-.RotationMinImg .carousel .carousel-box .carousel-item img {
-  width: 100%;
-  margin: 0;
-}
-.RotationMinImg .carousel .carousel-box .carousel-item h4 {
-  height: 1.70667rem;
-  line-height: 0.85333rem;
-  font-size: 0.64427rem;
-  padding: 0 0.57956rem;
-  margin-top: 0.64427rem;
-  overflow: hidden;
-}
-.RotationMinImg .carousel .carousel-box .carousel-item p {
-  font-size: 0.64427rem;
-  color: #9A9A9A;
-  padding: 0 0.57956rem;
-}
-.RotationMinImg .index-container {
-  margin: 0 1.63556rem;
-  padding: 1.7536rem 0;
-  position: relative;
-}
-.RotationMinImg .index-container .swiper-pagination {
-  width: 21.04889rem;
-  height: 0.21333rem;
-  background: #D8D8D8;
-  overflow: hidden;
-}
-.RotationMinImg .index-container .swiper-pagination span {
-  float: left;
-  width: 16.66%;
-  height: 0.21333rem;
-}
-.RotationMinImg .index-container .swiper-pagination span.swiper-pagination-bullet-active {
-  background: #9A9A9A;
-}
-.RotationMinImg .index-container .swiper-num {
-  font-size: 0.57956rem;
-  height: 3.72053rem;
-  line-height: 3.72053rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
 .AmbassadorContent {
   width: 100%;
   overflow: hidden;
@@ -662,6 +637,7 @@ body {
   height: 4.26667rem;
   border-radius: 3.55556rem;
   overflow: hidden;
+  display: inline-block;
   font-size: 0;
   box-shadow: 0 1px 5px #000;
 }
@@ -670,13 +646,14 @@ body {
   height: 100%;
 }
 .AmbassadorContent .list ul li h4 {
-  width: 4.26667rem;
   overflow: hidden;
   margin-top: 0.71111rem;
   font-size: 1.13778rem;
   color: #8f8f8f;
 }
 .AmbassadorContent .list ul li p {
+  text-align: center;
+  white-space: normal;
   font-size: 0.85333rem;
   color: #8f8f8f !important;
 }
@@ -881,6 +858,7 @@ body {
   position: absolute;
   right: 1.70667rem;
   font-size: 2.13333rem;
+  color: #fff;
 }
 .AmbassadorDetails .bigSwiper h5 {
   padding: 0.85333rem 1.70667rem;
@@ -1023,6 +1001,7 @@ body {
   width: 24.96rem;
   display: inline-table;
   padding-left: 1.70667rem;
+  white-space: nowrap;
 }
 .AmbassadorAppointment .gender ul li {
   margin-right: 1.70667rem;
@@ -1600,7 +1579,7 @@ body {
   color: #9e9e9e;
   text-align: center;
 }
-.AppointmentActivities h4 {
+.AppointmentActivities h3 {
   height: 4.26667rem;
   line-height: 4.26667rem;
   font-size: 1.49333rem;
@@ -1629,7 +1608,7 @@ body {
 }
 .AppointmentActivities .list_recommend .list_box h3 {
   margin: 0.53333rem 0;
-  font-size: 1.28rem;
+  font-size: 0.99556rem;
   height: 3.2rem;
   line-height: 1.6rem;
   overflow: hidden;
@@ -2496,25 +2475,30 @@ body {
   color: #6A6A6A;
   letter-spacing: 0.0384rem;
 }
-.CommodityFashion h1 {
+.CommodityFashion .FashionBox {
+  padding-bottom: 1.42222rem;
+}
+.CommodityFashion .FashionBox h1 {
   font-size: 1.93209rem;
   font-weight: bold;
   letter-spacing: 0.05831rem;
   margin: 0 1.63556rem;
   padding: 1.06667rem 0;
-  padding-right: 6.75556rem;
+  padding-right: 2.48889rem;
 }
-.CommodityFashion h4 {
+.CommodityFashion .FashionBox h4 {
   margin: 0 1.63556rem;
   letter-spacing: 0.03271rem;
   padding-bottom: 1.06667rem;
   color: #6A6A6A;
   font-size: 1.09511rem;
 }
-.CommodityFashion .s_btn {
+.CommodityFashion .FashionBox .s_btn {
   margin-left: 1.63556rem;
   width: 7.18222rem;
   height: 3.05778rem;
+  line-height: 3.05778rem;
+  text-align: center;
   font-size: 0.9664rem;
   letter-spacing: 0.03627rem;
   background: #000;

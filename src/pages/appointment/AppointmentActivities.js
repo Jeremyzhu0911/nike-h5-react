@@ -8,7 +8,7 @@ const AppointmentActivities = (props) => {
 
     const [loading, setLoading] = useState(true);
 
-    const [swiperList, setSwiperList] = useState([]);
+    // const [swiperList, setSwiperList] = useState([]);
 
     const [dataList, setDataList] = useState({
         booking_list: [
@@ -48,43 +48,46 @@ const AppointmentActivities = (props) => {
                 (res) => {
                     let resData = res.data
                     if (Number(resData.code) === 200) {
-                        let imgLength = [];
+                        // let imgLength = [];
                         cookie.save('store_name', resData.data.store_info.store_name)
                         console.log(resData.data)
-                        resData.data.type_list.forEach((item, index) => {
-                            imgLength[index] = [resData.data.type_list[index].list.length, 1]
-                        })
-                        let maxlength = imgLength.length
-                        setSwiperList(imgLength)
+                        // resData.data.type_list.forEach((item, index) => {
+                        //     let listLng = resData.data.type_list[index].list.length;
+                        //     imgLength[index] = [(listLng % 3 === 0 ? listLng / 3 : parseInt(listLng / 3) + 1), 1]
+                        // })
+
+                        // setSwiperList(imgLength)
+
                         setDataList(resData.data)
 
                         setLoading(false)
 
                         new Swiper(".swiper-mini", {
                             slidesPerView: 3,
-                            slidesPerGroup: 3,
+                            slidesPerGroup: 1,
                             spaceBetween: 10,
-                            pagination: {
-                                el: '.swiper-pagination',
-                                // type: "bullets",
-                                renderBullet: function (index) {
-
-                                    maxlength = (this.slides.length % 3 === 0 ? this.slides.length/3 : parseInt(this.slides.length/3)+1)
-
-                                    setSwiperList(
-                                        [
-                                            ...swiperList,
-                                            swiperList[1] = [maxlength, 1]
-                                        ]
-                                    )
-                                    return '<span class="swiper-pagination-bullet" style="width:' + 100 / maxlength + '%">' + (index + 1) + '</span>';
-                                }
-                            },
+                            setWrapperSize :true,
                             on: {
-                                slideChange: function () {
-                                    this.$el.find(".swiper-num span").text(this.realIndex / 3 + 1)
-                                }
+                                init: function(swiper){
+                                    this.$el.find(".img-box").css("height",this.slides.css('width'))
+                                },
                             }
+                            // pagination: {
+                            //     el: '.swiper-pagination',
+                            //     // type: "bullets",
+                            //     renderBullet: function (index) {
+                            //         console.log(index)
+                            //
+                            //         let maxlength = (this.slides.length % 3 === 0 ? this.slides.length / 3 : parseInt(this.slides.length / 3) + 1)
+                            //
+                            //         return '<span class="swiper-pagination-bullet" style="width:' + 100 / maxlength + '%">' + (index + 1) + '</span>';
+                            //     }
+                            // },
+                            // on: {
+                            //     slideChange: function () {
+                            //         this.$el.find(".swiper-num span").text(this.realIndex / 3 + 1)
+                            //     }
+                            // }
                         });
                     }
                 },
@@ -102,7 +105,8 @@ const AppointmentActivities = (props) => {
     }
 
     return (
-        <div className={getUrlData("jordan") ? "AppointmentActivities jordan" : "AppointmentActivities"}>
+        <div
+            className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentActivities jordan" : "AppointmentActivities"}>
             <h2>{cookie.load("store_name")}</h2>
             {
                 dataList.booking_list.length === 0 ?
@@ -111,7 +115,7 @@ const AppointmentActivities = (props) => {
                             <h5>暂无参与记录</h5>
                         </div>
                         <div className={'content'}>
-                            <h4>为您推荐</h4>
+                            <h3>为您推荐</h3>
                             <div className={'list_recommend'}>
                                 {
                                     dataList.prod_list.map((item, index) => {
@@ -132,7 +136,7 @@ const AppointmentActivities = (props) => {
                     dataList.type_list.map((item, index) => {
                         if (item.list.length > 0)
                             return <div className={'content'} key={index}>
-                                <h4>{item.type_name}</h4>
+                                <h3>{item.type_name}</h3>
                                 <div className="RotationBigImg">
                                     <div className="carousel swiper-mini">
                                         <div className="carousel-box swiper-wrapper">
@@ -143,18 +147,20 @@ const AppointmentActivities = (props) => {
                                                         key={index} onClick={() => {
                                                         props.history.push("/details-activities" + props.location.search + "&store_event_id=" + listItem.store_event_id)
                                                     }}>
-                                                        <img alt={''} src={listItem.event_url}/>
-                                                        <h4>{listItem.event_title}</h4>
-                                                        <p>{listItem.event_start_date}</p>
+                                                        <div className={"img-box"}>
+                                                            <img alt={''} src={listItem.event_url}/>
+                                                        </div>
+                                                        <h4 className={'actTxt'}>{listItem.event_title}</h4>
+                                                        <p className={'timeTxt'}>{listItem.event_start_date}</p>
                                                     </div>
                                                 })
                                             }
                                         </div>
-                                        <div className="index-container">
-                                            <div className={"swiper-pagination"}/>
-                                            <span
-                                                className="swiper-num"><span>{swiperList[0][1]}</span>/{swiperList[0][0]}</span>
-                                        </div>
+                                        {/*<div className="index-container">*/}
+                                        {/*    <div className={"swiper-pagination"}/>*/}
+                                        {/*    <span*/}
+                                        {/*        className="swiper-num"><span>{swiperList[0][1]}</span>/{swiperList[0][0]}</span>*/}
+                                        {/*</div>*/}
                                     </div>
                                 </div>
                             </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import {getUrlData, convertToChinese} from "../../util/getUrlData";
 
 import GetCode from "../../components/GetCode";
+import Priacy from "../../components/Privacy"
 
 const AmbassadorAppointment = (props) => {
 
@@ -51,6 +52,8 @@ const AmbassadorAppointment = (props) => {
     const updateCodeTime = (state) => {
         setCodeTime(state)
     }
+
+    const [priacyShow, setPriacyShow] = useState(false)
 
     useEffect(() => {
         if (loading) {
@@ -112,15 +115,15 @@ const AmbassadorAppointment = (props) => {
                         }
                         if (Number(resData.code) === 201) {
                             alert("没有可用时间，5秒后自动返回顾问首页")
-                            let timeout = setTimeout(()=>{
-                                if(getUrlData("jordan")){
-                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") +"&jordan=1");
-                                }else{
+                            let timeout = setTimeout(() => {
+                                if (getUrlData("jordan")) {
+                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") + "&jordan=1");
+                                } else {
                                     props.history.push("/content-ambassador?store_id=" + getUrlData("store_id"));
                                 }
 
                                 clearTimeout(timeout)
-                            },5000)
+                            }, 5000)
                         }
                     }, (error) => {
                         console.log(error)
@@ -138,7 +141,8 @@ const AmbassadorAppointment = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan") ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
+        <div
+            className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             {
                 Number(getUrlData('is_ambassador')) === 1 &&
                 <div className={'Ambassador'}>
@@ -290,15 +294,16 @@ const AmbassadorAppointment = (props) => {
                         <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                     </li>
                     <li>
-                        <input type={'num'} placeholder="请输入验证码" maxLength={'6'} value={stateDate.postData.code} onChange={(event) => {
-                            setStateDate({
-                                ...stateDate,
-                                postData: {
-                                    ...stateDate.postData,
-                                    code: event.target.value,   //  验证码
-                                }
-                            })
-                        }}/>
+                        <input type={'num'} placeholder="请输入验证码" maxLength={'6'} value={stateDate.postData.code}
+                               onChange={(event) => {
+                                   setStateDate({
+                                       ...stateDate,
+                                       postData: {
+                                           ...stateDate.postData,
+                                           code: event.target.value,   //  验证码
+                                       }
+                                   })
+                               }}/>
                     </li>
                 </ul>
             </div>
@@ -326,16 +331,18 @@ const AmbassadorAppointment = (props) => {
                 </ul>
             </div>
             <div className={'tips'}>
-                <p onClick={() => {
-                    setIconfont(!iconfont)
-                }}
-                   className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》
+                <p>
+                    <span onClick={() => {
+                        setIconfont(!iconfont)
+                    }} className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意</span>
+                    《<i onClick={() => {
+                    setPriacyShow(true)
+                }}>隐私信息授权条款</i>》
                 </p>
             </div>
             <div className={'texts'}>如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问</div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
-                    console.log(stateDate)
                     if (iconfont)
                         axios({
                             url: stateDate.postUrl,
@@ -363,7 +370,7 @@ const AmbassadorAppointment = (props) => {
                                 if (Number(resData.code) === 200) {
                                     console.log(resData)
                                     // /success?booking_id=167&is_subscribe=0&status=0&type=4
-                                    if (getUrlData('jordan')) {
+                                    if (getUrlData("jordan")) {
                                         props.history.push(
                                             '/success?booking_id=' + resData.data.booking_id +
                                             "&is_subscribe=" + resData.data.is_subscribe +
@@ -387,6 +394,15 @@ const AmbassadorAppointment = (props) => {
                     提交预约申请
                 </div>
             </div>
+            {
+                priacyShow ? <div className={"FollowPop"}>
+                    <Priacy/>
+                    <div className={"desk"} onClick={()=>{
+                        setPriacyShow(!priacyShow)
+                    }}/>
+                </div> : null
+            }
+
         </div>
     )
 }

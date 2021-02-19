@@ -14,7 +14,7 @@ const Rotationbigimg = (props) => {
     },[indexCount.index])
 
     return (
-        <div className={getUrlData('jordan') ? "RotationBigImg jordan":"RotationBigImg"}>
+        <div className={getUrlData("jordan") ? "RotationBigImg jordan":"RotationBigImg"}>
             <div className="carousel">
                 <div className="carousel-box">
                     {

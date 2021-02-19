@@ -5,6 +5,8 @@ import cookie from "react-cookies";
 import GetCode from "../../components/GetCode";
 //本地缓存配置 & 工具类
 import {getUrlData} from "../../util/getUrlData";
+import Priacy from "../../components/Privacy";
+import Relief from "../../components/Relief";
 
 const LimitAppointment = (props) => {
 
@@ -38,7 +40,7 @@ const LimitAppointment = (props) => {
         ],   //  尺码
     })
 
-    if (getUrlData('jordan')) {
+    if (getUrlData("jordan")) {
         window.document.body.style.backgroundColor = '#000';
     }
 
@@ -57,6 +59,9 @@ const LimitAppointment = (props) => {
     const updateCodeTime = (state) => {
         setCodeTime(state)
     }
+
+    const [priacyShow, setPriacyShow] = useState(false)
+    const [reliefShow, setReliefShow] = useState(false)
 
     const [postDate, setPostDate] = useState({
         luckydraw_id: '',   // stateData.luckydraw_id
@@ -99,7 +104,7 @@ const LimitAppointment = (props) => {
     }
 
     return (
-        <div className={getUrlData("jordan")?"LimitAppointment jordan":"LimitAppointment"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitAppointment jordan" : "LimitAppointment"}>
             <h2>{cookie.load('store_name')}</h2>
             <div className="infoDetails">
                 <div className="infoTitle">
@@ -175,10 +180,16 @@ const LimitAppointment = (props) => {
                     如您无法正常收到短信验证码，请点击微信菜单“个人服务-在线客服”留言进行询问。
                 </div>
                 <div className={'tips'}>
-                    <p onClick={() => {
-                        setIconfont(!iconfont)
-                    }}
-                       className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意《<i>隐私信息授权条款</i>》及《<i>免责声明</i>》内容
+
+                    <p>
+                        <span onClick={() => {
+                            setIconfont(!iconfont)
+                        }} className={iconfont ? "iconfont icon-choiceOn" : "iconfont icon-choiceOff"}> 我已仔细阅读并同意</span>
+                        《<i onClick={() => {
+                        setPriacyShow(true)
+                    }}>隐私信息授权条款</i>》及《<i onClick={() => {
+                        setReliefShow(true)
+                    }}>免责声明</i>》内容
                     </p>
                 </div>
                 <div className={'infoBtn'}>
@@ -224,7 +235,7 @@ const LimitAppointment = (props) => {
                                         if (Number(resData.code) === 200) {
                                             console.log(resData)
                                             cookie.save("result_time", stateData.result_time)
-                                            cookie.save("qrcode_url",resData.data.qrcode_url)
+                                            cookie.save("qrcode_url", resData.data.qrcode_url)
                                             props.history.push("/commodity/limitSuccess" + props.location.search)
                                         } else {
                                             alert(resData.message);
@@ -243,7 +254,22 @@ const LimitAppointment = (props) => {
                         </div>
                     </div> : null
             }
-
+            {
+                priacyShow ? <div className={"FollowPop"}>
+                    <Priacy/>
+                    <div className={"desk"} onClick={() => {
+                        setPriacyShow(!priacyShow)
+                    }}/>
+                </div> : null
+            }
+            {
+                reliefShow ? <div className={"FollowPop"}>
+                    <Relief/>
+                    <div className={"desk"} onClick={() => {
+                        setReliefShow(!reliefShow)
+                    }}/>
+                </div> : null
+            }
         </div>
     )
 }

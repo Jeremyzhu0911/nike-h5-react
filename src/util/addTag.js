@@ -11,8 +11,8 @@ const addTag = (relation_id) => {
                 fans_id: cookie.load("fans_id"),
                 store_id: getUrlData("store_id"),
                 relation_id: relation_id,
-                province:'',
-                city:''
+                province: cookie.load("province"),
+                city: cookie.load("city")
             },
             transformRequest: [
                 function (data) {

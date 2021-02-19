@@ -53,7 +53,7 @@ const LimitList = (props) => {
     }
 
     return (
-        <div className={getUrlData("jordan") ? "Limit_list jordan" : "Limit_list"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "Limit_list jordan" : "Limit_list"}>
             <h2>{cookie.load('store_name')}</h2>
             {
                 limitList.map((item, index) => {
@@ -71,7 +71,7 @@ const LimitList = (props) => {
                                     <div className="s_btn s_btn1">报名未开始</div> :
                                     item.enroll_end_time < item.now_time?
                                         <div className="s_btn s_btn2">报名已结束</div> :
-                                        <div className="s_btn s_btn1">即刻报名</div>
+                                        <div className="s_btn s_btn1">报名中</div>
                             }
                             {
                                 index === 0 ?

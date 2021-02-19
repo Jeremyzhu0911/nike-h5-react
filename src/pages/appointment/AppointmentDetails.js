@@ -135,7 +135,7 @@ const AppointmentDetails = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData('jordan') ? "AppointmentDetails jordan" : "AppointmentDetails"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentDetails jordan" : "AppointmentDetails"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}

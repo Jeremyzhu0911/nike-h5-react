@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+let timer = null
 
 const GetCode = (props) => {
     const {updateCodeTime} = props
@@ -14,7 +15,7 @@ const GetCode = (props) => {
             axios.post(props.data.codeUrl, props.data.postData).then(
                 (res) => {
                     console.log(res)
-                    let timer = setInterval(() => {
+                    timer = setInterval(() => {
                         if (timeDate.time > 0) {
                             let time = timeDate.time--;
                             setTimeDate({
@@ -51,12 +52,19 @@ const GetCode = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [timeDate.isYzmClick])
 
+    useEffect(()=>{
+        return ()=>{
+            clearInterval(timer)
+        }
+    },[])
     return (
         <span onClick={() => {
-            setTimeDate({
-                ...timeDate,
-                isYzmClick: true
-            });
+            if (!timeDate.isYzmClick) {
+                setTimeDate({
+                    ...timeDate,
+                    isYzmClick: true
+                });
+            }
         }}>{timeDate.time_txt}</span>
     )
 }

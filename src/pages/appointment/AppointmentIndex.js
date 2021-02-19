@@ -19,8 +19,6 @@ const AppointmentIndex = (props) => {
     const [navList, setNavList] = useState([])
     const [navListBtn, setNavListBtn] = useState(0)
 
-    const [bookingList, setBookingList] = useState({})
-
     const [stateData, setStateData] = useState({
         booking_list: {
             id: '',  //  id
@@ -141,7 +139,7 @@ const AppointmentIndex = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={getUrlData("jordan")?"AppointmentIndex jordan":"AppointmentIndex"}>
+        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentIndex jordan" : "AppointmentIndex"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}
