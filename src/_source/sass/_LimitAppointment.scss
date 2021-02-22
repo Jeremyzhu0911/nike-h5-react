@@ -31,41 +31,39 @@
       display: inline-block;
       width: 45%;
     }
-    .selectSize{
-      margin-left: 5%;
-      display: inline-block;
-      width: 50%;
-      float: right;
-      p{
-        line-height: rem-calc(45);
-        font-size: rem-calc(32);
-        color: rgba(106,106,106,0.6);
-      }
-      .Size{
-        width: 100%;
-        display: inline-table;
-        li{
-          width: rem-calc(102);
-          height: rem-calc(70.66);
-          font-size: rem-calc(25.36);
-          line-height: rem-calc(70.66);
-          text-align: center;
-          float: left;
-          border: rem-calc(1) solid rgba(151,151,151,0.5);
-          color: #6A6A6A;
-          border-radius: rem-calc(5);
-          margin-right: rem-calc(10);
-          margin-top: rem-calc(10);
-          &.active{
-            color: #fff;
-            background: #000;
-          }
+  }
+  .selectSize{
+    width: rem-calc(654);
+    p{
+      line-height: rem-calc(45);
+      font-size: rem-calc(32);
+      color: rgba(106,106,106,0.6);
+    }
+    .Size{
+      width: 110%;
+      display: inline-table;
+      li{
+        width: rem-calc(118);
+        height: rem-calc(70.66);
+        font-size: rem-calc(25.36);
+        line-height: rem-calc(70.66);
+        text-align: center;
+        float: left;
+        border: rem-calc(1) solid rgba(151,151,151,0.5);
+        color: #6A6A6A;
+        border-radius: rem-calc(5);
+        margin-right: rem-calc(10);
+        margin-top: rem-calc(10);
+        &.active{
+          color: #fff;
+          background: #000;
         }
       }
     }
   }
 
   .InfoEnter{
+    padding-top: rem-calc(30);
     .items{
       width: 100%;
       display: inline-table;
@@ -82,7 +80,7 @@
         width: rem-calc(446);
         height: rem-calc(70);
         line-height: rem-calc(70);
-        border: rem-calc(1) solid #d0d0d0;
+        border: 1px solid #d0d0d0;
         border-radius: rem-calc(10);
         text-align: center;
         float: right;

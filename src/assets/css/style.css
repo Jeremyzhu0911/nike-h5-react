@@ -618,9 +618,8 @@ body {
   letter-spacing: 0.0384rem;
 }
 .AmbassadorContent .list {
-  width: 100%;
-  overflow-y: hidden;
-  overflow-x: scroll;
+  width: 23.25333rem;
+  margin: 0 auto;
   text-align: center;
   padding-top: 1.06667rem;
   padding-bottom: 1.77778rem;
@@ -639,7 +638,6 @@ body {
   overflow: hidden;
   display: inline-block;
   font-size: 0;
-  box-shadow: 0 1px 5px #000;
 }
 .AmbassadorContent .list ul li .images img {
   width: 100%;
@@ -660,8 +658,11 @@ body {
 .AmbassadorContent .list ul li.on {
   zoom: 1.2;
 }
+.AmbassadorContent .list ul li.on .images {
+  box-shadow: 0 1px 5px #000;
+}
 .AmbassadorContent .list ul li.on h4, .AmbassadorContent .list ul li.on p {
-  color: #000;
+  color: #000 !important;
 }
 .AmbassadorContent .list ul.ul_align1 {
   display: inline-table;
@@ -1775,8 +1776,6 @@ body {
   margin: 0 auto;
 }
 .ActivitiesContent .content h1 {
-  height: 3.2rem;
-  line-height: 3.2rem;
   font-size: 1.49333rem;
   color: #000;
 }
@@ -2679,23 +2678,20 @@ body {
   display: inline-block;
   width: 45%;
 }
-.LimitAppointment .sellingImg .selectSize {
-  margin-left: 5%;
-  display: inline-block;
-  width: 50%;
-  float: right;
+.LimitAppointment .selectSize {
+  width: 23.25333rem;
 }
-.LimitAppointment .sellingImg .selectSize p {
+.LimitAppointment .selectSize p {
   line-height: 1.6rem;
   font-size: 1.13778rem;
   color: rgba(106, 106, 106, 0.6);
 }
-.LimitAppointment .sellingImg .selectSize .Size {
-  width: 100%;
+.LimitAppointment .selectSize .Size {
+  width: 110%;
   display: inline-table;
 }
-.LimitAppointment .sellingImg .selectSize .Size li {
-  width: 3.62667rem;
+.LimitAppointment .selectSize .Size li {
+  width: 4.19556rem;
   height: 2.51236rem;
   font-size: 0.90169rem;
   line-height: 2.51236rem;
@@ -2707,9 +2703,12 @@ body {
   margin-right: 0.35556rem;
   margin-top: 0.35556rem;
 }
-.LimitAppointment .sellingImg .selectSize .Size li.active {
+.LimitAppointment .selectSize .Size li.active {
   color: #fff;
   background: #000;
+}
+.LimitAppointment .InfoEnter {
+  padding-top: 1.06667rem;
 }
 .LimitAppointment .InfoEnter .items {
   width: 100%;
@@ -2728,7 +2727,7 @@ body {
   width: 15.85778rem;
   height: 2.48889rem;
   line-height: 2.48889rem;
-  border: 0.03556rem solid #d0d0d0;
+  border: 1px solid #d0d0d0;
   border-radius: 0.35556rem;
   text-align: center;
   float: right;

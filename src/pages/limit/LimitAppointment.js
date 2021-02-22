@@ -112,23 +112,23 @@ const LimitAppointment = (props) => {
                 </div>
                 <div className="sellingImg">
                     <img alt={''} src={stateData.kv}/>
-                    <div className="selectSize">
-                        <p>选择尺寸</p>
-                        <ul className="Size">
-                            {
-                                stateData.product_sizes.map((item, index) => {
-                                    return <li key={index} className={sizeList === index ? 'active' : null}
-                                               onClick={() => {
-                                                   setSizeList(index)
-                                                   setPostDate({
-                                                       ...postDate,
-                                                       product_id: item.id
-                                                   })
-                                               }}>{item.size}</li>
-                                })
-                            }
-                        </ul>
-                    </div>
+                </div>
+                <div className="selectSize">
+                    <p>选择尺寸</p>
+                    <ul className="Size">
+                        {
+                            stateData.product_sizes.map((item, index) => {
+                                return <li key={index} className={sizeList === index ? 'active' : null}
+                                           onClick={() => {
+                                               setSizeList(index)
+                                               setPostDate({
+                                                   ...postDate,
+                                                   product_id: item.id
+                                               })
+                                           }}>{item.size}</li>
+                            })
+                        }
+                    </ul>
                 </div>
                 <div className="InfoEnter">
                     <div className="items">

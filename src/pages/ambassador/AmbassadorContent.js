@@ -44,17 +44,14 @@ const AmbassadorContent = (props) => {
 
                             if (resData.data.am_list.length > 4) {
                                 new Swiper(".swiper-container", {
-                                    slidesPerView: (750 / 654) * 4.5,
-                                    slidesPerGroup: 1,
-                                    spaceBetween: 10,
+                                    slidesPerView: 5,
+                                    slidesPerGroup: 5,
                                     on: {
-                                        slideChange: function () {
-                                            console.log(this.realIndex)
-                                            console.log(this.$el.find(".swiper-slide").length)
-                                            if (this.realIndex + 1 === 1)
-                                                this.$el.find(".swiper-slide").eq(0).removeClass("right_one");
-                                            else if (Number(this.realIndex + 1) === this.$el.find(".swiper-slide").length - 5)
-                                                this.$el.find(".swiper-slide").eq(0).addClass("right_one");
+                                        init: function () {
+                                            this.$el.find("h4,p").css("width", this.slides.css('width'))
+                                        },
+                                        click: function () {
+                                            this.$el.find(".swiper-slide").removeClass("on").eq(this.clickedIndex).addClass("on")
                                         }
                                     }
                                 });
@@ -85,8 +82,7 @@ const AmbassadorContent = (props) => {
                 }>
                     {
                         stateData.am_list.map((item, index) => {
-                            return <li key={index} className={
-                                index === 0 ? 'swiper-slide left_one' : 'swiper-slide'}
+                            return <li key={index} className={index === 0 ? 'swiper-slide on': 'swiper-slide'}
                                        onClick={() => {
                                            setTabIndex(index)
                                        }}>
@@ -102,7 +98,8 @@ const AmbassadorContent = (props) => {
             </div>
             <div className={'synopsis'}>
                 <div className={'images'}>
-                    <img alt={''} src={stateData.am_list[tabIndex].imgUrl?stateData.am_list[tabIndex].imgUrl:defaultImd}/>
+                    <img alt={''}
+                         src={stateData.am_list[tabIndex].imgUrl ? stateData.am_list[tabIndex].imgUrl : defaultImd}/>
                 </div>
                 <h4>{stateData.am_list[tabIndex].cnName}</h4>
                 <p>{stateData.am_list[tabIndex].tag}大使 <span onClick={() => {
