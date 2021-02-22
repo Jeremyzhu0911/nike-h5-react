@@ -185,7 +185,7 @@ const routes = [
     {
         path: '/commodity/fashion',     // 参数 store_id
         component: Fashion,
-        title: '潮流新品'
+        title: '潮流穿搭'
     },
     {
         path: '/historical-record',
