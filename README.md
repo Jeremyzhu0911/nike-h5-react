@@ -68,3 +68,69 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### wxApi jsApiList 接口列表
+
+openEnterpriseChat  企业号 聊天    
+
+openEnterpriseContact  企业号 联系人    
+
+onMenuShareTimeline  分享菜单->时间线    
+
+onMenuShareAppMessage 分享菜单->app信息    
+
+onMenuShareQQ  分享菜单->qq    
+
+onMenuShareWeibo 分享菜单->微博    
+
+onMenuShareQZone 分享菜单->qq空间    
+
+startRecord  开始记录    
+
+stopRecord   停止记录    
+
+onVoiceRecordEnd    当声音记录停止    
+
+playVoice    播放声音    
+
+pauseVoice    暂停声音    
+
+stopVoice    停止声音    
+
+onVoicePlayEnd    当声音播放结束    
+
+uploadVoice    上传声音    
+
+downloadVoice    下载声音    
+
+chooseImage    选择图片    
+
+previewImage    预览图片    
+
+uploadImage    上传图片    
+
+downloadImage    下载图片    
+
+translateVoice    翻译声音    
+
+getNetworkType    获得网络类型    
+
+openLocation    打开位置    
+
+getLocation    获得位置    
+
+hideOptionMenu    隐藏选项菜单    
+
+showOptionMenu    显示选项菜单    
+
+hideMenuItems    隐藏菜单项    
+
+showMenuItems    显示菜单项    
+
+hideAllNonBaseMenuItem    隐藏所有子菜单项    
+
+showAllNonBaseMenuItem    显示所有子菜单项    
+
+closeWindow    关闭窗口    
+
+scanQRCode    扫描二维码
