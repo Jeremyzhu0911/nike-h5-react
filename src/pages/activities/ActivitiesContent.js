@@ -47,7 +47,7 @@ const ActivitiesContent = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "ActivitiesContent jordan" : "ActivitiesContent"}>
-            <h2>{cookie.load("store_name")}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 dataList.data.map((item, index) => {
                     return <div className={'content'} key={index}>

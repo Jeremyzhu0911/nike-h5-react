@@ -7,6 +7,7 @@ import GetCode from "../../components/GetCode";
 import {getUrlData} from "../../util/getUrlData";
 import Priacy from "../../components/Privacy";
 import Relief from "../../components/Relief";
+import DataTracking from "../../util/DataStatistics";
 
 const LimitAppointment = (props) => {
 
@@ -19,6 +20,8 @@ const LimitAppointment = (props) => {
     const [iconfont, setIconfont] = useState(false)
 
     const [stateData, setStateData] = useState({
+        luckydraw_id: "",
+        product_sku: "",
         title: '', // 标题
         kv: '', //  图片
         product_desc: '',   // 描述
@@ -80,7 +83,6 @@ const LimitAppointment = (props) => {
                     if (Number(resData.code) === 200) {
 
                         cookie.save('store_name', resData.data.store_info.store_name)
-                        console.log(resData.data);
                         setStateData(resData.data);
                         setPostDate({
                             ...postDate,
@@ -105,7 +107,7 @@ const LimitAppointment = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitAppointment jordan" : "LimitAppointment"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className="infoDetails">
                 <div className="infoTitle">
                     {stateData.title}
@@ -233,9 +235,10 @@ const LimitAppointment = (props) => {
                                 }).then((res) => {
                                         let resData = res.data;
                                         if (Number(resData.code) === 200) {
-                                            console.log(resData)
                                             cookie.save("result_time", stateData.result_time)
                                             cookie.save("qrcode_url", resData.data.qrcode_url)
+                                            DataTracking.GAEvent("抽签活动 | 确认信息 | " + stateData.luckydraw_id + ' | ' + stateData.product_sku, '确认')
+                                            DataTracking.GAPage(" | 抽签活动 | 报名成功 | " + stateData.luckydraw_id + ' | ' + stateData.product_sku)
                                             props.history.push("/commodity/limitSuccess" + props.location.search)
                                         } else {
                                             alert(resData.message);

@@ -4,7 +4,7 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from 'swiper';
 import DataTracking from "../../util/DataStatistics"
-import wxconfig from "../../server/wx.config"
+import WeiXin from "../../server/wx.config"
 
 const CommodityIndex = (props) => {
 
@@ -38,7 +38,6 @@ const CommodityIndex = (props) => {
                 (res) => {
                     let restData = res.data;
                     if (Number(restData.code) === 200) {
-                        console.log(restData.data)
                         restData.data.data.map((item, index) => {
                             if (index < 6) {
                                 setProductNewList({
@@ -115,7 +114,8 @@ const CommodityIndex = (props) => {
 
                         cookie.save('store_name', restData.data.store_info.store_name);
                         DataTracking.GAPage('最新上市')
-                        wxconfig()
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.href, restData.data.store_info.share_img, "点击获取Nike最新资讯")
 
                         setLoading(false)
 
@@ -182,7 +182,7 @@ const CommodityIndex = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityIndex jordan" : "CommodityIndex"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={"RotationBigImg"}>
                 <div className={"swiper-container carousel"}>
                     <div className="swiper-wrapper carousel-box">

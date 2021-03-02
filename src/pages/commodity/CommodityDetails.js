@@ -6,6 +6,7 @@ import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
 import addTag from "../../util/addTag";
 import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 const CommodityDetails = (props) => {
 
@@ -44,11 +45,11 @@ const CommodityDetails = (props) => {
                         })
 
                         DataTracking.GAPage(getUrlData('product_code'))
+                        WeiXin.share(resData.data.product_name + "，新鲜尖货快来看", window.location.href, resData.data.product_color[0].color_image[0].img, "Nike出道新品，点击获取最新资讯")
                         setLoading(false)
 
                         addTag(resData.data.relation_id)
                     }
-                    console.log(resData)
 
                     new Swiper(".swiper-container", {
                         slidesPerView: 1,

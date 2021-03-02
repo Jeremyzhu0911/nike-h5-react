@@ -173,11 +173,11 @@
         width: rem-calc(702);
         display: inline-table;
         padding-left: rem-calc(48);
+        white-space: nowrap;
         li{
           margin-right: rem-calc(48);
           width: rem-calc(303);
           display: inline-table;
-          float: left;
           p{
             display: inline-block;
             border: 1px solid #dedede;

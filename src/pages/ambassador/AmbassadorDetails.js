@@ -4,6 +4,8 @@ import addTag from "../../util/addTag";
 import axios from "axios";
 import cookie from "react-cookies";
 import Swiper from "swiper";
+import WeiXin from "../../server/wx.config";
+import DataTracking from "../../util/DataStatistics";
 
 const AmbassadorDetails = (props) => {
 
@@ -41,17 +43,19 @@ const AmbassadorDetails = (props) => {
                 const url = '/ambassador/site/view-ambassador?id=' + getUrlData('ambassador_id');
                 axios.get(url).then(
                     (res) => {
-                        let resData = res.data;
-                        if (Number(resData.code) === 200) {
-                            console.log(resData.data);
+                        let restData = res.data;
+                        if (Number(restData.code) === 200) {
 
-                            cookie.save('store_name', resData.data.store_info.store_name)
+                            cookie.save('store_name', restData.data.store_info.store_name)
+                            cookie.save('ambassadorName', restData.data.am_info.cnName)
 
-                            setAmbassadorDetailsData(resData.data)
+                            setAmbassadorDetailsData(restData.data)
+
+                            WeiXin.share("我正在体验Nike专属顾问服务，快来预约你的专属顾问", window.location.href, restData.data.store_info.share_img, "了解更多Nike专属惊喜")
 
                             setLoading(false)
 
-                            addTag(resData.data.am_info.relation_id)
+                            addTag(restData.data.am_info.relation_id)
                         }
                     }, (error) => {
                         console.log(error)
@@ -97,10 +101,10 @@ const AmbassadorDetails = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={'content'}>
                 <h4>{AmbassadorDetailsData.am_info.cnName}</h4>
-                <h5>{AmbassadorDetailsData.am_info.tag}大使</h5>
+                <h5>{AmbassadorDetailsData.am_info.tag ? AmbassadorDetailsData.am_info.tag : "Nike"}大使</h5>
                 <div className={'big_img'}>
                     <img alt={''} src={AmbassadorDetailsData.am_info.imgUrl}/>
                 </div>
@@ -118,6 +122,7 @@ const AmbassadorDetails = (props) => {
                     {
                         AmbassadorDetailsData.file_list.map((item, index) => {
                             return <li key={index} onClick={() => {
+                                DataTracking.GAPage(" | 专属顾问 | " + AmbassadorDetailsData.am_info.cnName + "照片");
                                 setShowBigSwiper(!showBigSwiper)
                             }}>
                                 <img alt={''} src={item.imgUrl}/>
@@ -133,6 +138,8 @@ const AmbassadorDetails = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
+                    DataTracking.GAEvent('专属顾问 | ' + AmbassadorDetailsData.am_info.cnName, AmbassadorDetailsData.am_info.cnName + " 预约大使");
+                    DataTracking.GAPage(" | 大使预约 | " + AmbassadorDetailsData.am_info.cnName);
                     props.history.push("/appointment" + props.location.search + "&is_ambassador=1")
                 }}>
                     预约此顾问

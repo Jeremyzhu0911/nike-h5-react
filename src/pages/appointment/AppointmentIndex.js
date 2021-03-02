@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
+import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 const AppointmentIndex = (props) => {
 
@@ -79,7 +81,6 @@ const AppointmentIndex = (props) => {
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        console.log(resData)
                         cookie.save('store_name', resData.data.store_info.store_name)
 
                         resData.data.booking_list.forEach((item, index) => {
@@ -120,9 +121,12 @@ const AppointmentIndex = (props) => {
                                 }
                             }
                         })
-                        console.log(resData)
 
                         setStateData(resData.data)
+
+                        DataTracking.GAPage(' | 我的所有预约列表')
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.protocol + '//' + window.location.host + '/nike-h5-vue/dist/#/commodity/index' + props.location.search, window.location.protocol + '//' + window.location.host + '/nike-h5-vue/nike.png', "点击获取Nike最新资讯")
 
                         setLoading(false)
                     }
@@ -182,6 +186,15 @@ const AppointmentIndex = (props) => {
                                 return <div className={
                                     item.status === '-2' || item.status === '-1' || item.status === '2' || item.status === '3' ?
                                         "appointment_list end" : "appointment_list"} key={index} onClick={() => {
+                                    DataTracking.GAPage(' | ' + item.type === 'product_try' ?
+                                        "预约试穿" : item.type === 'product_buy' ?
+                                            "预留产品" : item.type === 'event' ?
+                                                "活动预约" : item.type === 'ambassador' ?
+                                                    "专属顾问预约" : item.type === 'luckydraw' ?
+                                                        item.luckydraw_type === 0 ?
+                                                            "抽号活动" : "抽鞋活动"
+                                                        : null)
+
                                     props.history.push(item.link)
                                 }}>
                                     <p className={'appointment_list_type'}>{
@@ -217,6 +230,8 @@ const AppointmentIndex = (props) => {
                     {
                         stateData.prod_list.map((item, index) => {
                             return <div className="row" key={index} onClick={() => {
+                                DataTracking.GAEvent('我的所有预约列表', item.product_code);
+
                                 props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
                             }}>
                                 <div className="resultItems">

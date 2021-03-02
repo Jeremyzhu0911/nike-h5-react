@@ -4,6 +4,8 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
 import defaultImd from "../../assets/images/ambassadorImd.jpg";
+import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 
 const AmbassadorContent = (props) => {
@@ -19,7 +21,8 @@ const AmbassadorContent = (props) => {
                 id: '',
                 imgUrl: '',
                 cnName: '',
-                enName: ''
+                enName: '',
+                tag: ''
             }
         ]
     })
@@ -32,27 +35,35 @@ const AmbassadorContent = (props) => {
                 let url = '/ambassador/site/get-ambassador-list?store_id=' + getUrlData('store_id');
                 axios.get(url).then(
                     (res) => {
-                        let resData = res.data;
-                        if (Number(resData.code) === 200) {
-                            console.log(resData.data);
+                        let restData = res.data;
+                        if (Number(restData.code) === 200) {
 
-                            cookie.save('store_name', resData.data.store.store_name)
+                            cookie.save('store_name', restData.data.store.store_name)
 
-                            setStateData(resData.data)
+                            setStateData(restData.data)
+
+                            DataTracking.GAPage(' | 专属顾问')
+
+                            WeiXin.share("我在体验Nike个性化服务，快来预约你的专属时刻", window.location.href, restData.data.store.share_img, "尽享更多专属服务")
 
                             setLoading(false)
 
-                            if (resData.data.am_list.length > 4) {
+                            if (restData.data.am_list.length > 4) {
                                 new Swiper(".swiper-container", {
-                                    slidesPerView: 5,
-                                    slidesPerGroup: 5,
+                                    slidesPerView: 3,
+                                    slidesPerGroup: 1,
                                     on: {
                                         init: function () {
                                             this.$el.find("h4,p").css("width", this.slides.css('width'))
                                         },
                                         click: function () {
-                                            this.$el.find(".swiper-slide").removeClass("on").eq(this.clickedIndex).addClass("on")
+                                            if(this.clickedIndex >= 0)
+                                                this.$el.find(".swiper-slide").removeClass("on").eq(this.clickedIndex).addClass("on")
                                         }
+                                        // slideChange: function(){
+                                        //     this.$el.find(".swiper-slide").removeClass("on").eq(this.activeIndex).addClass("on");
+                                        //     this.$el.find(".swiper-slide").eq(this.activeIndex).trigger("click")
+                                        // },
                                     }
                                 });
                             }
@@ -74,7 +85,7 @@ const AmbassadorContent = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorContent jordan" : "AmbassadorContent"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={'list swiper-container'}>
                 <ul className={
                     stateData.am_list.length === 2 ? "ul_align1 swiper-wrapper" :
@@ -82,15 +93,14 @@ const AmbassadorContent = (props) => {
                 }>
                     {
                         stateData.am_list.map((item, index) => {
-                            return <li key={index} className={index === 0 ? 'swiper-slide on': 'swiper-slide'}
-                                       onClick={() => {
-                                           setTabIndex(index)
-                                       }}>
+                            return <li key={index} className={index === 0 ? 'swiper-slide on': 'swiper-slide'}>
                                 <div className={'images'}>
-                                    <img alt={''} src={item.imgUrl ? item.imgUrl : defaultImd}/>
+                                    <img onClick={() => {
+                                        setTabIndex(index)
+                                    }} alt="" src={item.imgUrl ? item.imgUrl : defaultImd}/>
                                 </div>
                                 <h4>{item.cnName}</h4>
-                                <p>{item.tag}大使</p>
+                                <p>{item.tag? item.tag : 'Nike'}大使</p>
                             </li>
                         })
                     }
@@ -103,12 +113,13 @@ const AmbassadorContent = (props) => {
                 </div>
                 <h4>{stateData.am_list[tabIndex].cnName}</h4>
                 <p>{stateData.am_list[tabIndex].tag}大使 <span onClick={() => {
+                    DataTracking.GAEvent('专属顾问', stateData.am_list[tabIndex].cnName);
+                    DataTracking.GAPage(" | 专属顾问 | " + stateData.am_list[tabIndex].cnName);
                     props.history.push("/details-ambassador" + props.location.search + "&ambassador_id=" + stateData.am_list[tabIndex].id)
                 }}>了解详情</span></p>
             </div>
         </div>
     )
-
 }
 
 export default AmbassadorContent;

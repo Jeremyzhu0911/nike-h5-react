@@ -2,6 +2,7 @@ import axios from 'axios';
 import cookie from "react-cookies";
 import { getUrlData } from "./getUrlData";
 import DataTracking from "./DataStatistics"
+import WeiXin from "../server/wx.config";
 
 const getOnFansData = (storeId) => {
     let url = window.location.href;
@@ -17,6 +18,8 @@ const getOnFansData = (storeId) => {
                 cookie.save('mobile', res.data.data.mobile)
                 cookie.save('openId', res.data.data.openId)
                 DataTracking.GAOpenId(res.data.data.openId)
+
+                WeiXin.config()
 
                 // 百度地图地理位置api
                 let BMap = window.BMap;

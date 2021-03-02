@@ -5,6 +5,8 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 
 import Swiper from 'swiper';
+import WeiXin from "../../server/wx.config";
+import DataTracking from "../../util/DataStatistics";
 
 const CommodityFashion = (props) => {
 
@@ -37,6 +39,10 @@ const CommodityFashion = (props) => {
 
                         setStateDate(restDate.data.data)
 
+                        DataTracking.GAPage('潮流穿搭')
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.href, restDate.data.store_info.share_img, "点击获取Nike最新资讯")
+
                         setLoading(false)
 
                         new Swiper(".swiper-container", {
@@ -48,7 +54,7 @@ const CommodityFashion = (props) => {
                                 el: '.swiper-pagination',
                                 // type: "bullets",
                                 renderBullet: function (index) {
-                                        return '<span class="swiper-pagination-bullet" style="width:' + 100 / this.slides.length + '%">' + (index + 1) + '</span>';
+                                    return '<span class="swiper-pagination-bullet" style="width:' + 100 / this.slides.length + '%">' + (index + 1) + '</span>';
                                 }
                             },
                             on: {
@@ -75,7 +81,7 @@ const CommodityFashion = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityFashion jordan" : "CommodityFashion"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 stateDate.map((stateList, index) => {
                     return <div key={index} className={'FashionBox'}>
@@ -106,9 +112,11 @@ const CommodityFashion = (props) => {
                         </div>
                         {
                             stateList.link ? <div onClick={() => {
+                                DataTracking.GAEvent('潮流穿搭', stateList.title)
                                 window.location.href = stateList.link
                             }} className="s_btn">查看穿搭</div> : null
                         }
+                        <div className={'jianju'}/>
                     </div>
                 })
             }

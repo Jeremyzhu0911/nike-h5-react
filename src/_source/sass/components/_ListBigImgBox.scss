@@ -1,17 +1,17 @@
 
 .ListBigImgBox {
   position: relative;
-  padding: rem-calc(74.28) rem-calc(32);
+  padding: rem-calc(74.28) rem-calc(48);
   box-shadow: 0 rem-calc(8) rem-calc(40) #9e9e9e;
   margin-bottom: rem-calc(21.74);
   .content{
-    width: rem-calc(686);
+    width: rem-calc(654);
     margin: 0 auto;
     .title {
       font-size: rem-calc(36.24);
       letter-spacing: rem-calc(1.36);
       color: #6A6A6A;
-      padding-right: rem-calc(289.92);
+      padding-right: rem-calc(140);
       padding-bottom: rem-calc(15.56);
     }
     .time {
@@ -21,16 +21,16 @@
     }
     .images{
       margin: rem-calc(32.58) 0;
-      width: rem-calc(686);
+      width: rem-calc(654);
       border-radius: rem-calc(30);
       overflow: hidden;
       font-size: 0;
       img{
-        width: rem-calc(686);
+        width: rem-calc(654);
       }
     }
     .s_btn{
-      width: rem-calc(686);
+      width: rem-calc(654);
       height: rem-calc(122);
       line-height: rem-calc(122);
       border-radius: rem-calc(122);

@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import QrPop from "../../components/QrPop";
+import DataTracking from "../../util/DataStatistics";
 
 const AppointmentDetails = (props) => {
 
@@ -10,11 +11,14 @@ const AppointmentDetails = (props) => {
 
     const [showCancel, setShowCancel] = useState(false)
     const [cancelBooking, setCancelBooking] = useState(false)
+    const [isRating,setIsRating] = useState(false)
 
     const [appointmentDetailsData, setAppointmentDetailsData] = useState({
         // 共有
         book_type: '',   //  0 试穿 1 预留
         status: '',  //  状态
+        typeName: '',
+        bookingName: '',
 
         // 部分共有状态
         mobile: '', //  预留信息手机
@@ -43,10 +47,9 @@ const AppointmentDetails = (props) => {
         user_name: '',  //  预留信息名字
     })
 
+    let typeName,bookingName;
+
     const [showHide, setShowHide] = useState(false)
-    useEffect(() => {
-        console.log('超时', showHide)
-    }, [showHide])
     const updateShowHide = (state) => {
         setShowHide(state)
     }
@@ -96,30 +99,72 @@ const AppointmentDetails = (props) => {
             switch (getUrlData('type')) {
                 case 'luckydraw':   //  抽签
                     getUrl = '/luckydraw/default/view-booking?booking_id=';
+                    typeName = '抽签预约';
                     break;
                 case 'ambassador':  //  专属顾问
                     getUrl = '/ambassador/site/view-booking?id=';
+                    typeName = '专属顾问预约预约';
                     break;
                 case 'event':   //  活动
                     getUrl = '/event/default/view-booking?id=';
+                    typeName = '活动预约';
                     break;
                 default:    //  预约试穿    预留产品
                     getUrl = '/product/default/view-booking?booking_id=';
+                    typeName = getUrlData('type') === 'product_try' ? '预约试穿' : '预留产品';
             }
 
             axios.get(getUrl + getUrlData('booking_id')).then(
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        if (getUrlData('type') === "ambassador" || getUrlData('type') === "event")
-                            setAppointmentDetailsData(
-                                resData.data
-                            )
-                        else {
-                            setAppointmentDetailsData(
-                                resData.data.data
-                            )
+                        switch (getUrlData('type')) {
+                            case 'luckydraw':   //  抽签
+                                typeName = '抽签预约';
+                                setAppointmentDetailsData({
+                                    ...resData.data,
+                                    typeName: typeName,
+                                    bookingName: resData.data.title
+                                })
+                                break;
+                            case 'ambassador':  //  专属顾问
+                                typeName = '专属顾问预约';
+                                if(resData.data.status === 4 && resData.data.is_rating === 0) {
+                                    setIsRating(true)
+                                }
+                                setAppointmentDetailsData({
+                                    ...resData.data,
+                                    typeName: typeName,
+                                    bookingName: resData.data.ambassador_info
+                                })
+                                break;
+                            case 'event':   //  活动
+                                typeName = '活动预约';
+                                setAppointmentDetailsData({
+                                    ...resData.data,
+                                    typeName: typeName,
+                                    bookingName: resData.data.event_title
+                                })
+                                break;
+                            default:    //  预约试穿    预留产品
+                                typeName = getUrlData('type') === 'product_try' ? '预约试穿' : '预留产品';
+                                setAppointmentDetailsData({
+                                    ...resData.data.data,
+                                    typeName: typeName,
+                                    bookingName: resData.data.data.sku
+                                })
                         }
+                        // if (getUrlData('type') === "ambassador" || getUrlData('type') === "event")
+                        //     setAppointmentDetailsData(
+                        //         resData.data
+                        //     )
+                        // else {
+                        //     setAppointmentDetailsData(
+                        //         resData.data.data
+                        //     )
+                        // }
+                        DataTracking.GAPage(' | ' + typeName + ' | ' + getUrlData('booking_id'))
+
                         setLoading(false)
                     }
                 },
@@ -143,14 +188,7 @@ const AppointmentDetails = (props) => {
             </div>
             <h3>
                 {
-                    getUrlData('type') === 'ambassador' ?
-                        '专属顾问预约' :
-                        getUrlData('type') === 'event' ?
-                            '活动预约' :
-                            getUrlData('type') === 'product_try' ?
-                                '预约试穿' :
-                                getUrlData('type') === 'product_buy' ?
-                                    '预留产品' : null
+                    appointmentDetailsData.typeName
                 }
                 <span>
                     {
@@ -164,9 +202,6 @@ const AppointmentDetails = (props) => {
                                                 "已接受" : null
                     }
                 </span>
-                {
-                    console.log(appointmentDetailsData)
-                }
             </h3>
             {
                 getUrlData('type') === 'ambassador' || getUrlData('type') === 'event' ?
@@ -248,12 +283,18 @@ const AppointmentDetails = (props) => {
                     appointmentDetailsData.status === 1 || appointmentDetailsData.status === 4 ?
                         <div className="btn" onClick={() => {
                             setShowHide(true)
-                        }
-                        }>
+                        }}>
                             展示二维码
                         </div> : null
                 }
                 {
+                    appointmentDetailsData.status === 4 && appointmentDetailsData.is_rating === 0 ?
+                        <div className="btn2" onClick={() => {
+                            DataTracking.GAEvent('我的顾问预约 | ' + appointmentDetailsData.ambassador_info, '开始评价');
+                            props.history.push("/adviser" + props.location.search)
+                        }}>
+                            评价服务
+                        </div> :
                     appointmentDetailsData.status === 0 || appointmentDetailsData.status === 1 || appointmentDetailsData.status === 4 ?
                         <div className="btn2" onClick={() => {
                             setShowCancel(!showCancel)
@@ -273,6 +314,8 @@ const AppointmentDetails = (props) => {
                         <p>取消后不可撤回，如需恢复预约，请重新提交预约申请，是否继续本次操作</p>
                         <div className={'btn_box'}>
                             <span onClick={() => {
+                                DataTracking.GAEvent(appointmentDetailsData.typeName, appointmentDetailsData.bookingName + "取消预约")
+                                DataTracking.GAPage(' | 我的' + appointmentDetailsData.typeName + ' | ' + appointmentDetailsData.bookingName + "取消成功")
                                 setCancelBooking(showCancel)
                             }}>继续</span>
                             <span onClick={() => {

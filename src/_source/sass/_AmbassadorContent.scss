@@ -4,18 +4,9 @@
   overflow: hidden;
   padding-bottom: rem-calc(100);
 
-  h2 {
-    text-align: center;
-    height: rem-calc(102.8);
-    line-height: rem-calc(102.8);
-    font-size: rem-calc(28.98);
-    color: #6A6A6A;
-    letter-spacing: rem-calc(1.08);
-  }
-
   .list {
     width: rem-calc(654);
-    margin: 0 auto;
+    padding: 0 rem-calc(48);
     text-align: center;
     padding-top: rem-calc(30);
     padding-bottom: rem-calc(50);
@@ -28,16 +19,15 @@
         text-align: center;
 
         .images {
-          width: rem-calc(120);
-          height: rem-calc(120);
-          border-radius: rem-calc(100);
-          overflow: hidden;
-          display: inline-block;
-          font-size: 0;
-
+          width: 100%;
+          height: rem-calc(110);
           img {
-            width: 100%;
-            height: 100%;
+            width: rem-calc(110);
+            height: rem-calc(110);
+            border-radius: rem-calc(110);
+            overflow: hidden;
+            display: inline-block;
+            font-size: 0;
           }
         }
 
@@ -45,20 +35,26 @@
           overflow: hidden;
           margin-top: rem-calc(20);
           font-size: rem-calc(32);
-          color: #8f8f8f;
+          color: #bfbfbf;
         }
 
         p {
           text-align: center;
           white-space: normal;
           font-size: rem-calc(24);
-          color: #8f8f8f !important;
+          color: #bfbfbf !important;
         }
 
         &.on {
-          zoom: 1.2;
           .images{
-            box-shadow: 0 1px 5px #000;
+            width: 100%;
+            height: rem-calc(130);
+            img{
+              width: rem-calc(130);
+              height: rem-calc(130);
+              border-radius: rem-calc(130);
+              box-shadow: 0 0px 8px #00000096;
+            }
           }
 
           h4, p {
@@ -125,7 +121,7 @@
   .synopsis {
     width: rem-calc(654);
     margin: 0 auto;
-    box-shadow: 0 1px 5px #6A6A6A;
+    box-shadow: 0 1px 25px #6a6a6a87;
     border-radius: rem-calc(40);
     background: #fff;
     overflow: hidden;
@@ -148,7 +144,7 @@
 
     p {
       padding: 0 rem-calc(48);
-      padding-bottom: rem-calc(32);
+      padding-bottom: rem-calc(42);
       font-size: rem-calc(32);
       height: rem-calc(50);
       color: #000 !important;
@@ -157,9 +153,9 @@
         float: right;
         font-size: rem-calc(24);
         border: 1px solid #000;
-        border-radius: rem-calc(50);
-        height: rem-calc(60);
-        line-height: rem-calc(60);
+        border-radius: rem-calc(10);
+        height: rem-calc(50);
+        line-height: rem-calc(50);
         padding: 0 rem-calc(20);
         color: #000 !important;
       }

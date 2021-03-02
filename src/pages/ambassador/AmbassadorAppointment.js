@@ -5,6 +5,7 @@ import {getUrlData, convertToChinese} from "../../util/getUrlData";
 
 import GetCode from "../../components/GetCode";
 import Priacy from "../../components/Privacy"
+import DataTracking from "../../util/DataStatistics";
 
 const AmbassadorAppointment = (props) => {
 
@@ -61,6 +62,7 @@ const AmbassadorAppointment = (props) => {
                 const url = '/ambassador/site/view-time-list?id=' + getUrlData('ambassador_id');
                 axios.get(url).then(
                     (res) => {
+                        console.log(cookie.load("ambassadorName"))
                         let resData = res.data;
                         if (Number(resData.code) === 200) {
                             resData.data.map((item, index) => {
@@ -75,8 +77,6 @@ const AmbassadorAppointment = (props) => {
                             })
 
                             setAmbassadorAppointmentData(resData.data)
-
-                            console.log(resData.data)
 
                             if (getUrlData('is_ambassador')) {
                                 setStateDate({
@@ -368,7 +368,9 @@ const AmbassadorAppointment = (props) => {
                             (res) => {
                                 let resData = res.data;
                                 if (Number(resData.code) === 200) {
-                                    console.log(resData)
+
+                                    DataTracking.GAEvent("专属顾问预约 | " + cookie.load("ambassadorName"), "提交预约")
+
                                     // /success?booking_id=167&is_subscribe=0&status=0&type=4
                                     if (getUrlData("jordan")) {
                                         props.history.push(

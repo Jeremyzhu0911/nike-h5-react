@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import {getUrlData} from "../../util/getUrlData";
 import axios from "axios";
 import FollowPop from "../../components/FollowPop";
+import DataTracking from "../../util/DataStatistics";
 
 const CommoditySuccess = (props) => {
 
@@ -34,13 +35,11 @@ const CommoditySuccess = (props) => {
             store_longitude: '',
             store_name: "",
             user_name: "",
+            gaBookingType: Number(getUrlData("type")) === 1 ? "预约试穿" : "预留产品",
         }
     })
 
     const [showHide, setShowHide] = useState(false)
-    useEffect(() => {
-        console.log('超时', showHide)
-    }, [showHide])
     const updateShowHide = (state) => {
         setShowHide(state)
     }
@@ -53,7 +52,6 @@ const CommoditySuccess = (props) => {
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        console.log(resData)
                         setStateData({
                             ...stateData,
                             ...resData.data
@@ -110,6 +108,7 @@ const CommoditySuccess = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
+                    DataTracking.GAEvent(stateData.data.gaBookingType + stateData.data.sku + " | 预约成功", "查看预约");
                     if (Number(getUrlData('is_subscribe')) === 0) {   //  是否关注公众号
                         setShowHide(true)
                     } else {

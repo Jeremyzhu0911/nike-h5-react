@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import cookie from "react-cookies";
+import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 const LimitList = (props) => {
 
@@ -23,6 +25,8 @@ const LimitList = (props) => {
             is_avail_booking: "", // 是否已经报名  true 未报名 false 已报名
             is_end_booking: '', // 报名结束
             is_booking: "", // 活动是否需要报名
+            enroll_begin_time: '',
+            enroll_end_time:''
         }
     ])
 
@@ -30,12 +34,17 @@ const LimitList = (props) => {
         if (loading) {
             axios.get("/luckydraw/default/limited-product?store_id=" + getUrlData('store_id')).then(
                 (res) => {
-                    let resData = res.data;
-                    if (Number(resData.code) === 200) {
+                    let restData = res.data;
+                    if (Number(restData.code) === 200) {
 
-                        cookie.save('store_name', resData.data.store_info.store_name)
-                        console.log(resData.data);
-                        setLimitList(resData.data.data)
+                        cookie.save('store_name', restData.data.store_info.store_name)
+
+                        setLimitList(restData.data.data)
+
+                        DataTracking.GAPage(' | 限量发售')
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.href, restData.data.store_info.share_img, "点击获取Nike最新资讯")
+
                         setLoading(false)
                     }
                 },
@@ -54,13 +63,14 @@ const LimitList = (props) => {
 
     return (
         <div className={parseInt(getUrlData("jordan")) === 1 ? "Limit_list jordan" : "Limit_list"}>
-            <h2>{cookie.load('store_name')}</h2>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 limitList.map((item, index) => {
-                    return <div className="ListBigImgBox" key={index} onClick={() => {
-                        window.location.href = item.link
-                    }}>
-                        <div className="content">
+                    return <div className="ListBigImgBox" key={index}>
+                        <div className="content" onClick={() => {
+                            DataTracking.GAEvent('限量发售', item.title);
+                            window.location.href = item.link
+                        }}>
                             <div className="title">{item.title}</div>
                             <div className="time">{item.created_at}</div>
                             <div className="images">
@@ -73,14 +83,17 @@ const LimitList = (props) => {
                                         <div className="s_btn s_btn2">报名已结束</div> :
                                         <div className="s_btn s_btn1">报名中</div>
                             }
-                            {
-                                index === 0 ?
-                                    <div className="down-icon iconfont icon-xiangxia"/> : null
-                            }
                         </div>
                         {
-                            item.is_end_booking ?
-                                <div className="mask"/> : null
+                            index === 0 ?
+                                <div className="down-icon iconfont icon-xiangxia"/> : null
+                        }
+                        {
+                            item.enroll_end_time < item.now_time ?
+                                <div className="mask" onClick={() => {
+                                    DataTracking.GAEvent('限量发售', item.title);
+                                    window.location.href = item.link
+                                }}/> : null
                         }
                     </div>
                 })

@@ -338,6 +338,17 @@ body {
   color: #000 !important;
 }
 
+.StoreName {
+  text-align: left;
+  padding: 0 1.70667rem;
+  height: 3.65511rem;
+  line-height: 3.65511rem;
+  font-size: 0.99556rem;
+  font-weight: bold;
+  color: #6A6A6A;
+  letter-spacing: 0.0384rem;
+}
+
 .RotationBigImg {
   width: 23.25333rem;
   margin: 0 auto;
@@ -550,19 +561,19 @@ body {
 
 .ListBigImgBox {
   position: relative;
-  padding: 2.64107rem 1.13778rem;
+  padding: 2.64107rem 1.70667rem;
   box-shadow: 0 0.28444rem 1.42222rem #9e9e9e;
   margin-bottom: 0.77298rem;
 }
 .ListBigImgBox .content {
-  width: 24.39111rem;
+  width: 23.25333rem;
   margin: 0 auto;
 }
 .ListBigImgBox .content .title {
   font-size: 1.28853rem;
   letter-spacing: 0.04836rem;
   color: #6A6A6A;
-  padding-right: 10.30827rem;
+  padding-right: 4.97778rem;
   padding-bottom: 0.55324rem;
 }
 .ListBigImgBox .content .time {
@@ -572,16 +583,16 @@ body {
 }
 .ListBigImgBox .content .images {
   margin: 1.1584rem 0;
-  width: 24.39111rem;
+  width: 23.25333rem;
   border-radius: 1.06667rem;
   overflow: hidden;
   font-size: 0;
 }
 .ListBigImgBox .content .images img {
-  width: 24.39111rem;
+  width: 23.25333rem;
 }
 .ListBigImgBox .content .s_btn {
-  width: 24.39111rem;
+  width: 23.25333rem;
   height: 4.33778rem;
   line-height: 4.33778rem;
   border-radius: 4.33778rem;
@@ -609,17 +620,9 @@ body {
   overflow: hidden;
   padding-bottom: 3.55556rem;
 }
-.AmbassadorContent h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
-}
 .AmbassadorContent .list {
   width: 23.25333rem;
-  margin: 0 auto;
+  padding: 0 1.70667rem;
   text-align: center;
   padding-top: 1.06667rem;
   padding-bottom: 1.77778rem;
@@ -632,34 +635,38 @@ body {
   text-align: center;
 }
 .AmbassadorContent .list ul li .images {
-  width: 4.26667rem;
-  height: 4.26667rem;
-  border-radius: 3.55556rem;
+  width: 100%;
+  height: 3.91111rem;
+}
+.AmbassadorContent .list ul li .images img {
+  width: 3.91111rem;
+  height: 3.91111rem;
+  border-radius: 3.91111rem;
   overflow: hidden;
   display: inline-block;
   font-size: 0;
-}
-.AmbassadorContent .list ul li .images img {
-  width: 100%;
-  height: 100%;
 }
 .AmbassadorContent .list ul li h4 {
   overflow: hidden;
   margin-top: 0.71111rem;
   font-size: 1.13778rem;
-  color: #8f8f8f;
+  color: #bfbfbf;
 }
 .AmbassadorContent .list ul li p {
   text-align: center;
   white-space: normal;
   font-size: 0.85333rem;
-  color: #8f8f8f !important;
-}
-.AmbassadorContent .list ul li.on {
-  zoom: 1.2;
+  color: #bfbfbf !important;
 }
 .AmbassadorContent .list ul li.on .images {
-  box-shadow: 0 1px 5px #000;
+  width: 100%;
+  height: 4.62222rem;
+}
+.AmbassadorContent .list ul li.on .images img {
+  width: 4.62222rem;
+  height: 4.62222rem;
+  border-radius: 4.62222rem;
+  box-shadow: 0 0px 8px #00000096;
 }
 .AmbassadorContent .list ul li.on h4, .AmbassadorContent .list ul li.on p {
   color: #000 !important;
@@ -706,7 +713,7 @@ body {
 .AmbassadorContent .synopsis {
   width: 23.25333rem;
   margin: 0 auto;
-  box-shadow: 0 1px 5px #6A6A6A;
+  box-shadow: 0 1px 25px #6a6a6a87;
   border-radius: 1.42222rem;
   background: #fff;
   overflow: hidden;
@@ -727,7 +734,7 @@ body {
 }
 .AmbassadorContent .synopsis p {
   padding: 0 1.70667rem;
-  padding-bottom: 1.13778rem;
+  padding-bottom: 1.49333rem;
   font-size: 1.13778rem;
   height: 1.77778rem;
   color: #000 !important;
@@ -736,9 +743,9 @@ body {
   float: right;
   font-size: 0.85333rem;
   border: 1px solid #000;
-  border-radius: 1.77778rem;
-  height: 2.13333rem;
-  line-height: 2.13333rem;
+  border-radius: 0.35556rem;
+  height: 1.77778rem;
+  line-height: 1.77778rem;
   padding: 0 0.71111rem;
   color: #000 !important;
 }
@@ -747,14 +754,6 @@ body {
   width: 100%;
   overflow: hidden;
   padding-bottom: 4.97778rem;
-}
-.AmbassadorDetails h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .AmbassadorDetails .content {
   width: 23.25333rem;
@@ -1763,17 +1762,10 @@ body {
   width: 100%;
   overflow: hidden;
 }
-.ActivitiesContent h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
-}
 .ActivitiesContent .content {
   width: 23.25333rem;
   margin: 0 auto;
+  padding-bottom: 1.77778rem;
 }
 .ActivitiesContent .content h1 {
   font-size: 1.49333rem;
@@ -1788,6 +1780,7 @@ body {
   width: 23.25333rem;
   font-size: 0;
   border-radius: 0.71111rem;
+  overflow: hidden;
 }
 .ActivitiesContent .content .big_img img {
   width: 100%;
@@ -1818,14 +1811,6 @@ body {
   width: 100%;
   overflow: hidden;
   padding-bottom: 6.4rem;
-}
-.ActivitiesDetails h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .ActivitiesDetails .content {
   width: 23.25333rem;
@@ -1931,15 +1916,6 @@ body {
 .CommodityIndex {
   width: 100%;
   overflow: hidden;
-}
-.CommodityIndex h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 0.99556rem;
-  font-weight: bold;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .CommodityIndex h1 {
   padding: 0 1.70667rem;
@@ -2384,12 +2360,12 @@ body {
   width: 24.96rem;
   display: inline-table;
   padding-left: 1.70667rem;
+  white-space: nowrap;
 }
 .CommodityAppointment .infoForm .gender ul li {
   margin-right: 1.70667rem;
   width: 10.77333rem;
   display: inline-table;
-  float: left;
 }
 .CommodityAppointment .infoForm .gender ul li p {
   display: inline-block;
@@ -2466,23 +2442,12 @@ body {
   overflow: hidden;
   padding-bottom: 3.55556rem;
 }
-.CommodityFashion h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
-}
-.CommodityFashion .FashionBox {
-  padding-bottom: 1.42222rem;
-}
 .CommodityFashion .FashionBox h1 {
   font-size: 1.93209rem;
   font-weight: bold;
   letter-spacing: 0.05831rem;
   margin: 0 1.63556rem;
-  padding: 1.06667rem 0;
+  padding: 0.35556rem 0;
   padding-right: 2.48889rem;
 }
 .CommodityFashion .FashionBox h4 {
@@ -2504,19 +2469,15 @@ body {
   color: #fff;
   border-radius: 3.05778rem;
 }
+.CommodityFashion .FashionBox .jianju {
+  width: 100%;
+  height: 4.26667rem;
+}
 
 .Limit_list {
   width: 100%;
   overflow: hidden;
   padding-bottom: 3.55556rem;
-}
-.Limit_list h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .Limit_list .down-icon {
   text-align: center;
@@ -2563,14 +2524,6 @@ body {
   background: #333333e6;
   height: 2.84444rem;
   line-height: 2.84444rem;
-}
-.LimitDetails h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .LimitDetails .CommodityDetails {
   width: 23.25333rem;
@@ -2648,14 +2601,6 @@ body {
 .LimitAppointment {
   width: 100%;
   overflow: hidden;
-}
-.LimitAppointment h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
 }
 .LimitAppointment .infoDetails {
   width: 23.25333rem;

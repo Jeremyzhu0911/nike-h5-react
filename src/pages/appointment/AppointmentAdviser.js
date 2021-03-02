@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
+import WeiXin from "../../server/wx.config";
+import DataTracking from "../../util/DataStatistics";
 
 const AppointmentAdviser = (props) => {
     // /adviser?store_id=57&booking_id=26
@@ -48,7 +50,6 @@ const AppointmentAdviser = (props) => {
                     let restData = res.data;
                     if (Number(restData.code) === 200) {
                         cookie.save("store_name", restData.data.store_info.store_name)
-                        console.log(restData.data)
                         setPostData({
                             ...postData,
                             tags: restData.data.tags
@@ -57,6 +58,13 @@ const AppointmentAdviser = (props) => {
                             ...stateData,
                             ...restData.data
                         })
+
+                        DataTracking.GAPage(' | 顾问评价 | ' + restData.data.ambassador_info);
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.protocol + '//' + window.location.host + '/nike-h5-vue/dist/#/commodity/limitlist' + props.location.search, window.location.protocol + '//' + window.location.host + '/nike-h5-vue/nike.png', "点击获取Nike最新资讯")
+
+                        setLoading(false)
+
                     } else {
                         props.history.push("/404")
                     }
@@ -66,8 +74,6 @@ const AppointmentAdviser = (props) => {
                     props.history.push("/500")
                 }
             )
-
-            setLoading(false)
         }
     }, [loading])
 
@@ -163,6 +169,7 @@ const AppointmentAdviser = (props) => {
                                 (res) => {
                                     let restData = res.data;
                                     if (Number(restData.code) === 200) {
+                                        DataTracking.GAEvent('顾问评价 | ' + stateData.ambassador_info, '提交评价')
                                         setRatingSuccess(false)
                                     }else{
                                         alert('操作失败，请稍后重试');

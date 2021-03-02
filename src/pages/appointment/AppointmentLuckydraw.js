@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
+import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 const AppointmentLuckydraw = (props) => {
 
@@ -28,6 +30,7 @@ const AppointmentLuckydraw = (props) => {
         consume_time: '',    //  签到开始时间
         checkin_qrcode: '',    //  二维码
         luckydraw_id: '',    //  查看中奖名单用到的id
+        product_sku: '',
     })
 
     useEffect(() => {
@@ -78,13 +81,17 @@ const AppointmentLuckydraw = (props) => {
         if (loading) {
             axios.get('/luckydraw/default/view-booking?booking_id=' + getUrlData('booking_id')).then(
                 (res) => {
-                    let resData = res.data;
-                    if (Number(resData.code) === 200) {
+                    let restData = res.data;
+                    if (Number(restData.code) === 200) {
 
                         setLuckydraw({
-                            ...resData.data
+                            ...restData.data
                         })
-                        console.log(resData.data)
+
+                        DataTracking.GAPage(' | 我的抽签活动报名 | ' + restData.data.product_sku);
+
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.protocol + '//' + window.location.host + '/nike-h5-vue/dist/#/commodity/limitlist' + props.location.search, window.location.protocol + '//' + window.location.host + '/nike-h5-vue/nike.png', "点击获取Nike最新资讯");
+
 
                         setLoading(false)
                     }
@@ -181,6 +188,7 @@ const AppointmentLuckydraw = (props) => {
                         <p>取消后不可撤回，如需恢复预约，请重新提交预约申请，是否继续本次操作</p>
                         <div className={'btn_box'}>
                             <span onClick={() => {
+                                DataTracking.GAEvent('我的抽签活动报名 | ' + luckydraw.product_sku, '取消报名')
                                 setCancelBooking(showCancel)
                             }}>继续</span>
                             <span onClick={() => {

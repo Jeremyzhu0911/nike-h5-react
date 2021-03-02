@@ -5,6 +5,7 @@ import {getUrlData} from "../../util/getUrlData";
 import DateApi from "../../util/DateApi";
 import GetCode from "../../components/GetCode";
 import Priacy from "../../components/Privacy";
+import DataTracking from "../../util/DataStatistics";
 
 const CommodityAppointment = (props) => {
 
@@ -72,6 +73,7 @@ const CommodityAppointment = (props) => {
         status: '',
         product_description: '',
         product_code: '',
+        gaBookingType: Number(getUrlData("type")) === 0 ? "预约试穿" : "预留产品",
         price: ''
     })
 
@@ -84,7 +86,6 @@ const CommodityAppointment = (props) => {
                 (res) => {
                     let restDate = res.data;
                     if (Number(restDate.code) === 200) {
-                        console.log(restDate.data)
                         setPostData({
                             ...postData,
                             isLackStock: restDate.data.product_color[0].lack_stock,
@@ -93,7 +94,6 @@ const CommodityAppointment = (props) => {
                         })
                         setStateData(restDate.data)
                         setLoading(false)
-
                     }
                 },
                 (error) => {
@@ -160,7 +160,6 @@ const CommodityAppointment = (props) => {
                                 ...postData,
                                 book_day: event.target.value
                             })
-                            console.log(event.target.value)
                         }}>
                             {
                                 optDateTime.time.map((item, index) => {
@@ -172,6 +171,8 @@ const CommodityAppointment = (props) => {
                     <div className={'btn_box'}>
                         <div className={'btn'} onClick={() => {
                             if (postData.size) {
+                                DataTracking.GAEvent(stateData.gaBookingType + getUrlData("product_code"), "下一步：" + "sku：" + postData.sku + "，size：" + postData.size + "，日期：" + postData.book_day);
+                                DataTracking.GAPage(stateData.gaBookingType + " | 个人信息")
                                 setIsPageShow(!isPageShow)
                             } else {
                                 alert("请选择尺码或日期")
@@ -273,6 +274,9 @@ const CommodityAppointment = (props) => {
                                             let resData = res.data;
                                             if (Number(resData.code) === 200) {
                                                 // /success?type=2&booking_id=177&status=0&is_subscribe=0
+
+                                                DataTracking.GAEvent(stateData.gaBookingType + " | 个人信息", stateData.gaBookingType + getUrlData("product_code") + "提交");
+
                                                 let url;
                                                 if (getUrlData("jordan")) {
                                                     url = "/commodity/success?type=" +
