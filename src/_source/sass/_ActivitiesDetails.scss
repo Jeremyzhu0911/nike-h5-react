@@ -99,6 +99,22 @@
     }
   }
   &.jordan{
+    p:nth-child(1){
+      color: #949494 !important;
+    }
+    .content{
+      h1{
+        color: #fff !important;
+      }
+      p{
+        color: #949494 !important;
+      }
+    }
+    .const{
+      h3{
+        color: #fff !important;
+      }
+    }
     .order{
       background: #000;
       .btn{

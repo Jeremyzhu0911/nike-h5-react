@@ -124,7 +124,7 @@ const AppointmentDetails = (props) => {
                                 setAppointmentDetailsData({
                                     ...resData.data,
                                     typeName: typeName,
-                                    bookingName: resData.data.title
+                                    bookingName: resData.data.title,
                                 })
                                 break;
                             case 'ambassador':  //  专属顾问
@@ -135,7 +135,8 @@ const AppointmentDetails = (props) => {
                                 setAppointmentDetailsData({
                                     ...resData.data,
                                     typeName: typeName,
-                                    bookingName: resData.data.ambassador_info
+                                    bookingName: resData.data.ambassador_info,
+                                    bookingTime: resData.data.booking_time
                                 })
                                 break;
                             case 'event':   //  活动
@@ -143,7 +144,8 @@ const AppointmentDetails = (props) => {
                                 setAppointmentDetailsData({
                                     ...resData.data,
                                     typeName: typeName,
-                                    bookingName: resData.data.event_title
+                                    bookingName: resData.data.event_title,
+                                    bookingTime: resData.data.event_start_date + '<br/>至' + resData.data.event_end_date
                                 })
                                 break;
                             default:    //  预约试穿    预留产品
@@ -151,7 +153,8 @@ const AppointmentDetails = (props) => {
                                 setAppointmentDetailsData({
                                     ...resData.data.data,
                                     typeName: typeName,
-                                    bookingName: resData.data.data.sku
+                                    bookingName: resData.data.data.sku,
+                                    bookingTime: resData.data.data.book_day
                                 })
                         }
                         // if (getUrlData('type') === "ambassador" || getUrlData('type') === "event")
@@ -180,7 +183,7 @@ const AppointmentDetails = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentDetails jordan" : "AppointmentDetails"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentDetails jordan" : "AppointmentDetails"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}
@@ -291,12 +294,14 @@ const AppointmentDetails = (props) => {
                     appointmentDetailsData.status === 4 && appointmentDetailsData.is_rating === 0 ?
                         <div className="btn2" onClick={() => {
                             DataTracking.GAEvent('我的顾问预约 | ' + appointmentDetailsData.ambassador_info, '开始评价');
+                            DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`评价服务`)
                             props.history.push("/adviser" + props.location.search)
                         }}>
                             评价服务
                         </div> :
                     appointmentDetailsData.status === 0 || appointmentDetailsData.status === 1 || appointmentDetailsData.status === 4 ?
                         <div className="btn2" onClick={() => {
+                            DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`取消预约`)
                             setShowCancel(!showCancel)
                         }}>
                             取消预约
@@ -316,9 +321,11 @@ const AppointmentDetails = (props) => {
                             <span onClick={() => {
                                 DataTracking.GAEvent(appointmentDetailsData.typeName, appointmentDetailsData.bookingName + "取消预约")
                                 DataTracking.GAPage(' | 我的' + appointmentDetailsData.typeName + ' | ' + appointmentDetailsData.bookingName + "取消成功")
+                                DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`继续`)
                                 setCancelBooking(showCancel)
                             }}>继续</span>
                             <span onClick={() => {
+                                DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`我再想象`)
                                 setShowCancel(!showCancel)
                             }}>我再想想</span>
                         </div>

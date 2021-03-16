@@ -3,6 +3,8 @@ import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import addTag from "../../util/addTag";
+import DataTracking from "../../util/DataStatistics";
+import WeiXin from "../../server/wx.config";
 
 
 const ActivitiesDetails = (props) => {
@@ -37,12 +39,16 @@ const ActivitiesDetails = (props) => {
                 (res) => {
                     let resData = res.data;
                     if (Number(resData.code) === 200) {
-                        console.log(resData)
+                        console.log(resData.data.event_title)
+                        cookie.save("event_title",resData.data.event_title)
 
                         setDataList({
                             ...dataList,
                             ...resData.data,
                         })
+
+                        WeiXin.share(`${resData.data.event_title} 限时活动，邀你一起来`, window.location.href, resData.data.store_info.share_img, "精彩纷呈先睹为快",`门店活动详情页分享｜${resData.data.event_title}`)
+
                         setLoading(false)
 
                         addTag(resData.data.relation_id)
@@ -65,7 +71,7 @@ const ActivitiesDetails = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "ActivitiesDetails jordan" : "ActivitiesDetails"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "ActivitiesDetails jordan" : "ActivitiesDetails"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={'content'}>
                 <div className={'big_img'}>
@@ -134,6 +140,9 @@ const ActivitiesDetails = (props) => {
                 dataList.is_booking ?
                     <div className={'order'}>
                         <div className="btn" onClick={() => {
+                            DataTracking.BDEvent(`门店活动｜${dataList.event_title}`,`${dataList.is_end_booking ? "报名已结束" :
+                                !dataList.is_avail_booking ? "已报名" :
+                                    dataList.is_start_booking ? "报名中" : "报名未开始"}`)
                             setShowHide(true)
                         }}>
                             {
@@ -155,7 +164,7 @@ const ActivitiesDetails = (props) => {
                                     dataList.is_end_booking ? "十分遗憾活动预约时间已过。您可以尝试了解其他活动，进行预约！" :
                                         !dataList.is_start_booking ? "还未到活动预约时间，请在可报名时间内再次尝试！" :
                                             Number(dataList.event_allow_count) <= Number(dataList.event_booking_count) && Number(dataList.event_allow_count) !== 0 ? "此活动预约人数已满，无法报名。您可以尝试了解其他活动，进行预约！" :
-                                                !dataList.is_avail_booking ? props.history.push("/appointment/details?store_id=" + getUrlData("store_id") +"&type=event&booking_id=" + dataList.booking_id) + "&jordan=" + getUrlData("jordan") :
+                                                !dataList.is_avail_booking ? props.history.push("/appointment/details?store_id=" + getUrlData("store_id") +"&type=event&booking_id=" + dataList.booking_id) + "&jordan=" + cookie.load('jordan') :
                                                     props.history.push("/appointment-activities" + props.location.search)
 
                                 }

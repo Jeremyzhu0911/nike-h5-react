@@ -51,7 +51,7 @@ const AmbassadorDetails = (props) => {
 
                             setAmbassadorDetailsData(restData.data)
 
-                            WeiXin.share("我正在体验Nike专属顾问服务，快来预约你的专属顾问", window.location.href, restData.data.store_info.share_img, "了解更多Nike专属惊喜")
+                            WeiXin.share("我正在体验Nike专属顾问服务，快来预约你的专属顾问", window.location.href, restData.data.store_info.share_img, "了解更多Nike专属惊喜",`顾问详情页分享｜${restData.data.am_info.cnName}`)
 
                             setLoading(false)
 
@@ -100,7 +100,7 @@ const AmbassadorDetails = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorDetails jordan" : "AmbassadorDetails"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={'content'}>
                 <h4>{AmbassadorDetailsData.am_info.cnName}</h4>
@@ -140,6 +140,7 @@ const AmbassadorDetails = (props) => {
                 <div className="btn" onClick={() => {
                     DataTracking.GAEvent('专属顾问 | ' + AmbassadorDetailsData.am_info.cnName, AmbassadorDetailsData.am_info.cnName + " 预约大使");
                     DataTracking.GAPage(" | 大使预约 | " + AmbassadorDetailsData.am_info.cnName);
+                    DataTracking.BDEvent(`专属顾问｜${AmbassadorDetailsData.am_info.cnName}`,`预约顾问`);
                     props.history.push("/appointment" + props.location.search + "&is_ambassador=1")
                 }}>
                     预约此顾问

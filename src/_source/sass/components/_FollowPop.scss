@@ -80,7 +80,7 @@
         font-size: rem-calc(24);
         line-height: 1.75;
         text-align: center;
-        color: #666666;
+        color: #666666 !important;
         width: 80%;
         margin: 0 auto;
       }
@@ -106,9 +106,11 @@
         text-align: center;
         line-height: rem-calc(60);
         font-size: rem-calc(28);
+        color: #000 !important;
       }
       p{
         line-height: rem-calc(35);
+        color: #000 !important;
       }
     }
   }

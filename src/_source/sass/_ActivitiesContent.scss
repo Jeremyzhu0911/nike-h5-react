@@ -48,5 +48,19 @@
             padding-bottom: rem-calc(48);
         }
     }
-
+    &.jordan{
+        .content{
+            h1{
+                color: #fff;
+            }
+            p{
+                color: #8f8f8f !important;
+            }
+            .btn{
+                span{
+                    background: #b7052d;
+                }
+            }
+        }
+    }
 }

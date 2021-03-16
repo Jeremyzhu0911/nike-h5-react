@@ -80,7 +80,7 @@ const CommodityFashion = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityFashion jordan" : "CommodityFashion"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "CommodityFashion jordan" : "CommodityFashion"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 stateDate.map((stateList, index) => {
@@ -113,6 +113,7 @@ const CommodityFashion = (props) => {
                         {
                             stateList.link ? <div onClick={() => {
                                 DataTracking.GAEvent('潮流穿搭', stateList.title)
+                                DataTracking.BDEvent(`潮流穿搭`,`查看穿搭｜${stateList.title}`)
                                 window.location.href = stateList.link
                             }} className="s_btn">查看穿搭</div> : null
                         }

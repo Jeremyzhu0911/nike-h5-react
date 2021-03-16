@@ -7,6 +7,14 @@ export function getUrlData(name) {
     return null;
 }
 
+export function getLinkUrl(name,url) {
+    const index = url.indexOf("?")
+    const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
+    const r = url.substr(index+1).match(reg);
+    if (r != null) return decodeURIComponent(r[2]);
+    return null;
+}
+
 export function convertToChinese(num){
     let N = [
         "零", "一", "二", "三", "四", "五", "六", "七", "八", "九"

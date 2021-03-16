@@ -48,7 +48,7 @@ const LimitIndex = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "Limit_list jordan" : "Limit_list"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "Limit_list jordan" : "Limit_list"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 limitList.map((item,index)=>{

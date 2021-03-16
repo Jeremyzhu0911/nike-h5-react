@@ -7,6 +7,7 @@ import {connect} from 'react-redux';
 import * as userInfoActionsFromOtherFiles from '../actions/userinfo';
 
 //本地缓存配置 & 工具类
+import cookie from "react-cookies";
 import {CITYNAME} from '../config/localStorekey';
 import LocalStore from '../util/localStore';
 import {getUrlData} from "../util/getUrlData";
@@ -15,6 +16,7 @@ import {getUrlData} from "../util/getUrlData";
 import routes from '../router/config';
 import onFans from '../util/onFans';
 
+
 let isAj = LocalStore.getItem(CITYNAME);
 let store_id = LocalStore.getItem(CITYNAME);
 
@@ -22,7 +24,7 @@ const RouteConfigExample = (props) => {
     const [loading, setLoading] = useState(true)
 
     store_id = getUrlData('store_id')
-    isAj = !!parseInt(getUrlData("jordan"))
+    isAj = !!parseInt(cookie.load('jordan'))
 
     // // initData
     // const [userInfo, setUserInfo] = useState({
@@ -68,7 +70,7 @@ const RouteWithSubRoutes = route => {
             path={route.path}
             render={props => {
                 document.title = route.title || "Nike";
-                if (isAj) {
+                if (parseInt(cookie.load('jordan')) === 1) {
                     window.document.body.style.backgroundColor = '#000';
                 }
                 return <route.component {...props} apiData={route.apiData}/>

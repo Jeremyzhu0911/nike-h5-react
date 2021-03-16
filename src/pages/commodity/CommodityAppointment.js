@@ -109,12 +109,13 @@ const CommodityAppointment = (props) => {
         return <div>正在加载</div>
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityAppointment jordan" : "CommodityAppointment"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "CommodityAppointment jordan" : "CommodityAppointment"}>
             {
                 isPageShow ? <div className={'information'}>
                     <div className={"big_title"}>
                         填写预约信息
                         <span onClick={() => {
+                            DataTracking.BDEvent(stateData.gaBookingType + ' | ' + getUrlData("product_code") + '填写预约信息','取消');
                             props.history.goBack()
                         }}>取消</span>
                     </div>
@@ -125,7 +126,7 @@ const CommodityAppointment = (props) => {
                             {
                                 stateData.product_color.map((item, index) => {
                                     if (item.color_image[0])
-                                        return <img key={index} onClick={() => {
+                                        return <img className={postData.sku === item.sku ? 'on':' '} key={index} onClick={() => {
                                             setPostData({
                                                 ...postData,
                                                 sku: item.sku
@@ -171,6 +172,7 @@ const CommodityAppointment = (props) => {
                     <div className={'btn_box'}>
                         <div className={'btn'} onClick={() => {
                             if (postData.size) {
+                                DataTracking.BDEvent(stateData.gaBookingType + ' | ' + getUrlData("product_code") + '填写预约信息','下一步');
                                 DataTracking.GAEvent(stateData.gaBookingType + getUrlData("product_code"), "下一步：" + "sku：" + postData.sku + "，size：" + postData.size + "，日期：" + postData.book_day);
                                 DataTracking.GAPage(stateData.gaBookingType + " | 个人信息")
                                 setIsPageShow(!isPageShow)
@@ -185,6 +187,7 @@ const CommodityAppointment = (props) => {
                     <div className={"big_title"}>
                         完善个人信息
                         <span onClick={() => {
+                            DataTracking.BDEvent(stateData.gaBookingType + ' | ' + getUrlData("product_code") + '提交预约申请','上一步');
                             setIsPageShow(!isPageShow)
                         }}>上一步</span>
                     </div>
@@ -276,9 +279,9 @@ const CommodityAppointment = (props) => {
                                                 // /success?type=2&booking_id=177&status=0&is_subscribe=0
 
                                                 DataTracking.GAEvent(stateData.gaBookingType + " | 个人信息", stateData.gaBookingType + getUrlData("product_code") + "提交");
-
+                                                DataTracking.BDEvent(stateData.gaBookingType + ' | ' + getUrlData("product_code") + '提交预约申请','提交预约');
                                                 let url;
-                                                if (getUrlData("jordan")) {
+                                                if (cookie.load('jordan')) {
                                                     url = "/commodity/success?type=" +
                                                         (Number(postData.book_type) + 1) +
                                                         "&booking_id=" +

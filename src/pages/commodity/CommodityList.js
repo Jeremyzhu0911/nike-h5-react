@@ -39,6 +39,7 @@ const CommodityList = (props) => {
             {'id': "gender", 'name': '类型', 'list': [{'id': 'mens', 'click': false, 'name': '鞋类'}]}
         ],
         productInfoSearch: {'category': [], 'gender': [], 'product_group': [], 'tag_id': ''},
+        productInfoSearch2: {'category': [], 'gender': [], 'product_group': [], 'tag_id': ''},
         totalPage: 1,
         currentPage: '',
         isLoadData: true,
@@ -102,16 +103,30 @@ const CommodityList = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityList jordan" : "CommodityList"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "CommodityList jordan" : "CommodityList"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
                     <div className={'nav'}><i onClick={() => {
                         DataTracking.GAPage('搜索')
                         DataTracking.GAEvent('搜索结果', '搜索')
-                        setState({...state, isShowOverlay: true, isSearch: true, overlayTxt: '搜索'})
+
+                        state.pageTitle === '搜索结果' ?
+                            DataTracking.BDEvent(state.pageTitle + ' | ' + state.keyWord, '搜索') :
+                            state.pageTitle === '筛选结果' ?
+                                DataTracking.BDEvent(`${state.pageTitle} | 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`, '搜索') :
+                                DataTracking.BDEvent(state.pageTitle, '搜索')
+
+                        setState({...state, isShowOverlay: true, isSearch: true,productInfoSearch2: {'category': [], 'gender': [], 'product_group': [], 'tag_id': ''}, overlayTxt: '搜索'})
                     }} className={'iconfont icon-sousuo'}/><i onClick={() => {
                         DataTracking.GAEvent(state.gaPageName, '返回首页')
+
+                        state.pageTitle === '搜索结果' ?
+                            DataTracking.BDEvent(state.pageTitle + ' | ' + state.keyWord, '返回首页') :
+                            state.pageTitle === '筛选结果' ?
+                                DataTracking.BDEvent(`${state.pageTitle} | 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`, '返回首页') :
+                                DataTracking.BDEvent(state.pageTitle, '返回首页')
+
                         props.history.push("/commodity/index?store_id=" + getUrlData("store_id"))
                     }} className={'iconfont icon-home'}/></div>
                 </div>
@@ -121,6 +136,13 @@ const CommodityList = (props) => {
                 <div className={'btn_search'} onClick={() => {
                     DataTracking.GAPage('筛选')
                     DataTracking.GAEvent('筛选结果', '筛选')
+
+                    state.pageTitle === '搜索结果' ?
+                        DataTracking.BDEvent(state.pageTitle + ' | ' + state.keyWord, '筛选') :
+                        state.pageTitle === '筛选结果' ?
+                            DataTracking.BDEvent(`${state.pageTitle} | 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`, '筛选') :
+                            DataTracking.BDEvent(state.pageTitle, '筛选')
+
                     setState({...state, isShowOverlay: true, isSearch: false, overlayTxt: '筛选'})
                 }}>筛选
                 </div>
@@ -130,7 +152,14 @@ const CommodityList = (props) => {
                     state.commodityList.map((item, index) => {
                         return <li key={index} onClick={() => {
                             DataTracking.GAEvent(state.gaPageName, item.product_code)
-                            props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
+
+                            state.pageTitle === '搜索结果' ?
+                                DataTracking.BDEvent(`${state.pageTitle} | ${state.keyWord}`, item.product_code):
+                                state.pageTitle === '筛选结果' ?
+                                    DataTracking.BDEvent(`${state.pageTitle} | 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`, item.product_code) :
+                                    DataTracking.BDEvent(state.pageTitle, item.product_code)
+
+                            props.history.push(`/commodity/details${props.location.search}&product_code=${item.product_code}`)
                         }}>
                             <div className={'CommodityListImages'}>
                                 <img alt={''} src={item.thumbnail}/>
@@ -144,7 +173,8 @@ const CommodityList = (props) => {
             {
                 state.isShowOverlay && <div className={'overlay'}>
                     <h2>{state.overlayTxt}产品<span onClick={() => {
-                        DataTracking.GAEvent(state.overlayTxt, '关闭')
+                        DataTracking.GAEvent(state.overlayTxt + "产品", '关闭')
+                        DataTracking.BDEvent(state.overlayTxt + "产品", "关闭")
                         setState({...state, isShowOverlay: false})
                     }}>关闭</span></h2>
                     {
@@ -163,9 +193,11 @@ const CommodityList = (props) => {
                                                            if (items.click) {
                                                                items.click = false;
                                                                state.productInfoSearch[item.id].splice(state.productInfoSearch[item.id].indexOf(items.id), 1);
+                                                               state.productInfoSearch2[item.id].splice(state.productInfoSearch[item.id].indexOf(items.name), 1);
                                                            } else {
                                                                items.click = true;
                                                                state.productInfoSearch[item.id].push(items.id)
+                                                               state.productInfoSearch2[item.id].push(items.name)
                                                            }
                                                            setState({...state, isShowOverlay: true})
                                                        }}>{items.name}</li>
@@ -178,9 +210,13 @@ const CommodityList = (props) => {
                     <div className={'filterBtnWrap'}>
                         <div className={'btn_full'} onClick={() => {
                             setLoading(true)
-                            if (state.keyWord)
-                                DataTracking.GAEvent(state.overlayTxt, '提交：' + state.keyWord)
-                            setState({...state, isShowOverlay: false, pageTitle: state.overlayTxt + '结果'})
+                            if (state.keyWord) {
+                                DataTracking.GAEvent(state.overlayTxt, `提交：${state.keyWord}`);
+                                DataTracking.BDEvent(`搜索产品`, `显示搜索结果 ｜ ${state.overlayTxt}`)
+                            } else {
+                                DataTracking.BDEvent(`${state.overlayTxt}产品`, `显示筛选结果 ｜ 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`)
+                            }
+                            setState({...state, isShowOverlay: false, pageTitle: `${state.overlayTxt}结果`})
                         }}>显示{state.overlayTxt}结果
                         </div>
                     </div>

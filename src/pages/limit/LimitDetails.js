@@ -23,10 +23,11 @@ const LimitDetails = (props) => {
         is_avail_booking: "", // 是否已经报名  true 未报名 false 已报名
         is_end_booking: '', // 报名结束
         is_booking: "", // 活动是否需要报名
-        product_sku: ""
+        product_sku: "",
+        luckydraw_type:''  //0:抽号，获得资格-去线下再抽，1：抽鞋-获得资格-去线下直接买
     })
 
-    if (getUrlData("jordan")) {
+    if (parseInt(cookie.load('jordan')) === 1) {
         window.document.body.style.backgroundColor = '#000';
     }
 
@@ -47,7 +48,7 @@ const LimitDetails = (props) => {
 
                         DataTracking.GAPage(' | 抽签活动 | ' + restData.data.title + ' | ' + restData.data.product_desc)
 
-                        WeiXin.share(restData.data.title+"，你绝对不能错过", window.location.href, restData.data.store_info.share_img, "点击让幸运值MAX")
+                        WeiXin.share(restData.data.title+"，你绝对不能错过", window.location.href, restData.data.store_info.share_img, "点击让幸运值MAX",`限量发售详情页分享｜${restData.data.title}`)
 
                         setLoading(false)
 
@@ -80,7 +81,7 @@ const LimitDetails = (props) => {
         )
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitDetails jordan" : "LimitDetails"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "LimitDetails jordan" : "LimitDetails"}>
             {
                 getUrlData('code') ?
                     <div className="preview">此为预览页面，仅用于发布预览，将在短期内失效。</div> : null
@@ -90,9 +91,9 @@ const LimitDetails = (props) => {
                 <div className="commodityTitle">
                     {limitDetails.title}
                 </div>
-                <div className="commodityName">
-                    Air Jordan VI Retro
-                </div>
+                {/*<div className="commodityName">*/}
+                {/*    Air Jordan VI Retro*/}
+                {/*</div>*/}
                 <div className="commodityImg">
                     <img alt={''} src={limitDetails.kv}/>
                 </div>
@@ -134,8 +135,9 @@ const LimitDetails = (props) => {
                                 limitDetails.is_start_booking ?
                                     <div className="btn" onClick={() => {
 
-                                        DataTracking.GAEvent('抽签活动 | ' + limitDetails.title + ' | ' + limitDetails.product_desc,'即刻报名');
-                                        DataTracking.GAPage(" | 抽签活动 | 个人信息 | " + limitDetails.luckydraw_id + ' | ' + limitDetails.product_sku)
+                                        DataTracking.GAEvent(`抽签活动｜${limitDetails.title}｜${limitDetails.product_desc}`,'即刻报名');
+                                        DataTracking.GAPage(`｜抽签活动｜个人信息｜${limitDetails.luckydraw_id}｜${limitDetails.product_sku}`)
+                                        DataTracking.BDEvent(`限量发售｜${limitDetails.luckydraw_type === 0 ? '抽号':'抽鞋'}｜${limitDetails.title}`,'即刻报名')
 
                                         props.history.push('/commodity/limitAppointment' + props.location.search)
                                     }}>即刻报名</div> :

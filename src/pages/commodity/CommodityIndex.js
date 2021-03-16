@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import cookie from 'react-cookies';
 import axios from "axios";
-import {getUrlData} from "../../util/getUrlData";
+import {getLinkUrl, getUrlData} from "../../util/getUrlData";
 import Swiper from 'swiper';
 import DataTracking from "../../util/DataStatistics"
 import WeiXin from "../../server/wx.config"
@@ -55,7 +55,7 @@ const CommodityIndex = (props) => {
                                 )
                             }
                         })
-                        let maxlength = restData.data.product_list.length
+                        let maxlength = restData.data.product_list.length;
 
                         if (maxlength <= 9) {
                             if (maxlength % 3 === 1) {
@@ -112,10 +112,17 @@ const CommodityIndex = (props) => {
                             })
                         }
 
+                        setSwiperList(
+                            [
+                                ...swiperList,
+                                swiperList[1] = [maxlength, 1]
+                            ]
+                        )
+
                         cookie.save('store_name', restData.data.store_info.store_name);
                         DataTracking.GAPage('最新上市')
 
-                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.href, restData.data.store_info.share_img, "点击获取Nike最新资讯")
+                        WeiXin.share("不可错过的Nike尖货，我正在看", window.location.href, restData.data.store_info.share_img, "点击获取Nike最新资讯",'列表页分享｜最新上市')
 
                         setLoading(false)
 
@@ -181,7 +188,7 @@ const CommodityIndex = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityIndex jordan" : "CommodityIndex"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "CommodityIndex jordan" : "CommodityIndex"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={"RotationBigImg"}>
                 <div className={"swiper-container carousel"}>
@@ -190,8 +197,9 @@ const CommodityIndex = (props) => {
                             productNewList.data.map((item, index) => {
                                 return <div className="carousel-item swiper-slide" key={index} onClick={() => {
                                     if (item.link_url) {
-                                        DataTracking.GAEvent('最新上市', item.image_path)
-                                        window.location.href = item.link_url
+                                        DataTracking.GAEvent('最新上市', '海报 ｜ ' + getLinkUrl("product_code", item.link_url));
+                                        DataTracking.BDEvent('最新上市', '海报 ｜ ' + getLinkUrl("product_code", item.link_url));
+                                        window.location.href = item.link_url;
                                     }
 
                                 }}>
@@ -208,6 +216,7 @@ const CommodityIndex = (props) => {
             </div>
             <h1>店铺新品<span onClick={() => {
                 DataTracking.GAEvent('最新上市', '全部主推产品');
+                DataTracking.BDEvent('最新上市', '全部主推产品');
                 props.history.push("/commodity/list" + props.location.search);
             }}>全部主推产品</span></h1>
             <div className="RotationBigImg">
@@ -218,8 +227,12 @@ const CommodityIndex = (props) => {
                                 return <div
                                     className={"carousel-item swiper-slide"}
                                     key={index} onClick={() => {
-                                    item.product_code &&
-                                    props.history.push("/commodity/details?store_id=" + getUrlData("store_id") + "&product_code=" + item.product_code)
+                                    if(item.product_code){
+                                        DataTracking.GAEvent('最新上市', '店铺新品 ｜ ' + item.product_code);
+                                        DataTracking.BDEvent('最新上市', '店铺新品 ｜ ' + item.product_code);
+                                        props.history.push("/commodity/details?store_id=" + getUrlData("store_id") + "&product_code=" + item.product_code);
+                                    }
+
                                 }}>
                                     <img alt={''} src={item.thumbnail}/>
                                     <h4>{item.product_name}</h4>

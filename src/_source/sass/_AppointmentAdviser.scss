@@ -93,6 +93,26 @@
     font-size: rem-calc(32);
     line-height: rem-calc(70);
     color: #3E3D3D;
+    .tags-box{
+      .filterBlock{
+        display: inline-block;
+        width: auto;
+        padding: 0 rem-calc(32);
+        background-color: #ffffff;
+        font-size: rem-calc(24);
+        height: rem-calc(48);
+        line-height: rem-calc(48);
+        color: #111111;
+        border-radius: 4px;
+        border: 1px solid #afafaf;
+        margin-right: 6px;
+        &.action{
+          background-color: #111111;
+          color: #ffffff;
+          border: 1px solid #111111;
+        }
+      }
+    }
     .stars{
       text-align: center;
       line-height: rem-calc(70);
@@ -132,6 +152,41 @@
     font-size: rem-calc(38);
     p{
       font-size: rem-calc(250);
+    }
+  }
+  &.jordan{
+    .evaluate{
+      color: #fff;
+      .tags-box{
+        .filterBlock{
+          &.action{
+            background-color: #fff700;
+            color: #fff700;
+            border: 1px solid #fff700;
+          }
+        }
+      }
+      .stars{
+        span.icon-starsOn{
+          color: #fff700 !important;
+        }
+      }
+      .serves{
+        .isNo{
+          span{
+            color: #000 !important;
+            &.on{
+              color: #fff !important;
+            }
+          }
+        }
+      }
+    }
+    .order{
+      background: #000;
+      .btn{
+        background: #b7052d;
+      }
     }
   }
 }

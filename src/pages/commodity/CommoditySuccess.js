@@ -68,7 +68,7 @@ const CommoditySuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -108,18 +108,30 @@ const CommoditySuccess = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
-                    DataTracking.GAEvent(stateData.data.gaBookingType + stateData.data.sku + " | 预约成功", "查看预约");
+                    DataTracking.GAEvent(`${stateData.data.gaBookingType} ｜ ${stateData.data.sku} | 预约成功`, `查看我的预约`);
+                    DataTracking.BDEvent(`${stateData.data.gaBookingType} ｜ ${stateData.data.sku} | 预约成功`, `查看我的预约`);
                     if (Number(getUrlData('is_subscribe')) === 0) {   //  是否关注公众号
                         setShowHide(true)
                     } else {
-                        if (getUrlData("jordan")) {
-                            props.history.push('/appointment/index?jordan=1&store_id=' + stateData.data.store_id);
+                        if (cookie.load('jordan')) {
+                            props.history.push(`/commodity/list?jordan=1&store_id=${stateData.data.store_id}`);
                         } else {
-                            props.history.push("/appointment/index?store_id=" + stateData.data.store_id);
+                            props.history.push(`/commodity/list?store_id=${stateData.data.store_id}`);
                         }
                     }
                 }}>
                     查看我的预约
+                </div>
+
+                <div className="btn2" onClick={()=>{
+                    DataTracking.BDEvent(`${stateData.data.gaBookingType} ｜ ${stateData.data.sku} | 预约成功`, `返回`);
+                    if (cookie.load('jordan')) {
+                        props.history.push(`/commodity/list?jordan=1&store_id=${stateData.data.store_id}`);
+                    } else {
+                        props.history.push(`/commodity/list?store_id=${stateData.data.store_id}`);
+                    }
+                }}>
+                    返回
                 </div>
             </div>
             {

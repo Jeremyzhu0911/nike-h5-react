@@ -116,7 +116,7 @@ const AmbassadorAppointment = (props) => {
                         if (Number(resData.code) === 201) {
                             alert("没有可用时间，5秒后自动返回顾问首页")
                             let timeout = setTimeout(() => {
-                                if (getUrlData("jordan")) {
+                                if (cookie.load('jordan')) {
                                     props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") + "&jordan=1");
                                 } else {
                                     props.history.push("/content-ambassador?store_id=" + getUrlData("store_id"));
@@ -142,7 +142,7 @@ const AmbassadorAppointment = (props) => {
 
     return (
         <div
-            className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
+            className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             {
                 Number(getUrlData('is_ambassador')) === 1 &&
                 <div className={'Ambassador'}>
@@ -369,10 +369,11 @@ const AmbassadorAppointment = (props) => {
                                 let resData = res.data;
                                 if (Number(resData.code) === 200) {
 
-                                    DataTracking.GAEvent("专属顾问预约 | " + cookie.load("ambassadorName"), "提交预约")
+                                    DataTracking.GAEvent("专属顾问预约 | " + cookie.load("ambassadorName"), "提交预约");
+                                    DataTracking.BDEvent(`专属顾问｜${cookie.load("ambassadorName")}｜提交预约申请`,`提交预约`);
 
                                     // /success?booking_id=167&is_subscribe=0&status=0&type=4
-                                    if (getUrlData("jordan")) {
+                                    if (cookie.load('jordan')) {
                                         props.history.push(
                                             '/success?booking_id=' + resData.data.booking_id +
                                             "&is_subscribe=" + resData.data.is_subscribe +

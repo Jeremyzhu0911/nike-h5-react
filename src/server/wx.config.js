@@ -38,6 +38,19 @@ const WeiXin = {
             }
         )
     },
+    closePage: () => {
+        document.addEventListener(
+            "WeixinJSBridgeReady",
+            function () {
+                // WeixinJSBridge.call("closeWindow");
+                wx.closeWindow();
+            },
+            false
+        );
+        //ios手机
+        // WeixinJSBridge.call("closeWindow");
+        wx.closeWindow();
+    },
     hideMenus: () => {
         wx.ready(function () {
             wx.checkJsApi({
@@ -55,7 +68,7 @@ const WeiXin = {
             wx.hideOptionMenu()
         })
     },
-    share: (title,link,imgUrl,desc) => {
+    share: (title,link,imgUrl,desc,action) => {
         wx.ready(function () {
             wx.checkJsApi({
                 jsApiList: [
@@ -79,6 +92,10 @@ const WeiXin = {
                 imgUrl: imgUrl,
                 desc: desc,
                 success: function () {
+                    DataTracking.BDEvent(action,'点击分享')
+                    DataTracking.GAEvent(action,'点击分享')
+                    DataTracking.BDEvent(action,'发送给朋友')
+                    DataTracking.GAEvent(action,'发送给朋友')
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数
@@ -91,8 +108,10 @@ const WeiXin = {
                 imgUrl: imgUrl,
                 desc: desc,
                 success: function () {
-
-                    // DataTracking.GAEvent('最新上市', item.image_path)
+                    DataTracking.BDEvent(action,'点击分享')
+                    DataTracking.GAEvent(action,'点击分享')
+                    DataTracking.BDEvent(action,'分享到朋友圈')
+                    DataTracking.GAEvent(action,'分享到朋友圈')
                 },
                 cancel: function () {
                     // 用户取消分享后执行的回调函数

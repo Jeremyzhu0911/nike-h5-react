@@ -8,6 +8,7 @@ import l1 from "../assets/images/record/l (1).png";
 import gou from "../assets/images/record/gou.png";
 import gou1 from "../assets/images/record/gou1.png";
 import loading_gif from "../assets/images/circle-transparent.gif";
+import WeiXin from "../server/wx.config";
 
 const Historical = (props) => {
     const [data, setData] = useState(
@@ -63,6 +64,8 @@ const Historical = (props) => {
                 resData.data.btnboolean = false;
             }
             setData({...data, ...resData.data});
+
+            WeiXin.hideMenus()
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data.store_id]);
@@ -248,7 +251,9 @@ const Historical = (props) => {
                     <div className="fixbtn-box">
                         <button className="bttn btn-yes" onClick={btnClick}>{data.btnYes}</button>
                         {data.btnboolean ?
-                            <button className="bttn btn-no">{data.btnNo}</button> : null
+                            <button className="bttn btn-no" onClick={()=>{
+                                WeiXin.closePage()
+                            }}>{data.btnNo}</button> : null
                         }
                     </div> : null
             }

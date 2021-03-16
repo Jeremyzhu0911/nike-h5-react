@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import {getUrlData} from "../../util/getUrlData";
 import axios from "axios";
 import FollowPop from "../../components/FollowPop";
+import DataTracking from "../../util/DataStatistics";
 
 const ActivitiesSuccess = (props) => {
 
@@ -52,7 +53,7 @@ const ActivitiesSuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -93,10 +94,11 @@ const ActivitiesSuccess = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
+                    DataTracking.BDEvent(`门店活动｜${cookie.load("event_title")}｜预约成功`,`查看我的预约`);
                     if (Number(getUrlData('is_subscribe')) === 0) {   //  是否关注公众号
                         setShowHide(true)
                     } else {
-                        if (getUrlData("jordan")) {
+                        if (cookie.load('jordan')) {
                             props.history.push('/appointment/index?jordan=1&store_id=' + stateData.store_id);
                         } else {
                             props.history.push("/appointment/index?store_id=" + stateData.store_id);
@@ -106,7 +108,8 @@ const ActivitiesSuccess = (props) => {
                     查看我的预约
                 </div>
                 <div className="btn2" onClick={() => {
-                    if(getUrlData("jordan"))
+                    DataTracking.BDEvent(`门店活动｜${cookie.load("event_title")}｜预约成功`,`返回活动`);
+                    if(cookie.load('jordan'))
                         props.history.push("/details-activities?store_id=" + getUrlData("store_id") +
                             "&store_event_id=" + getUrlData("store_event_id") + "&jordan=1")
                     else{

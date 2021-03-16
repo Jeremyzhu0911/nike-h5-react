@@ -45,7 +45,7 @@ const CommodityDetails = (props) => {
                         })
 
                         DataTracking.GAPage(getUrlData('product_code'))
-                        WeiXin.share(resData.data.product_name + "，新鲜尖货快来看", window.location.href, resData.data.product_color[0].color_image[0].img, "Nike出道新品，点击获取最新资讯")
+                        WeiXin.share(resData.data.product_name + "，新鲜尖货快来看", window.location.href, resData.data.product_color[0].color_image[0].img, "Nike出道新品，点击获取最新资讯",`产品详情页分享｜${resData.data.product_name}`);
                         setLoading(false)
 
                         addTag(resData.data.relation_id)
@@ -76,12 +76,13 @@ const CommodityDetails = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "CommodityDetails jordan" : "CommodityDetails"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "CommodityDetails jordan" : "CommodityDetails"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
                     <div className={'nav'}><i onClick={() => {
                         DataTracking.GAEvent(state.product_name, '返回首页');
+                        DataTracking.BDEvent(state.product_name,'返回首页');
                         props.history.push("/commodity/index?store_id=" + getUrlData("store_id"))
                     }} className={'iconfont icon-home'}/></div>
                 </div>
@@ -101,7 +102,7 @@ const CommodityDetails = (props) => {
                 <div className={"swiper-pagination"}></div>
             </div>
             <div className={'small_image'}>
-                <ul>
+                <ul className={'image_list'}>
                     {
                         state.product_color.map((item, index) => {
                             if (item.color_image[0])
@@ -127,13 +128,15 @@ const CommodityDetails = (props) => {
             <div className={'btn_box'}>
                 <ul>
                     <li onClick={() => {
-                        DataTracking.GAEvent(state.product_name, '预留产品' + state.product_code);
+                        DataTracking.GAEvent(state.product_name,'预留产品' + state.product_code);
+                        DataTracking.BDEvent(state.product_name,'预留产品 | ' + state.product_code);
                         DataTracking.GAPage("预留产品 | " + state.product_code)
                         props.history.push("/commodity/appointment" + props.location.search + "&type=" + 1)
                     }}>预留产品
                     </li>
                     <li onClick={() => {
-                        DataTracking.GAEvent(state.product_name, '预约试穿' + state.product_code);
+                        DataTracking.GAEvent(state.product_name,'预约试穿' + state.product_code);
+                        DataTracking.BDEvent(state.product_name,'预约试穿 | ' + state.product_code);
                         DataTracking.GAPage("预约试穿 | " + state.product_code)
                         props.history.push("/commodity/appointment" + props.location.search + "&type=" + 0)
                     }}>预约试穿

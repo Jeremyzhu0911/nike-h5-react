@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import cookie from "react-cookies";
+import DataTracking from "../../util/DataStatistics";
 
 const ActivitiesContent = (props) => {
 
@@ -46,7 +47,7 @@ const ActivitiesContent = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "ActivitiesContent jordan" : "ActivitiesContent"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "ActivitiesContent jordan" : "ActivitiesContent"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 dataList.data.map((item, index) => {
@@ -57,6 +58,7 @@ const ActivitiesContent = (props) => {
                             <img alt={''} src={item.event_img_url}/>
                         </div>
                         <div className={'btn'} onClick={() => {
+                            DataTracking.BDEvent(`门店活动`,`活动详情｜${item.event_title}`)
                             props.history.push("/details-activities?store_id=" + getUrlData('store_id') + "&store_event_id=" + item.store_event_id)
                         }}>
                             <span>活动详情</span>

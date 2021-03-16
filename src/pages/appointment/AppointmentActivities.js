@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import Swiper from "swiper";
+import DataTracking from "../../util/DataStatistics";
 
 const AppointmentActivities = (props) => {
 
@@ -66,10 +67,10 @@ const AppointmentActivities = (props) => {
                             slidesPerView: 3,
                             slidesPerGroup: 1,
                             spaceBetween: 10,
-                            setWrapperSize :true,
+                            setWrapperSize: true,
                             on: {
-                                init: function(swiper){
-                                    this.$el.find(".img-box").css("height",this.slides.css('width'))
+                                init: function (swiper) {
+                                    this.$el.find(".img-box").css("height", this.slides.css('width'))
                                 },
                             }
                             // pagination: {
@@ -106,8 +107,8 @@ const AppointmentActivities = (props) => {
 
     return (
         <div
-            className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentActivities jordan" : "AppointmentActivities"}>
-            <h2>{cookie.load("store_name")}</h2>
+            className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentActivities jordan" : "AppointmentActivities"}>
+            <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 dataList.booking_list.length === 0 ?
                     <>
@@ -120,6 +121,7 @@ const AppointmentActivities = (props) => {
                                 {
                                     dataList.prod_list.map((item, index) => {
                                         return <div className={'list_box'} key={index} onClick={() => {
+                                            DataTracking.BDEvent(`我的活动`,`为您推荐｜${item.product_code}`);
                                             props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
                                         }}>
                                             <div className={'list_img'}>
@@ -145,6 +147,7 @@ const AppointmentActivities = (props) => {
                                                     return <div
                                                         className={"carousel-item swiper-slide"}
                                                         key={index} onClick={() => {
+                                                        DataTracking.BDEvent(`我的活动`,`${item.type_name}｜${listItem.event_title}`);
                                                         props.history.push("/details-activities" + props.location.search + "&store_event_id=" + listItem.store_event_id)
                                                     }}>
                                                         <div className={"img-box"}>

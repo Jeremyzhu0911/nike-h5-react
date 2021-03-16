@@ -16,6 +16,8 @@ const AppointmentAdviser = (props) => {
         1, 2, 3, 4, 5
     ])
 
+    const [tagsNum, setTagsNum] = useState(0)
+
     const [postData, setPostData] = useState({
         id: getUrlData("booking_id"),
         rating: 5,  //星级
@@ -81,7 +83,7 @@ const AppointmentAdviser = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentAdviser jordan" : "AppointmentAdviser"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentAdviser jordan" : "AppointmentAdviser"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}
@@ -118,6 +120,34 @@ const AppointmentAdviser = (props) => {
                         </div> :
                         <div className={"evaluate"}>
                             <h4>特点评价</h4>
+                            <div className={'tags-box'}>
+                                {
+                                    postData.tags.map((item, index) => {
+                                        return <div className={item.status === 1 ? 'filterBlock action' : 'filterBlock'}
+                                                    key={index} onClick={() => {
+
+                                                let arr = postData.tags
+                                                arr.forEach((childItem, childIndxex) => {
+                                                    if (childIndxex === index) {
+                                                        if (childItem.status) {
+                                                            childItem.status = 0
+                                                            setTagsNum(tagsNum - 1)
+                                                        } else if(tagsNum < 4) {
+                                                            childItem.status = 1
+                                                            setTagsNum(tagsNum + 1)
+                                                        }
+                                                        setPostData({
+                                                            ...postData,
+                                                            tags: arr
+                                                        })
+                                                    }
+                                                })
+
+
+                                        }}>{item.name}</div>
+                                    })
+                                }
+                            </div>
                             <h4>星级评价</h4>
                             <p className={"stars"}>
                                 {
@@ -170,8 +200,9 @@ const AppointmentAdviser = (props) => {
                                     let restData = res.data;
                                     if (Number(restData.code) === 200) {
                                         DataTracking.GAEvent('顾问评价 | ' + stateData.ambassador_info, '提交评价')
+                                        DataTracking.BDEvent(`我的顾问预约｜${stateData.ambassador_info}`, `提交评价`)
                                         setRatingSuccess(false)
-                                    }else{
+                                    } else {
                                         alert('操作失败，请稍后重试');
                                     }
                                 },

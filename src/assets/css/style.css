@@ -528,7 +528,7 @@ body {
   font-size: 0.85333rem;
   line-height: 1.75;
   text-align: center;
-  color: #666666;
+  color: #666666 !important;
   width: 80%;
   margin: 0 auto;
 }
@@ -554,9 +554,11 @@ body {
   text-align: center;
   line-height: 2.13333rem;
   font-size: 0.99556rem;
+  color: #000 !important;
 }
 .FollowPop .Priacy .Priacy_box p {
   line-height: 1.24444rem;
+  color: #000 !important;
 }
 
 .ListBigImgBox {
@@ -606,15 +608,26 @@ body {
   background: #3E3D3D;
 }
 .ListBigImgBox .mask {
-  position: absolute;
-  z-index: 10;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.5;
 }
 
+@keyframes zy {
+  10% {
+    transform: rotate(15deg);
+  }
+  20% {
+    transform: rotate(-10deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  50%,100% {
+    transform: rotate(0deg);
+  }
+}
 .AmbassadorContent {
   width: 100%;
   overflow: hidden;
@@ -626,6 +639,7 @@ body {
   text-align: center;
   padding-top: 1.06667rem;
   padding-bottom: 1.77778rem;
+  position: relative;
 }
 .AmbassadorContent .list ul {
   white-space: nowrap;
@@ -666,7 +680,7 @@ body {
   width: 4.62222rem;
   height: 4.62222rem;
   border-radius: 4.62222rem;
-  box-shadow: 0 0px 8px #00000096;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.61);
 }
 .AmbassadorContent .list ul li.on h4, .AmbassadorContent .list ul li.on p {
   color: #000 !important;
@@ -710,10 +724,25 @@ body {
 .AmbassadorContent .list ul.ul_align3 li.right_one {
   margin-left: 0;
 }
+.AmbassadorContent .list .page-right {
+  position: absolute;
+  right: 5px;
+  top: 0px;
+  height: 8.88889rem;
+  line-height: 8.88889rem;
+  width: 1.77778rem;
+  overflow: hidden;
+}
+.AmbassadorContent .list .page-right .icon-finger-slide- {
+  display: inline-block;
+  font-size: 2.13333rem;
+  opacity: 0.6;
+  animation: zy 2.5s .15s linear infinite;
+}
 .AmbassadorContent .synopsis {
   width: 23.25333rem;
   margin: 0 auto;
-  box-shadow: 0 1px 25px #6a6a6a87;
+  box-shadow: 0 4px 10px rgba(165, 165, 165, 0.61);
   border-radius: 1.42222rem;
   background: #fff;
   overflow: hidden;
@@ -748,6 +777,12 @@ body {
   line-height: 1.77778rem;
   padding: 0 0.71111rem;
   color: #000 !important;
+}
+.AmbassadorContent.jordan .list ul li.on h4, .AmbassadorContent.jordan .list ul li.on p {
+  color: #fff !important;
+}
+.AmbassadorContent.jordan .list .page-right .icon-finger-slide- {
+  color: #fff !important;
 }
 
 .AmbassadorDetails {
@@ -1563,14 +1598,6 @@ body {
   margin: 0 auto;
   overflow: hidden;
 }
-.AppointmentActivities h2 {
-  text-align: center;
-  height: 3.65511rem;
-  line-height: 3.65511rem;
-  font-size: 1.0304rem;
-  color: #6A6A6A;
-  letter-spacing: 0.0384rem;
-}
 .AppointmentActivities h5 {
   height: 7.11111rem;
   line-height: 7.11111rem;
@@ -1717,6 +1744,24 @@ body {
   line-height: 2.48889rem;
   color: #3E3D3D;
 }
+.AppointmentAdviser .evaluate .tags-box .filterBlock {
+  display: inline-block;
+  width: auto;
+  padding: 0 1.13778rem;
+  background-color: #ffffff;
+  font-size: 0.85333rem;
+  height: 1.70667rem;
+  line-height: 1.70667rem;
+  color: #111111;
+  border-radius: 4px;
+  border: 1px solid #afafaf;
+  margin-right: 6px;
+}
+.AppointmentAdviser .evaluate .tags-box .filterBlock.action {
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+}
 .AppointmentAdviser .evaluate .stars {
   text-align: center;
   line-height: 2.48889rem;
@@ -1756,6 +1801,29 @@ body {
 }
 .AppointmentAdviser .page-info p {
   font-size: 8.88889rem;
+}
+.AppointmentAdviser.jordan .evaluate {
+  color: #fff;
+}
+.AppointmentAdviser.jordan .evaluate .tags-box .filterBlock.action {
+  background-color: #fff700;
+  color: #fff700;
+  border: 1px solid #fff700;
+}
+.AppointmentAdviser.jordan .evaluate .stars span.icon-starsOn {
+  color: #fff700 !important;
+}
+.AppointmentAdviser.jordan .evaluate .serves .isNo span {
+  color: #000 !important;
+}
+.AppointmentAdviser.jordan .evaluate .serves .isNo span.on {
+  color: #fff !important;
+}
+.AppointmentAdviser.jordan .order {
+  background: #000;
+}
+.AppointmentAdviser.jordan .order .btn {
+  background: #b7052d;
 }
 
 .ActivitiesContent {
@@ -1805,6 +1873,15 @@ body {
   font-size: 1.13778rem;
   color: #969696;
   padding-bottom: 1.70667rem;
+}
+.ActivitiesContent.jordan .content h1 {
+  color: #fff;
+}
+.ActivitiesContent.jordan .content p {
+  color: #8f8f8f !important;
+}
+.ActivitiesContent.jordan .content .btn span {
+  background: #b7052d;
 }
 
 .ActivitiesDetails {
@@ -1905,6 +1982,18 @@ body {
   font-size: 1.06667rem;
   color: #fff;
   background: #000;
+}
+.ActivitiesDetails.jordan p:nth-child(1) {
+  color: #949494 !important;
+}
+.ActivitiesDetails.jordan .content h1 {
+  color: #fff !important;
+}
+.ActivitiesDetails.jordan .content p {
+  color: #949494 !important;
+}
+.ActivitiesDetails.jordan .const h3 {
+  color: #fff !important;
 }
 .ActivitiesDetails.jordan .order {
   background: #000;
@@ -2127,6 +2216,9 @@ body {
   display: inline-table;
   white-space: nowrap;
 }
+.CommodityDetails .small_image ul.image_list {
+  padding: 0 1.70667rem;
+}
 .CommodityDetails .small_image ul li {
   width: 6.59556rem;
   display: inline-block;
@@ -2240,11 +2332,14 @@ body {
 }
 .CommodityAppointment .information .content .content_img {
   font-size: 0;
-  width: 8.88889rem;
-  border: 1px solid #000;
 }
 .CommodityAppointment .information .content .content_img img {
-  width: 100%;
+  width: 8.88889rem;
+  margin-right: 10px;
+  border: 1px solid transparent;
+}
+.CommodityAppointment .information .content .content_img img.on {
+  border: 1px solid #000;
 }
 .CommodityAppointment .information .footage {
   padding: 0 0 1.70667rem 1.70667rem;
@@ -2410,6 +2505,7 @@ body {
 }
 .CommodityAppointment.jordan .opt-datetime {
   color: #fff;
+  border-bottom: 1px solid #fff !important;
 }
 .CommodityAppointment.jordan .btn_box .btn {
   background: #b7052d;
@@ -2472,6 +2568,9 @@ body {
 .CommodityFashion .FashionBox .jianju {
   width: 100%;
   height: 4.26667rem;
+}
+.CommodityFashion.jordan .FashionBox .s_btn {
+  background: #b7052d;
 }
 
 .Limit_list {
@@ -2689,7 +2788,7 @@ body {
   border-radius: 0.17778rem;
   background: #000;
   text-align: center;
-  font-size: 0.57956rem;
+  font-size: 0.78222rem;
   color: #fff;
   float: right;
 }
@@ -2738,6 +2837,15 @@ body {
 .LimitAppointment.jordan .infoBtn .btn {
   background: #b7052d !important;
 }
+.LimitAppointment.jordan .infoDetails .selectSize .Size li {
+  background: #fff !important;
+  color: #000 !important;
+}
+.LimitAppointment.jordan .infoDetails .selectSize .Size li.active {
+  background: #b7052d !important;
+  color: #fff !important;
+  border-color: #b7052d !important;
+}
 
 .LimitSuccess {
   width: 100%;
@@ -2760,7 +2868,7 @@ body {
   padding-bottom: 1.77778rem;
 }
 .LimitSuccess .time-box {
-  background: #f9f9f9;
+  background: #f9f9f9 !important;
   width: 21.33333rem;
   padding: 3.2rem 0;
   text-align: center;
@@ -2770,10 +2878,10 @@ body {
 .LimitSuccess .time-box p {
   line-height: 2;
   font-size: 1.06667rem;
-  color: #666;
+  color: #666 !important;
 }
 .LimitSuccess .time-box p span {
-  color: #000;
+  color: #000 !important;
   font-weight: bold;
   font-size: 1.06667rem;
 }

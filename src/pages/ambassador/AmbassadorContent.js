@@ -56,14 +56,15 @@ const AmbassadorContent = (props) => {
                                         init: function () {
                                             this.$el.find("h4,p").css("width", this.slides.css('width'))
                                         },
-                                        click: function () {
-                                            if(this.clickedIndex >= 0)
+                                        tap: function () {
+                                            if(this.clickedIndex >= 0){
                                                 this.$el.find(".swiper-slide").removeClass("on").eq(this.clickedIndex).addClass("on")
+                                                setTabIndex(this.clickedIndex)
+                                            }
+                                        },
+                                        slideChangeTransitionStart: function (){
+                                            document.getElementsByClassName("page-right")[0].style.display="none";
                                         }
-                                        // slideChange: function(){
-                                        //     this.$el.find(".swiper-slide").removeClass("on").eq(this.activeIndex).addClass("on");
-                                        //     this.$el.find(".swiper-slide").eq(this.activeIndex).trigger("click")
-                                        // },
                                     }
                                 });
                             }
@@ -84,7 +85,7 @@ const AmbassadorContent = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorContent jordan" : "AmbassadorContent"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorContent jordan" : "AmbassadorContent"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className={'list swiper-container'}>
                 <ul className={
@@ -93,11 +94,11 @@ const AmbassadorContent = (props) => {
                 }>
                     {
                         stateData.am_list.map((item, index) => {
-                            return <li key={index} className={index === 0 ? 'swiper-slide on': 'swiper-slide'}>
+                            return <li key={index} className={index === 0 ? 'swiper-slide on': 'swiper-slide'} onClick={() => {
+                                DataTracking.BDEvent(`专属顾问`,`头像｜${item.cnName}`)
+                            }}>
                                 <div className={'images'}>
-                                    <img onClick={() => {
-                                        setTabIndex(index)
-                                    }} alt="" src={item.imgUrl ? item.imgUrl : defaultImd}/>
+                                    <img alt="" src={item.imgUrl ? item.imgUrl : defaultImd}/>
                                 </div>
                                 <h4>{item.cnName}</h4>
                                 <p>{item.tag? item.tag : 'Nike'}大使</p>
@@ -105,6 +106,9 @@ const AmbassadorContent = (props) => {
                         })
                     }
                 </ul>
+                <div className={'page-right'}>
+                    <div className={'iconfont icon-finger-slide- '}/>
+                </div>
             </div>
             <div className={'synopsis'}>
                 <div className={'images'}>
@@ -115,6 +119,7 @@ const AmbassadorContent = (props) => {
                 <p>{stateData.am_list[tabIndex].tag}大使 <span onClick={() => {
                     DataTracking.GAEvent('专属顾问', stateData.am_list[tabIndex].cnName);
                     DataTracking.GAPage(" | 专属顾问 | " + stateData.am_list[tabIndex].cnName);
+                    DataTracking.BDEvent(`专属顾问`,`了解详情｜${stateData.am_list[tabIndex].cnName}`)
                     props.history.push("/details-ambassador" + props.location.search + "&ambassador_id=" + stateData.am_list[tabIndex].id)
                 }}>了解详情</span></p>
             </div>

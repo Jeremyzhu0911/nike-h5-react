@@ -38,11 +38,13 @@
 
       .content_img {
         font-size: 0;
-        width: rem-calc(250);
-        border: 1px solid #000;
-
         img {
-          width: 100%;
+          width: rem-calc(250);
+          margin-right: 10px;
+          border: 1px solid transparent;
+          &.on{
+            border: 1px solid #000;
+          }
         }
       }
     }
@@ -231,6 +233,7 @@
     }
     .opt-datetime{
       color: #fff;
+      border-bottom: 1px solid #fff !important;
     }
     .btn_box{
       .btn{

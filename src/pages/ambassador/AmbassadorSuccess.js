@@ -3,6 +3,7 @@ import cookie from "react-cookies";
 import {getUrlData} from "../../util/getUrlData";
 import axios from "axios";
 import FollowPop from "../../components/FollowPop";
+import DataTracking from "../../util/DataStatistics";
 
 const AmbassadorSuccess = (props) => {
 
@@ -63,7 +64,7 @@ const AmbassadorSuccess = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorSuccess jordan" : "AmbassadorSuccess"}>
             <div className={'headers'}>
                 <div className="name">
                     {cookie.load('store_name')}
@@ -104,10 +105,11 @@ const AmbassadorSuccess = (props) => {
             </div>
             <div className={'order'}>
                 <div className="btn" onClick={() => {
+                    DataTracking.BDEvent(`专属顾问｜${cookie.load("ambassadorName")}｜预约成功`,`查看我的预约`);
                     if (Number(getUrlData('is_subscribe')) === 0) {   //  是否关注公众号
                         setShowHide(true)
                     } else {
-                        if (getUrlData("jordan")) {
+                        if (cookie.load('jordan')) {
                             props.history.push('/appointment/index?jordan=1&store_id=' + AmbassadorSuccessData.data.store_id);
                         } else {
                             props.history.push("/appointment/index?store_id=" + AmbassadorSuccessData.data.store_id);
@@ -118,6 +120,7 @@ const AmbassadorSuccess = (props) => {
                 </div>
 
                 <div className="btn2" onClick={()=>{
+                    DataTracking.BDEvent(`专属顾问｜${cookie.load("ambassadorName")}｜预约成功`,`返回顾问`);
                     let gotoUrl;
                     if(AmbassadorSuccessData.type === 4){
                         gotoUrl = "/content-ambassador"
@@ -126,7 +129,7 @@ const AmbassadorSuccess = (props) => {
                     }else{
                         gotoUrl = "/content-ambassador"
                     }
-                    if (getUrlData("jordan")) {
+                    if (cookie.load('jordan')) {
                         props.history.push(gotoUrl +"?store_id=" + AmbassadorSuccessData.data.store_id + "&jordan=1");
                     } else {
                         props.history.push(gotoUrl +"?store_id=" + AmbassadorSuccessData.data.store_id);

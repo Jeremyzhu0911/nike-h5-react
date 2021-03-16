@@ -43,7 +43,7 @@ const LimitAppointment = (props) => {
         ],   //  尺码
     })
 
-    if (getUrlData("jordan")) {
+    if (cookie.load('jordan')) {
         window.document.body.style.backgroundColor = '#000';
     }
 
@@ -106,7 +106,7 @@ const LimitAppointment = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "LimitAppointment jordan" : "LimitAppointment"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "LimitAppointment jordan" : "LimitAppointment"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             <div className="infoDetails">
                 <div className="infoTitle">
@@ -197,6 +197,7 @@ const LimitAppointment = (props) => {
                 <div className={'infoBtn'}>
                     <div className="btn" onClick={() => {
                         if (iconfont) {
+                            DataTracking.BDEvent(`限量发售｜${stateData.luckydraw_type === 0 ? '抽号':'抽鞋'}｜${stateData.title}｜提交预约申请`,'提交')
                             setIsModalVisible(true)
                         } else {
                             alert("仔细阅读并同意《隐私信息授权条款》及《免责声明》")
@@ -239,6 +240,7 @@ const LimitAppointment = (props) => {
                                             cookie.save("qrcode_url", resData.data.qrcode_url)
                                             DataTracking.GAEvent("抽签活动 | 确认信息 | " + stateData.luckydraw_id + ' | ' + stateData.product_sku, '确认')
                                             DataTracking.GAPage(" | 抽签活动 | 报名成功 | " + stateData.luckydraw_id + ' | ' + stateData.product_sku)
+                                            DataTracking.BDEvent(`限量发售｜${stateData.luckydraw_type === 0 ? '抽号':'抽鞋'}｜${stateData.title}｜确认预约信息`,'确认')
                                             props.history.push("/commodity/limitSuccess" + props.location.search)
                                         } else {
                                             alert(resData.message);
@@ -251,6 +253,7 @@ const LimitAppointment = (props) => {
                             }}>确认
                             </button>
                             <button onClick={() => {
+                                DataTracking.BDEvent(`限量发售｜${stateData.luckydraw_type === 0 ? '抽号':'抽鞋'}｜${stateData.title}｜确认预约信息`,'取消')
                                 setIsModalVisible(false)
                             }} className="close">取消
                             </button>

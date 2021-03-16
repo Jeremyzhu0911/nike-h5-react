@@ -26,7 +26,7 @@ const LimitList = (props) => {
             is_end_booking: '', // 报名结束
             is_booking: "", // 活动是否需要报名
             enroll_begin_time: '',
-            enroll_end_time:''
+            enroll_end_time: ''
         }
     ])
 
@@ -62,38 +62,40 @@ const LimitList = (props) => {
     }
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "Limit_list jordan" : "Limit_list"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "Limit_list jordan" : "Limit_list"}>
             <div className={"StoreName"}>{cookie.load('store_name')}</div>
             {
                 limitList.map((item, index) => {
                     return <div className="ListBigImgBox" key={index}>
-                        <div className="content" onClick={() => {
-                            DataTracking.GAEvent('限量发售', item.title);
-                            window.location.href = item.link
-                        }}>
+                        <div className={item.enroll_end_time < item.now_time ? "content mask" : "content"}
+                             onClick={() => {
+                                 DataTracking.GAEvent('限量发售', item.title);
+                                 window.location.href = item.link
+                             }}>
                             <div className="title">{item.title}</div>
                             <div className="time">{item.created_at}</div>
-                            <div className="images">
+                            <div className="images" onClick={() => {
+                                DataTracking.BDEvent(`限量发售 ｜ ${item.title} ｜ '${item.now_time < item.enroll_begin_time ? '报名未开始' : item.enroll_end_time < item.now_time ? '报名已结束' : '报名中'}`, '封面图');
+                            }}>
                                 <img alt={''} src={item.article_img}/>
                             </div>
                             {
                                 item.now_time < item.enroll_begin_time ?
-                                    <div className="s_btn s_btn1">报名未开始</div> :
-                                    item.enroll_end_time < item.now_time?
-                                        <div className="s_btn s_btn2">报名已结束</div> :
-                                        <div className="s_btn s_btn1">报名中</div>
+                                    <div className="s_btn s_btn1" onClick={() => {
+                                        DataTracking.BDEvent(`限量发售 ｜ ${item.title} ｜ 报名未开始`, '报名按钮');
+                                    }}>报名未开始</div> :
+                                    item.enroll_end_time < item.now_time ?
+                                        <div className="s_btn s_btn2" onClick={() => {
+                                            DataTracking.BDEvent(`限量发售 ｜ ${item.title} ｜ 报名已结束`, '报名按钮');
+                                        }}>报名已结束</div> :
+                                        <div className="s_btn s_btn1" onClick={() => {
+                                            DataTracking.BDEvent(`限量发售 ｜ ${item.title} ｜ 报名中`, '报名按钮');
+                                        }}>报名中</div>
                             }
                         </div>
                         {
                             index === 0 ?
                                 <div className="down-icon iconfont icon-xiangxia"/> : null
-                        }
-                        {
-                            item.enroll_end_time < item.now_time ?
-                                <div className="mask" onClick={() => {
-                                    DataTracking.GAEvent('限量发售', item.title);
-                                    window.location.href = item.link
-                                }}/> : null
                         }
                     </div>
                 })

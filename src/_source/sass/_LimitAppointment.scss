@@ -8,6 +8,7 @@
     margin: 0 auto;
     padding: rem-calc(42) 0;
   }
+
   .infoTitle {
     font-size: rem-calc(48.92);
     font-weight: bold;
@@ -15,38 +16,45 @@
     line-height: rem-calc(68);
     margin-bottom: rem-calc(13.4);
   }
-  .sellingImg{
+
+  .sellingImg {
     font-size: 0;
     width: rem-calc(654);
     padding-bottom: rem-calc(48);
-    img{
+
+    img {
       display: inline-block;
       width: 45%;
     }
   }
-  .selectSize{
+
+  .selectSize {
     width: rem-calc(654);
-    p{
+
+    p {
       line-height: rem-calc(45);
       font-size: rem-calc(32);
-      color: rgba(106,106,106,0.6);
+      color: rgba(106, 106, 106, 0.6);
     }
-    .Size{
+
+    .Size {
       width: 110%;
       display: inline-table;
-      li{
+
+      li {
         width: rem-calc(118);
         height: rem-calc(70.66);
         font-size: rem-calc(25.36);
         line-height: rem-calc(70.66);
         text-align: center;
         float: left;
-        border: rem-calc(1) solid rgba(151,151,151,0.5);
+        border: rem-calc(1) solid rgba(151, 151, 151, 0.5);
         color: #6A6A6A;
         border-radius: rem-calc(5);
         margin-right: rem-calc(10);
         margin-top: rem-calc(10);
-        &.active{
+
+        &.active {
           color: #fff;
           background: #000;
         }
@@ -54,21 +62,24 @@
     }
   }
 
-  .InfoEnter{
+  .InfoEnter {
     padding-top: rem-calc(30);
-    .items{
+
+    .items {
       width: 100%;
       display: inline-table;
       padding: rem-calc(9.96) 0;
-      label{
+
+      label {
         width: rem-calc(160);
         height: rem-calc(70);
         line-height: rem-calc(70);
         float: left;
-        color: rgba(106,106,106,0.6);
+        color: rgba(106, 106, 106, 0.6);
         font-size: rem-calc(32);
       }
-      input{
+
+      input {
         width: rem-calc(446);
         height: rem-calc(70);
         line-height: rem-calc(70);
@@ -77,12 +88,14 @@
         text-align: center;
         float: right;
         font-size: rem-calc(32);
-        &.code{
+
+        &.code {
           width: rem-calc(255);
           margin-right: rem-calc(10.86);
         }
       }
-      .getCodeBtn{
+
+      .getCodeBtn {
         width: rem-calc(180);
         // margin: rem-calc(8.61) 0;
         // height: rem-calc(48);
@@ -93,19 +106,21 @@
         border-radius: rem-calc(5);
         background: #000;
         text-align: center;
-        font-size: rem-calc(16.3);
+        font-size: rem-calc(22);
         color: #fff;
         float: right;
       }
     }
   }
-  .warning{
+
+  .warning {
     padding: rem-calc(30) 0;
     line-height: rem-calc(40);
     color: #6A6A6A;
     font-size: rem-calc(16.3);
   }
-  .infoBtn{
+
+  .infoBtn {
     //position: fixed;
     //bottom: 0;
     //left: 0;
@@ -113,7 +128,8 @@
     padding-top: rem-calc(32);
     height: rem-calc(140);
     z-index: 10;
-    .btn{
+
+    .btn {
       width: rem-calc(654);
       height: rem-calc(100);
       line-height: rem-calc(100);
@@ -125,36 +141,62 @@
       background: #000;
     }
   }
-  &.jordan{
-    .sellingImg{
-      .Size{
-        li{
+
+  &.jordan {
+    .sellingImg {
+      .Size {
+        li {
           background: #fff !important;
           border-color: #fff !important;
-          &.active{
+
+          &.active {
             background: #b7052d !important;
             border-color: #b7052d !important;
           }
         }
       }
     }
-    .InfoEnter{
-      label{
+
+    .InfoEnter {
+      label {
         color: #fff !important;
       }
-      input{
+
+      input {
         background: #fff !important;
       }
-      .getCodeBtn{
+
+      .getCodeBtn {
         background: #b7052d !important;
       }
     }
-    .warning{
+
+    .warning {
       color: #ffffffa1;
     }
-    .infoBtn{
-      .btn{
+
+    .infoBtn {
+      .btn {
         background: #b7052d !important;
+      }
+    }
+  }
+
+  &.jordan {
+    .infoDetails {
+      .selectSize {
+        .Size {
+          li {
+            background: #fff !important;
+            color: #000 !important;
+
+            &.active {
+              background: #b7052d !important;
+              color: #fff !important;
+              border-color: #b7052d !important;
+            }
+          }
+        }
       }
     }
   }

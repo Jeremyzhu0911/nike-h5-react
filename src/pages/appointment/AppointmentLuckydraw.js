@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import cookie from "react-cookies";
 import {getUrlData} from "../../util/getUrlData";
 import DataTracking from "../../util/DataStatistics";
 import WeiXin from "../../server/wx.config";
@@ -107,7 +108,7 @@ const AppointmentLuckydraw = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
             <div className={'luckydraw_box'}>
                 <h4 onClick={() => {
                     props.history.push("/commodity/Limitdetails" + props.location.search + "&luckydraw_id=" + luckydraw.luckydraw_id)

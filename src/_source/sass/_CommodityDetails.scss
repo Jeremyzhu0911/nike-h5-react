@@ -57,6 +57,9 @@
     ul {
       display: inline-table;
       white-space: nowrap;
+      &.image_list{
+        padding: 0 rem-calc(48);
+      }
 
       li {
         width: rem-calc(185.5);

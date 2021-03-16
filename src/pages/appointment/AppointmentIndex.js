@@ -143,7 +143,7 @@ const AppointmentIndex = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AppointmentIndex jordan" : "AppointmentIndex"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentIndex jordan" : "AppointmentIndex"}>
             <div className={'headers'}>
                 <div className="store-name">
                     {cookie.load('store_name')}
@@ -194,6 +194,14 @@ const AppointmentIndex = (props) => {
                                                         item.luckydraw_type === 0 ?
                                                             "抽号活动" : "抽鞋活动"
                                                         : null)
+                                    DataTracking.BDEvent(`我的预约`,`${item.type === 'product_try' ?
+                                        "预约试穿" : item.type === 'product_buy' ?
+                                            "预留产品" : item.type === 'event' ?
+                                                "活动预约" : item.type === 'ambassador' ?
+                                                    "专属顾问预约" : item.type === 'luckydraw' ?
+                                                        item.luckydraw_type === 0 ?
+                                                            "抽号活动" : "抽鞋活动"
+                                                        : null}｜${item.title}`)
 
                                     props.history.push(item.link)
                                 }}>
@@ -231,6 +239,7 @@ const AppointmentIndex = (props) => {
                         stateData.prod_list.map((item, index) => {
                             return <div className="row" key={index} onClick={() => {
                                 DataTracking.GAEvent('我的所有预约列表', item.product_code);
+                                DataTracking.BDEvent(`我的预约`,`${item.product_code}`);
 
                                 props.history.push("/commodity/details" + props.location.search + "&product_code=" + item.product_code)
                             }}>

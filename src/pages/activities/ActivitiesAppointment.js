@@ -5,6 +5,7 @@ import {getUrlData} from "../../util/getUrlData";
 
 import GetCode from "../../components/GetCode";
 import Priacy from "../../components/Privacy";
+import DataTracking from "../../util/DataStatistics";
 
 const ActivitiesAppointment = (props) => {
 
@@ -49,7 +50,7 @@ const ActivitiesAppointment = (props) => {
         return (<div>loading</div>)
 
     return (
-        <div className={parseInt(getUrlData("jordan")) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
+        <div className={parseInt(cookie.load('jordan')) === 1 ? "AmbassadorAppointment jordan" : "AmbassadorAppointment"}>
             <div className={'headers'}>
                 <div className="name">
                     填写个人信息
@@ -57,6 +58,7 @@ const ActivitiesAppointment = (props) => {
                         Number(getUrlData('is_ambassador')) === 1 ?
                             '' :
                             <span onClick={() => {
+                                DataTracking.BDEvent(`门店活动｜${cookie.load("event_title")}｜提交预约申请`,`返回`);
                                 props.history.goBack()
                             }}>返回</span>
                     }
@@ -157,6 +159,7 @@ const ActivitiesAppointment = (props) => {
                                 let resData = res.data;
                                 if (Number(resData.code) === 200) {
                                     console.log(resData)
+                                    DataTracking.BDEvent(`门店活动｜${cookie.load("event_title")}｜提交预约申请`,`提交预约`);
                                     props.history.push("/success-activities" + props.location.search +
                                         "&booking_id=" + resData.data.booking_id +
                                         "&is_subscribe=" + resData.data.is_subscribe +
