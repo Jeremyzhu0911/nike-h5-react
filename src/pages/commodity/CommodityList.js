@@ -136,7 +136,6 @@ const CommodityList = (props) => {
                 <div className={'btn_search'} onClick={() => {
                     DataTracking.GAPage('筛选')
                     DataTracking.GAEvent('筛选结果', '筛选')
-
                     state.pageTitle === '搜索结果' ?
                         DataTracking.BDEvent(state.pageTitle + ' | ' + state.keyWord, '筛选') :
                         state.pageTitle === '筛选结果' ?
@@ -154,7 +153,7 @@ const CommodityList = (props) => {
                             DataTracking.GAEvent(state.gaPageName, item.product_code)
 
                             state.pageTitle === '搜索结果' ?
-                                DataTracking.BDEvent(`${state.pageTitle} | ${state.keyWord}`, item.product_code):
+                                DataTracking.BDEvent(`搜索结果 | ${state.keyWord}`, item.product_code):
                                 state.pageTitle === '筛选结果' ?
                                     DataTracking.BDEvent(`${state.pageTitle} | 款式：{ ${state.productInfoSearch2.gender.toString()} } 类型：{ ${state.productInfoSearch2.category.toString()} } 分类：{ ${state.productInfoSearch2.product_group.toString()} }`, item.product_code) :
                                     DataTracking.BDEvent(state.pageTitle, item.product_code)

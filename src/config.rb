@@ -2,6 +2,11 @@ require 'compass/import-once/activate'
 
 # Require any additional compass plugins here.
 
+# 直接编译
+# compass compile
+# 监控编译
+# compass watch
+
 
 # Set this to the root of your project when deployed:
 

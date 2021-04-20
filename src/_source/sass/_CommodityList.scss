@@ -146,6 +146,13 @@
       h2,span,li{
         color: #000 !important;
       }
+      .filterItems{
+        ul{
+          li.on{
+            color: #fff !important;
+          }
+        }
+      }
     }
   }
 }

@@ -45,6 +45,9 @@ const CommodityDetails = (props) => {
                         })
 
                         DataTracking.GAPage(getUrlData('product_code'))
+                        if(!!getUrlData('utm_source')){
+                            DataTracking.BDEvent(getUrlData('product_code'),getUrlData('utm_source'));
+                        }
                         WeiXin.share(resData.data.product_name + "，新鲜尖货快来看", window.location.href, resData.data.product_color[0].color_image[0].img, "Nike出道新品，点击获取最新资讯",`产品详情页分享｜${resData.data.product_name}`);
                         setLoading(false)
 
@@ -108,7 +111,7 @@ const CommodityDetails = (props) => {
                             if (item.color_image[0])
                                 return <li onClick={() => {
                                     setProductIndex(index)
-                                }} key={index}><img alt={''} src={item.color_image[0].img}/></li>
+                                }} className={productIndex === index ? "on":null} key={index}><img alt={''} src={item.color_image[0].img}/></li>
                         })
                     }
                 </ul>

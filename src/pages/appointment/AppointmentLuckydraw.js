@@ -111,6 +111,7 @@ const AppointmentLuckydraw = (props) => {
         <div className={parseInt(cookie.load('jordan')) === 1 ? "AppointmentLuckydraw jordan" : "AppointmentLuckydraw"}>
             <div className={'luckydraw_box'}>
                 <h4 onClick={() => {
+                    DataTracking.BDEvent(`我的抽鞋活动｜${luckydraw.title}`,`查看活动详情页`)
                     props.history.push("/commodity/Limitdetails" + props.location.search + "&luckydraw_id=" + luckydraw.luckydraw_id)
                 }}>查看活动详情页 ></h4>
                 <div className={'luckydraw_img'}>
@@ -177,6 +178,7 @@ const AppointmentLuckydraw = (props) => {
                 luckydraw.status === 0 ?
                     <div className={'order'}>
                         <div className={'btn'} onClick={() => {
+                            DataTracking.BDEvent(`我的抽鞋活动｜${luckydraw.title}`,`取消报名`)
                             setShowCancel(!showCancel)
                         }}>取消报名
                         </div>
@@ -189,10 +191,12 @@ const AppointmentLuckydraw = (props) => {
                         <p>取消后不可撤回，如需恢复预约，请重新提交预约申请，是否继续本次操作</p>
                         <div className={'btn_box'}>
                             <span onClick={() => {
+                                DataTracking.BDEvent(`我的抽鞋活动｜${luckydraw.title}`,`继续`)
                                 DataTracking.GAEvent('我的抽签活动报名 | ' + luckydraw.product_sku, '取消报名')
                                 setCancelBooking(showCancel)
                             }}>继续</span>
                             <span onClick={() => {
+                                DataTracking.BDEvent(`我的抽鞋活动｜${luckydraw.title}`,`我再想想`)
                                 setShowCancel(!showCancel)
                             }}>我再想想</span>
                         </div>

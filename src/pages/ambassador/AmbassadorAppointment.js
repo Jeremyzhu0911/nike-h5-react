@@ -12,6 +12,7 @@ const AmbassadorAppointment = (props) => {
     const [loading, setLoading] = useState(true);
 
     const [iconfont, setIconfont] = useState(false)
+    const [showHide, setShowHide] = useState(false)
 
     const [AmbassadorAppointmentData, setAmbassadorAppointmentData] = useState([
         {
@@ -69,10 +70,12 @@ const AmbassadorAppointment = (props) => {
                                 item.time_list1 = [];
                                 item.time_list2 = [];
                                 item.time_list.forEach((items) => {
-                                    if (items.work_time_number < 6)
-                                        resData.data[index].time_list1.push(items)
-                                    else
-                                        resData.data[index].time_list2.push(items)
+                                   if(items.work_time_number >= 26){
+                                       if (items.work_time_number < 6 || (items.work_time_number >= 26 && items.work_time_number <= 28))
+                                           resData.data[index].time_list1.push(items)
+                                       else
+                                           resData.data[index].time_list2.push(items)
+                                   }
                                 })
                             })
 
@@ -169,7 +172,7 @@ const AmbassadorAppointment = (props) => {
                                             idx: item.idx
                                         })
                                     }}>
-                                        <p>周{convertToChinese(item.week)}</p>
+                                        <p>周{convertToChinese(item.week,"week")}</p>
                                         <p>{item.date_day}</p>
                                     </li>
                                 })
@@ -405,7 +408,34 @@ const AmbassadorAppointment = (props) => {
                     }}/>
                 </div> : null
             }
-
+            {
+                showHide ?
+                    <div className={"FollowPop"}>
+                        <div className={'box'}>
+                            <p className="txt">&nbsp;</p>
+                            <p className="txt">
+                                十分遗憾该顾问未设置预约时间。<br/>您可以尝试预约其他顾问，进行预约！
+                            </p>
+                            <button className="close" onClick={() => {
+                                if (cookie.load('jordan')) {
+                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") + "&jordan=1");
+                                } else {
+                                    props.history.push("/content-ambassador?store_id=" + getUrlData("store_id"));
+                                }
+                                setShowHide(false)
+                            }}>查看其他顾问
+                            </button>
+                        </div>
+                        <div className={'desk'} onClick={() => {
+                            if (cookie.load('jordan')) {
+                                props.history.push("/content-ambassador?store_id=" + getUrlData("store_id") + "&jordan=1");
+                            } else {
+                                props.history.push("/content-ambassador?store_id=" + getUrlData("store_id"));
+                            }
+                            setShowHide(false)
+                        }}/>
+                    </div> : null
+            }
         </div>
     )
 }

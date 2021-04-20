@@ -96,7 +96,7 @@ const ActivitiesDetails = (props) => {
                 <h3>活动信息</h3>
                 {
                     dataList.is_booking ?
-                        <div className={'txt'}>
+                        <div className={'txt txt_time'}>
                             <p>门店活动时间</p>
                             <p>
                                 {
@@ -116,14 +116,14 @@ const ActivitiesDetails = (props) => {
                 </div>
                 {
                     dataList.is_booking ?
-                        <div className={'txt'}>
+                        <div className={'txt txt_time'}>
                             <p>报名开始时间</p>
                             <p>{dataList.event_start_time}</p>
                         </div> : null
                 }
                 {
                     dataList.is_booking ?
-                        <div className={'txt'}>
+                        <div className={'txt txt_time'}>
                             <p>报名截止时间</p>
                             <p>{dataList.event_end_time}</p>
                         </div> : null
@@ -156,7 +156,7 @@ const ActivitiesDetails = (props) => {
             }
             {
                 showHide ?
-                    <div className={'FollowPop'}>
+                    <div className={"FollowPop"}>
                         <div className={'box'}>
                             <p className="txt">&nbsp;</p>
                             <p className="txt">

@@ -208,6 +208,13 @@ const CommodityAppointment = (props) => {
                                         ...postData,
                                         mobile: event.target.value
                                     })
+                                    setCodeTime({
+                                        ...codeTime,
+                                        postData:{
+                                            ...codeTime.postData,
+                                            mobile: event.target.value
+                                        }
+                                    })
                                 }} placeholder="手机号" defaultValue={postData.mobile}/>
                                 <GetCode {...props} updateCodeTime={updateCodeTime} data={codeTime}/>
                             </li>
@@ -217,6 +224,7 @@ const CommodityAppointment = (props) => {
                                         ...postData,
                                         code: event.target.value
                                     })
+
                                 }} placeholder="请输入验证码"/>
                             </li>
                         </ul>

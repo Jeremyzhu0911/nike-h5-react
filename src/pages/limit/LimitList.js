@@ -67,7 +67,11 @@ const LimitList = (props) => {
             {
                 limitList.map((item, index) => {
                     return <div className="ListBigImgBox" key={index}>
-                        <div className={item.enroll_end_time < item.now_time ? "content mask" : "content"}
+                        {
+                            item.enroll_end_time < item.now_time ?<div className={"mask"}/>:null
+                        }
+
+                        <div className={"content"}
                              onClick={() => {
                                  DataTracking.GAEvent('限量发售', item.title);
                                  window.location.href = item.link
