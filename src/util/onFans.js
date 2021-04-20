@@ -14,7 +14,7 @@ const getOnFansData = (storeId) => {
             }
             if (Number(res.data.code) === 200) {
                 cookie.save('fans_id', res.data.data.id)
-                cookie.save('user_name', res.data.data.user_name)
+                cookie.save('user_name', res.data.data.nickname)
                 cookie.save('mobile', res.data.data.mobile)
                 cookie.save('jordan',res.data.data.jordan_status)
                 cookie.save('openId', res.data.data.openId)

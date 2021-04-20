@@ -32,6 +32,9 @@ import LimitList from "../pages/limit/LimitList";
 
 import HistoricalRecord from '../pages/Historical';
 
+import CollectionIndex from '../pages/collection/CollectionIndex';
+import CollectionShare from '../pages/collection/Collectionshare';
+
 const routes = [
     {
         path: '/Off',
@@ -191,6 +194,16 @@ const routes = [
         path: '/historical-record',
         component: HistoricalRecord,
         title: '删除记录'  //多功能页面
+    },
+    {
+        path: '/collection/index',
+        component: CollectionIndex,
+        title: '我的收藏'  //多功能页面
+    },
+    {
+        path: '/collection/Share',
+        component: CollectionShare,
+        title: '我的心愿单'  //多功能页面
     }
 ];
 

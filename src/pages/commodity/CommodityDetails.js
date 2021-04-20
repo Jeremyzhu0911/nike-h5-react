@@ -27,11 +27,14 @@ const CommodityDetails = (props) => {
                 "sku": "款式详细编号"
             }
         },
-        product_description: '商品简介'
+        product_description: '商品简介',
+        is_favorite: 0
     });
 
     // product Img AmbassadorAppointment
     const [productIndex, setProductIndex] = useState(0);
+
+    const [collectionBtn,setCollectionBtn] = useState(false)
 
     useEffect(() => {
         if (loading) {
@@ -43,11 +46,12 @@ const CommodityDetails = (props) => {
                             ...state,
                             ...resData.data,
                         })
-
+                        let is_favorite = [];
+                        resData.data.product_color.forEach((t,i)=>{
+                            is_favorite[i] =  !!t.is_favorite
+                        })
+                        setCollectionBtn(is_favorite)
                         DataTracking.GAPage(getUrlData('product_code'))
-                        if(!!getUrlData('utm_source')){
-                            DataTracking.BDEvent(getUrlData('product_code'),getUrlData('utm_source'));
-                        }
                         WeiXin.share(resData.data.product_name + "，新鲜尖货快来看", window.location.href, resData.data.product_color[0].color_image[0].img, "Nike出道新品，点击获取最新资讯",`产品详情页分享｜${resData.data.product_name}`);
                         setLoading(false)
 
@@ -111,7 +115,7 @@ const CommodityDetails = (props) => {
                             if (item.color_image[0])
                                 return <li onClick={() => {
                                     setProductIndex(index)
-                                }} className={productIndex === index ? "on":null} key={index}><img alt={''} src={item.color_image[0].img}/></li>
+                                }} key={index} className={productIndex === index?'on':null}><img alt={''} src={item.color_image[0].img}/></li>
                         })
                     }
                 </ul>
@@ -128,24 +132,66 @@ const CommodityDetails = (props) => {
                     <br/>
                 </div>
             </div>
-            <div className={'btn_box'}>
-                <ul>
-                    <li onClick={() => {
-                        DataTracking.GAEvent(state.product_name,'预留产品' + state.product_code);
-                        DataTracking.BDEvent(state.product_name,'预留产品 | ' + state.product_code);
-                        DataTracking.GAPage("预留产品 | " + state.product_code)
-                        props.history.push("/commodity/appointment" + props.location.search + "&type=" + 1)
-                    }}>预留产品
-                    </li>
-                    <li onClick={() => {
-                        DataTracking.GAEvent(state.product_name,'预约试穿' + state.product_code);
-                        DataTracking.BDEvent(state.product_name,'预约试穿 | ' + state.product_code);
-                        DataTracking.GAPage("预约试穿 | " + state.product_code)
-                        props.history.push("/commodity/appointment" + props.location.search + "&type=" + 0)
-                    }}>预约试穿
-                    </li>
-                </ul>
+            <div className={'Collection_btn'}>
+                <span onClick={()=>{
+                    axios({
+                        url: collectionBtn[productIndex]?"/product/default/remove-favorite":"/product/default/add-favorite",
+                        method: "post",
+                        data: {
+                            store_id:getUrlData('store_id'),
+                            sku: state.product_color[productIndex].sku
+                        },
+                        transformRequest: [
+                            function (data) {
+                                let ret = "";
+                                for (let it in data) {
+                                    ret +=
+                                        encodeURIComponent(it) +
+                                        "=" +
+                                        encodeURIComponent(data[it]) +
+                                        "&";
+                                }
+                                return ret;
+                            },
+                        ],
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                        },
+                    }).then(
+                        (res) => {
+                            let resData = res.data;
+                            if (Number(resData.code) === 200) {
+                                console.log(resData)
+                            } else {
+                                alert(resData.message);
+                            }
+                        }
+                    )
+
+                    let list = collectionBtn;
+                    list.splice(productIndex, 1,!collectionBtn[productIndex]);
+
+                    setCollectionBtn([...list])
+                }}>收藏 <i className={collectionBtn[productIndex] ?'iconfont icon-collection_on':'iconfont icon-collection_off'}/></span>
             </div>
+            {/*<div className={'btn_box'}>*/}
+            {/*    <ul>*/}
+            {/*        <li onClick={() => {*/}
+            {/*            DataTracking.GAEvent(state.product_name,'预留产品' + state.product_code);*/}
+            {/*            DataTracking.BDEvent(state.product_name,'预留产品 | ' + state.product_code);*/}
+            {/*            DataTracking.GAPage("预留产品 | " + state.product_code)*/}
+            {/*            props.history.push("/commodity/appointment" + props.location.search + "&type=" + 1)*/}
+            {/*        }}>预留产品*/}
+            {/*        </li>*/}
+            {/*        <li onClick={() => {*/}
+            {/*            DataTracking.GAEvent(state.product_name,'预约试穿' + state.product_code);*/}
+            {/*            DataTracking.BDEvent(state.product_name,'预约试穿 | ' + state.product_code);*/}
+            {/*            DataTracking.GAPage("预约试穿 | " + state.product_code)*/}
+            {/*            props.history.push("/commodity/appointment" + props.location.search + "&type=" + 0)*/}
+            {/*        }}>预约试穿*/}
+            {/*        </li>*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
         </div>
     )
 

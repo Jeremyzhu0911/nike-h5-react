@@ -7,8 +7,6 @@ import WeiXin from "../../server/wx.config";
 
 const AppointmentIndex = (props) => {
 
-    WeiXin.hideMenus()
-
     const [loading, setLoading] = useState(true);
 
     const [typeList] = useState([

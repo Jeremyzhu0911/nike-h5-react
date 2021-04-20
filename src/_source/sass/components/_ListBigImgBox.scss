@@ -36,7 +36,6 @@
       border-radius: rem-calc(122);
       text-align: center;
       color: #fff;
-      font-size: rem-calc(32);
       &.s_btn1{
         background: #000;
       }
@@ -46,12 +45,6 @@
     }
   }
   .mask{
-    opacity: 0.3;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
-    background: #fff;
+    opacity: 0.5;
   }
 }

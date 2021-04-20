@@ -43,6 +43,10 @@ const LimitAppointment = (props) => {
         ],   //  尺码
     })
 
+    if (cookie.load('jordan')) {
+        window.document.body.style.backgroundColor = '#000';
+    }
+
     const [codeTime, setCodeTime] = useState({
         timeout: false,
         postData: {

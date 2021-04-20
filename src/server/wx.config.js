@@ -31,8 +31,7 @@ const WeiXin = {
                             'hideAllNonBaseMenuItem',
                             'showAllNonBaseMenuItem',
                             'openLocation',
-                            'getLocation',
-                            'hideMenuItems'
+                            'getLocation'
                         ]
                     })
                 }
@@ -57,7 +56,7 @@ const WeiXin = {
             wx.checkJsApi({
                 jsApiList: [
                     'checkJsApi',
-                    'hideMenuItems'
+                    'hideOptionMenu',
                 ],
                 success: function (res) {
                     if (res.checkResult.getLocation === false) {
@@ -66,16 +65,7 @@ const WeiXin = {
                     }
                 }
             });
-            wx.hideMenuItems({
-                menuList: ["menuItem:refresh",
-                    "menuItem:share:appMessage",
-                    "menuItem:share:timeline",
-                    "menuItem:share:qq",
-                    "menuItem:share:weiboApp",
-                    "menuItem:share:facebook",
-                    "menuItem:share:QZone"
-                ]
-            })
+            wx.hideOptionMenu()
         })
     },
     share: (title,link,imgUrl,desc,action) => {

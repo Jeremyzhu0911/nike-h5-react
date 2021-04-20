@@ -47,7 +47,6 @@
       background: none;
       color: #000;
       display: block;
-      //background: #000;
     }
     .btnBox{
       padding: rem-calc(48) 0;
@@ -102,31 +101,16 @@
     max-height: 80vh;
     overflow-y: scroll;
     .Priacy_box{
-      padding: 10px 20px;
+      padding: 10px;
       h2{
         text-align: center;
-        line-height: rem-calc(120);
-        font-size: rem-calc(34);
+        line-height: rem-calc(60);
+        font-size: rem-calc(28);
         color: #000 !important;
-        font-weight: bold;
       }
       p{
-        line-height: rem-calc(50);
-        color: #4a4a4a !important;
-        padding: 4px 0;
-      }
-    }
-  }
-  &.jordan{
-    .box{
-      //.close{
-      //  background: #b7052d !important;
-      //
-      //}
-      .btnBox{
-        .close{
-          color: #000000 !important;
-        }
+        line-height: rem-calc(35);
+        color: #000 !important;
       }
     }
   }

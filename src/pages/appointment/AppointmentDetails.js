@@ -4,11 +4,8 @@ import axios from "axios";
 import {getUrlData} from "../../util/getUrlData";
 import QrPop from "../../components/QrPop";
 import DataTracking from "../../util/DataStatistics";
-import WeiXin from "../../server/wx.config";
 
 const AppointmentDetails = (props) => {
-
-    WeiXin.hideMenus()
 
     const [loading, setLoading] = useState(true);
 
@@ -322,9 +319,9 @@ const AppointmentDetails = (props) => {
                         <p>取消后不可撤回，如需恢复预约，请重新提交预约申请，是否继续本次操作</p>
                         <div className={'btn_box'}>
                             <span onClick={() => {
-                                DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`继续`)
                                 DataTracking.GAEvent(appointmentDetailsData.typeName, appointmentDetailsData.bookingName + "取消预约")
                                 DataTracking.GAPage(' | 我的' + appointmentDetailsData.typeName + ' | ' + appointmentDetailsData.bookingName + "取消成功")
+                                DataTracking.BDEvent(`我的${appointmentDetailsData.typeName}｜${appointmentDetailsData.bookingName}`,`继续`)
                                 setCancelBooking(showCancel)
                             }}>继续</span>
                             <span onClick={() => {
